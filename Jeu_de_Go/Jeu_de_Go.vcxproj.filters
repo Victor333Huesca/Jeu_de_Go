@@ -21,10 +21,30 @@
     <ClCompile Include="Board.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Square.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Square.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Img\background1.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Img\stone_black.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Img\stone_white.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Img\blank.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
   </ItemGroup>
 </Project>
