@@ -22,6 +22,7 @@ public:
 	// Accesors for Square's position - Write is private 'cause it's initialise then never touch again
 	void setPosition(const sf::Vector2f position);
 
+	void draw(sf::RenderWindow& window) const;
 
 private:
 	// Attributes

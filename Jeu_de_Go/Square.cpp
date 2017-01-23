@@ -60,5 +60,12 @@ sf::Vector2f Square::getPosition() const
 
 void Square::setPosition(const sf::Vector2f position)
 {
-	sprite.setPosition(position);
+	sprite.setPosition(position.x * texture.getSize().x, position.y * texture.getSize().y);
+}
+
+void Square::draw(sf::RenderWindow & window) const
+{
+	window.draw(sprite);
+	std::cout << "Position : (" << sprite.getPosition().x << ", " << sprite.getPosition().y << ")\n";
+	std::cout << "Color : " << value << "\n";
 }

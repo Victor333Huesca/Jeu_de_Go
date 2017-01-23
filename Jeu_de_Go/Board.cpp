@@ -34,4 +34,11 @@ sf::RenderWindow & Board::getWindow()
 void Board::draw()
 {
 	window.draw(bg_spr);
+	for (size_t i = 0; i < size.x; i++)
+	{
+		for (size_t j = 0; j < size.y; j++)
+		{
+			array[i][j].draw(window);
+		}
+	}
 }
