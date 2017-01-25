@@ -12,6 +12,12 @@ public:
 	Board(const T& x, const T& y, sf::RenderWindow& window = sf::RenderWindow());
 	~Board();
 
+	// Treate click event
+	void click(sf::Vector2i pos, const sf::Mouse::Button& type);
+
+	// Return cases corresponding to a position
+	sf::Vector2i getSquareAt(sf::Vector2i pos) const;
+
 	sf::RenderWindow& getWindow();
 	void draw();
 
@@ -24,6 +30,7 @@ private:
 	sf::Texture bg_txr;		/*!< Background texture */
 	sf::Sprite bg_spr;		/*!< Background sprite */
 
+	Square::Value nextToPlay;
 };
 
 template <typename T>

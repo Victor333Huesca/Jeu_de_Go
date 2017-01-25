@@ -2,19 +2,28 @@
 #include <iostream>
 #include "Board.h"
 
-#define TEST true
-
 void renderingThread(Board* _board);
 
 int main()
 {
-	// Creation of the render window
-	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+	// Creation of the main view and the render window
+	sf::View view(
+		sf::FloatRect(
+			0,
+			0,
+			SQUARE_SIZE * SIZE_X + OFFSET_X * 2,
+			SQUARE_SIZE * SIZE_Y + OFFSET_Y * 2));
+	sf::RenderWindow window(
+		sf::VideoMode(
+			800, 
+			800), 
+		"Jeu de Go !");
+	window.setView(view);
 
 	// Globals variables
 	bool pause = false;
 	//Board board(window);
-	Board board(sf::Vector2u(5, 3), window);
+	Board board(sf::Vector2u(SIZE_X, SIZE_Y), window);
 
 	// disable context
 	window.setActive(false);
@@ -42,6 +51,13 @@ int main()
 			case sf::Event::GainedFocus:
 				pause = false;
 				break;
+			case sf::Event::MouseButtonReleased:
+				board.click(
+					static_cast<sf::Vector2i>(
+						window.mapPixelToCoords(
+							sf::Mouse::getPosition(window))),
+					event.mouseButton.button);
+				break;
 			default:
 				break;
 			}
@@ -57,37 +73,15 @@ void renderingThread(Board* _board)
 	Board& board = *_board;
 	sf::RenderWindow& window = board.getWindow();
 
-	// Variables
-	bool blink = true;
-
-	// Create Shapes
-	// Circle 1
-	sf::CircleShape circle1(100);
-	circle1.setFillColor(sf::Color::Green);
-	// Square 1
-	sf::RectangleShape square1(sf::Vector2f(100, 100));
-	square1.setFillColor(sf::Color::Blue);
-
 	while (window.isOpen())
 	{
 		// Clear the window with a black screen
 		window.clear(sf::Color::Black);
 
 		// Test here
-		if (TEST)
-			board.draw();
-
-		// Draw everything which should be
-		if (blink)
-			window.draw(circle1);
-		else
-		{
-			window.draw(square1);
-		}
-		blink = !blink;
+		board.draw();
 
 		// End of current frame, display everything
 		window.display();
-		sf::sleep(sf::seconds(1));
 	}
 }
