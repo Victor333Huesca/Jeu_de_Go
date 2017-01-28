@@ -1,81 +1,54 @@
 #include "Square.h"
 
+sf::Texture Square::white_t;
+sf::Texture Square::black_t;
 
-Square::Square(const sf::Vector2i position, Value _value) :
-	value(_value)
+Square::Square(const sf::Vector2i position, Value _value)
 {
 	// Set position of the square
 	setPosition(static_cast<sf::Vector2f>(position));
 
-	// Set it's sprite
-	updateSprite();
+	// Set its sprite
+	setValue(_value);
 }
 
 Square::~Square()
 {
 }
 
-void Square::updateTexture()
+void Square::loadTextures()
 {
-	// File name
-	std::string name("./Img/");
+	white_t.loadFromFile("./Img/stone_white2.png");
+	black_t.loadFromFile("./Img/stone_black2.png");
 
-	// Load write filename
-	switch (value)
-	{
-	case Black:
-		name.append("stone_black");
-		break;
-
-	case White:
-		name.append("stone_white");
-		break;
-
-	case None:
-		name.append("blank");
-		break;
-
-	default:
-		break;
-	}
-
-	// Add extention
-	name.append(".png");
-
-	// Load file
-	texture.loadFromFile(name);
-}
-
-void Square::updateSprite()
-{
-	updateTexture();
-	sprite.setTexture(texture);
-}
-
-void Square::update()
-{
-	updateTexture();
-	updateSprite();
-}
-
-sf::Vector2f Square::getPosition() const
-{
-	return sprite.getPosition();
+	white_t.setSmooth(true);
+	black_t.setSmooth(true);
 }
 
 void Square::setPosition(const sf::Vector2f position)
 {
-	sprite.setPosition(
-		position.x * texture.getSize().x + OFFSET_X,
-		position.y * texture.getSize().y + OFFSET_Y);
+	if (position != sf::Vector2f(-1, -1))
+	{
+		sprite.setPosition(
+			position.x * SQUARE_WIDTH + OFFSET_X_B,
+			position.y * SQUARE_HEIGHT + OFFSET_Y_B);
+	}
 }
 
 void Square::setValue(const Value & val)
 {
+	// Set the value
 	value = val;
+	
+	// Load right texture
+	if (value == Black)
+		sprite.setTexture(white_t);
+	else if (value == White)
+		sprite.setTexture(black_t);
 }
 
-void Square::draw(sf::RenderWindow & window) const
+void Square::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
-	window.draw(sprite);
+	if (value != None)
+		target.draw(sprite, states);
 }

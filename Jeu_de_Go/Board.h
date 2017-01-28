@@ -1,41 +1,42 @@
 #pragma once
-#include <SFML\Graphics.hpp>
+#include "Globals.h"
 #include "Square.h"
 
-class Board
+class Board : public sf::Drawable
 {
 public:
-	Board(sf::RenderWindow& window = sf::RenderWindow());
+	Board();
 	template <typename T>
-	Board(const sf::Vector2<T>& _size, sf::RenderWindow& window = sf::RenderWindow());
+	Board(const sf::Vector2<T>& _size);
 	template <typename T>
-	Board(const T& x, const T& y, sf::RenderWindow& window = sf::RenderWindow());
+	Board(const T& x, const T& y);
 	~Board();
 
 	// Treate click event
-	void click(sf::Vector2i pos, const sf::Mouse::Button& type);
+	void click(sf::Vector2i pos, const Square::Value& value);
+	sf::View getView() const;
 
-	// Return cases corresponding to a position
-	sf::Vector2i getSquareAt(sf::Vector2i pos) const;
-
-	sf::RenderWindow& getWindow();
-	void draw();
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
 
 private:
-	sf::Vector2u size;
-	Square** array;
-	sf::RenderWindow& window;
+	// Goban
+	sf::Vector2u size;		/*!< Number of squares on the goban */
+	Square** array;			/*!< Goban's intersections representation */
 
 	// Background
 	sf::Texture bg_txr;		/*!< Background texture */
 	sf::Sprite bg_spr;		/*!< Background sprite */
 
-	Square::Value nextToPlay;
+	// Other stuff
+	sf::View view;			/*!< Board's view */
+
+	// Return case corresponding to view's position
+	sf::Vector2i getSquareAt(sf::Vector2i pos) const;
 };
 
 template <typename T>
-Board::Board(const sf::Vector2<T>& _size, sf::RenderWindow& _window) :
-	Board(_window)
+Board::Board(const sf::Vector2<T>& _size) :
+	Board()
 {
 	// Set size
 	size = static_cast<sf::Vector2u>(_size);
@@ -55,7 +56,7 @@ Board::Board(const sf::Vector2<T>& _size, sf::RenderWindow& _window) :
 }
 
 template <typename T>
-Board::Board(const T& x, const T& y, sf::RenderWindow& _window) :
-	Board(sf::Vector2(x, y), _window)
+Board::Board(const T& x, const T& y) :
+	Board(sf::Vector2(x, y))
 {
 }

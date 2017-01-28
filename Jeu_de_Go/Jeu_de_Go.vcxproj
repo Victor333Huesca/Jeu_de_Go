@@ -127,11 +127,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="Game_window.cpp" />
+    <ClCompile Include="Infos.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Main_window.cpp" />
     <ClCompile Include="Square.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
+    <ClInclude Include="Game_window.h" />
+    <ClInclude Include="Globals.h" />
+    <ClInclude Include="Infos.h" />
+    <ClInclude Include="Main_window.h" />
     <ClInclude Include="Square.h" />
   </ItemGroup>
   <ItemGroup>
