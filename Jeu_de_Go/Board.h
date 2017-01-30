@@ -13,7 +13,7 @@ public:
 	~Board();
 
 	// Treate click event
-	void click(sf::Vector2i pos, const Square::Value& value);
+	bool click(sf::Vector2i pos, const Square::Value& value);
 	sf::View getView() const;
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
@@ -31,7 +31,7 @@ private:
 	sf::View view;			/*!< Board's view */
 
 	// Return case corresponding to view's position
-	sf::Vector2i getSquareAt(sf::Vector2i pos) const;
+	bool posToSquare(sf::Vector2i& pos) const;
 };
 
 template <typename T>

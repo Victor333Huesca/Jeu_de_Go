@@ -6,7 +6,7 @@ void renderingThread(Main_window* _window);
 int main()
 {
 	// Main's variables
-	Main_window window(sf::VideoMode(static_cast<unsigned>(WINDOW_WIDTH * (1 + INFOS_SIZE)), WINDOW_WIDTH),	"Jeu de Go");
+	Main_window window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_WIDTH),	"Jeu de Go");
 
 	// disable window's context
 	window.setActive(false);
@@ -33,16 +33,14 @@ int main()
 			case sf::Event::GainedFocus:
 				break;
 			case sf::Event::MouseButtonReleased:
-				window.click(
-					sf::Mouse::getPosition(window), 
-					event.mouseButton.button);
+				window.click(sf::Mouse::getPosition(window), event.mouseButton.button);
 				break;
 			}
 		}
 	}
 
+	// Wait for the rendering thread has finished its instructions before exit
 	thread_rendering.wait();
-
 	return 0;
 }
 

@@ -30,8 +30,8 @@ void Square::setPosition(const sf::Vector2f position)
 	if (position != sf::Vector2f(-1, -1))
 	{
 		sprite.setPosition(
-			position.x * SQUARE_WIDTH + OFFSET_X_B,
-			position.y * SQUARE_HEIGHT + OFFSET_Y_B);
+			position.x * SQUARE_WIDTH + OFFSET_X_B + VIEW_BOARD_POS_X,
+			position.y * SQUARE_HEIGHT + OFFSET_Y_B + VIEW_BOARD_POS_Y);
 	}
 }
 
@@ -42,9 +42,9 @@ void Square::setValue(const Value & val)
 	
 	// Load right texture
 	if (value == Black)
-		sprite.setTexture(white_t);
-	else if (value == White)
 		sprite.setTexture(black_t);
+	else if (value == White)
+		sprite.setTexture(white_t);
 }
 
 void Square::draw(sf::RenderTarget & target, sf::RenderStates states) const

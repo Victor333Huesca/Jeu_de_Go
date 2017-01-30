@@ -22,5 +22,5 @@ public:
 private:
 	// Privates Attributes
 	Game_window game_window;
-	sf::View default_view;
+	sf::View main_view;
 };

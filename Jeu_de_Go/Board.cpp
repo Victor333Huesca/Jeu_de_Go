@@ -5,9 +5,7 @@ Board::Board() :
 	array(nullptr),
 	bg_txr(),
 	bg_spr(),
-	view(sf::FloatRect(0, 0, 
-		SQUARE_HEIGHT * NB_SQUARES_X + OFFSET_X_B + OFFSET_X_E,
-		SQUARE_HEIGHT * NB_SQUARES_Y + OFFSET_Y_B + OFFSET_Y_E))
+	view(sf::FloatRect(VIEW_BOARD_POS_X, VIEW_BOARD_POS_Y, BOARD_WIDTH, BOARD_HEIGHT))
 {
 	// Initialise squares's textures
 	Square::loadTextures();
@@ -15,9 +13,10 @@ Board::Board() :
 	// Load background
 	bg_txr.loadFromFile("./Img/background2.png");
 	bg_spr.setTexture(bg_txr);
+	bg_spr.setPosition(sf::Vector2f(VIEW_BOARD_POS_X, VIEW_BOARD_POS_X));
 
 	// Set viewport
-	view.setViewport(sf::FloatRect(0, 0, 1 - INFOS_SIZE, 1));
+	view.setViewport(sf::FloatRect(0, 0, (float)WINDOW_WIDTH / (WINDOW_WIDTH + INFOS_SIZE), 1));
 }
 
 Board::~Board()
@@ -29,13 +28,43 @@ Board::~Board()
 	delete[] array;
 }
 
-void Board::click(sf::Vector2i pos, const Square::Value & value)
+bool Board::click(sf::Vector2i pos, const Square::Value & value)
 {
-	// Get square at the position demanded
-	pos = getSquareAt(pos);
+	// Result of the click event
+	bool result(false);
+
+	pos.x -= VIEW_BOARD_POS_X;
+	pos.y -= VIEW_BOARD_POS_Y;
+
+	// Check that user has clicked on the board	and not on board's boarder
+	if (pos.x >= OFFSET_X_B &&
+		pos.y >= OFFSET_Y_B &&
+		pos.x < BOARD_WIDTH - OFFSET_X_E &&
+		pos.y < BOARD_HEIGHT - OFFSET_Y_E)
+	{
+		// Get square at the position demanded
+		if (posToSquare(pos))
+		{
+			// We have a correct square at pos
+
+			// Change square's value
+			array[pos.x][pos.y].setValue(value);
+
+			result = true;
+		}
+		else
+		{
+			// Position wasn't on an intersection
+			result = false;
+		}
+	}
+	else
+	{
+		// Board's boarder
+		result = false;
+	}
 	
-	// Change square's value then update it
-	array[pos.x][pos.y].setValue(value);
+	return result;
 }
 
 sf::View Board::getView() const
@@ -43,22 +72,37 @@ sf::View Board::getView() const
 	return view;
 }
 
-sf::Vector2i Board::getSquareAt(sf::Vector2i pos) const
+bool Board::posToSquare(sf::Vector2i& pos) const
 {
-	pos.x /= SQUARE_HEIGHT;
-	pos.y /= SQUARE_HEIGHT;
+	sf::Vector2i tmp;
 
-	return pos;
+	// Get the square's corresponding position
+	tmp.x = (pos.x - OFFSET_X_B) / SQUARE_HEIGHT;
+	tmp.y = (pos.y - OFFSET_Y_B) / SQUARE_HEIGHT;
+
+	// Check if it's a valid square
+	if (tmp.x >= 0 && tmp.y >= 0 && tmp.x < NB_SQUARES_X && tmp.y < NB_SQUARES_Y)
+	{
+		// It is
+		pos = tmp;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void Board::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
-	target.draw(bg_spr);
+	// Draw background
+	target.draw(bg_spr, states);
+
+	// Draw each square
 	for (size_t i = 0; i < size.x; i++)
 	{
 		for (size_t j = 0; j < size.y; j++)
 		{
-			//target.draw(array[i][j], states);
 			array[i][j].draw(target, states);
 		}
 	}

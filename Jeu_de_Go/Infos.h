@@ -1,5 +1,7 @@
 #pragma once
 #include "Globals.h"
+#include "Square.h"
+#include "Timer.h"
 
 class Infos : public sf::Drawable
 {
@@ -8,29 +10,25 @@ public:
 	~Infos();
 
 	sf::View getView() const;
+	void setCurPlayer(const Square::Value& value);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
 
 private:
-	// Name
-	sf::Texture name_t;
-	sf::Sprite name_s;
+	// Background
+	sf::Texture bg_txr;
+	sf::Sprite bg_spr;
 
 	// Player turn
-	sf::Text player_turn;
+	sf::Texture white_turn_txr;
+	sf::Texture black_turn_txr;
+	sf::Sprite player_turn_spr;
 
 	// Timers
-	sf::Clock timer_white;
-	sf::Clock timer_black;
+	Timer timer_white;
+	Timer timer_black;
 
-	// Timers aspect
-	sf::Vector2f timer_pos_w;
-	sf::Vector2f timer_pos_b;
-	sf::Font timer_font;
-	unsigned timer_size;
-	sf::Text::Style timer_style;
-	sf::Color timer_color;
-
+	// View
 	sf::View view;
 };
 

@@ -3,13 +3,45 @@
 
 
 Infos::Infos() :
-	view(sf::FloatRect(-1000, -1000, 
-		(SQUARE_HEIGHT * NB_SQUARES_X + OFFSET_X_B * 2) * INFOS_SIZE, 
-		SQUARE_HEIGHT * NB_SQUARES_Y + OFFSET_Y_B * 2))
+	view(sf::FloatRect(VIEW_INFOS_POS_X, VIEW_INFOS_POS_Y, INFOS_IMG_SIZE_X, INFOS_IMG_SIZE_Y))
 {
-	//name_t.loadFromFile("menu_info_title.png");
+	// Set the viewport
+	view.setViewport(sf::FloatRect(
+		(float)WINDOW_WIDTH / (WINDOW_WIDTH + INFOS_SIZE), 0,
+		(float)INFOS_SIZE / (WINDOW_WIDTH + INFOS_SIZE), 1));
 
-	view.setViewport(sf::FloatRect(1 - INFOS_SIZE, 0, INFOS_SIZE, 1));
+	// Load background
+	bg_txr.loadFromFile("./Img/infos_bg.png");
+	bg_spr.setTexture(bg_txr);
+	bg_spr.setPosition(VIEW_INFOS_POS_X, VIEW_INFOS_POS_Y);
+
+	// Load player textures
+	white_turn_txr.loadFromFile("./Img/infos_white.png");
+	black_turn_txr.loadFromFile("./Img/infos_black.png");
+	player_turn_spr.setTexture(white_turn_txr);
+	player_turn_spr.setPosition(VIEW_INFOS_POS_X + INFOS_TURN_POS.x, VIEW_INFOS_POS_Y + INFOS_TURN_POS.y);
+
+	// Timers - 1st load a font
+	if (!Timer::initFont("./Font/time.ttf"))
+	{
+		std::cerr << "Impossible de lire la police de caractere !\n";
+	}
+
+	// White
+	timer_white.setPosition(sf::Vector2f(
+		INFOS_TIMER_POS_WHITE.x + VIEW_INFOS_POS_X,
+		INFOS_TIMER_POS_WHITE.y + VIEW_INFOS_POS_Y));
+	timer_white.setFillColor(sf::Color::Black);
+	timer_white.setCharacterSize(INFOS_TIMER_SIZE);
+	timer_white.applyFont();
+
+	// Black
+	timer_black.setPosition(sf::Vector2f(
+		INFOS_TIMER_POS_BLACK.x + VIEW_INFOS_POS_X,
+		INFOS_TIMER_POS_BLACK.y + VIEW_INFOS_POS_Y));
+	timer_black.setFillColor(sf::Color::Black);
+	timer_black.setCharacterSize(INFOS_TIMER_SIZE);
+	timer_black.applyFont();
 }
 
 
@@ -22,24 +54,32 @@ sf::View Infos::getView() const
 	return view;
 }
 
+void Infos::setCurPlayer(const Square::Value & value)
+{
+	if (value == Square::White)
+	{
+		player_turn_spr.setTexture(white_turn_txr);
+		timer_black.pause();
+		timer_white.play();
+	}
+	else
+	{
+		player_turn_spr.setTexture(black_turn_txr);
+		timer_white.pause();
+		timer_black.play();
+	}
+}
+
 
 void Infos::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	// Menu name
-	target.draw(name_s, states);
+	target.draw(bg_spr, states);
 
 	// Player turn
-	target.draw(player_turn, states);
+	target.draw(player_turn_spr, states);
 
 	// Timers
-	sf::Text timer;
-
-	// White
-	timer.setString(
-		"White : " +
-		std::to_string(timer_white.getElapsedTime().asSeconds()) +
-		" s !");
-	timer.setPosition(timer_pos_w);
-
-	target.draw(timer, states);
+	target.draw(timer_white, states);
+	target.draw(timer_black, states);
 }

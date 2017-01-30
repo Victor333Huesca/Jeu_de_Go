@@ -132,6 +132,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Main_window.cpp" />
     <ClCompile Include="Square.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
@@ -140,12 +141,21 @@
     <ClInclude Include="Infos.h" />
     <ClInclude Include="Main_window.h" />
     <ClInclude Include="Square.h" />
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Img\background1.png" />
-    <Image Include="Img\blank.png" />
-    <Image Include="Img\stone_white.png" />
-    <Image Include="Img\stone_black.png" />
+    <Image Include="Img\background2.png" />
+    <Image Include="Img\infos_bg.png" />
+    <Image Include="Img\infos_black.png" />
+    <Image Include="Img\infos_white.png" />
+    <Image Include="Img\stone_black2.png" />
+    <Image Include="Img\stone_white2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Img\infos_bg.pdn" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Font\time.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

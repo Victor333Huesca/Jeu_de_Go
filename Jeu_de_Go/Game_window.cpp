@@ -5,8 +5,9 @@
 Game_window::Game_window() :
 	board(sf::Vector2u(NB_SQUARES_X, NB_SQUARES_Y)),
 	infos(),
-	cur_player()
+	cur_player(Square::White)
 {
+	infos.setCurPlayer(Square::White);
 }
 
 
@@ -31,24 +32,31 @@ void Game_window::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	target.setView(cur_view);
 }
 
-void Game_window::click(sf::RenderWindow & window, sf::Vector2i pos, const sf::Mouse::Button & type)
+void Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, const sf::Mouse::Button & type)
 {
-	// Get relative position
-	pos = static_cast<sf::Vector2i>(window.mapPixelToCoords(pos, board.getView()));
+	// Test if mouse was in the board or the info menu
+	if (pos.x <= WINDOW_WIDTH)
+	{
+		// Get relative position inside the board's view
+		pos = static_cast<sf::Vector2i>(window.mapPixelToCoords(pos, board.getView()));
 
-	// Check that user has clicked on the board	
-	if (pos.x >= OFFSET_X_B &&
-		pos.y >= OFFSET_Y_B &&
-		pos.x < NB_SQUARES_X * SQUARE_WIDTH + OFFSET_X_B &&
-		pos.y < NB_SQUARES_Y * SQUARE_HEIGHT + OFFSET_Y_B)
-	{
-		board.click(pos, cur_player);
-		cur_player =
-			cur_player == Square::Value::Black ?
-			Square::Value::White :
-			Square::Value::Black;
+		// Test if value has been changed
+		if (board.click(pos, cur_player))
+		{
+			// Change next player info
+			cur_player =
+				cur_player == Square::Value::Black ?
+				Square::Value::White :
+				Square::Value::Black;
+			infos.setCurPlayer(cur_player);
+		}
+		else // Value didn't changed
+		{
+
+		}
 	}
-	else
+	else // Not the board so infos's menu
 	{
+
 	}
 }
