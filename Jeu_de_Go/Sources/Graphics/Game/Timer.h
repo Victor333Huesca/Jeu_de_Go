@@ -1,5 +1,5 @@
 #pragma once
-#include "Globals.h"
+#include "../Globals.h"
 
 class Timer : public sf::Clock, public sf::Text
 {

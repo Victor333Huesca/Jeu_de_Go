@@ -1,8 +1,6 @@
 #include <iostream>
 #include "Etat.h"
 
-using namespace std;
-
 //CONSTRUCTORS
 
 Etat::Etat(){//default constructor
@@ -36,7 +34,7 @@ size_t Etat::getY() const{
   return y;
 }
 
-VAL Etat::getVal() const{
+Etat::VAL Etat::getVal() const{
   return val;
 }
 
@@ -73,9 +71,22 @@ Etat Etat::operator=(const Etat& E){
   return *this;
 }
 
+bool Etat::estVoisine(const Etat & piece) const
+{
+	if (piece.x == (x - 1) || piece.x == (x + 1) || piece.x == x) {
+		if (piece.y == (y - 1) || piece.y == (y + 1) || piece.y == y) {
+			if (piece.x != x || piece.y != y) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
 //OVERLOADINGS functions
 
-ostream& operator<<(ostream& os, const Etat& E){
+std::ostream& operator<<(std::ostream& os, const Etat& E){
   os<<"{"<<E.getX()<<","<<E.getY()<<","<<E.getVal()<<"}";
   return os;
 }

@@ -11,7 +11,7 @@ Board::Board() :
 	Square::loadTextures();
 
 	// Load background
-	bg_txr.loadFromFile("./Img/background2.png");
+	bg_txr.loadFromFile("./Ressources/Img/background2.png");
 	bg_spr.setTexture(bg_txr);
 	bg_spr.setPosition(sf::Vector2f(VIEW_BOARD_POS_X, VIEW_BOARD_POS_X));
 
@@ -45,12 +45,18 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value)
 		// Get square at the position demanded
 		if (posToSquare(pos))
 		{
-			// We have a correct square at pos
+			// We have a correct square at pos so inform engine
+			if (engine.move(transform(value), pos.x, pos.y))
+			{
+				// Move has been allowed
+				result = true;
 
-			// Change square's value
-			array[pos.x][pos.y].setValue(value);
+				// Change square's value
+				array[pos.x][pos.y].setValue(value);
 
-			result = true;
+				// Display some debugg features
+				std::cout << engine << std::endl;
+			}
 		}
 		else
 		{
@@ -106,4 +112,47 @@ void Board::draw(sf::RenderTarget & target, sf::RenderStates states) const
 			array[i][j].draw(target, states);
 		}
 	}
+}
+
+Etat::VAL Board::transform(const Square::Value & value)
+{
+	Etat::VAL tmp;
+	switch (value)
+	{
+	case Square::Black:
+		tmp = Etat::NOIR;
+		break;
+	case Square::White:
+		tmp = Etat::BLANC;
+		break;
+	case Square::None:
+		tmp = Etat::VIDE;
+		break;
+	default:
+		break;
+	}
+
+	return tmp;
+}
+
+Square::Value Board::transform(const Etat::VAL & value)
+{
+	Square::Value tmp;
+	switch (value)
+	{
+	case Etat::BLANC:
+		tmp = Square::White;
+		break;
+	case Etat::NOIR:
+		tmp = Square::Black;
+		break;
+	case Etat::VIDE:
+	case Etat::KO:
+		tmp = Square::None;
+		break;
+	default:
+		break;
+	}
+
+	return tmp;
 }

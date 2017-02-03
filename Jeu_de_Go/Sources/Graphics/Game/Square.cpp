@@ -18,8 +18,8 @@ Square::~Square()
 
 void Square::loadTextures()
 {
-	white_t.loadFromFile("./Img/stone_white2.png");
-	black_t.loadFromFile("./Img/stone_black2.png");
+	white_t.loadFromFile("./Ressources/Img/stone_white2.png");
+	black_t.loadFromFile("./Ressources/Img/stone_black2.png");
 
 	white_t.setSmooth(true);
 	black_t.setSmooth(true);

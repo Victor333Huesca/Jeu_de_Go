@@ -1,5 +1,5 @@
 #pragma once
-#include "Globals.h"
+#include "../Globals.h"
 #include "Square.h"
 #include "Timer.h"
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "Globals.h"
-#include "Game_window.h"
+#include "Game/Game_window.h"
 
 class Main_window : public sf::RenderWindow
 {

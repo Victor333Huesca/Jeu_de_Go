@@ -126,36 +126,43 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Board.cpp" />
-    <ClCompile Include="Game_window.cpp" />
-    <ClCompile Include="Infos.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Main_window.cpp" />
-    <ClCompile Include="Square.cpp" />
-    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Sources\Engine\Etat.cpp" />
+    <ClCompile Include="Sources\Engine\Goban.cpp" />
+    <ClCompile Include="Sources\Engine\Groupe.cpp" />
+    <ClCompile Include="Sources\Graphics\Game\Board.cpp" />
+    <ClCompile Include="Sources\Graphics\Game\Game_window.cpp" />
+    <ClCompile Include="Sources\Graphics\Game\History.cpp" />
+    <ClCompile Include="Sources\Graphics\Game\Infos.cpp" />
+    <ClCompile Include="Sources\Graphics\Game\Square.cpp" />
+    <ClCompile Include="Sources\Graphics\Game\Timer.cpp" />
+    <ClCompile Include="Sources\Graphics\Main.cpp" />
+    <ClCompile Include="Sources\Graphics\Main_window.cpp" />
+    <ClCompile Include="Sources\Graphics\Parser.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Board.h" />
-    <ClInclude Include="Game_window.h" />
-    <ClInclude Include="Globals.h" />
-    <ClInclude Include="Infos.h" />
-    <ClInclude Include="Main_window.h" />
-    <ClInclude Include="Square.h" />
-    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Sources\Engine\Etat.h" />
+    <ClInclude Include="Sources\Engine\Goban.h" />
+    <ClInclude Include="Sources\Engine\Groupe.h" />
+    <ClInclude Include="Sources\Graphics\Game\Board.h" />
+    <ClInclude Include="Sources\Graphics\Game\Game_window.h" />
+    <ClInclude Include="Sources\Graphics\Game\History.h" />
+    <ClInclude Include="Sources\Graphics\Game\Infos.h" />
+    <ClInclude Include="Sources\Graphics\Game\Square.h" />
+    <ClInclude Include="Sources\Graphics\Game\Timer.h" />
+    <ClInclude Include="Sources\Graphics\Globals.h" />
+    <ClInclude Include="Sources\Graphics\Main_window.h" />
+    <ClInclude Include="Sources\Graphics\Parser.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Img\background2.png" />
-    <Image Include="Img\infos_bg.png" />
-    <Image Include="Img\infos_black.png" />
-    <Image Include="Img\infos_white.png" />
-    <Image Include="Img\stone_black2.png" />
-    <Image Include="Img\stone_white2.png" />
+    <Image Include="Ressources\Img\background2.png" />
+    <Image Include="Ressources\Img\infos_bg.png" />
+    <Image Include="Ressources\Img\infos_black.png" />
+    <Image Include="Ressources\Img\infos_white.png" />
+    <Image Include="Ressources\Img\stone_black2.png" />
+    <Image Include="Ressources\Img\stone_white2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Img\infos_bg.pdn" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="Font\time.ttf" />
+    <Font Include="Ressources\Font\time.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,7 @@
 #pragma once
-#include "Globals.h"
+#include "../Globals.h"
 #include "Square.h"
+#include "../../Engine/Goban.h"
 
 class Board : public sf::Drawable
 {
@@ -30,8 +31,15 @@ private:
 	// Other stuff
 	sf::View view;			/*!< Board's view */
 
+	// Goban engine
+	Goban engine;			/*!< Engine used by Wissem and Mamadou */
+
 	// Return case corresponding to view's position
 	bool posToSquare(sf::Vector2i& pos) const;
+
+	// To switch between Graphics Value and Engine VAL
+	static Square::Value Board::transform(const Etat::VAL & value);
+	static Etat::VAL Board::transform(const Square::Value & value);
 };
 
 template <typename T>

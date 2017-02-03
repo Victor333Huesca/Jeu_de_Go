@@ -1,5 +1,6 @@
 #pragma once
-#include "Globals.h"
+#include "../Globals.h"
+#include "../../Engine/Etat.h"
 
 class Square : sf::Drawable
 {
