@@ -20,11 +20,11 @@ EXE = $(REP_EXE)GoSolver
 
 # -----     Main    ----- #
 $(EXE) : $(OBJ)
-	$(CC) $^ -o $@ -L$(REP_LIB) $(CXXFLAGS)
+	$(CC) $^ -o $@ -L $(REP_LIB) $(CXXFLAGS)
 
 # -----     Base    ----- #
 $(REP_OBJ)/%.o : $(REP_SRC)/%.cpp
-	$(CC) -c $< -o $@ -I$(REP_INC) $(CFLAGS)
+	$(CC) -c $< -o $@ -I $(REP_INC) $(CFLAGS)
 
 # -----    Clean    ----- #
 clean :
