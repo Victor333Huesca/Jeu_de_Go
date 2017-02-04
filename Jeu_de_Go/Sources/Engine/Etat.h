@@ -33,6 +33,9 @@ public :
 
 	// Methodes
 	bool estVoisine(const Etat& piece) const;
+	bool isPlayable() const;
+	bool isAStone() const;
+	bool isAStone(const VAL& value) const;
 
 private:
   size_t x;

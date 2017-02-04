@@ -12,7 +12,7 @@ int main()
 	window.setActive(false);
 
 	// Launch thread
-	sf::Thread thread_rendering(renderingThread, &window);
+	sf::Thread thread_rendering(&renderingThread, &window);
 	thread_rendering.launch();
 
 	// Events loop

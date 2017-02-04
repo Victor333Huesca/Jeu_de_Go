@@ -28,49 +28,32 @@ Etat& Goban::coord(const int X,const int Y){//access to element of array with (x
   return array[i];
 }
 
-bool Goban::isMoveLegal() const
+const Etat & Goban::coord(const int x, const int y) const
 {
-	return true;
+	return array[TGOBAN * y + x];
 }
 
-void Goban::afficheGroupes(const Etat::VAL & val, const int & n) const
+bool Goban::isMoveLegal(const int& x, const int& y) const
 {
-	if (val == Etat::BLANC)
-	{
-		if (n < groups_white.size())
-		{
-			std::cout << groups_white[n];
-		}
-	}
-	else if (val == Etat::NOIR)
-	{
-		if (n < groups_black.size())
-		{
-			std::cout << groups_black[n];
-		}
-	}
-	else
-	{
-		std::cerr << "Error : mauvais groupe demmandé !\n";
-	}
+	return coord(x, y).isPlayable();
 }
 
 void Goban::afficheGroupes(const Etat::VAL & val) const
 {
 	if (val == Etat::BLANC)
 	{
-		std::cout << "Groupes blancs : \n";
+		std::cout << "Groupes blancs : ";
 		for (size_t i = 0; i < groups_white.size(); i++)
 		{
-			std::cout << groups_white[i];
+			std::cout  << groups_white[i] << "   ";
 		}
 	}
 	else if (val == Etat::NOIR)
 	{
-		std::cout << "Groupes noirs : \n";
+		std::cout << "Groupes noirs : ";
 		for (size_t i = 0; i < groups_black.size(); i++)
 		{
-			std::cout << groups_black[i];
+			std::cout << groups_black[i] << "   ";
 		}
 	}
 	else
@@ -82,118 +65,104 @@ void Goban::afficheGroupes(const Etat::VAL & val) const
 void Goban::afficheGroupes() const
 {
 	afficheGroupes(Etat::BLANC);
+	std::cout << std::endl;
 	afficheGroupes(Etat::NOIR);
+	std::cout << std::endl;
 }
 
-void Goban::rechercheGroupes()
+void Goban::rechercheGroupes(const bool& verbose)
 {
-	//DEFINE GROUPS IN THE CURRENT GOBAN
-	Groupe tmpGroupe;
-
-	//groups counter
-	size_t k = 0;
-
-	//stones counter
-	size_t j = 0;
-
-	//exit the loop if group found
-	bool findGroup = false;
-
-	// Browe every goban's intersection
+	// Browse every goban's intersection
 	for (size_t i = 0; i < (TGOBAN * TGOBAN); i++)
 	{
-		// Look for a group
-		findGroup = false;
-
 		// If the current intersection is a stone
-		if (array[i].getVal() != Etat::VIDE && array[i].getVal() != Etat::KO)
+		if (array[i].isAStone())
 		{
-			// If it's a black stone
-			if (array[i].getVal() == Etat::NOIR)
-			{
-				// If there wasn't black groups
-				if (groups_black.size() == 0)
-				{
-					// There's no black groups
-					std::cout << "Le premier " << array[i] << std::endl;
+			if (verbose)	std::cout << "Square " << i << " : stone ";
 
+			// If it's a black stone
+			if (array[i].isAStone(Etat::NOIR))
+			{
+				if (verbose)	std::cout << "black found.\n";
+
+				// There is at least one black groups so start searching a neighboor-group
+				size_t j = 0;
+				while (j < groups_black.size())
+				{
+					if (verbose)	std::cout << "   Looking in the group " << j;
+					// Look if the stone isn't already inside the group
+					if (!groups_black[j].contain(array[i]))
+					{
+						if (verbose)	std::cout << " which not contain already that stone ";
+						// So look if it should
+						if (groups_black[j].shouldContain(array[i]))
+						{
+							if (verbose)	std::cout << " but which should, son include it.\n";
+							groups_black[j].push_back(array[i]);
+							j = groups_white.size() + 1;
+						}
+						else if (verbose)	std::cout << "because the stone is in an other group.\n";
+					}
+					else
+					{
+						j = groups_black.size() + 1;
+						if (verbose)	std::cout << " which contain already the stone.\n";
+					}
+					j++;
+				}
+				// If no group has been found
+				if (j == groups_black.size())
+				{
 					// Create a first group which contain only the current stone
 					groups_black.push_back(Groupe(array[i]));
-				}
-				else
-				{
-					// There's black groups so start searching a neighboor-group
-					while (k < groups_black.size() && !findGroup)
-					{
-						while (j < groups_black[k].size() && 
-							!array[i].estVoisine(groups_black[k][j]))
-						{
-							j++;
-						}
-						if (j < groups_black[k].size())
-						{
-							// Insert stone in group
-							groups_black[k].push_back(array[i]);
-							findGroup = true;
-						}
-						j = 0;
-						k++;
-					}
-					k = 0;
-					if (!findGroup)
-					{
-						// Create new black group
-						groups_black.push_back(array[i]);
-					}
+					if (verbose)	std::cout << "   No group found, a new black group has been created.\n";
 				}
 			}
-			else
+			else // array[i].isAStone(Etat::BLANC)
 			{
-				// MEME CHOSE QUE POUR LES GROUPES NOIR
+				if (verbose)	std::cout << "white found.\n";
 
-				// If there wasn't white groups
-				if (groups_white.size() == 0)
+				// There is at least one black groups so start searching a neighboor-group
+				size_t j = 0;
+				while (j < groups_white.size())
 				{
-					// There's no white groups
-					std::cout << "Le premier " << array[i] << std::endl;
-
+					if (verbose)	std::cout << "   Looking in the group " << j;
+					// Look if the stone isn't already inside the group
+					if (!groups_white[j].contain(array[i]))
+					{
+						if (verbose)	std::cout << " which not contain already that stone ";
+						// So look if it should
+						if (groups_white[j].shouldContain(array[i]))
+						{
+							if (verbose)	std::cout << " but which should, son include it.\n";
+							groups_white[j].push_back(array[i]);
+							j = groups_white.size() + 1;
+						}
+						else if (verbose)	std::cout << "because the stone is in an other group.\n";
+					}
+					else
+					{
+						j = groups_white.size() + 1;
+						if (verbose)	std::cout << " which contain already the stone.\n";
+					}
+					j++;
+				}
+				// If no group has been found
+				if (j == groups_white.size())
+				{
 					// Create a first group which contain only the current stone
 					groups_white.push_back(Groupe(array[i]));
-				}
-				else
-				{
-					// There's white groups so start searching a neighboor-group
-					while (k < groups_white.size() && !findGroup)
-					{
-						while (j < groups_white[k].size() &&
-							!array[i].estVoisine(groups_white[k][j]))
-						{
-							j++;
-						}
-						if (j < groups_white[k].size())
-						{
-							// Insert stone in group
-							groups_white[k].push_back(array[i]);
-							findGroup = true;
-						}
-						j = 0;
-						k++;
-					}
-					k = 0;
-					if (!findGroup)
-					{
-						// Create new white group
-						groups_white.push_back(array[i]);
-					}
+					if (verbose)	std::cout << "   No group found, a new white group has been created.\n";
 				}
 			}
+			if (verbose)	std::cout << "\n";
 		}
 	}
 }
 
-bool Goban::move(const Etat::VAL & value, const int & x, const int & y)
+bool Goban::move(const Etat::VAL& value, const int& x, const int& y)
 {
-	if (isMoveLegal())
+	if (isMoveLegal(x, y))
 	{
 		coord(x, y).setVal(value);
 		return true;

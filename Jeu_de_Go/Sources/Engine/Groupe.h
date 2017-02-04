@@ -8,6 +8,9 @@ public:
 	Groupe();
 	Groupe(const Etat& state);
 	~Groupe();
+
+	bool shouldContain(const Etat& stone) const;
+	bool contain(const Etat& stone) const;
 };
 
 // Overload streams

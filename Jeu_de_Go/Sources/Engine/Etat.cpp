@@ -73,6 +73,7 @@ Etat Etat::operator=(const Etat& E){
 
 bool Etat::estVoisine(const Etat & piece) const
 {
+	/*
 	if (piece.x == (x - 1) || piece.x == (x + 1) || piece.x == x) {
 		if (piece.y == (y - 1) || piece.y == (y + 1) || piece.y == y) {
 			if (piece.x != x || piece.y != y) {
@@ -80,13 +81,37 @@ bool Etat::estVoisine(const Etat & piece) const
 			}
 		}
 	}
+	*/
+
+	if (x == piece.x &&
+		(y == piece.y - 1 || y == piece.y + 1))
+		return true;
+	else if (y == piece.y &&
+		(x == piece.x - 1 || x == piece.x + 1))
+		return true;
 
 	return false;
+}
+
+bool Etat::isPlayable() const
+{
+	return val == VIDE;
+}
+
+bool Etat::isAStone() const
+{
+	return val != VIDE && val != KO;
+	//return val == BLANC || val == NOIR;
+}
+
+bool Etat::isAStone(const VAL & value) const
+{
+	return val == value;
 }
 
 //OVERLOADINGS functions
 
 std::ostream& operator<<(std::ostream& os, const Etat& E){
-  os<<"{"<<E.getX()<<","<<E.getY()<<","<<E.getVal()<<"}";
+  os << "(" << E.getX() << "," << E.getY() << ")";
   return os;
 }

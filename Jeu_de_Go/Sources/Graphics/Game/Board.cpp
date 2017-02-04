@@ -55,7 +55,11 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value)
 				array[pos.x][pos.y].setValue(value);
 
 				// Display some debugg features
-				std::cout << engine << std::endl;
+				//std::cout << engine << std::endl;
+				system("cls");
+				engine.rechercheGroupes();
+				engine.afficheGroupes();
+				std::cout << std::endl;
 			}
 		}
 		else
