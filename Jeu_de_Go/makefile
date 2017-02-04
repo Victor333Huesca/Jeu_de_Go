@@ -6,7 +6,7 @@ CXXFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 # -----  Locations  ----- #
 REP_SRC = Sources/
 REP_OBJ = Release/
-REP_EXE = ../Release/
+REP_EXE = ./
 
 # -----     SFML    ----- #
 REP_SFML = SFML/
