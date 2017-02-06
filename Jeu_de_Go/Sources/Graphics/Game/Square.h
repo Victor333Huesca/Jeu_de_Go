@@ -1,14 +1,8 @@
 #pragma once
-#include <SFML\Graphics.hpp>
-#include <iostream>
+#include "../Globals.h"
+#include "../../Engine/Etat.h"
 
-#define SQUARE_SIZE 150
-#define SIZE_X 19
-#define SIZE_Y 19
-#define OFFSET_X 80
-#define OFFSET_Y 80
-
-class Square
+class Square : sf::Drawable
 {
 public:
 	enum Value
@@ -20,23 +14,21 @@ public:
 	Square(const sf::Vector2i position = sf::Vector2i(-1, -1), Value _value = None);
 	~Square();
 
-	void updateTexture();
-	void updateSprite();
-	void update();
+	// Initialisation of textures
+	static void loadTextures();
 
-	// Accesors for Square's position - Read only 'cause it's a constant
-	sf::Vector2f getPosition() const;
 	// Accesors for Square's position - Write is private 'cause it's initialise then never touch again
 	void setPosition(const sf::Vector2f position);
 
+	// Used to change square's value
 	void setValue(const Value& val);
 
-	void draw(sf::RenderWindow& window) const;
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
 
 private:
 	// Attributes
 	Value value;
-	sf::Texture texture;
+	static sf::Texture white_t;
+	static sf::Texture black_t;
 	sf::Sprite sprite;
 };
-
