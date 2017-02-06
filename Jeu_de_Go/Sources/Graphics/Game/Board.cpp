@@ -56,7 +56,7 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value)
 
 				// Display some debugg features
 				//std::cout << engine << std::endl;
-				system("cls");
+				system(CLEAR_CMD);
 				engine.rechercheGroupes();
 				engine.afficheGroupes();
 				std::cout << std::endl;

@@ -72,6 +72,10 @@ void Goban::afficheGroupes() const
 
 void Goban::rechercheGroupes(const bool& verbose)
 {
+	// Reset groups to avoid th fusion issue
+	groups_black.clear();
+	groups_white.clear();
+
 	// Browse every goban's intersection
 	for (size_t i = 0; i < (TGOBAN * TGOBAN); i++)
 	{

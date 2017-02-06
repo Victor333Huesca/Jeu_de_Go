@@ -4,6 +4,12 @@
 #include <cstdlib>
 #include <string>
 
+#ifdef _WIN32
+#define CLEAR_CMD "cls"
+#else
+#define CLEAR_CMD "clear"
+#endif // _WIN32
+
 #define SQUARE_WIDTH 24
 #define SQUARE_HEIGHT 24
 

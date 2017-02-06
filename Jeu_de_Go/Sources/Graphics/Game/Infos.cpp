@@ -31,7 +31,7 @@ Infos::Infos() :
 	timer_white.setPosition(sf::Vector2f(
 		INFOS_TIMER_POS_WHITE.x + VIEW_INFOS_POS_X,
 		INFOS_TIMER_POS_WHITE.y + VIEW_INFOS_POS_Y));
-	timer_white.setColor(sf::Color::Black);
+	timer_white.setFillColor(sf::Color::Black);
 	timer_white.setCharacterSize(INFOS_TIMER_SIZE);
 	timer_white.applyFont();
 
@@ -39,7 +39,7 @@ Infos::Infos() :
 	timer_black.setPosition(sf::Vector2f(
 		INFOS_TIMER_POS_BLACK.x + VIEW_INFOS_POS_X,
 		INFOS_TIMER_POS_BLACK.y + VIEW_INFOS_POS_Y));
-	timer_black.setColor(sf::Color::Black);
+	timer_black.setFillColor(sf::Color::Black);
 	timer_black.setCharacterSize(INFOS_TIMER_SIZE);
 	timer_black.applyFont();
 }

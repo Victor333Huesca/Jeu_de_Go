@@ -1,6 +1,10 @@
 #pragma once
 #include "../Globals.h"
 
+#ifndef _WIN32
+#define setFillColor( setColor(
+#endif // !_WIN32
+
 class Timer : public sf::Clock, public sf::Text
 {
 public:
