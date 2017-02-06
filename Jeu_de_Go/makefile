@@ -16,7 +16,7 @@ REP_LIB = $(REP_SFML)lib/
 
 # -----    Names    ----- #
 SRC = $(foreach dir, $(REP_SRC), $(wildcard $(dir)*.cpp))
-OBJ = $(addprefix $(REP_OBJ), $(addsuffix .o, $(notdir $(basename	$(SRC)))))
+OBJ = $(addprefix $(REP_OBJ), $(addsuffix .o, $(notdir $(basename $(SRC)))))
 EXE = $(REP_EXE)GoSolver
 
 
