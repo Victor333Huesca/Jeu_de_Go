@@ -1,10 +1,9 @@
 # -----   Options   ----- #
-CC = g++
-CFLAGS = -std=c++14 -Wall
-CXXFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
+CXXFLAGS = -std=c++14 -Wall
+LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
 # -----  Locations  ----- #
-REP_SRC = Sources/ Sources/*/ Sources/*/*/ Sources/*/*/*/ Sources/*/*/*/*/ Sources/*/*/*/*/*/
+REP_SRC = Sources/
 REP_OBJ = Obj/
 REP_EXE = ./
 
@@ -15,30 +14,71 @@ REP_INC = $(REP_SFML)include/
 REP_LIB = $(REP_SFML)lib/
 
 # -----    Names    ----- #
-SRC = $(foreach dir, $(REP_SRC), $(wildcard $(dir)*.cpp))
+TMP_SRC = Sources/ Sources/*/ Sources/*/*/ Sources/*/*/*/ Sources/*/*/*/*/ Sources/*/*/*/*/*/
+SRC = $(foreach dir, $(TMP_SRC), $(wildcard $(dir)*.cpp))
 OBJ = $(addprefix $(REP_OBJ), $(addsuffix .o, $(notdir $(basename $(SRC)))))
 EXE = $(REP_EXE)GoSolver
 
 
 # -----  HERE GUYS  ----- #
 # Supprimez ce qu'il y a � droite du = si vous avez instalé la SFML dans /usr/local
-LIBS = -L $(REP_LIB)
-INCLUDE = -I $(REP_INC)
+LIBS = -lsfml-window -lsfml-system -lsfml-graphics
+INCLUDE =
 
 # -----   Target    ----- #
 all : $(EXE)
 
 # -----     Main    ----- #
 $(EXE) : $(OBJ)
-	$(CC) $^ -o $@ $(LIBS) $(CXXFLAGS)
+	$(CXX) $^ -o $@ $(LIBS)
 
 # -----     Base    ----- #
-$(REP_OBJ)/%.o : $(REP_SRC)/%.cpp
-	$(CC) -c $< -o $@ $(INCLUDE) $(CFLAGS)
+$(OBJ) :
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
+
+# Engine
+$(REP_OBJ)Etat.o: $(REP_SRC)Engine/Etat.cpp $(REP_SRC)Engine/Etat.h
+$(REP_SRC)Engine/Etat.h:
+
+$(REP_OBJ)Goban.o: $(REP_SRC)Engine/Goban.cpp $(REP_SRC)Engine/Goban.h
+$(REP_SRC)Engine/Goban.h: $(REP_SRC)Engine/Etat.h $(REP_SRC)Engine/Groupe.h
+
+$(REP_OBJ)Groupe.o: $(REP_SRC)Engine/Groupe.cpp $(REP_SRC)Engine/Groupe.h
+$(REP_SRC)Engine/Groupe.h: $(REP_SRC)Engine/Etat.h
+
+# Graphics
+$(REP_OBJ)Main.o: $(REP_SRC)Graphics/Main.cpp $(REP_SRC)Graphics/Main_window.h $(REP_SRC)Graphics/Globals.h
+
+$(REP_OBJ)Main_window.o: $(REP_SRC)Graphics/Main_window.cpp $(REP_SRC)Graphics/Main_window.h
+$(REP_SRC)Graphics/Main_window.h: $(REP_SRC)Graphics/Game/Game_window.h $(REP_SRC)Graphics/Globals.h
+
+$(REP_OBJ)Parser.o: $(REP_SRC)Graphics/Parser.cpp $(REP_SRC)Graphics/Parser.h
+$(REP_SRC)Graphics/Parser.h: $(REP_SRC)Graphics/Globals.h
+
+# Graphics --> Game
+$(REP_OBJ)Board.o: $(REP_SRC)Graphics/Game/Board.cpp $(REP_SRC)Graphics/Game/Board.h
+$(REP_SRC)Graphics/Game/Board.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Square.h $(REP_SRC)Engine/Goban.h
+
+$(REP_OBJ)Game_window.o: $(REP_SRC)Graphics/Game/Game_window.cpp $(REP_SRC)Graphics/Game/Game_window.h
+$(REP_SRC)Graphics/Game/Game_window.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Board.h $(REP_SRC)Graphics/Game/Infos.h
+
+$(REP_OBJ)History.o: $(REP_SRC)Graphics/Game/History.cpp $(REP_SRC)Graphics/Game/History.h
+$(REP_SRC)Graphics/Game/History.h: $(REP_SRC)Graphics/Globals.h
+
+$(REP_OBJ)Infos.o: $(REP_SRC)Graphics/Game/Infos.cpp $(REP_SRC)Graphics/Game/Infos.h
+$(REP_SRC)Graphics/Game/Infos.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Square.h $(REP_SRC)Graphics/Game/Timer.h
+
+$(REP_OBJ)Square.o: $(REP_SRC)Graphics/Game/Square.cpp $(REP_SRC)Graphics/Game/Square.h
+$(REP_SRC)Graphics/Game/Square.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Engine/Etat.h
+
+$(REP_OBJ)Timer.o: $(REP_SRC)Graphics/Game/Timer.cpp $(REP_SRC)Graphics/Game/Timer.h
+$(REP_SRC)Graphics/Game/Timer.h: $(REP_SRC)Graphics/Globals.h
+
+
 
 # -----    Clean    ----- #
 clean :
-	rm -f $(OBJ) $(EXE)
+	@rm -f $(OBJ) $(EXE)
 
 # -----   Rebuild   ----- #
 new : clean $(EXE)

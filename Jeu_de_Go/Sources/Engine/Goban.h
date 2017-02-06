@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <iostream>
 #include "Etat.h"
 #include "Groupe.h"
 
@@ -27,7 +26,7 @@ public:
   void afficheGroupes(const Etat::VAL& val) const;
   void afficheGroupes() const;
   void rechercheGroupes(const bool& verbose = false);
-  
+
   // Return true if the move has been done, false otherwise.
   bool move(const Etat::VAL& value, const int& x, const int& y);
 

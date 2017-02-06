@@ -38,8 +38,8 @@ private:
 	bool posToSquare(sf::Vector2i& pos) const;
 
 	// To switch between Graphics Value and Engine VAL
-	static Square::Value Board::transform(const Etat::VAL & value);
-	static Etat::VAL Board::transform(const Square::Value & value);
+	static Square::Value transform(const Etat::VAL & value);
+	static Etat::VAL transform(const Square::Value & value);
 };
 
 template <typename T>
@@ -48,7 +48,7 @@ Board::Board(const sf::Vector2<T>& _size) :
 {
 	// Set size
 	size = static_cast<sf::Vector2u>(_size);
-	
+
 	// Create X array
 	array = new Square*[size.x];
 
@@ -65,6 +65,6 @@ Board::Board(const sf::Vector2<T>& _size) :
 
 template <typename T>
 Board::Board(const T& x, const T& y) :
-	Board(sf::Vector2(x, y))
+	Board(sf::Vector2<T>(x, y))
 {
 }

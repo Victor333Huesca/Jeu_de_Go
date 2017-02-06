@@ -16,7 +16,7 @@ Timer::Timer(const sf::Vector2f & position, const unsigned & size, const sf::Col
 	setPosition(position);
 	setFont(font);
 	setCharacterSize(size);
-	setFillColor(color);
+	setColor(color);
 	setStyle(style);
 }
 
