@@ -26,6 +26,11 @@ void Main_window::click(sf::Vector2i pos, const sf::Mouse::Button & type)
 	game_window.click(*this, pos, type);
 }
 
+void Main_window::zoom(const float delta, const sf::Vector2i& pos)
+{
+	game_window.zoom(delta, pos, *this);
+}
+
 void Main_window::draw()
 {
 	draw(game_window);

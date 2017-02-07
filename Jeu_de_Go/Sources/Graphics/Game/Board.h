@@ -3,6 +3,8 @@
 #include "Square.h"
 #include "../../Engine/Goban.h"
 
+#define ZOOM_FACTOR 2
+
 class Board : public sf::Drawable
 {
 public:
@@ -14,25 +16,28 @@ public:
 	~Board();
 
 	// Treate click event
-	bool click(sf::Vector2i pos, const Square::Value& value);
+	bool click(sf::Vector2i pos, const Square::Value& value, const sf::Mouse::Button& event);
+	void zoom(const float delta, const sf::Vector2i& pos);
 	sf::View getView() const;
+	void always(const sf::RenderWindow& window);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
 
 private:
 	// Goban
-	sf::Vector2u size;		/*!< Number of squares on the goban */
-	Square** array;			/*!< Goban's intersections representation */
+	sf::Vector2u size;			/*!< Number of squares on the goban */
+	Square** array;				/*!< Goban's intersections representation */
 
 	// Background
-	sf::Texture bg_txr;		/*!< Background texture */
-	sf::Sprite bg_spr;		/*!< Background sprite */
+	sf::Texture bg_txr;			/*!< Background texture */
+	sf::Sprite bg_spr;			/*!< Background sprite */
 
 	// Other stuff
-	sf::View view;			/*!< Board's view */
+	sf::View view;				/*!< Board's view */
+	sf::FloatRect view_origin;	/*!< View's original size */
 
 	// Goban engine
-	Goban engine;			/*!< Engine used by Wissem and Mamadou */
+	Goban engine;				/*!< Engine used by Wissem and Mamadou */
 
 	// Return case corresponding to view's position
 	bool posToSquare(sf::Vector2i& pos) const;
@@ -40,6 +45,9 @@ private:
 	// To switch between Graphics Value and Engine VAL
 	static Square::Value transform(const Etat::VAL & value);
 	static Etat::VAL transform(const Square::Value & value);
+
+	// Avoid camera missplacing
+	void viewBound();
 };
 
 template <typename T>

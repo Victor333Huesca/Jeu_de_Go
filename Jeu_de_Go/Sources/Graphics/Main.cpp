@@ -35,8 +35,15 @@ int main()
 			case sf::Event::MouseButtonReleased:
 				window.click(sf::Mouse::getPosition(window), event.mouseButton.button);
 				break;
+			case sf::Event::MouseWheelScrolled:
+				window.zoom(event.mouseWheelScroll.delta, sf::Mouse::getPosition(window));
+				break;
+			default:
+				break;
 			}
 		}
+
+		// Treate real-time actions
 	}
 
 	// Wait for the rendering thread has finished its instructions before exit
