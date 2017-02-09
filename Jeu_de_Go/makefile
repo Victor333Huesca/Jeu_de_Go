@@ -4,6 +4,7 @@ LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
 # -----  Locations  ----- #
 REP_SRC = Sources/
+$(shell mkdir Obj)
 REP_OBJ = Obj/
 REP_EXE = ./
 
