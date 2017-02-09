@@ -22,7 +22,7 @@ EXE = $(REP_EXE)GoSolver
 
 # -----  HERE GUYS  ----- #
 # Supprimez ce qu'il y a � droite du = si vous avez instalé la SFML dans /usr/local
-LIBS = -lsfml-window -lsfml-system -lsfml-graphics
+LIBS +=
 INCLUDE =
 
 # -----   Target    ----- #
