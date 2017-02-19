@@ -63,7 +63,7 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value, const sf::Mouse
 					//std::cout << engine << std::endl;
 					system(CLEAR_CMD);
 					engine.rechercheGroupes();
-					engine.afficheGroupes();
+					engine.afficheGroupes(std::cout);
 					std::cout << std::endl;
 				}
 			}

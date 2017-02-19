@@ -1,5 +1,5 @@
 #pragma once
-#include "Globals.h"
+#include "../Graphics/Globals.h"
 #include <fstream>
 
 

@@ -109,9 +109,19 @@ bool Etat::isAStone(const VAL & value) const
 	return val == value;
 }
 
+std::ostream & Etat::coord(std::ostream & os) const
+{
+	os << "(" << x << "," << y << ")";
+
+	return os;
+}
+
 //OVERLOADINGS functions
 
 std::ostream& operator<<(std::ostream& os, const Etat& E){
-  os << "(" << E.getX() << "," << E.getY() << ")";
+  os << 
+	  (E.getVal() == Etat::BLANC ? "Blanc " : "Noir ") << 
+	  "(" << E.getX() << "," << E.getY() << ")";
+
   return os;
 }

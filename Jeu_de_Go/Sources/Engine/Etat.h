@@ -36,6 +36,7 @@ public :
 	bool isPlayable() const;
 	bool isAStone() const;
 	bool isAStone(const VAL& value) const;
+	std::ostream& coord(std::ostream& os) const;
 
 private:
   size_t x;
