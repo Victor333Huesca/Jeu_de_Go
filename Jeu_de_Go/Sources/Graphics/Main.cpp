@@ -14,11 +14,13 @@ int main()
 	window.setActive(false);
 
 	// Launch thread
-	sf::Thread thread_rendering(&renderingThread, &window);
-	thread_rendering.launch();
+	std::thread thread_rendering(renderingThread, &window);
 #else
 	//window.setFramerateLimit(300);
+	// disable window's context
 	window.setActive(false);
+
+	// Launch thread
 	std::thread thread_rendering(renderingThread, &window);
 #endif
 
@@ -55,7 +57,7 @@ int main()
 
 		// Treate real-time actions
 
-
+		/*
 		// Linux version
 #ifndef _WIN32
 		// Clear the window with a black screen
@@ -67,12 +69,13 @@ int main()
 		// End of current frame, display everything
 		window.display();
 #endif
+		*/
 
 	}
 
 	// Wait for the rendering thread has finished its instructions before exit
 #ifdef _WIN32
-	thread_rendering.wait();
+	thread_rendering.join();
 #else
 	thread_rendering.join();
 #endif

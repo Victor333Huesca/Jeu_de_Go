@@ -91,9 +91,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Ressources\Img\background2.png">
-      <Filter>Fichiers de ressources</Filter>
-    </Image>
     <Image Include="Ressources\Img\infos_bg.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
@@ -103,10 +100,13 @@
     <Image Include="Ressources\Img\infos_white.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
-    <Image Include="Ressources\Img\stone_black2.png">
+    <Image Include="Ressources\Img\background3.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
-    <Image Include="Ressources\Img\stone_white2.png">
+    <Image Include="Ressources\Img\stone_black3.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Ressources\Img\stone_white3.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
   </ItemGroup>

@@ -154,12 +154,12 @@
     <ClInclude Include="Sources\Graphics\Main_window.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Ressources\Img\background2.png" />
+    <Image Include="Ressources\Img\background3.png" />
     <Image Include="Ressources\Img\infos_bg.png" />
     <Image Include="Ressources\Img\infos_black.png" />
     <Image Include="Ressources\Img\infos_white.png" />
-    <Image Include="Ressources\Img\stone_black2.png" />
-    <Image Include="Ressources\Img\stone_white2.png" />
+    <Image Include="Ressources\Img\stone_black3.png" />
+    <Image Include="Ressources\Img\stone_white3.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Ressources\Font\time.ttf" />

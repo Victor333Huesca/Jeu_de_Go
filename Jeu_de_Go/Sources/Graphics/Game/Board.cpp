@@ -12,7 +12,7 @@ Board::Board() :
 	Square::loadTextures();
 
 	// Load background
-	bg_txr.loadFromFile("./Ressources/Img/background2.png");
+	bg_txr.loadFromFile("./Ressources/Img/background3.png");
 	bg_spr.setTexture(bg_txr);
 	bg_spr.setPosition(sf::Vector2f(VIEW_BOARD_POS_X, VIEW_BOARD_POS_X));
 

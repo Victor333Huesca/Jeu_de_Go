@@ -10,8 +10,8 @@
 #define CLEAR_CMD "clear"
 #endif // _WIN32
 
-#define SQUARE_WIDTH 24
-#define SQUARE_HEIGHT 24
+#define SQUARE_WIDTH 144
+#define SQUARE_HEIGHT 144
 
 #define NB_SQUARES_X 19
 #define NB_SQUARES_Y 19
