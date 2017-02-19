@@ -54,6 +54,10 @@ bool History::cancel()
 
 		return true;
 	}
+	else if (_current == begin())
+	{
+		return true;
+	}
 	else
 	{
 		return false;

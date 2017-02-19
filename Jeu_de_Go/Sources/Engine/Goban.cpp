@@ -2,7 +2,12 @@
 
 
 //CONSTRUCTORS
-Goban::Goban(){
+Goban::Goban() :
+	array(nullptr),
+	groups_white(),
+	groups_black(),
+	history()
+{
   array= new Etat[TGOBAN*TGOBAN];
   size_t i=0;
   for (size_t y=0;y<TGOBAN; y++){
