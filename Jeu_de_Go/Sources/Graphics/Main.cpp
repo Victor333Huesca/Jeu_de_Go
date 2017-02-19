@@ -8,12 +8,16 @@ int main()
 	// Main's variables
 	Main_window window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_WIDTH),	"Jeu de Go");
 
+#ifdef _WIN32
 	// disable window's context
 	window.setActive(false);
 
 	// Launch thread
 	sf::Thread thread_rendering(&renderingThread, &window);
 	thread_rendering.launch();
+#else
+	window.setFramerateLimit(300);
+#endif
 
 	// Events loop
 	while (window.isOpen())
@@ -47,10 +51,27 @@ int main()
 		}
 
 		// Treate real-time actions
+
+
+		// Linux version
+#ifndef _WIN32
+		// Clear the window with a black screen
+		window.clear(sf::Color::Black);
+
+		// Draw everything here
+		window.draw();
+
+		// End of current frame, display everything
+		window.display();
+#endif
+
 	}
 
 	// Wait for the rendering thread has finished its instructions before exit
+#ifdef _WIN32
 	thread_rendering.wait();
+#endif
+
 	return 0;
 }
 
