@@ -31,6 +31,11 @@ void Main_window::zoom(const float delta, const sf::Vector2i& pos)
 	game_window.zoom(delta, pos, *this);
 }
 
+void Main_window::keyPressed(const sf::Event::KeyEvent & key)
+{
+	game_window.keyPressed(key);
+}
+
 void Main_window::draw()
 {
 	draw(game_window);

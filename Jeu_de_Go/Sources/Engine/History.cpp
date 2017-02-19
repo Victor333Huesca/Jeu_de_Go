@@ -46,6 +46,20 @@ void History::add(const Etat &new_state)
 	_current = --end();
 }
 
+bool History::cancel()
+{
+	if (!empty() && _current != begin())
+	{
+		--_current;
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 void History::clear()
 {
 	clear(); 

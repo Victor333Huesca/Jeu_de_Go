@@ -55,6 +55,8 @@ public:
 	*/
 	void add(const Etat &new_state);
 
+	bool cancel();
+
 	/*!
 	* @brief Clear history
 	*
@@ -72,6 +74,7 @@ public:
 	* @return The stream to chain display
 	*/
 	std::ostream& display(std::ostream& stream) const;
+
 
 private:
 	History::iterator _current;		/*!< Last move */

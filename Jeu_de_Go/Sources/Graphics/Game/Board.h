@@ -18,7 +18,11 @@ public:
 	// Treate click event
 	bool click(sf::Vector2i pos, const Square::Value& value, const sf::Mouse::Button& event);
 	void zoom(const float delta, const sf::Vector2i& pos);
+	void cancel();
 	sf::View getView() const;
+
+	// Loading
+	void load();
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
 

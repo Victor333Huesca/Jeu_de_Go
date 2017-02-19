@@ -69,3 +69,12 @@ void Game_window::zoom(const float delta, sf::Vector2i pos, sf::RenderWindow& wi
 	// Look if the mouse is on the board
 	board.zoom(delta, pos);
 }
+
+void Game_window::keyPressed(const sf::Event::KeyEvent & key)
+{
+	if (key.control && key.code == sf::Keyboard::Z)
+	{
+		// Ctrl + Z
+		board.cancel();
+	}
+}

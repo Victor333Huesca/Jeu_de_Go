@@ -16,6 +16,7 @@ public:
 	// Just an interface for the game_window's click methode
 	void click(sf::Vector2i pos, const sf::Mouse::Button& type = sf::Mouse::Button::Left);
 	void zoom(const float delta, const sf::Vector2i& pos);
+	void keyPressed(const sf::Event::KeyEvent& key);
 
 	void draw();
 	void draw(const sf::Drawable& drawable, const sf::RenderStates&	states = sf::RenderStates::Default);

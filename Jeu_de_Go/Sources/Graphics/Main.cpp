@@ -38,6 +38,9 @@ int main()
 			case sf::Event::MouseWheelScrolled:
 				window.zoom(event.mouseWheelScroll.delta, sf::Mouse::getPosition(window));
 				break;
+			case sf::Event::KeyPressed:
+				window.keyPressed(event.key);
+				break;
 			default:
 				break;
 			}

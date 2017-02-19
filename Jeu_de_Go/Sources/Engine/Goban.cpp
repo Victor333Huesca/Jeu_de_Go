@@ -23,12 +23,12 @@ Etat& Goban::operator[](const size_t i)const{
 
 //METHODES
 
-Etat& Goban::coord(const int X,const int Y){//access to element of array with (x,y)
+Etat& Goban::coord(const int& X,const int& Y){//access to element of array with (x,y)
   size_t i = TGOBAN * Y + X;
   return array[i];
 }
 
-const Etat & Goban::coord(const int x, const int y) const
+const Etat& Goban::coord(const int& x, const int& y) const
 {
 	return array[TGOBAN * y + x];
 }
@@ -150,6 +150,14 @@ bool Goban::move(const Etat::VAL& value, const int& x, const int& y)
 	}
 
 	return false;
+}
+
+bool Goban::cancel()
+{
+	// For the moment it only delete last stone placed but it should back to step n - 1.
+	coord(history.current().getX(), history.current().getY()).setVal(Etat::VIDE);
+
+	return history.cancel();
 }
 
 //overloadings functions

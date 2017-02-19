@@ -57,7 +57,7 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value, const sf::Mouse
 					result = true;
 
 					// Change square's value
-					array[pos.x][pos.y].setValue(value);
+					load();
 
 					// Display some debugg features
 					//std::cout << engine << std::endl;
@@ -129,6 +129,14 @@ void Board::zoom(const float delta, const sf::Vector2i& pos)
 	}
 }
 
+void Board::cancel()
+{
+	if (engine.cancel())
+	{
+		load();
+	}
+}
+
 sf::View Board::getView() const
 {
 	return view;
@@ -152,6 +160,17 @@ bool Board::posToSquare(sf::Vector2i& pos) const
 	else
 	{
 		return false;
+	}
+}
+
+void Board::load()
+{
+	for (size_t i = 0; i < NB_SQUARES_X; i++)
+	{
+		for (size_t j = 0; j < NB_SQUARES_Y; j++)
+		{
+			array[i][j].setValue(transform(engine.coord(i, j).getVal()));
+		}
 	}
 }
 

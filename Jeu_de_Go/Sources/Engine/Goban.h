@@ -16,13 +16,16 @@ private:
   History history;
 
   // Privates methods
-  Etat& coord(const int x, const int y);		// access to element of array with (x,y)
-  const Etat& coord(const int x, const int y) const;		// access to element of array with (x,y)
   bool isMoveLegal(const int& x, const int& y) const;
+
 
 public:
   //CONSTRUCTORS
   Goban();//default constructor
+
+  // Access to a state
+  Etat& coord(const int& x, const int& y);		// access to element of array with (x,y)
+  const Etat& coord(const int& x, const int& y) const;		// access to element of array with (x,y)
 
   //METHODES
   std::ostream& afficheGroupes(std::ostream& stream, const Etat::VAL& val) const;
@@ -32,6 +35,8 @@ public:
 
   // Return true if the move has been done, false otherwise.
   bool move(const Etat::VAL& value, const int& x, const int& y);
+
+  bool cancel();
 
   //overloadings methodes
   Etat& operator[](const size_t) const;
