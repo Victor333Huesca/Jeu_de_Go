@@ -1,5 +1,5 @@
 # -----   Options   ----- #
-CXXFLAGS = -std=c++14 -Wall
+CXXFLAGS = -std=c++14
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
 # -----  Locations  ----- #
@@ -22,19 +22,27 @@ EXE = $(REP_EXE)GoSolver
 
 # -----  HERE GUYS  ----- #
 # Supprimez ce qu'il y a � droite du = si vous avez instalé la SFML dans /usr/local
-LIBS += 
-INCLUDE = 
+LIBS +=
+INCLUDE =
 
 # -----   Target    ----- #
 all : $(EXE)
 
 # -----     Main    ----- #
 $(EXE) : $(OBJ)
+	@echo All files have been compiled with success.
+	@echo 
+	@echo Start link edition
 	$(CXX) $^ -o $@ $(LIBS)
 
 # -----     Base    ----- #
-$(OBJ) :
+$(OBJ) : | $(REP_OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
+
+# -----  Object dir ----- #
+$(REP_OBJ) :
+	@mkdir -p $@
+
 
 # Engine
 $(REP_OBJ)Etat.o: $(REP_SRC)Engine/Etat.cpp $(REP_SRC)Engine/Etat.h
