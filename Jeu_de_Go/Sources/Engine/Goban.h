@@ -14,8 +14,8 @@ private:
   std::vector<Groupe> groups_black;
 
   // Privates methods
-  Etat& coord(const int x, const int y);//access to element of array with (x,y)
-  const Etat& coord(const int x, const int y) const;//access to element of array with (x,y)
+  Etat& coord(const int x, const int y);		// access to element of array with (x,y)
+  const Etat& coord(const int x, const int y) const;		// access to element of array with (x,y)
   bool isMoveLegal(const int& x, const int& y) const;
 
 public:
@@ -25,6 +25,7 @@ public:
   //METHODES
   void afficheGroupes(const Etat::VAL& val) const;
   void afficheGroupes() const;
+  void rechercheGroupes(const Etat::VAL&  val, const bool& verbose = false);
   void rechercheGroupes(const bool& verbose = false);
 
   // Return true if the move has been done, false otherwise.

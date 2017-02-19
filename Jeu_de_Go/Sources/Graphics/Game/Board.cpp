@@ -6,7 +6,7 @@ Board::Board() :
 	bg_txr(),
 	bg_spr(),
 	view(sf::FloatRect(VIEW_BOARD_POS_X, VIEW_BOARD_POS_Y, BOARD_WIDTH, BOARD_HEIGHT)),
-	view_origin(sf::FloatRect(VIEW_BOARD_POS_X, VIEW_BOARD_POS_Y, BOARD_WIDTH, BOARD_HEIGHT))
+	view_origin(view)
 {
 	// Initialise squares's textures
 	Square::loadTextures();
@@ -84,50 +84,47 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value, const sf::Mouse
 }
 
 void Board::zoom(const float delta, const sf::Vector2i& pos)
-{
-	// Get the delta position
-	sf::Vector2i pos_d(pos.x - view.getCenter().x, pos.y - view.getCenter().y);
-	pos_d.x = pos_d.x >= 0 ? log(pos_d.x) : -log(-pos_d.x);
-	pos_d.y = pos_d.y >= 0 ? log(pos_d.y) : -log(-pos_d.y);
-	
+{	
 	if (delta > 0)
 	{
-		if (view.getSize().x > view_origin.width / ZOOM_FACTOR)
+		// Zoom in if the view isn't currently at its minimum
+		if (view.getSize().x > view_origin.getSize().x / ZOOM_FACTOR)
 		{
-			view.move(static_cast<sf::Vector2f>(pos_d));
-
-			// Fix movement overflow
-			viewBound();
-
 			// Zoom in
 			view.zoom(delta - 0.1);
 
-			// Fix overflow
-			if (view.getSize().x < view_origin.width / ZOOM_FACTOR)
+			// Fix zoom overflow
+			if (view.getSize().x < view_origin.getSize().x / ZOOM_FACTOR)
 			{
-				view.setSize(view_origin.width / ZOOM_FACTOR, view_origin.height / ZOOM_FACTOR);
+				view.setSize(view_origin.getSize().x / ZOOM_FACTOR, view_origin.getSize().y / ZOOM_FACTOR);
 			}
+
+			// Move camera
+			view.setCenter(static_cast<sf::Vector2f>(pos));
+
+			// Fix movement overflow
+			viewBound();
 		}
 	}
 	else
 	{
-		if (view.getSize().x < view_origin.width)
+		// Zoom out if the view isn't currently at its maximum
+		if (view.getSize().x < view_origin.getSize().x)
 		{
 			// Zoom out
 			view.zoom(-delta + 0.1);
 
 			// Fix overflow
-			if (view.getSize().x > view_origin.width)
+			if (view.getSize().x > view_origin.getSize().x)
 			{
-				view.setSize(view_origin.width, view_origin.height);
+				view.setSize(view_origin.getSize().x, view_origin.getSize().y);
 			}
 
-
-			view.move(static_cast<sf::Vector2f>(pos_d));
+			// Move camera
+			view.setCenter(static_cast<sf::Vector2f>(pos));
 
 			// Fix movement overflow
 			viewBound();
-
 		}
 	}
 }
@@ -135,15 +132,6 @@ void Board::zoom(const float delta, const sf::Vector2i& pos)
 sf::View Board::getView() const
 {
 	return view;
-}
-
-void Board::always(const sf::RenderWindow& window)
-{
-	// Get the mouse's position
-	sf::Vector2i pos = sf::Mouse::getPosition(window);
-
-	// Center the view on the camera
-	
 }
 
 bool Board::posToSquare(sf::Vector2i& pos) const
@@ -182,6 +170,28 @@ void Board::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	}
 }
 
+Square::Value Board::transform(const Etat::VAL & value)
+{
+	Square::Value tmp;
+	switch (value)
+	{
+	case Etat::BLANC:
+		tmp = Square::White;
+		break;
+	case Etat::NOIR:
+		tmp = Square::Black;
+		break;
+	case Etat::VIDE:
+	case Etat::KO:
+		tmp = Square::None;
+		break;
+	default:
+		break;
+	}
+
+	return tmp;
+}
+
 Etat::VAL Board::transform(const Square::Value & value)
 {
 	Etat::VAL tmp;
@@ -205,44 +215,35 @@ Etat::VAL Board::transform(const Square::Value & value)
 
 void Board::viewBound()
 {
-	sf::Vector2f n_center(view.getCenter());
-	if (view.getCenter().x - view.getSize().x < view_origin.left)
-	{
-		n_center.x = view_origin.left + view.getSize().x / 2;
-	}
-	else if (view.getCenter().x - view.getSize().x > view_origin.left + view_origin.width)
-	{
-		n_center.x = view_origin.left + view_origin.width - view.getSize().x / 2;
-	}
-	if (view.getCenter().y - view.getSize().y < view_origin.left)
-	{
-		n_center.y = view_origin.left + view.getSize().y / 2;
-	}
-	else if (view.getCenter().y - view.getSize().y > view_origin.left + view_origin.width)
-	{
-		n_center.y = view_origin.left + view_origin.width - view.getSize().y / 2;
-	}
-	view.setCenter(n_center);
-}
+	sf::Vector2f offset;
 
-Square::Value Board::transform(const Etat::VAL & value)
-{
-	Square::Value tmp;
-	switch (value)
+	const sf::FloatRect pos(
+		view.getCenter().x - view.getSize().x / 2, 
+		view.getCenter().y - view.getSize().y / 2,
+		view.getSize().x, view.getSize().y);
+
+	const sf::FloatRect pos_ori(
+		view_origin.getCenter().x - view_origin.getSize().x / 2,
+		view_origin.getCenter().y - view_origin.getSize().y / 2,
+		view_origin.getSize().x, view_origin.getSize().y);
+
+	if (pos.left < pos_ori.left)
 	{
-	case Etat::BLANC:
-		tmp = Square::White;
-		break;
-	case Etat::NOIR:
-		tmp = Square::Black;
-		break;
-	case Etat::VIDE:
-	case Etat::KO:
-		tmp = Square::None;
-		break;
-	default:
-		break;
+		offset.x = pos_ori.left - pos.left;
+	}
+	else if (pos.left + pos.width > pos_ori.left + pos_ori.width)
+	{
+		offset.x = (pos_ori.left + pos_ori.width) - (pos.left + pos.width);
 	}
 
-	return tmp;
+	if (pos.top < pos_ori.top)
+	{
+		offset.y = pos_ori.top - pos.top;
+	}
+	else if (pos.top + pos.height > pos_ori.top + pos_ori.height)
+	{
+		offset.y = (pos_ori.top + pos_ori.height) - (pos.top + pos.height);
+	}
+
+	view.move(offset);
 }

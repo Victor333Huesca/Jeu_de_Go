@@ -19,7 +19,6 @@ public:
 	bool click(sf::Vector2i pos, const Square::Value& value, const sf::Mouse::Button& event);
 	void zoom(const float delta, const sf::Vector2i& pos);
 	sf::View getView() const;
-	void always(const sf::RenderWindow& window);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
 
@@ -34,7 +33,7 @@ private:
 
 	// Other stuff
 	sf::View view;				/*!< Board's view */
-	sf::FloatRect view_origin;	/*!< View's original size */
+	sf::View view_origin;		/*!< Original view */
 
 	// Goban engine
 	Goban engine;				/*!< Engine used by Wissem and Mamadou */
