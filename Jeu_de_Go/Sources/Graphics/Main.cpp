@@ -1,5 +1,6 @@
 #include "Globals.h"
 #include "Main_window.h"
+#include <thread>
 
 void renderingThread(Main_window* _window);
 
@@ -16,7 +17,9 @@ int main()
 	sf::Thread thread_rendering(&renderingThread, &window);
 	thread_rendering.launch();
 #else
-	window.setFramerateLimit(300);
+	//window.setFramerateLimit(300);
+	window.setActive(false);
+	std::thread thread_rendering(renderingThread, &window);
 #endif
 
 	// Events loop
@@ -70,6 +73,8 @@ int main()
 	// Wait for the rendering thread has finished its instructions before exit
 #ifdef _WIN32
 	thread_rendering.wait();
+#else
+	thread_rendering.join();
 #endif
 
 	return 0;

@@ -1,6 +1,6 @@
 # -----   Options   ----- #
 CXXFLAGS = -std=c++14
-LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+LIBS = -lsfml-graphics -lsfml-window -lsfml-system -pthread
 
 # -----  Locations  ----- #
 REP_SRC = Sources/
