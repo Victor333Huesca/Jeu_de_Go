@@ -41,7 +41,7 @@ void Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, const
 		pos = static_cast<sf::Vector2i>(window.mapPixelToCoords(pos, board.getView()));
 
 		// Test if value has been changed
-		if (board.click(pos, cur_player))
+		if (board.click(pos, cur_player, type))
 		{
 			// Change next player info
 			cur_player =
@@ -59,4 +59,13 @@ void Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, const
 	{
 
 	}
+}
+
+void Game_window::zoom(const float delta, sf::Vector2i pos, sf::RenderWindow& window)
+{
+	// Get relative position inside the board's view
+	pos = static_cast<sf::Vector2i>(window.mapPixelToCoords(pos, board.getView()));
+
+	// Look if the mouse is on the board
+	board.zoom(delta, pos);
 }

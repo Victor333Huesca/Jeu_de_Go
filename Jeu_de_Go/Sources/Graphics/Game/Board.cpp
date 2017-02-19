@@ -5,7 +5,8 @@ Board::Board() :
 	array(nullptr),
 	bg_txr(),
 	bg_spr(),
-	view(sf::FloatRect(VIEW_BOARD_POS_X, VIEW_BOARD_POS_Y, BOARD_WIDTH, BOARD_HEIGHT))
+	view(sf::FloatRect(VIEW_BOARD_POS_X, VIEW_BOARD_POS_Y, BOARD_WIDTH, BOARD_HEIGHT)),
+	view_origin(view)
 {
 	// Initialise squares's textures
 	Square::loadTextures();
@@ -28,53 +29,104 @@ Board::~Board()
 	delete[] array;
 }
 
-bool Board::click(sf::Vector2i pos, const Square::Value & value)
+bool Board::click(sf::Vector2i pos, const Square::Value & value, const sf::Mouse::Button& event)
 {
 	// Result of the click event
 	bool result(false);
 
-	pos.x -= VIEW_BOARD_POS_X;
-	pos.y -= VIEW_BOARD_POS_Y;
-
-	// Check that user has clicked on the board	and not on board's boarder
-	if (pos.x >= OFFSET_X_B &&
-		pos.y >= OFFSET_Y_B &&
-		pos.x < BOARD_WIDTH - OFFSET_X_E &&
-		pos.y < BOARD_HEIGHT - OFFSET_Y_E)
+	if (event == sf::Mouse::Button::Left)
 	{
-		// Get square at the position demanded
-		if (posToSquare(pos))
+		// Left click
+
+		pos.x -= VIEW_BOARD_POS_X;
+		pos.y -= VIEW_BOARD_POS_Y;
+
+		// Check that user has clicked on the board	and not on board's boarder
+		if (pos.x >= OFFSET_X_B &&
+			pos.y >= OFFSET_Y_B &&
+			pos.x < BOARD_WIDTH - OFFSET_X_E &&
+			pos.y < BOARD_HEIGHT - OFFSET_Y_E)
 		{
-			// We have a correct square at pos so inform engine
-			if (engine.move(transform(value), pos.x, pos.y))
+			// Get square at the position demanded
+			if (posToSquare(pos))
 			{
-				// Move has been allowed
-				result = true;
+				// We have a correct square at pos so inform engine
+				if (engine.move(transform(value), pos.x, pos.y))
+				{
+					// Move has been allowed
+					result = true;
 
-				// Change square's value
-				array[pos.x][pos.y].setValue(value);
+					// Change square's value
+					array[pos.x][pos.y].setValue(value);
 
-				// Display some debugg features
-				//std::cout << engine << std::endl;
-				system(CLEAR_CMD);
-				engine.rechercheGroupes();
-				engine.afficheGroupes();
-				std::cout << std::endl;
+					// Display some debugg features
+					//std::cout << engine << std::endl;
+					system(CLEAR_CMD);
+					engine.rechercheGroupes();
+					engine.afficheGroupes();
+					std::cout << std::endl;
+				}
+			}
+			else
+			{
+				// Position wasn't on an intersection
+				result = false;
 			}
 		}
 		else
 		{
-			// Position wasn't on an intersection
+			// Board's boarder
 			result = false;
+		}
+	}
+	
+	return result;
+}
+
+void Board::zoom(const float delta, const sf::Vector2i& pos)
+{	
+	if (delta > 0)
+	{
+		// Zoom in if the view isn't currently at its minimum
+		if (view.getSize().x > view_origin.getSize().x / ZOOM_FACTOR)
+		{
+			// Zoom in
+			view.zoom(delta - 0.1);
+
+			// Fix zoom overflow
+			if (view.getSize().x < view_origin.getSize().x / ZOOM_FACTOR)
+			{
+				view.setSize(view_origin.getSize().x / ZOOM_FACTOR, view_origin.getSize().y / ZOOM_FACTOR);
+			}
+
+			// Move camera
+			view.setCenter(static_cast<sf::Vector2f>(pos));
+
+			// Fix movement overflow
+			viewBound();
 		}
 	}
 	else
 	{
-		// Board's boarder
-		result = false;
+		// Zoom out if the view isn't currently at its maximum
+		if (view.getSize().x < view_origin.getSize().x)
+		{
+			// Zoom out
+			view.zoom(-delta + 0.1);
+
+			// Fix overflow
+			if (view.getSize().x > view_origin.getSize().x)
+			{
+				view.setSize(view_origin.getSize().x, view_origin.getSize().y);
+			}
+
+			// Move camera
+			view.setCenter(static_cast<sf::Vector2f>(pos));
+
+			// Fix movement overflow
+			viewBound();
+		}
 	}
-	
-	return result;
 }
 
 sf::View Board::getView() const
@@ -118,6 +170,28 @@ void Board::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	}
 }
 
+Square::Value Board::transform(const Etat::VAL & value)
+{
+	Square::Value tmp;
+	switch (value)
+	{
+	case Etat::BLANC:
+		tmp = Square::White;
+		break;
+	case Etat::NOIR:
+		tmp = Square::Black;
+		break;
+	case Etat::VIDE:
+	case Etat::KO:
+		tmp = Square::None;
+		break;
+	default:
+		break;
+	}
+
+	return tmp;
+}
+
 Etat::VAL Board::transform(const Square::Value & value)
 {
 	Etat::VAL tmp;
@@ -139,24 +213,37 @@ Etat::VAL Board::transform(const Square::Value & value)
 	return tmp;
 }
 
-Square::Value Board::transform(const Etat::VAL & value)
+void Board::viewBound()
 {
-	Square::Value tmp;
-	switch (value)
+	sf::Vector2f offset;
+
+	const sf::FloatRect pos(
+		view.getCenter().x - view.getSize().x / 2, 
+		view.getCenter().y - view.getSize().y / 2,
+		view.getSize().x, view.getSize().y);
+
+	const sf::FloatRect pos_ori(
+		view_origin.getCenter().x - view_origin.getSize().x / 2,
+		view_origin.getCenter().y - view_origin.getSize().y / 2,
+		view_origin.getSize().x, view_origin.getSize().y);
+
+	if (pos.left < pos_ori.left)
 	{
-	case Etat::BLANC:
-		tmp = Square::White;
-		break;
-	case Etat::NOIR:
-		tmp = Square::Black;
-		break;
-	case Etat::VIDE:
-	case Etat::KO:
-		tmp = Square::None;
-		break;
-	default:
-		break;
+		offset.x = pos_ori.left - pos.left;
+	}
+	else if (pos.left + pos.width > pos_ori.left + pos_ori.width)
+	{
+		offset.x = (pos_ori.left + pos_ori.width) - (pos.left + pos.width);
 	}
 
-	return tmp;
+	if (pos.top < pos_ori.top)
+	{
+		offset.y = pos_ori.top - pos.top;
+	}
+	else if (pos.top + pos.height > pos_ori.top + pos_ori.height)
+	{
+		offset.y = (pos_ori.top + pos_ori.height) - (pos.top + pos.height);
+	}
+
+	view.move(offset);
 }
