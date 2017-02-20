@@ -1,6 +1,5 @@
 #include "Globals.h"
 #include "Main_window.h"
-#include <SFML/Network.hpp>
 #include <thread>
 
 #define	MULTITHREAD false
@@ -21,10 +20,6 @@ int main()
 	std::thread thread_rendering(renderingThread, &window);
 #else
 	window.setFramerateLimit(300);
-#endif
-
-#if ONLINE
-	std::thread thread_online(onlineThread);
 #endif
 
 	// Events loop
@@ -77,10 +72,6 @@ int main()
 	// Wait for the rendering thread has finished its instructions before exit
 #if defined(_WIN32) || MULTITHREAD
 	thread_rendering.join();
-#endif
-
-#if ONLINE
-	thread_online.join();
 #endif
 
 	return 0;
