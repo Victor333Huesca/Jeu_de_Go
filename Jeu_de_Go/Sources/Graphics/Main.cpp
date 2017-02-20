@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Main_window.h"
 #include <thread>
+#include <SFML/Network.hpp>
 
 #define	MULTITHREAD false
 
