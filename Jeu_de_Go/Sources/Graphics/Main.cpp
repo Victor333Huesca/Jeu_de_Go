@@ -1,27 +1,30 @@
 #include "Globals.h"
 #include "Main_window.h"
+#include <SFML/Network.hpp>
 #include <thread>
 
+#define	MULTITHREAD false
+
 void renderingThread(Main_window* _window);
+
 
 int main()
 {
 	// Main's variables
 	Main_window window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_WIDTH),	"Jeu de Go");
 
-#ifdef _WIN32
+#if defined(_WIN32) || MULTITHREAD
 	// disable window's context
 	window.setActive(false);
 
 	// Launch thread
 	std::thread thread_rendering(renderingThread, &window);
 #else
-	//window.setFramerateLimit(300);
-	// disable window's context
-	window.setActive(false);
+	window.setFramerateLimit(300);
+#endif
 
-	// Launch thread
-	std::thread thread_rendering(renderingThread, &window);
+#if ONLINE
+	std::thread thread_online(onlineThread);
 #endif
 
 	// Events loop
@@ -57,9 +60,8 @@ int main()
 
 		// Treate real-time actions
 
-		/*
 		// Linux version
-#ifndef _WIN32
+#if !defined(_WIN32) && !MULTITHREAD
 		// Clear the window with a black screen
 		window.clear(sf::Color::Black);
 
@@ -69,15 +71,16 @@ int main()
 		// End of current frame, display everything
 		window.display();
 #endif
-		*/
 
 	}
 
 	// Wait for the rendering thread has finished its instructions before exit
-#ifdef _WIN32
+#if defined(_WIN32) || MULTITHREAD
 	thread_rendering.join();
-#else
-	thread_rendering.join();
+#endif
+
+#if ONLINE
+	thread_online.join();
 #endif
 
 	return 0;

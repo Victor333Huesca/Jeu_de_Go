@@ -42,15 +42,13 @@
     <ClCompile Include="Sources\Graphics\Game\Square.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Graphics\Game\Timer.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\Engine\History.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Engine\Parser.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Graphics\Game\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Engine\Etat.h">

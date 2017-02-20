@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{094D1815-F2A0-49B0-8A8E-62C97B9B7509}</ProjectGuid>
-    <RootNamespace>Jeu_de_Go</RootNamespace>
+    <ProjectGuid>{33267DE1-18A3-4EFD-A13D-590F016F787B}</ProjectGuid>
+    <RootNamespace>Go_Server</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -74,11 +74,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Libraries\SFML-2.4.1-x86\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\SFML-2.4.1-x86\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -86,11 +86,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Libraries\SFML-2.4.1-x86_64\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\SFML-2.4.1-x86_64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86_64\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -100,13 +100,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Libraries\SFML-2.4.1-x86\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\SFML-2.4.1-x86\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -116,58 +116,17 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Libraries\SFML-2.4.1-x86_64\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\SFML-2.4.1-x86_64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86_64\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Engine\Etat.cpp" />
-    <ClCompile Include="Sources\Engine\Goban.cpp" />
-    <ClCompile Include="Sources\Engine\Groupe.cpp" />
-    <ClCompile Include="Sources\Engine\History.cpp" />
-    <ClCompile Include="Sources\Engine\Parser.cpp" />
-    <ClCompile Include="Sources\Graphics\Game\Board.cpp" />
-    <ClCompile Include="Sources\Graphics\Game\Game_window.cpp" />
-    <ClCompile Include="Sources\Graphics\Game\Infos.cpp" />
-    <ClCompile Include="Sources\Graphics\Game\Square.cpp" />
-    <ClCompile Include="Sources\Graphics\Game\Timer.cpp" />
-    <ClCompile Include="Sources\Graphics\Main.cpp" />
-    <ClCompile Include="Sources\Graphics\Main_window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Sources\Engine\Etat.h" />
-    <ClInclude Include="Sources\Engine\Goban.h" />
-    <ClInclude Include="Sources\Engine\Groupe.h" />
-    <ClInclude Include="Sources\Engine\History.h" />
-    <ClInclude Include="Sources\Engine\Parser.h" />
-    <ClInclude Include="Sources\Graphics\Game\Board.h" />
-    <ClInclude Include="Sources\Graphics\Game\Game_window.h" />
-    <ClInclude Include="Sources\Graphics\Game\Infos.h" />
-    <ClInclude Include="Sources\Graphics\Game\Square.h" />
-    <ClInclude Include="Sources\Graphics\Game\Timer.h" />
-    <ClInclude Include="Sources\Graphics\Globals.h" />
-    <ClInclude Include="Sources\Graphics\Main_window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Ressources\Img\background3.png" />
-    <Image Include="Ressources\Img\infos_bg.png" />
-    <Image Include="Ressources\Img\infos_black.png" />
-    <Image Include="Ressources\Img\infos_white.png" />
-    <Image Include="Ressources\Img\stone_black3.png" />
-    <Image Include="Ressources\Img\stone_white3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="Ressources\Font\time.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Makefile">
-      <FileType>Document</FileType>
-    </None>
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
