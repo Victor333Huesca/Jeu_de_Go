@@ -76,5 +76,12 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 	{
 		// Ctrl + Z
 		board.cancel();
+
+		// Change next player info
+		cur_player =
+			cur_player == Square::Value::Black ?
+			Square::Value::White :
+			Square::Value::Black;
+		infos.setCurPlayer(cur_player);
 	}
 }
