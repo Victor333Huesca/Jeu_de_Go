@@ -1,6 +1,6 @@
 # -----   Options   ----- #
 CXXFLAGS = -std=c++14
-LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+LIBS = -lsfml-graphics -lsfml-window -lsfml-system -pthread
 
 # -----  Locations  ----- #
 REP_SRC = Sources/
@@ -54,14 +54,18 @@ $(REP_SRC)Engine/Goban.h: $(REP_SRC)Engine/Etat.h $(REP_SRC)Engine/Groupe.h
 $(REP_OBJ)Groupe.o: $(REP_SRC)Engine/Groupe.cpp $(REP_SRC)Engine/Groupe.h
 $(REP_SRC)Engine/Groupe.h: $(REP_SRC)Engine/Etat.h
 
+$(REP_OBJ)History.o: $(REP_SRC)Engine/History.cpp $(REP_SRC)Engine/History.h
+$(REP_SRC)Engine/History.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Engine/Etat.h
+
+$(REP_OBJ)Parser.o: $(REP_SRC)Engine/Parser.cpp $(REP_SRC)Engine/Parser.h
+$(REP_SRC)Engine/Parser.h: $(REP_SRC)Graphics/Globals.h
+
+
 # Graphics
 $(REP_OBJ)Main.o: $(REP_SRC)Graphics/Main.cpp $(REP_SRC)Graphics/Main_window.h $(REP_SRC)Graphics/Globals.h
 
 $(REP_OBJ)Main_window.o: $(REP_SRC)Graphics/Main_window.cpp $(REP_SRC)Graphics/Main_window.h
 $(REP_SRC)Graphics/Main_window.h: $(REP_SRC)Graphics/Game/Game_window.h $(REP_SRC)Graphics/Globals.h
-
-$(REP_OBJ)Parser.o: $(REP_SRC)Graphics/Parser.cpp $(REP_SRC)Graphics/Parser.h
-$(REP_SRC)Graphics/Parser.h: $(REP_SRC)Graphics/Globals.h
 
 # Graphics --> Game
 $(REP_OBJ)Board.o: $(REP_SRC)Graphics/Game/Board.cpp $(REP_SRC)Graphics/Game/Board.h
@@ -69,9 +73,6 @@ $(REP_SRC)Graphics/Game/Board.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics
 
 $(REP_OBJ)Game_window.o: $(REP_SRC)Graphics/Game/Game_window.cpp $(REP_SRC)Graphics/Game/Game_window.h
 $(REP_SRC)Graphics/Game/Game_window.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Board.h $(REP_SRC)Graphics/Game/Infos.h
-
-$(REP_OBJ)History.o: $(REP_SRC)Graphics/Game/History.cpp $(REP_SRC)Graphics/Game/History.h
-$(REP_SRC)Graphics/Game/History.h: $(REP_SRC)Graphics/Globals.h
 
 $(REP_OBJ)Infos.o: $(REP_SRC)Graphics/Game/Infos.cpp $(REP_SRC)Graphics/Game/Infos.h
 $(REP_SRC)Graphics/Game/Infos.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Square.h $(REP_SRC)Graphics/Game/Timer.h

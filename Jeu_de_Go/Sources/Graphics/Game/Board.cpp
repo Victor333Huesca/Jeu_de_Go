@@ -12,7 +12,7 @@ Board::Board() :
 	Square::loadTextures();
 
 	// Load background
-	bg_txr.loadFromFile("./Ressources/Img/background2.png");
+	bg_txr.loadFromFile("./Ressources/Img/background3.png");
 	bg_spr.setTexture(bg_txr);
 	bg_spr.setPosition(sf::Vector2f(VIEW_BOARD_POS_X, VIEW_BOARD_POS_X));
 
@@ -57,13 +57,13 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value, const sf::Mouse
 					result = true;
 
 					// Change square's value
-					array[pos.x][pos.y].setValue(value);
+					load();
 
 					// Display some debugg features
 					//std::cout << engine << std::endl;
 					system(CLEAR_CMD);
 					engine.rechercheGroupes();
-					engine.afficheGroupes();
+					engine.afficheGroupes(std::cout);
 					std::cout << std::endl;
 				}
 			}
@@ -129,6 +129,14 @@ void Board::zoom(const float delta, const sf::Vector2i& pos)
 	}
 }
 
+void Board::cancel()
+{
+	if (engine.cancel())
+	{
+		load();
+	}
+}
+
 sf::View Board::getView() const
 {
 	return view;
@@ -152,6 +160,17 @@ bool Board::posToSquare(sf::Vector2i& pos) const
 	else
 	{
 		return false;
+	}
+}
+
+void Board::load()
+{
+	for (size_t i = 0; i < NB_SQUARES_X; i++)
+	{
+		for (size_t j = 0; j < NB_SQUARES_Y; j++)
+		{
+			array[i][j].setValue(transform(engine.coord(i, j).getVal()));
+		}
 	}
 }
 

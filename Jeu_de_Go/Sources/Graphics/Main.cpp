@@ -1,19 +1,26 @@
 #include "Globals.h"
 #include "Main_window.h"
+#include <thread>
+
+#define	MULTITHREAD false
 
 void renderingThread(Main_window* _window);
+
 
 int main()
 {
 	// Main's variables
 	Main_window window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_WIDTH),	"Jeu de Go");
 
+#if defined(_WIN32) || MULTITHREAD
 	// disable window's context
 	window.setActive(false);
 
 	// Launch thread
-	sf::Thread thread_rendering(&renderingThread, &window);
-	thread_rendering.launch();
+	std::thread thread_rendering(renderingThread, &window);
+#else
+	window.setFramerateLimit(300);
+#endif
 
 	// Events loop
 	while (window.isOpen())
@@ -38,16 +45,35 @@ int main()
 			case sf::Event::MouseWheelScrolled:
 				window.zoom(event.mouseWheelScroll.delta, sf::Mouse::getPosition(window));
 				break;
+			case sf::Event::KeyPressed:
+				window.keyPressed(event.key);
+				break;
 			default:
 				break;
 			}
 		}
 
 		// Treate real-time actions
+
+		// Linux version
+#if !defined(_WIN32) && !MULTITHREAD
+		// Clear the window with a black screen
+		window.clear(sf::Color::Black);
+
+		// Draw everything here
+		window.draw();
+
+		// End of current frame, display everything
+		window.display();
+#endif
+
 	}
 
 	// Wait for the rendering thread has finished its instructions before exit
-	thread_rendering.wait();
+#if defined(_WIN32) || MULTITHREAD
+	thread_rendering.join();
+#endif
+
 	return 0;
 }
 

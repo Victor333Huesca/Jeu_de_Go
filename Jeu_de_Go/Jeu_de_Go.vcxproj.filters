@@ -30,16 +30,10 @@
     <ClCompile Include="Sources\Graphics\Main_window.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Graphics\Parser.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\Graphics\Game\Board.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Graphics\Game\Game_window.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Graphics\Game\History.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Graphics\Game\Infos.cpp">
@@ -48,9 +42,13 @@
     <ClCompile Include="Sources\Graphics\Game\Square.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Graphics\Game\Timer.cpp">
+    <ClCompile Include="Sources\Engine\History.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Engine\Parser.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Game\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Engine\Etat.h">
@@ -68,16 +66,10 @@
     <ClInclude Include="Sources\Graphics\Main_window.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Graphics\Parser.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Graphics\Game\Board.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Graphics\Game\Game_window.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Graphics\Game\History.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Graphics\Game\Infos.h">
@@ -89,11 +81,14 @@
     <ClInclude Include="Sources\Graphics\Game\Timer.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Engine\History.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Parser.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Ressources\Img\background2.png">
-      <Filter>Fichiers de ressources</Filter>
-    </Image>
     <Image Include="Ressources\Img\infos_bg.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
@@ -103,10 +98,13 @@
     <Image Include="Ressources\Img\infos_white.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
-    <Image Include="Ressources\Img\stone_black2.png">
+    <Image Include="Ressources\Img\background3.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
-    <Image Include="Ressources\Img\stone_white2.png">
+    <Image Include="Ressources\Img\stone_black3.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Ressources\Img\stone_white3.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
   </ItemGroup>

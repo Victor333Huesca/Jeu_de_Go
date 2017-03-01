@@ -48,12 +48,12 @@ std::ostream & operator<<(std::ostream & stream, const Groupe & grp)
 	// Display all member exepted the last
 	for (size_t i = 0; i < grp.size() - 1; i++)
 	{
-		stream << grp[i] << ", ";
+		grp[i].coord(stream) << ", ";
 	}
 
 	// Display the last member if there is one
 	if (grp.size() != 0)
-		stream << grp[grp.size() - 1];
+		grp[grp.size() - 1].coord(stream);
 
 	// End group
 	stream << "}";

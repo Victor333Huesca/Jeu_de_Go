@@ -2,7 +2,12 @@
 
 
 //CONSTRUCTORS
-Goban::Goban(){
+Goban::Goban() :
+	array(nullptr),
+	groups_white(),
+	groups_black(),
+	history()
+{
   array= new Etat[TGOBAN*TGOBAN];
   size_t i=0;
   for (size_t y=0;y<TGOBAN; y++){
@@ -23,12 +28,12 @@ Etat& Goban::operator[](const size_t i)const{
 
 //METHODES
 
-Etat& Goban::coord(const int X,const int Y){//access to element of array with (x,y)
+Etat& Goban::coord(const int& X,const int& Y){//access to element of array with (x,y)
   size_t i = TGOBAN * Y + X;
   return array[i];
 }
 
-const Etat & Goban::coord(const int x, const int y) const
+const Etat& Goban::coord(const int& x, const int& y) const
 {
 	return array[TGOBAN * y + x];
 }
@@ -38,36 +43,46 @@ bool Goban::isMoveLegal(const int& x, const int& y) const
 	return coord(x, y).isPlayable();
 }
 
-void Goban::afficheGroupes(const Etat::VAL & val) const
+std::ostream& Goban::afficheGroupes(std::ostream& stream, const Etat::VAL & val) const
 {
 	if (val == Etat::BLANC)
 	{
-		std::cout << "Groupes blancs : ";
+		stream << "Groupes blancs : ";
 		for (size_t i = 0; i < groups_white.size(); i++)
 		{
-			std::cout  << groups_white[i] << "   ";
+			stream << groups_white[i] << "   ";
 		}
 	}
 	else if (val == Etat::NOIR)
 	{
-		std::cout << "Groupes noirs : ";
+		stream << "Groupes noirs : ";
 		for (size_t i = 0; i < groups_black.size(); i++)
 		{
-			std::cout << groups_black[i] << "   ";
+			stream << groups_black[i] << "   ";
 		}
 	}
 	else
 	{
-		std::cerr << "Error : mauvais groupe demmandé !\n";
+		stream << "Error : mauvais groupe demmandé !\n";
 	}
+
+	return stream;
 }
 
-void Goban::afficheGroupes() const
+std::ostream& Goban::afficheGroupes(std::ostream& stream) const
 {
-	afficheGroupes(Etat::BLANC);
-	std::cout << std::endl;
-	afficheGroupes(Etat::NOIR);
-	std::cout << std::endl;
+	// First White
+	afficheGroupes(stream, Etat::BLANC);
+	stream << std::endl;
+
+	// Then Black
+	afficheGroupes(stream, Etat::NOIR);
+	stream << std::endl << std::endl;
+
+	// And the history for pleasure
+	stream << "Moves history : " << history << std::endl;
+
+	return stream;
 }
 
 void Goban::rechercheGroupes(const Etat::VAL&  val, const bool& verbose)
@@ -75,7 +90,7 @@ void Goban::rechercheGroupes(const Etat::VAL&  val, const bool& verbose)
 	// Get the right group
 	std::vector<Groupe>& groups = (val == Etat::BLANC ? groups_white : groups_black);
 
-	// Reset groups to avoid th fusion issue
+	// Reset groups to avoid fusion issue
 	groups.clear();
 
 	// Browse every goban's intersection
@@ -100,7 +115,7 @@ void Goban::rechercheGroupes(const Etat::VAL&  val, const bool& verbose)
 					{
 						if (verbose)	std::cout << "but which should, son include it.\n";
 						groups[j].push_back(array[i]);
-						j = groups_white.size() + 1;
+						j = groups.size() + 1;
 					}
 					else if (verbose)	std::cout << "because the stone is in an other group.\n";
 				}
@@ -112,10 +127,10 @@ void Goban::rechercheGroupes(const Etat::VAL&  val, const bool& verbose)
 				j++;
 			}
 			// If no group has been found
-			if (j == groups_black.size())
+			if (j == groups.size())
 			{
 				// Create a first group which contain only the current stone
-				groups_black.push_back(Groupe(array[i]));
+				groups.push_back(Groupe(array[i]));
 				if (verbose)	std::cout << "   No group found, a new group has been created.\n";
 			}
 		}
@@ -134,10 +149,20 @@ bool Goban::move(const Etat::VAL& value, const int& x, const int& y)
 	if (isMoveLegal(x, y))
 	{
 		coord(x, y).setVal(value);
+		history.add(Etat(x, y, value));
+
 		return true;
 	}
 
 	return false;
+}
+
+bool Goban::cancel()
+{
+	// For the moment it only delete last stone placed but it should back to step n - 1.
+	coord(history.current().getX(), history.current().getY()).setVal(Etat::VIDE);
+
+	return history.cancel();
 }
 
 //overloadings functions
