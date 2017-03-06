@@ -1,72 +1,37 @@
 #include "Globals.h"
-#include "Main_window.h"
 #include <thread>
+#include "Screens.h"
+#include "Game/Game_window.h"
 
 #define	MULTITHREAD false
 
-void renderingThread(Main_window* _window);
+void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, int* _cur_screen);
 
 
 int main()
 {
 	// Main's variables
-	Main_window window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_WIDTH),	"Jeu de Go");
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_WIDTH),	"Jeu de Go");
+    std::vector<Screen*> screens;
+    int cur_screen = 0;
+
+	// Declare here different screens in order of there use.
+	screens.push_back(new Game_window);
 
 #if defined(_WIN32) || MULTITHREAD
 	// disable window's context
 	window.setActive(false);
 
 	// Launch thread
-	std::thread thread_rendering(renderingThread, &window);
-#else
+	std::thread thread_rendering(renderingThread, &window, &screens, &cur_screen);
+#endif
+
 	window.setFramerateLimit(300);
-#endif
 
-	// Events loop
-	while (window.isOpen())
+	//Main loop
+	while (cur_screen >= 0)
 	{
-		// Look every event
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			// Differents event type
-			switch (event.type)
-			{
-			case sf::Event::Closed:
-				window.close();
-				break;
-			case sf::Event::LostFocus:
-				break;
-			case sf::Event::GainedFocus:
-				break;
-			case sf::Event::MouseButtonReleased:
-				window.click(sf::Mouse::getPosition(window), event.mouseButton.button);
-				break;
-			case sf::Event::MouseWheelScrolled:
-				window.zoom(event.mouseWheelScroll.delta, sf::Mouse::getPosition(window));
-				break;
-			case sf::Event::KeyPressed:
-				window.keyPressed(event.key);
-				break;
-			default:
-				break;
-			}
-		}
-
-		// Treate real-time actions
-
-		// Linux version
-#if !defined(_WIN32) && !MULTITHREAD
-		// Clear the window with a black screen
-		window.clear(sf::Color::Black);
-
-		// Draw everything here
-		window.draw();
-
-		// End of current frame, display everything
-		window.display();
-#endif
-
+		cur_screen = screens[cur_screen]->Run(window);
 	}
 
 	// Wait for the rendering thread has finished its instructions before exit
@@ -74,22 +39,30 @@ int main()
 	thread_rendering.join();
 #endif
 
+	// Free screens
+	for (auto sc : screens)
+	{
+		delete sc;
+	}
+	screens.clear();
+
 	return 0;
 }
 
-void renderingThread(Main_window* _window)
+void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, int* _cur_screen)
 {
 	// Get the render window
-	Main_window& window = *_window;
-	window.setFramerateLimit(300);
+	sf::RenderWindow& window = *_window;
+	std::vector<Screen*>& screens = *_screens;
+	int& cur_screen = *_cur_screen;
 
-	while (window.isOpen())
+	while (cur_screen >= 0)
 	{
 		// Clear the window with a black screen
 		window.clear(sf::Color::Black);
 
 		// Draw everything here
-		window.draw();
+		window.draw(*screens[cur_screen]);
 
 		// End of current frame, display everything
 		window.display();

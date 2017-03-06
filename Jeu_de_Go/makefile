@@ -31,7 +31,7 @@ all : $(EXE)
 # -----     Main    ----- #
 $(EXE) : $(OBJ)
 	@echo All files have been compiled with success.
-	@echo 
+	@echo
 	@echo Start link edition
 	$(CXX) $^ -o $@ $(LIBS)
 
@@ -62,17 +62,20 @@ $(REP_SRC)Engine/Parser.h: $(REP_SRC)Graphics/Globals.h
 
 
 # Graphics
-$(REP_OBJ)Main.o: $(REP_SRC)Graphics/Main.cpp $(REP_SRC)Graphics/Main_window.h $(REP_SRC)Graphics/Globals.h
+$(REP_OBJ)Main.o: $(REP_SRC)Graphics/Main.cpp $(REP_SRC)Graphics/Game/Game_window.h $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Screens.h
 
-$(REP_OBJ)Main_window.o: $(REP_SRC)Graphics/Main_window.cpp $(REP_SRC)Graphics/Main_window.h
-$(REP_SRC)Graphics/Main_window.h: $(REP_SRC)Graphics/Game/Game_window.h $(REP_SRC)Graphics/Globals.h
+$(REP_OBJ)Graphics/Screens.o: $(REP_SRC)Graphics/Screens.cpp $(REP_SRC)Graphics/Screens.h
+$(REP_SRC)Graphics/Screens.h: $(REP_SRC)Graphics/Screen.h $(REP_SRC)Graphics/Game/Game_window.h
+
+$(REP_OBJ)Screen.o: $(REP_SRC)Graphics/Screen.cpp $(REP_SRC)Graphics/Screen.h
+$(REP_SRC)Graphics/Screen.h:
 
 # Graphics --> Game
 $(REP_OBJ)Board.o: $(REP_SRC)Graphics/Game/Board.cpp $(REP_SRC)Graphics/Game/Board.h
 $(REP_SRC)Graphics/Game/Board.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Square.h $(REP_SRC)Engine/Goban.h
 
 $(REP_OBJ)Game_window.o: $(REP_SRC)Graphics/Game/Game_window.cpp $(REP_SRC)Graphics/Game/Game_window.h
-$(REP_SRC)Graphics/Game/Game_window.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Board.h $(REP_SRC)Graphics/Game/Infos.h
+$(REP_SRC)Graphics/Game/Game_window.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Board.h $(REP_SRC)Graphics/Game/Infos.h $(REP_SRC)Graphics/Screen.h
 
 $(REP_OBJ)Infos.o: $(REP_SRC)Graphics/Game/Infos.cpp $(REP_SRC)Graphics/Game/Infos.h
 $(REP_SRC)Graphics/Game/Infos.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Square.h $(REP_SRC)Graphics/Game/Timer.h

@@ -17,8 +17,11 @@
   - Il doit mettre le jeu en **pause**.
   - On doit pouvoir **quitter le jeu**.
 * **Ajouter** un historque des mouvements.
+* **Ajouter** un cercle de marquage du dernier coup joué.
+* **Ajouter** des raccourcis clavier.
 
 ##Autres
 * **Créer** une *pause*.
 * **Ajouter** des vrais graphismes.
-* **Ajouter** quelques musiques d'ambiance.
+* **Ajouter** quelques musiques d'ambiance .
+
