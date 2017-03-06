@@ -36,8 +36,28 @@ bool Groupe::contain(const Etat & stone) const
 		}
 	}
 
-	// So it's obviously not include
+	// So it's not include
 	return false;
+}
+
+bool Groupe::voisin(const Groupe& group) const{
+	size_t i=0;
+	while (i< group.size())
+	{
+		if(this->shouldContain(group[i]) )
+			return true;
+
+		i++;
+	}
+	return false;
+}
+
+void Groupe::fusion(const Groupe& group){
+	Etat tmp;
+	for(size_t i=0; i<group.size();i++){
+		tmp=group[i];
+		this->push_back(tmp);
+	}
 }
 
 std::ostream & operator<<(std::ostream & stream, const Groupe & grp)

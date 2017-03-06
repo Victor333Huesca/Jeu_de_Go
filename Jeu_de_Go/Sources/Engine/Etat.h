@@ -8,7 +8,8 @@ public :
 		VIDE,
 		NOIR,
 		BLANC,
-		KO
+		KOWHITE,
+		KOBLACK
 	};
 
 	//CONSTRUCTORS
