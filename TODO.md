@@ -19,6 +19,7 @@
 * **Ajouter** un historque des mouvements.
 * **Ajouter** un cercle de marquage du dernier coup joué.
 * **Ajouter** des raccourcis clavier.
+* **Ajouter** un message d'info si il y a un atari et si un joueur place une pierre sur un ko.
 
 ##Autres
 * **Créer** une *pause*.
