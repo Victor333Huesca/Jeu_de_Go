@@ -62,8 +62,7 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value, const sf::Mouse
 					engine.rechercheGroupes();
 					engine.afficheGroupes(std::cout);
 					//ELIMINATE GROUPS
-					engine.eliminateGroups(transform(value));
-
+					engine.eliminateOppGroups(transform(value));
 					// Change square's value
 					load();
 

@@ -34,7 +34,7 @@ public :
 
 	// Methodes
 	bool estVoisine(const Etat& piece) const;
-	bool isPlayable() const;
+	bool isPlayable(const VAL& value) const;
 	bool isAStone() const;
 	bool isAStone(const VAL& value) const;
 	std::ostream& coord(std::ostream& os) const;

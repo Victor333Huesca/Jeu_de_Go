@@ -1,8 +1,25 @@
 #include "Goban.h"
 //PRIVATE METHODS
-bool Goban::isMoveLegal(const int& x, const int& y) const
+bool Goban::isMoveLegal(const Etat::VAL& value, const int& x, const int& y) const
 {
-	return coord(x, y).isPlayable();
+	if (value == Etat::BLANC){
+		if (coord(x, y).getVal() == Etat::KOWHITE){
+			return legalEvenKO(value,x,y);
+		}
+	}
+	if (value == Etat::NOIR){
+		if (coord(x, y).getVal() == Etat::KOWHITE){
+			return legalEvenKO(value,x,y);
+		}
+	}
+	return coord(x, y).isPlayable(value);
+}
+
+bool Goban::legalEvenKO(const Etat::VAL& value, const int& x, const int& y) const
+{
+	Goban GOB(*this);
+	GOB.rechercheGroupes();
+	return GOB.eliminateOppGroups(value);
 }
 
 //CONSTRUCTORS
@@ -24,6 +41,20 @@ Goban::Goban() :
   }
 }
 
+Goban::Goban(const Goban& goban){
+	if (&goban != this){
+		array= new Etat[TGOBAN*TGOBAN];
+		size_t i=0;
+		for (size_t y=0;y<TGOBAN; y++){
+			for (size_t x=0;x<TGOBAN; x++){
+				array[i].setX(x);
+				array[i].setY(y);
+				array[i].setVal(goban.coord(x,y).getVal());
+				i++;
+			}
+		}
+	}
+}
 //overloadings methodes
 
 Etat& Goban::operator[](const size_t i)const{
@@ -278,7 +309,8 @@ Groupe Goban::listOfLiberties(const Etat& stone){
   }
   return liberties;
 }
-void Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
+bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
+	bool resultat=false;//FALSE if KO stay effective and TRUE if it's deleted
   Groupe liberties;
   bool count =0;
   size_t j=0,//index of stones in a group
@@ -300,27 +332,44 @@ void Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
       j++;
     }
     if (count==0){//group have to be eliminate from goban
-      for (size_t z=0; z< GroupsColor[i].size();z++){
-        this->coord(GroupsColor[i][z].getX(),GroupsColor[i][z].getY()).setVal(Etat::VIDE);
-      }
+			if (GroupsColor[i].size() == 1){//1)control if KO have to been added. 2) control if KO have is removed or not
+				if (GroupsColor[i][0].getVal() == Etat::NOIR){//IF KO BLACK
+					for (size_t z=0; z< GroupsColor[i].size();z++){
+						this->coord(GroupsColor[i][z].getX(),GroupsColor[i][z].getY()).setVal(Etat::KOBLACK);
+					}
+				}
+				else{//IF KOWHITE
+					for (size_t z=0; z< GroupsColor[i].size();z++){
+						this->coord(GroupsColor[i][z].getX(),GroupsColor[i][z].getY()).setVal(Etat::KOWHITE);
+					}
+				}
+			}
+			else{//ELIMINATE GROUP
+				resultat=true;
+				for (size_t z=0; z< GroupsColor[i].size();z++){
+        	this->coord(GroupsColor[i][z].getX(),GroupsColor[i][z].getY()).setVal(Etat::VIDE);
+      	}
+			}
       for (size_t h=i; h< GroupsColor.size()-1;h++){
         GroupsColor[h]=GroupsColor[h+1];//move groups backward
       }
       GroupsColor.erase(GroupsColor.begin()+GroupsColor.size()-1);//delete the last group after move groups back
     }
   }
+	return resultat;
 }
-void Goban::eliminateGroups(const Etat::VAL& value){
+bool Goban::eliminateOppGroups(const Etat::VAL& value){
 	if (value== Etat::BLANC)
-		eliminateGroups(groups_black);
+		return eliminateGroups(groups_black);
 	else
-		eliminateGroups(groups_white);
+		return eliminateGroups(groups_white);
 }
 
 //other's methods
 bool Goban::move(const Etat::VAL& value, const int& x, const int& y)
 {
-	if (isMoveLegal(x, y))
+	eliminateOppositeKO(value);
+	if (isMoveLegal(value, x, y))
 	{
 		coord(x, y).setVal(value);
 		history.add(Etat(x, y, value));
@@ -338,6 +387,20 @@ bool Goban::cancel()
 
 	return history.cancel();
 }
+  void Goban::eliminateOppositeKO(const Etat::VAL& value){
+		if (value == Etat::BLANC){
+			for (size_t i=0; i< TGOBAN*TGOBAN; i++){
+				if (array[i].getVal()== Etat::KOBLACK)
+					array[i].setVal(Etat::VIDE);
+			}
+		}
+		else {
+			for (size_t i=0; i< TGOBAN*TGOBAN; i++){
+				if (array[i].getVal()== Etat::KOWHITE)
+					array[i].setVal(Etat::VIDE);
+			}
+		}
+	}
 
 //overloadings functions
 std::ostream& operator<<(std::ostream& os, const Goban& goban)
