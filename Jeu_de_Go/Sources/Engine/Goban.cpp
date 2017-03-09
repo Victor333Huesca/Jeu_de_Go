@@ -2,6 +2,8 @@
 //PRIVATE METHODS
 bool Goban::isMoveLegal(const Etat::VAL& value, const int& x, const int& y) const
 {
+	Etat stone (x, y, value);
+
 	if (value == Etat::BLANC){
 		if (coord(x, y).getVal() == Etat::KOWHITE){
 			return legalEvenKO(value,x,y);
@@ -12,6 +14,7 @@ bool Goban::isMoveLegal(const Etat::VAL& value, const int& x, const int& y) cons
 			return legalEvenKO(value,x,y);
 		}
 	}
+	if(isSuicide(stone)) return false;
 	return coord(x, y).isPlayable(value);
 }
 
@@ -76,6 +79,15 @@ const Etat& Goban::coord(const int& x, const int& y) const
 size_t Goban::ctoi(const size_t X,const size_t Y)const{//convert coordonate of goban in index for the array
   return TGOBAN*Y+X;
 }
+
+//Accesseur
+std::vector<Groupe> Goban::getGroupsWhite() const{
+	return this->groups_white;
+}
+std::vector<Groupe> Goban::getGroupsBlack() const{
+	return this->groups_black;
+}
+
 
 std::ostream& Goban::afficheGroupes(std::ostream& stream, const Etat::VAL & val) const
 {
@@ -184,7 +196,7 @@ void Goban::fusionGroupes(std::vector<Groupe >& group){//fusion of eventual neig
 if (group.size()>0){
 	for (size_t i=0; i< (group.size()-1);i++){//for each group
 		for (size_t j=i+1; j< group.size();j++){
-			if (group[i].voisin(group[j]) ){
+			if (group[i].voisin(group[j])){
 				group[i].fusion(group[j]);
 				group.erase(group.begin()+j);
 			}
@@ -199,7 +211,7 @@ void Goban::DefineStone(Etat& stone, size_t x, size_t y)const{//SAVE THE VALUE I
   stone.setY(y);
   stone.setVal(array[ctoi(x,y)].getVal());
 }
-Groupe Goban::listOfLiberties(const Etat& stone){
+Groupe Goban::listOfLiberties(const Etat& stone) const{
   Etat tmpS;
   Groupe liberties;
   if (stone.getX()==TGOBAN-1 || stone.getY()==TGOBAN-1 || stone.getX()==0 || stone.getY()==0){//IF IN BORDURES
@@ -363,6 +375,63 @@ bool Goban::eliminateOppGroups(const Etat::VAL& value){
 		return eliminateGroups(groups_black);
 	else
 		return eliminateGroups(groups_white);
+}
+
+bool Goban::isSuicide(const Etat& fStone) const{
+	Groupe liberties;
+	Etat::VAL oppositeColor;
+	if(fStone.getVal() == Etat::BLANC){
+		oppositeColor = Etat::NOIR;
+	}
+	else oppositeColor = Etat::BLANC;
+  size_t i=0,j=0;//index of liberties
+  liberties = listOfLiberties(fStone);
+  while (i < liberties.size()){//if there's an empty liberty
+    if (liberties[i].getVal()==Etat::VIDE || liberties[i].getVal()== Etat::KOWHITE || liberties[i].getVal()== Etat::KOBLACK)
+      return false;
+    i++;
+  }
+  //an ipotetic instance of the goban
+  std::vector<Groupe> GroupsActualColor;
+  std::vector<Groupe> GroupsOpponentColor;
+  Goban goban2(*this);
+	bool verbose;
+	goban2.rechercheGroupes(fStone.getVal(),verbose);
+	goban2.rechercheGroupes(oppositeColor,verbose);
+
+	if(fStone.getVal() == Etat::BLANC){
+		GroupsActualColor = goban2.getGroupsWhite();
+		GroupsOpponentColor = goban2.getGroupsBlack();
+	}
+	else{
+		GroupsActualColor = goban2.getGroupsBlack();
+		GroupsOpponentColor = goban2.getGroupsWhite();
+	}
+	std::vector<Groupe> GroupsCopieActualColor = GroupsActualColor;
+	std::vector<Groupe> GroupsCopieOpponentColor = GroupsOpponentColor;
+	//poser la pierre
+	goban2.coord(fStone.getX(),fStone.getY()).setVal(fStone.getVal());
+	//fusion de la pierre avec un groupe voisin
+	std::vector<Groupe> GroupsCopieAverifier;
+	goban2.fusionGroupes(GroupsActualColor);
+	//eliminagion des groupe
+	goban2.eliminateOppGroups(oppositeColor);
+
+	if(fStone.getVal() == Etat::BLANC){
+		GroupsCopieAverifier = goban2.getGroupsWhite();
+		GroupsCopieOpponentColor = goban2.getGroupsBlack();
+	}
+	else {
+		GroupsCopieAverifier = goban2.getGroupsBlack();
+		GroupsCopieOpponentColor = goban2.getGroupsWhite();
+	}
+
+  if (GroupsOpponentColor.size()>GroupsCopieOpponentColor.size()) return false;//eliminate opponent's groups
+  else {
+		goban2.eliminateOppGroups(fStone.getVal());
+    if(GroupsCopieAverifier.size()==GroupsActualColor.size()) return false;
+	}
+  return true;
 }
 
 //other's methods

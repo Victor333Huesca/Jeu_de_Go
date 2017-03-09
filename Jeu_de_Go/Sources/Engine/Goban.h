@@ -29,6 +29,8 @@ public:
   size_t ctoi(const size_t,const size_t)const;//convert coordonate of goban in index for the array
 
   //METHODES
+  std::vector<Groupe> getGroupsWhite() const;
+  std::vector<Groupe> getGroupsBlack() const;
 
   //GROUPS
   std::ostream& afficheGroupes(std::ostream& stream, const Etat::VAL& val) const;
@@ -39,9 +41,11 @@ public:
 
   //LIBERTIES AND ELIMINATION
   void DefineStone(Etat&, size_t, size_t) const;//define a stone with the value of the stone in the goban at (x,y)
-  Groupe listOfLiberties(const Etat&);//define list of stones that are the liberties of stone passed in parametre
+  Groupe listOfLiberties(const Etat&) const;//define list of stones that are the liberties of stone passed in parametre
   bool eliminateGroups(std::vector<Groupe >& GroupsColor);//eliminate from goban the groups tha don't have liberties and return true if KO is invalidate
   bool eliminateOppGroups(const Etat::VAL& value);//eliminate the opposite color's groups and return true if KOhas been invalidate
+
+  bool isSuicide(const Etat&) const;
 
   //LAWS FOR PASSING FROM STATE N TO N+1
   bool move(const Etat::VAL& value, const int& x, const int& y);  // Return true if the move has been done, false otherwise.
