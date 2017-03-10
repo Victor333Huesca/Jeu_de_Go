@@ -2,20 +2,27 @@
 //PRIVATE METHODS
 bool Goban::isMoveLegal(const Etat::VAL& value, const int& x, const int& y) const
 {
-	Etat stone (x, y, value);
+	bool ko,suicide;
+	//IS IT AN EMPTY CASE
+	if (coord(x, y).isPlayable(value)){
+		//IS IT A SUICIDE
+		Etat stone (x, y, value);
+		suicide=isSuicide(stone);
+		//Is it legal even if there's a KO
+		if (value == Etat::BLANC){
+			if (coord(x, y).getVal() == Etat::KOWHITE){
+				ko= legalEvenKO(value,x,y);
+			}
+		}
+		else {
+			if (coord(x, y).getVal() == Etat::KOWHITE){
+				ko= legalEvenKO(value,x,y);
+			}
+		}
+	}
+	else return false;
 
-	if (value == Etat::BLANC){
-		if (coord(x, y).getVal() == Etat::KOWHITE){
-			return legalEvenKO(value,x,y);
-		}
-	}
-	if (value == Etat::NOIR){
-		if (coord(x, y).getVal() == Etat::KOWHITE){
-			return legalEvenKO(value,x,y);
-		}
-	}
-	if(isSuicide(stone)) return false;
-	return coord(x, y).isPlayable(value);
+	return !(ko || suicide);
 }
 
 bool Goban::legalEvenKO(const Etat::VAL& value, const int& x, const int& y) const
@@ -379,59 +386,60 @@ bool Goban::eliminateOppGroups(const Etat::VAL& value){
 
 bool Goban::isSuicide(const Etat& fStone) const{
 	Groupe liberties;
-	Etat::VAL oppositeColor;
+	Etat::VAL actualColor;
 	if(fStone.getVal() == Etat::BLANC){
-		oppositeColor = Etat::NOIR;
+		actualColor = Etat::BLANC;
 	}
-	else oppositeColor = Etat::BLANC;
-  size_t i=0,j=0;//index of liberties
+	else actualColor = Etat::NOIR;
+
+  size_t i=0;//index of liberties
   liberties = listOfLiberties(fStone);
   while (i < liberties.size()){//if there's an empty liberty
     if (liberties[i].getVal()==Etat::VIDE || liberties[i].getVal()== Etat::KOWHITE || liberties[i].getVal()== Etat::KOBLACK)
       return false;
     i++;
+		std::cout<<"libero"<<std::endl;
   }
-  //an ipotetic instance of the goban
-  std::vector<Groupe> GroupsActualColor;
+  //an Hypotetic instance of the goban
   std::vector<Groupe> GroupsOpponentColor;
   Goban goban2(*this);
-	bool verbose;
-	goban2.rechercheGroupes(fStone.getVal(),verbose);
-	goban2.rechercheGroupes(oppositeColor,verbose);
-
-	if(fStone.getVal() == Etat::BLANC){
-		GroupsActualColor = goban2.getGroupsWhite();
+	if(actualColor == Etat::BLANC){
 		GroupsOpponentColor = goban2.getGroupsBlack();
 	}
 	else{
-		GroupsActualColor = goban2.getGroupsBlack();
 		GroupsOpponentColor = goban2.getGroupsWhite();
 	}
-	std::vector<Groupe> GroupsCopieActualColor = GroupsActualColor;
-	std::vector<Groupe> GroupsCopieOpponentColor = GroupsOpponentColor;
-	//poser la pierre
+
+	//put the stone
 	goban2.coord(fStone.getX(),fStone.getY()).setVal(fStone.getVal());
-	//fusion de la pierre avec un groupe voisin
-	std::vector<Groupe> GroupsCopieAverifier;
-	goban2.fusionGroupes(GroupsActualColor);
-	//eliminagion des groupe
-	goban2.eliminateOppGroups(oppositeColor);
+	//searching groups in goban2
+	goban2.rechercheGroupes();
+	//opponent group elimination after putting the fStone in goban2
+	goban2.eliminateOppGroups(actualColor);
+	std::vector<Groupe> GroupsOpponentColorAfter;
+	std::vector<Groupe> GroupsToCheck;
+	if(actualColor == Etat::BLANC){
+		GroupsToCheck = goban2.getGroupsWhite();
+		GroupsOpponentColorAfter = goban2.getGroupsBlack();
+	}
+	else{
+		GroupsToCheck = goban2.getGroupsBlack();
+		GroupsOpponentColorAfter = goban2.getGroupsWhite();
+	}
 
-	if(fStone.getVal() == Etat::BLANC){
-		GroupsCopieAverifier = goban2.getGroupsWhite();
-		GroupsCopieOpponentColor = goban2.getGroupsBlack();
+//IF I KILL AN OPPONENT IT'S NOT SUICIDE, ELSE IF I KILL MY SELF IT'S SUICIDE
+  if (GroupsOpponentColorAfter.size()<GroupsOpponentColor.size()) return false;//eliminate opponent's groups
+  else {//if i kill myself it's suicide
+			if (actualColor == Etat::BLANC){
+				goban2.eliminateOppGroups(Etat::NOIR);
+	    	if(GroupsToCheck.size()!=goban2.getGroupsWhite().size()) return true;
+			}
+			else{
+				goban2.eliminateOppGroups(Etat::BLANC);
+	    	if(GroupsToCheck.size()!=goban2.getGroupsBlack().size()) return true;
+			}
 	}
-	else {
-		GroupsCopieAverifier = goban2.getGroupsBlack();
-		GroupsCopieOpponentColor = goban2.getGroupsWhite();
-	}
-
-  if (GroupsOpponentColor.size()>GroupsCopieOpponentColor.size()) return false;//eliminate opponent's groups
-  else {
-		goban2.eliminateOppGroups(fStone.getVal());
-    if(GroupsCopieAverifier.size()==GroupsActualColor.size()) return false;
-	}
-  return true;
+  return false;
 }
 
 //other's methods
