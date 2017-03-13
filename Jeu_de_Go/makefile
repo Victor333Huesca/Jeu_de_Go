@@ -1,5 +1,5 @@
 # -----   Options   ----- #
-CXXFLAGS = -std=c++14
+CXXFLAGS = -std=c++14 -g
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system -pthread
 
 # -----  Locations  ----- #

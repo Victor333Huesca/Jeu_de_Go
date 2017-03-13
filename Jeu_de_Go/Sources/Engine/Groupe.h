@@ -11,6 +11,9 @@ public:
 
 	bool shouldContain(const Etat& stone) const;
 	bool contain(const Etat& stone) const;
+
+	bool voisin(const Groupe& group) const;
+	void fusion(const Groupe& group);
 };
 
 // Overload streams

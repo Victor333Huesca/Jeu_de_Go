@@ -93,14 +93,20 @@ bool Etat::estVoisine(const Etat & piece) const
 	return false;
 }
 
-bool Etat::isPlayable() const
+bool Etat::isPlayable(const VAL& value) const
 {
-	return val == VIDE;
+  if (value == NOIR){
+	 return (val == VIDE || val == KOWHITE);
+ }
+  else
+  {
+    return (val == VIDE || val == KOBLACK);
+  }
 }
 
 bool Etat::isAStone() const
 {
-	return val != VIDE && val != KO;
+	return val != VIDE && val != KOWHITE && val != KOBLACK;
 	//return val == BLANC || val == NOIR;
 }
 
@@ -119,8 +125,8 @@ std::ostream & Etat::coord(std::ostream & os) const
 //OVERLOADINGS functions
 
 std::ostream& operator<<(std::ostream& os, const Etat& E){
-  os << 
-	  (E.getVal() == Etat::BLANC ? "Blanc " : "Noir ") << 
+  os <<
+	  (E.getVal() == Etat::BLANC ? "Blanc " : "Noir ") <<
 	  "(" << E.getX() << "," << E.getY() << ")";
 
   return os;
