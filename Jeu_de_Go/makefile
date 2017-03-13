@@ -28,6 +28,13 @@ INCLUDE =
 # -----   Target    ----- #
 all : $(EXE)
 
+# ---- See variables ---- #
+obj :
+	@echo $(OBJ)
+
+src :
+	@echo $(SRC)
+
 # -----     Main    ----- #
 $(EXE) : $(OBJ)
 	@echo All files have been compiled with success.
@@ -69,6 +76,12 @@ $(REP_SRC)Graphics/Screens.h: $(REP_SRC)Graphics/Screen.h $(REP_SRC)Graphics/Gam
 
 $(REP_OBJ)Screen.o: $(REP_SRC)Graphics/Screen.cpp $(REP_SRC)Graphics/Screen.h
 $(REP_SRC)Graphics/Screen.h:
+
+$(REP_OBJ)Menu.o: $(REP_SRC)Graphics/Menu.cpp $(REP_SRC)Graphics/Menu.h
+$(REP_SRC)Graphics/Menu.h: $(REP_SRC)Graphics/Screen.h $(REP_SRC)Graphics/Choice.h
+
+$(REP_OBJ)Choice.o: $(REP_SRC)Graphics/Choice.cpp $(REP_SRC)Graphics/Choice.h
+$(REP_SRC)Graphics/Choice.h:
 
 # Graphics --> Game
 $(REP_OBJ)Board.o: $(REP_SRC)Graphics/Game/Board.cpp $(REP_SRC)Graphics/Game/Board.h

@@ -79,12 +79,12 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value, const sf::Mouse
 			result = false;
 		}
 	}
-	
+
 	return result;
 }
 
 void Board::zoom(const float delta, const sf::Vector2i& pos)
-{	
+{
 	if (delta > 0)
 	{
 		// Zoom in if the view isn't currently at its minimum
@@ -237,7 +237,7 @@ void Board::viewBound()
 	sf::Vector2f offset;
 
 	const sf::FloatRect pos(
-		view.getCenter().x - view.getSize().x / 2, 
+		view.getCenter().x - view.getSize().x / 2,
 		view.getCenter().y - view.getSize().y / 2,
 		view.getSize().x, view.getSize().y);
 

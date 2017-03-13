@@ -18,9 +18,9 @@ const Etat& History::current() const
 
 const Etat& History::previous()
 {
-	if (_current == begin()) 
+	if (_current == begin())
 		return *_current;
-	else 
+	else
 		return *--_current;
 }
 
@@ -66,7 +66,7 @@ bool History::cancel()
 
 void History::clear()
 {
-	clear(); 
+	clear();
 	_current = begin();
 }
 
