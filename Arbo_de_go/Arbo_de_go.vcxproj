@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{B7CCEC62-648B-4CB6-8A8F-FE2BA5AEF12B}</ProjectGuid>
-    <RootNamespace>Arbre_go</RootNamespace>
+    <ProjectGuid>{F058EE6C-6DF7-4344-B19C-C8319D38FED7}</ProjectGuid>
+    <RootNamespace>Arbo_de_go</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -75,12 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:/visualS2k17/SFML-32-bit/inlcude/</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <AdditionalLibraryDirectories>D:/visualS2k17/SFML-32-bit/lib/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib; sfml-window-d.lib; sfml-system-d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -116,20 +111,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="arbre.cpp" />
-    <ClCompile Include="Etat.cpp" />
-    <ClCompile Include="Goban.cpp" />
-    <ClCompile Include="Groupe.cpp" />
-    <ClCompile Include="History.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="arbre.h" />
-    <ClInclude Include="Etat.h" />
-    <ClInclude Include="Globals.h" />
-    <ClInclude Include="Goban.h" />
-    <ClInclude Include="Groupe.h" />
-    <ClInclude Include="History.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

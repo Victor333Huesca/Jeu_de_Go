@@ -1,13 +1,13 @@
-#include"arbre.h"   //Police 10 sinon c’est trop grand !
+#include"Arbre.h"   //Police 10 sinon c’est trop grand !
 #include <iostream> // la bite 
 //Constructors       //oui
 
-Arbre::Arbre() : gob(), nbF(0)
+Arbre::Arbre() : gob(0), nbF(0)
 {
 	fils[0] = NULL;
 }
 //par copie
-Arbre::Arbre(const Arbre& n) : gob(n.getGob()), nbF(n.getNbF())
+}Arbre::Arbre(const Arbre& n) : gob(n.getGob()), nbF(n.getNbF())
 {
 	for (size_t i = 0; i < nbF; i++)
 	{
@@ -15,17 +15,15 @@ Arbre::Arbre(const Arbre& n) : gob(n.getGob()), nbF(n.getNbF())
 	}
 
 
-	Arbre::Arbre(Goban gob)
+	Arbre::Arbre(const size_t _gob) : gob(_gob), nbF(0)
 	{
-		this->gob(gob);
-		this->nbF(0);
 		for (size_t i = 0; i < nbF; i++)
 		{
 			fils[i] = NULL;
 		}
 	}
 
-	Arbre::Arbre(Goban::Goban& _gob, const size_t _nbF) :
+	Arbre::Arbre(const size_t _gob, const size_t _nbF) :
 		gob(_gob), nbF(_nbF)
 	{
 		for (size_t i = 0; i < nbF; i++)
@@ -68,7 +66,7 @@ Arbre::Arbre(const Arbre& n) : gob(n.getGob()), nbF(n.getNbF())
 		return this->nbF;
 	}
 
-	size_t Arbre::getGob() const
+	Goban Arbre::getGob() const
 	{
 		return this->gob;
 	}
@@ -85,7 +83,7 @@ Arbre::Arbre(const Arbre& n) : gob(n.getGob()), nbF(n.getNbF())
 		this->nbF = _nbF;
 	}
 
-	void Arbre::setGob(size_t _gob)
+	void Arbre::setGob(Goban _gob)
 	{
 		this->gob = _gob;
 	}
@@ -168,7 +166,7 @@ Arbre::Arbre(const Arbre& n) : gob(n.getGob()), nbF(n.getNbF())
 		std::cout << this->getGob() << std::endl;
 	}
 
-	voi Arbre::printArbo()
+	void Arbre::printArbo(const Arbre&)
 	{
 		//Utiliser dotty ou latex ??
 		std::cout << this->getGob() << std::endl;
