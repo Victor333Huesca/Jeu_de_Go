@@ -335,16 +335,16 @@ bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
   size_t j=0,//index of stones in a group
          k=0;//index of liberties
   for (size_t i=0; i< GroupsColor.size();i++){//for each group
+	  estLibre = 0;
     liberties.clear();
     j=0;
     while( !estLibre && j< GroupsColor[i].size()){//for each stone of a group
-			count=0;
 		  liberties=listOfLiberties(GroupsColor[i][j]);//define the list of liberties of the stone
       k=0;
 			//std::cout<<"liberté: "<<liberties<<std::endl;;
       while (!estLibre && k<liberties.size()){
         if (liberties[k].getVal()==Etat::VIDE || liberties[k].getVal()==Etat::KOWHITE || liberties[k].getVal()==Etat::KOBLACK){
-          libre=1;
+          estLibre=1;
         }
         k++;
       }
@@ -369,7 +369,7 @@ bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
         GroupsColor[h]=GroupsColor[h+1];//move groups backward
       }
       GroupsColor.erase(GroupsColor.begin()+GroupsColor.size()-1);//delete the last group after move groups back
-			i--;
+			i--; //test
     }
   }
 	return resultat;
