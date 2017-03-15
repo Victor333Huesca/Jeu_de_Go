@@ -2,7 +2,7 @@
 #define ARBRE_H
 #include<iostream>
 #include<vector>
-#include”Goban.h”
+#include"Goban.h"
 
 class Arbre {
 private:
@@ -14,9 +14,9 @@ public:
 	//Constructors
 	Arbre();  //Constructeur par défaut
 	Arbre(const Arbre&); //Constructeur par copie
-	Arbre(const Goban&); //Constructeur 
+	Arbre(Goban&); //Constructeur 
 	Arbre(const size_t); //Constructeur 
-	Arbre(const size_t, const size_t);
+	Arbre(Goban&, const size_t);
 	Arbre(const size_t, const size_t, Arbre * fils[]);
 
 	//Destructors
@@ -33,7 +33,7 @@ public:
 	//Setters
 	void setFils(Arbre*, const size_t);
 	void setNbF(size_t);
-	void setgob(Goban);
+	void setGob(Goban);
 	void setInfo(bool);
 
 	//overloadings methodes

@@ -21,13 +21,16 @@
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Jeu_de_Go\Sources\Engine\Etat.cpp">
+    <ClCompile Include="Etat.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Jeu_de_Go\Sources\Engine\Goban.cpp">
+    <ClCompile Include="Goban.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Jeu_de_Go\Sources\Engine\Groupe.cpp">
+    <ClCompile Include="Groupe.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="History.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,13 +38,19 @@
     <ClInclude Include="arbre.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Jeu_de_Go\Sources\Engine\Etat.h">
+    <ClInclude Include="Etat.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Jeu_de_Go\Sources\Engine\Goban.h">
+    <ClInclude Include="Goban.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Jeu_de_Go\Sources\Engine\Groupe.h">
+    <ClInclude Include="Groupe.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="History.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

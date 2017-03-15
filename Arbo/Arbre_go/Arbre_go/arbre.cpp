@@ -2,12 +2,12 @@
 #include <iostream> // la bite 
 //Constructors       //oui
 
-Arbre::Arbre() : gob(0), nbF(0)
+Arbre::Arbre() : gob(), nbF(0)
 {
 	fils[0] = NULL;
 }
 //par copie
-}Arbre::Arbre(const Arbre& n) : gob(n.getGob()), nbF(n.getNbF())
+Arbre::Arbre(const Arbre& n) : gob(n.getGob()), nbF(n.getNbF())
 {
 	for (size_t i = 0; i < nbF; i++)
 	{
@@ -15,15 +15,17 @@ Arbre::Arbre() : gob(0), nbF(0)
 	}
 
 
-	Arbre::Arbre(const size_t _gob) : gob(_gob), nbF(0)
+	Arbre::Arbre(Goban gob)
 	{
+		this->gob(gob);
+		this->nbF(0);
 		for (size_t i = 0; i < nbF; i++)
 		{
 			fils[i] = NULL;
 		}
 	}
 
-	Arbre::Arbre(const size_t _gob, const size_t _nbF) :
+	Arbre::Arbre(Goban::Goban& _gob, const size_t _nbF) :
 		gob(_gob), nbF(_nbF)
 	{
 		for (size_t i = 0; i < nbF; i++)
