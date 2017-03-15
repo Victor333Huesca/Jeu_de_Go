@@ -7,11 +7,10 @@
 
 void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, int* _cur_screen);
 
-
 int main()
 {
 	// Main's variables
-	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_WIDTH),	"Jeu de Go");
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_HEIGHT), "Jeu de Go");
     std::vector<Screen*> screens;
     int cur_screen = 0;
 
@@ -45,6 +44,8 @@ int main()
 		delete sc;
 	}
 	screens.clear();
+
+	window.close();
 
 	return 0;
 }

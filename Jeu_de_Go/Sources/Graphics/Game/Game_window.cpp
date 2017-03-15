@@ -79,6 +79,10 @@ int Game_window::Run(sf::RenderWindow &window)
 		window.display();
 #endif
 	}
+
+
+	// Not suppose to reach here but just in case
+	return -1;
 }
 
 void Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, const sf::Mouse::Button & type)
@@ -121,9 +125,22 @@ void Game_window::zoom(const float delta, sf::Vector2i pos, sf::RenderWindow& wi
 
 void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 {
-	if (key.control && key.code == sf::Keyboard::Z)
+	if (key.control)
 	{
-		// Ctrl + Z
-		board.cancel();
+		// Ctrl + ...
+		if (key.code == sf::Keyboard::Z)
+		{
+			// Ctrl + Z
+			board.cancel();
+		}
+		else if (key.code == sf::Keyboard::Y)
+		{
+			// Ctrl + Y
+			// It will be more complecated than I expected.
+		}
+	}
+	else
+	{
+		// Not Ctrl
 	}
 }

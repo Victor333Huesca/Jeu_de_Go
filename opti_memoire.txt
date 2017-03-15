@@ -1,0 +1,72 @@
+19 x 19 x 2 bits pour le goban --> 90 octets + 2 bit.
+On a donc 4 possibilitées pour chaque intersection (Blanc / Noir / Vide / KO).
+
+Stock ligne par ligne
+
+Total : 90 octets et 2 bits. (pour le cas max)
+Total : 16 octets et 0 bits. (pour le cas 8x8)
+
+
+
+VIDE : 0  --> 00
+NOIR : 1  --> 01
+BLANC : 2 --> 10
+KO : 3 --> 11
+
+10011001 | 00000000 |
+00011000 | 00000000 |
+00000000 | 00000000 |
+00000000 | 00000000 |
+00000000 | 00000000 |
+00000000 | 00000000 |
+00110000 | 00000000 |
+00000000 | 00000000 |
+
+01010101 | 01101010 |
+10100000 | 00011000 |
+00000000 | 00000000 |
+00xxxxxx |
+
+
+01010101 | 10101010 |
+10100000 | 00011000 |
+00000000 | 00000000 |
+xxxxxx44 |
+
+ | 
+
+
+Lecture depuis la mémoire : (compression)
+
+nb_lu <-- 0;
+nombre_intersections <-- TAILLE * TAILLE * 2;
+
+// Lire les Intersection
+tant que nb_lu < nombre_intersections
+	tmp <-- lire 2 bits;
+
+	Si tmp == KO faire
+		coord_KO <-- tmp;
+	Sinon faire
+		goban[nb_lu / nombre_intersections][nb_lu % nombre_intersections] <-- convertirVersEtat(tmp);
+	Fin si
+
+	nb_lu++;
+Fin tant que
+
+
+
+Ecriture vers la mémoire : (decompression)
+
+nb_ecrit <-- 0;
+nombre_intersections <-- TAILLE * TAILLE * 2;
+
+// Ecrire les Intersection
+tant que nb_ecrit < nombre_intersections
+	tmp <-- conversionVers2bits(goban[nb_lu / nombre_intersections][nb_lu % nombre_intersections]);
+	flux < 2;
+	flux += ecrire(tmp);
+	nb_ecrit++;
+Fin tant que
+
+

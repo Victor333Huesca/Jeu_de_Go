@@ -68,9 +68,9 @@ public:
 	* @brief Display the history
 	*
 	* Display the history on a pasted stream.
-	* 
+	*
 	* @param stream : stream where display
-	* 
+	*
 	* @return The stream to chain display
 	*/
 	std::ostream& display(std::ostream& stream) const;
@@ -87,7 +87,7 @@ private:
 *
 * @param stream : stream where display
 * @param hist : history to display
-* 
+*
 * @return The stream to chain display
 */
 std::ostream& operator<<(std::ostream& stream, const History& hist);
