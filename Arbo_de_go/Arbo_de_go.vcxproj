@@ -75,7 +75,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>D:/visualS2k17/SFML/include/</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>D:/visualS2k17/SFML/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -111,6 +116,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Jeu_de_Go\Sources\Engine\Etat.cpp" />
+    <ClCompile Include="..\Jeu_de_Go\Sources\Engine\Goban.cpp" />
+    <ClCompile Include="..\Jeu_de_Go\Sources\Engine\Groupe.cpp" />
+    <ClCompile Include="..\Jeu_de_Go\Sources\Engine\History.cpp" />
+    <ClCompile Include="Arbre.cpp" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Jeu_de_Go\Sources\Engine\Etat.h" />
+    <ClInclude Include="..\Jeu_de_Go\Sources\Engine\Goban.h" />
+    <ClInclude Include="..\Jeu_de_Go\Sources\Engine\Groupe.h" />
+    <ClInclude Include="..\Jeu_de_Go\Sources\Engine\History.h" />
+    <ClInclude Include="..\Jeu_de_Go\Sources\Graphics\Globals.h" />
+    <ClInclude Include="Arbre.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

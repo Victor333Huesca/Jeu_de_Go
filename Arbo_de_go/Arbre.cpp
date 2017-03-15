@@ -2,20 +2,20 @@
 #include <iostream> // la bite 
 //Constructors       //oui
 
-Arbre::Arbre() : gob(0), nbF(0)
-{
-	fils[0] = NULL;
-}
-//par copie
-}Arbre::Arbre(const Arbre& n) : gob(n.getGob()), nbF(n.getNbF())
+	Arbre::Arbre() : gob(), nbF(0)
+	{
+		fils[0] = NULL;
+	}
+	//par copie
+	Arbre::Arbre(const Arbre & a): gob(a.getGob()), nbF(a.getNbF())
 {
 	for (size_t i = 0; i < nbF; i++)
 	{
-		fils[i] = n.getFilsUnique(i);
+		fils[i] = a.getFilsUnique(i);
 	}
-
-
-	Arbre::Arbre(const size_t _gob) : gob(_gob), nbF(0)
+}
+	Arbre::Arbre(Goban& _gob) :
+		gob(_gob), nbF(0)
 	{
 		for (size_t i = 0; i < nbF; i++)
 		{
@@ -23,7 +23,18 @@ Arbre::Arbre() : gob(0), nbF(0)
 		}
 	}
 
-	Arbre::Arbre(const size_t _gob, const size_t _nbF) :
+	Arbre::Arbre(Goban& G, Etat::VAL val) {
+		gob = G;
+		value = val;
+		nbF = 0;
+	}
+
+	Arbre::Arbre(const bool b): gob(), nbF(0)
+	{
+		this->setInfo(b);
+	}
+
+	Arbre::Arbre(Goban& _gob, const size_t _nbF) :
 		gob(_gob), nbF(_nbF)
 	{
 		for (size_t i = 0; i < nbF; i++)
@@ -32,7 +43,7 @@ Arbre::Arbre() : gob(0), nbF(0)
 		}
 	}
 
-	Arbre::Arbre(const size_t _gob, const size_t _nbF, Arbre ** _fils) :
+	Arbre::Arbre(Goban& _gob, const size_t _nbF, Arbre * _fils) :
 		gob(_gob), nbF(_nbF)
 	{
 		for (size_t i = 0; i < nbF; i++)
@@ -45,20 +56,16 @@ Arbre::Arbre() : gob(0), nbF(0)
 
 	Arbre::~Arbre()
 	{
-		for (size_t i = 0; i < this->nbF; i++)
-		{
-			if (fils[i] != NULL)
-			{
-				delete fils[i];
-			}
-		}
+		
+		delete fils;
+			
 	}
 
 	//Getters
 
-	Arbre* Arbre::getFilsUnique(const size_t indice) const
+	Arbre Arbre::getFilsUnique(const size_t indice) const
 	{
-		return this->fils[indice];
+		return fils[indice];
 	}
 
 	size_t Arbre::getNbF() const
@@ -71,14 +78,25 @@ Arbre::Arbre() : gob(0), nbF(0)
 		return this->gob;
 	}
 
-	//Setters
-
-	void Arbre::setFils(Arbre * _fils, const size_t indice)
+	bool Arbre::getInfo() const
 	{
-		this->fils[indice] = _fils;
+		return this->info;
 	}
 
-	void Arbre::setNbF(size_t _nbF)
+	Etat::VAL Arbre::getValue() const
+	{
+		return value;
+	}
+
+	//Setters
+
+	
+		void Arbre::setFils(Arbre f, const size_t i)
+		{
+			this->fils[i] = f;
+		}
+
+		void Arbre::setNbF(size_t _nbF)
 	{
 		this->nbF = _nbF;
 	}
@@ -88,81 +106,56 @@ Arbre::Arbre() : gob(0), nbF(0)
 		this->gob = _gob;
 	}
 
-	Arbre* Arbre::operator[](unsigned short int i)
+	void Arbre::setInfo(bool b)
+	{
+		this->info = b;
+	}
+
+	void Arbre::setValue(Etat::VAL v)
+	{
+		this->value = v;
+	}
+
+	Arbre& Arbre::InitArbre(Goban& G, Etat::VAL value)
+	{
+		Arbre A(G);
+		std::vector<Goban> listG = G.listFils(value);
+		if (value == Etat::VAL::BLANC)
+			value = Etat::VAL::NOIR;
+		else
+			value = Etat::VAL::BLANC;
+		nbF = listG.size();
+		fils = new Arbre[nbF];
+		for (size_t i = 0; i < nbF; i++)
+		{
+			Arbre f(listG[i],value);
+			fils[i] = f;
+		}
+		return A;
+	}
+
+	Arbre Arbre::operator[](unsigned short int i)
 	{
 		return this->fils[i];
 	}
 
-	bool Arbre::operator<(const Arbre& n)
-	{
-		return (this->getGob() < n.getGob());
-	}
-
-	bool Arbre::operator>(const Arbre& n)
-	{
-		return (this->getGob() > n.getGob());
-	}
-
-	bool Arbre::operator<=(const Arbre& n)
-	{
-		return (this->getGob() <= n.getGob());
-	}
-
-	bool Arbre::operator>=(const Arbre& n)
-	{
-		return (this->getGob() >= n.getGob());
-	}
-
-	bool Arbre::operator==(const Arbre& n)
-	{
-		return (this->getGob() == n.getGob());
-	}
-
-	bool Arbre::operator!=(const Arbre& n)
-	{
-		return (this->getGob() != n.getGob());
-	}
-
-	Arbre * Arbre::operator=(Arbre& n)
-	{
-		if (this == &n)
-		{
-			return this;
+	//overloading methodes
+	Arbre Arbre::operator=(Arbre a) {
+		if (this != &a) {
+		    gob = a.gob;
+			nbF = a.nbF;
+			fils = a.fils;
+			info = a.info;
+			value = a.value;
 		}
-		else
-		{
-			Arbre * resultat(&n);
-			return resultat;
-		}
-	}
-
-	Arbre * Arbre::operator+(const Arbre& n1)
-	{
-		size_t a = n1.getGob();
-		size_t b = this->getGob();
-		size_t nbFa = n1.getNbF();
-		size_t nbFb = this->getNbF();
-		Arbre * filsa[nbFa + nbFb];
-		Arbre * resultat;
-		for (size_t i = 0; i < nbFa; i++)
-		{
-			filsa[i] = n1.getFilsUnique(i);
-		}
-		for (size_t i = nbFa; i < (nbFa + nbFb); i++)
-		{
-			filsa[i] = this->getFilsUnique(i - nbFa);
-		}
-		resultat->setGob(a + b); resultat->setNbF(nbFa + nbFb);
-		for (size_t i = 0; i < (nbFa + nbFb); i++)
-		{
-			resultat->setFils(filsa[i], i);
-		}
-		return resultat;
+		return this;
 	}
 
 	//Others methods
 	void Arbre::afficher()
 	{
+		std::cout <<"==============================="<<std::endl;
+		std::cout << "============"<<value<<"=============" << std::endl;
 		std::cout << this->getGob() << std::endl;
 	}
 

@@ -72,6 +72,9 @@ Etat& Goban::operator[](const size_t i)const{
 }
 
 //METHODES
+Etat* Goban::getArray() {
+	return array;
+}
 
 Etat& Goban::coord(const int& X,const int& Y){//access to element of array with (x,y)
   size_t i = TGOBAN * Y + X;
@@ -85,6 +88,15 @@ const Etat& Goban::coord(const int& x, const int& y) const
 
 size_t Goban::ctoi(const size_t X,const size_t Y)const{//convert coordonate of goban in index for the array
   return TGOBAN*Y+X;
+}
+
+size_t * Goban::itoc(const size_t i) {//convert index in coordonates
+	size_t y = i / TGOBAN;
+	size_t x = i - y * TGOBAN;
+	size_t coor[2];
+	coor[0] = x;
+	coor[1] = y;
+	return coor;
 }
 
 //Accesseur
@@ -489,4 +501,39 @@ std::ostream& operator<<(std::ostream& os, const Goban& goban)
 	}
 
 	return os;
+}
+
+
+Goban Goban::operator= (Goban& g) {
+	if (this != &g) {
+		//this->array = g.array;
+		groups_black = g.groups_black;
+		groups_white = g.groups_white;
+		history = g.history;
+		return *this;
+	}
+}
+
+//METHODES OFR THE TREE
+std::vector<Goban> Goban::listFils(const Etat::VAL value) {
+	bool result = false;
+	size_t x, y;
+	std::vector<Goban> listGob(0);
+	Goban g(*this);
+	for (size_t i = 0; i < TGOBAN; i++) {
+		 x=itoc(i)[0];
+		 y = itoc(i)[1];
+		 g = *this;
+		if (g.move(value, x , y)) 
+		{
+			// Move has been allowed
+			result = true;
+			//DEFINE GROUPS
+			g.rechercheGroupes();
+			//ELIMINATE GROUPS
+			g.eliminateOppGroups(value);
+			listGob.push_back(g);
+		}
+		return listGob;
+	}
 }

@@ -27,10 +27,11 @@ public:
   Etat& coord(const int& x, const int& y);		// access to element of array with (x,y)
   const Etat& coord(const int& x, const int& y) const;		// access to element of array with (x,y)
   size_t ctoi(const size_t,const size_t)const;//convert coordonate of goban in index for the array
-
+  size_t * itoc(const size_t);//convert index in coordonates
   //METHODES
   std::vector<Groupe> getGroupsWhite() const;
   std::vector<Groupe> getGroupsBlack() const;
+  Etat* getArray();
 
   //GROUPS
   std::ostream& afficheGroupes(std::ostream& stream, const Etat::VAL& val) const;
@@ -56,6 +57,8 @@ public:
 
   //overloadings methodes
   Etat& operator[](const size_t) const;
+  Goban operator= (Goban&);
+  std::vector<Goban> listFils(const Etat::VAL);
 };
 
 //overloadings functions
