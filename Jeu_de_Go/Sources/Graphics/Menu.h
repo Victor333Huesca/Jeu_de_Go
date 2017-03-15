@@ -11,11 +11,18 @@ public:
     ~Menu();
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
+    virtual int Run(sf::RenderWindow &window);
+
+    sf::Vector2f getSize() const;
+    sf::Vector2f getPosition() const;
+
+
+    // Gère les interactions utilisateur
+    void click(const sf::Mouse::Button& type, const sf::RenderWindow& window);
+    void mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos);
+	void keyPressed(const sf::Event::KeyEvent& key);
 
 private:
-    // Size, position, etc...
-    sf::Vector2f size;
-
     // Options
     std::vector<Choice> choices;
     std::vector<Choice>::iterator cur_choice;

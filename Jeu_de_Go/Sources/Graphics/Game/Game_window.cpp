@@ -79,6 +79,10 @@ int Game_window::Run(sf::RenderWindow &window)
 		window.display();
 #endif
 	}
+
+
+	// Not suppose to reach here but just in case
+	return -1;
 }
 
 void Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, const sf::Mouse::Button & type)

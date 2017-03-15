@@ -1,0 +1,6 @@
+19 x 19 x 2 bits pour le goban --> 90 octets + 2 bit.
+On a donc 4 possibilitées pour chaque intersection (Blanc / Noir / Vide).
+L'intersection du KO est stockée sur 10 bits (5 bits pour l'absyce et l'ordonnée).
+Stock ligne par ligne (i.e. 2 octets et 3 bits par ligne)
+
+Total : 91 octets et 6 bits.
