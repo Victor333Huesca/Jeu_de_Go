@@ -1,4 +1,4 @@
-#include"arbre.h"   //Police 10 sinon c’est trop grand !
+#include"Arbre.h"   //Police 10 sinon c’est trop grand !
 #include <iostream> // la bite 
 //Constructors       //oui
 
@@ -66,7 +66,7 @@ Arbre::Arbre() : gob(0), nbF(0)
 		return this->nbF;
 	}
 
-	size_t Arbre::getGob() const
+	Goban Arbre::getGob() const
 	{
 		return this->gob;
 	}
@@ -83,7 +83,7 @@ Arbre::Arbre() : gob(0), nbF(0)
 		this->nbF = _nbF;
 	}
 
-	void Arbre::setGob(size_t _gob)
+	void Arbre::setGob(Goban _gob)
 	{
 		this->gob = _gob;
 	}
@@ -166,7 +166,7 @@ Arbre::Arbre() : gob(0), nbF(0)
 		std::cout << this->getGob() << std::endl;
 	}
 
-	voi Arbre::printArbo()
+	void Arbre::printArbo(const Arbre&)
 	{
 		//Utiliser dotty ou latex ??
 		std::cout << this->getGob() << std::endl;
