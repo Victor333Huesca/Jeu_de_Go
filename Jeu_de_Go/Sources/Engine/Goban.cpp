@@ -2,7 +2,7 @@
 //PRIVATE METHODS
 bool Goban::isMoveLegal(const Etat::VAL& value, const int& x, const int& y) const
 {
-	bool ko,suicide;
+	bool ko = false, suicide;
 	//IS IT AN EMPTY CASE
 	if (coord(x, y).isPlayable(value)){
 		//IS IT A SUICIDE

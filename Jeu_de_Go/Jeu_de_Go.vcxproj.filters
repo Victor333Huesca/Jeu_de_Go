@@ -15,55 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Engine\Etat.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Engine\Goban.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Engine\Groupe.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Graphics\Main.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Graphics\Main_window.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Graphics\Game\Board.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Graphics\Game\Game_window.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Graphics\Game\Infos.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Graphics\Game\Square.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Engine\History.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Engine\Parser.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Graphics\Game\Timer.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Sources\Engine\Etat.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Goban.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Groupe.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Graphics\Globals.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Graphics\Main_window.h">
+    <ClInclude Include="Sources\Graphics\Screen.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Graphics\Screens.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Graphics\Game\Board.h">
@@ -81,6 +39,15 @@
     <ClInclude Include="Sources\Graphics\Game\Timer.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Engine\Etat.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Goban.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Groupe.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
     <ClInclude Include="Sources\Engine\History.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -89,6 +56,47 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Graphics\Main.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Screen.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Game\Board.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Game\Game_window.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Game\Infos.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Game\Square.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Game\Timer.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Etat.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Goban.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Groupe.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\History.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Parser.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Ressources\Img\background3.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
     <Image Include="Ressources\Img\infos_bg.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
@@ -96,9 +104,6 @@
       <Filter>Fichiers de ressources</Filter>
     </Image>
     <Image Include="Ressources\Img\infos_white.png">
-      <Filter>Fichiers de ressources</Filter>
-    </Image>
-    <Image Include="Ressources\Img\background3.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
     <Image Include="Ressources\Img\stone_black3.png">
@@ -109,11 +114,9 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Ressources\Font\time.ttf">
-      <Filter>Fichiers de ressources</Filter>
-    </Font>
+    <None Include="Ressources\Img\infos_bg.pdn" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Makefile" />
+    <Font Include="Ressources\Font\time.ttf" />
   </ItemGroup>
 </Project>

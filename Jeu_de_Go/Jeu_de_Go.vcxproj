@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,34 +19,35 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{094D1815-F2A0-49B0-8A8E-62C97B9B7509}</ProjectGuid>
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{BCD560B2-791A-427A-A7CF-351DB22BCF5B}</ProjectGuid>
     <RootNamespace>Jeu_de_Go</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -74,11 +75,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Libraries\SFML-2.4.1-x86\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:/visualS2k17/SFML-32-bit/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/visualS2k17/SFML-32-bit/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib; sfml-window-d.lib; sfml-system-d.lib; kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -86,11 +88,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Libraries\SFML-2.4.1-x86_64\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SFML_STATIC;MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:/visualS2k17/SFML/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86_64\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/visualS2k17/SFML/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -100,13 +103,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Libraries\SFML-2.4.1-x86\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -116,29 +116,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Libraries\SFML-2.4.1-x86_64\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86_64\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Sources\Engine\Etat.cpp" />
-    <ClCompile Include="Sources\Engine\Goban.cpp" />
-    <ClCompile Include="Sources\Engine\Groupe.cpp" />
-    <ClCompile Include="Sources\Engine\History.cpp" />
-    <ClCompile Include="Sources\Engine\Parser.cpp" />
-    <ClCompile Include="Sources\Graphics\Game\Board.cpp" />
-    <ClCompile Include="Sources\Graphics\Game\Game_window.cpp" />
-    <ClCompile Include="Sources\Graphics\Game\Infos.cpp" />
-    <ClCompile Include="Sources\Graphics\Game\Square.cpp" />
-    <ClCompile Include="Sources\Graphics\Game\Timer.cpp" />
-    <ClCompile Include="Sources\Graphics\Main.cpp" />
-    <ClCompile Include="Sources\Graphics\Main_window.cpp" />
-  </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Engine\Etat.h" />
     <ClInclude Include="Sources\Engine\Goban.h" />
@@ -151,7 +134,22 @@
     <ClInclude Include="Sources\Graphics\Game\Square.h" />
     <ClInclude Include="Sources\Graphics\Game\Timer.h" />
     <ClInclude Include="Sources\Graphics\Globals.h" />
-    <ClInclude Include="Sources\Graphics\Main_window.h" />
+    <ClInclude Include="Sources\Graphics\Screen.h" />
+    <ClInclude Include="Sources\Graphics\Screens.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sources\Engine\Etat.cpp" />
+    <ClCompile Include="Sources\Engine\Goban.cpp" />
+    <ClCompile Include="Sources\Engine\Groupe.cpp" />
+    <ClCompile Include="Sources\Engine\History.cpp" />
+    <ClCompile Include="Sources\Engine\Parser.cpp" />
+    <ClCompile Include="Sources\Graphics\Game\Board.cpp" />
+    <ClCompile Include="Sources\Graphics\Game\Game_window.cpp" />
+    <ClCompile Include="Sources\Graphics\Game\Infos.cpp" />
+    <ClCompile Include="Sources\Graphics\Game\Square.cpp" />
+    <ClCompile Include="Sources\Graphics\Game\Timer.cpp" />
+    <ClCompile Include="Sources\Graphics\Main.cpp" />
+    <ClCompile Include="Sources\Graphics\Screen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Ressources\Img\background3.png" />
@@ -162,12 +160,10 @@
     <Image Include="Ressources\Img\stone_white3.png" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Ressources\Font\time.ttf" />
+    <None Include="Ressources\Img\infos_bg.pdn" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Makefile">
-      <FileType>Document</FileType>
-    </None>
+    <Font Include="Ressources\Font\time.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
