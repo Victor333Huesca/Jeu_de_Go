@@ -1,5 +1,5 @@
-#include"Arbre.h"   //Police 10 sinon c’est trop grand !
-#include <iostream> // la bite 
+#include"Arbre.h"   //Police 10 sinon cï¿½est trop grand !
+#include <iostream> // la bite
 //Constructors       //oui
 
 	Arbre::Arbre() : gob(), nbF(0)
@@ -43,7 +43,7 @@
 		}
 	}
 
-	Arbre::Arbre(Goban& _gob, const size_t _nbF, Arbre * _fils) :
+	Arbre::Arbre(Goban& _gob, const size_t _nbF, Goban * _fils) :
 		gob(_gob), nbF(_nbF)
 	{
 		for (size_t i = 0; i < nbF; i++)
@@ -56,14 +56,14 @@
 
 	Arbre::~Arbre()
 	{
-		
+
 		delete fils;
-			
+
 	}
 
 	//Getters
 
-	Arbre Arbre::getFilsUnique(const size_t indice) const
+	Goban Arbre::getFilsUnique(const size_t indice) const
 	{
 		return fils[indice];
 	}
@@ -90,8 +90,8 @@
 
 	//Setters
 
-	
-		void Arbre::setFils(Arbre f, const size_t i)
+
+		void Arbre::setFils(Goban f, const size_t i)
 		{
 			this->fils[i] = f;
 		}
@@ -116,7 +116,7 @@
 		this->value = v;
 	}
 
-	Arbre& Arbre::InitArbre(Goban& G, Etat::VAL value)
+	Arbre Arbre::InitArbre(Goban& G, Etat::VAL value)
 	{
 		Arbre A(G);
 		std::vector<Goban> listG = G.listFils(value);
@@ -125,13 +125,23 @@
 		else
 			value = Etat::VAL::BLANC;
 		nbF = listG.size();
-		fils = new Arbre[nbF];
+		fils = new Goban[nbF];
 		for (size_t i = 0; i < nbF; i++)
 		{
-			Arbre f(listG[i],value);
-			fils[i] = f;
+			fils[i] = listG[i];
 		}
 		return A;
+	}
+
+	void Arbre::Tsumego(Arbre& A, Etat::VAL value,Etat cible)
+	{
+
+		for (size_t i=0; i < A.nbF ; i++)
+		{
+			Arbre filsA= A.InitArbre(A.fils[i]);
+			
+
+		}
 	}
 
 	Arbre Arbre::operator[](unsigned short int i)
@@ -171,5 +181,3 @@
 		n.afficher();
 		return os;
 	}
-
-

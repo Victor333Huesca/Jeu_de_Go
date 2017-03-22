@@ -8,11 +8,11 @@
 
 class Arbre {
 private:
-	Goban gob; 
+	Goban gob;
 	Etat::VAL value;
 	bool info;
 	size_t nbF;
-	Arbre * fils;
+	Goban * fils;
 public:
 	//Constructors
 	Arbre();
@@ -21,13 +21,13 @@ public:
 	Arbre(Goban&, Etat::VAL);
 	Arbre(const bool);
 	Arbre(Goban&, const size_t);
-	Arbre(Goban& _gob, const size_t _nbF, Arbre * _fils);
+	Arbre(Goban& _gob, const size_t _nbF, Goban * _fils);
 
 	//Destructors
-	~Arbre(); 
+	~Arbre();
 
 	//Getters
-	Arbre getFilsUnique(const size_t) const;
+	Goban getFilsUnique(const size_t) const;
 	size_t getNbF() const;
 	Goban getGob() const;
 	bool getInfo() const;
@@ -41,12 +41,13 @@ public:
 	void setValue(Etat::VAL);
 
 	Arbre& InitArbre(Goban&, Etat::VAL);
+	Arbre& Tsumego(Goban&, Etat::VAL,Etat);
 
 	//overloading methodes
 	Arbre operator=(Arbre);
 	//Others methods
 	Arbre operator[](unsigned short int);
-	
+
 
 	void afficher();
 
