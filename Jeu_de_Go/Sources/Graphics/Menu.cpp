@@ -1,5 +1,19 @@
 #include "Menu.h"
 
+
+Menu::Menu(const sf::Vector2f & position, sf::Vector2f & scale ,const char* texture_path)
+{
+	s_background.setPosition(position);
+	t_background.loadFromFile(texture_path);
+	s_background.setTexture(t_background);
+	s_background.setScale(scale);
+}
+
+Menu::~Menu()
+{
+
+}
+
 void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(s_background);
@@ -94,4 +108,9 @@ void Menu::mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos)
 void Menu::keyPressed(const sf::Event::KeyEvent& key)
 {
 
+}
+
+void Menu::addItem(Choice item)
+{
+	choices.push_back(item);
 }
