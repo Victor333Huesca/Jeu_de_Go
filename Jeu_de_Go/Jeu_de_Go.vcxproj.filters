@@ -54,6 +54,12 @@
     <ClInclude Include="Sources\Engine\Parser.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Graphics\Menu.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Graphics\Choice.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Graphics\Main.cpp">
@@ -92,6 +98,12 @@
     <ClCompile Include="Sources\Engine\Parser.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Graphics\Menu.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Choice.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Ressources\Img\background3.png">
@@ -110,6 +122,12 @@
       <Filter>Fichiers de ressources</Filter>
     </Image>
     <Image Include="Ressources\Img\stone_white3.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="..\Menu\button.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Ressources\Img\button_select.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
   </ItemGroup>

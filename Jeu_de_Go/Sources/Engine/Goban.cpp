@@ -514,7 +514,7 @@ Goban Goban::operator= (Goban& g) {
 	}
 }
 
-//METHODES OFR THE TREE
+//METHODES FOR THE TREE
 std::vector<Goban> Goban::listFils(const Etat::VAL value) {
 	bool result = false;
 	size_t x, y;
