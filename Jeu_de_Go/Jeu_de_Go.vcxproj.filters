@@ -114,9 +114,13 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Ressources\Img\infos_bg.pdn" />
+    <Font Include="Ressources\Font\time.ttf">
+      <Filter>Fichiers de ressources</Filter>
+    </Font>
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Ressources\Font\time.ttf" />
+    <None Include="Ressources\Img\infos_bg.pdn">
+      <Filter>Fichiers de ressources</Filter>
+    </None>
   </ItemGroup>
 </Project>
