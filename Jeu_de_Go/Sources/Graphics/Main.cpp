@@ -77,17 +77,17 @@ void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, 
 Menu* loadMenu1()
 {
 	// On charge le menu
-	Menu* menu = new Menu(sf::Vector2f(0, 0), "./Ressources/Img/Background3.png");
+	Menu* menu = new Menu(sf::Vector2f(0, 0), sf::Vector2f(0.3, 0.3), "./Ressources/Img/Background3.png");
 
-	const sf::Vector2f sizeItem((WINDOW_WIDTH + INFOS_SIZE) / 3.5, WINDOW_HEIGHT / 3.5);
+	const sf::Vector2f sizeItem((WINDOW_WIDTH + INFOS_SIZE) / 3.5, WINDOW_HEIGHT / 4.5);
 
 	// On charge les items
-	menu->addItem(Choice(sf::Vector2f((WINDOW_WIDTH + INFOS_SIZE - sizeItem.x) / 2, WINDOW_HEIGHT + 100),
+	menu->addItem(Choice(sizeItem,//sf::Vector2f((WINDOW_WIDTH + INFOS_SIZE - sizeItem.x) / 2, WINDOW_HEIGHT + 100),
 		sf::Vector2f(1, 1),
 		"./Ressources/Img/button.png",
 		"./Ressources/Img/button_select.png",
-		"./Ressources/Img/Jouer_selected.png",
-		"./Ressources/Img/Jouer_clicked.png"));
+		"./Ressources/Img/button.png",
+		"./Ressources/Img/button.png"));
 
 
 
