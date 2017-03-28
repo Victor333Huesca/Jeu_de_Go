@@ -1,11 +1,14 @@
 #include "Globals.h"
 #include <thread>
 #include "Screens.h"
+#include "Menu.h"
 #include "Game/Game_window.h"
 
 #define	MULTITHREAD false
 
 void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, int* _cur_screen);
+
+Menu* loadMenu1();
 
 int main()
 {
@@ -16,6 +19,7 @@ int main()
 
 	// Declare here different screens in order of there use.
 	screens.push_back(new Game_window);
+	//screens.push_back(loadMenu1());
 
 #if defined(_WIN32) || MULTITHREAD
 	// disable window's context
@@ -69,3 +73,74 @@ void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, 
 		window.display();
 	}
 }
+/*
+Menu* loadMenu1()
+{
+	// On charge le menu
+	Menu* menu = new Menu(sf::Vector2f(0, 0), sf::Vector2f(0.3, 0.3), "./Ressources/Img/Background3.png");
+
+	const sf::Vector2f sizeItem((WINDOW_WIDTH + INFOS_SIZE) / 3.5, WINDOW_HEIGHT / 4.5);
+
+	// On charge les items
+	menu->addItem(Choice(sizeItem,//sf::Vector2f((WINDOW_WIDTH + INFOS_SIZE - sizeItem.x) / 2, WINDOW_HEIGHT + 100),
+		sf::Vector2f(1, 1),
+		"./Ressources/Img/button.png",
+		"./Ressources/Img/button_select.png",
+		"./Ressources/Img/button.png",
+		"./Ressources/Img/button.png"));
+
+
+
+	return menu;
+
+
+	sf::Text txt;
+	sf::Font font;
+	font.loadFromFile("./Ressources/Font/time.ttf");
+	txt.setFont(font);
+	txt.setString("Menu");
+	txt.setCharacterSize(86);
+	txt.setFillColor(sf::Color::Black);
+	txt.setStyle(sf::Text::Bold);
+	txt.setPosition(sf::Vector2f((WINDOW_WIDTH / 3.5) + 80, (WINDOW_HEIGHT / 4.5) - 80));
+
+
+	t_background.loadFromFile("./Ressources/Img/background3.png");
+
+	s_background.setTexture(t_background);
+
+	s_background.setPosition(sf::Vector2f(0, 0));
+	s_background.setScale(sf::Vector2f(0.3, 0.3));
+
+	Choice play(sf::Vector2f(WINDOW_WIDTH / 3.5, (WINDOW_HEIGHT / 4.5) + 30),
+		sf::Vector2f(1, 1),
+		"./Ressources/Img/button.png",
+		"./Ressources/Img/button_select.png",
+		"./Ressources/Img/button.png",
+		"./Ressources/Img/button.png");
+	Choice Credit(sf::Vector2f(WINDOW_WIDTH / 3.5, (WINDOW_HEIGHT / 4.5) + 150),
+		sf::Vector2f(1, 1),
+		"./Ressources/Img/button.png",
+		"./Ressources/Img/button_select.png",
+		"./Ressources/Img/button.png",
+		"./Ressources/Img/button.png");
+	Choice rules(sf::Vector2f(WINDOW_WIDTH / 3.5, (WINDOW_HEIGHT / 4.5) + 270),
+		sf::Vector2f(1, 1),
+		"./Ressources/Img/button.png",
+		"./Ressources/Img/button_select.png",
+		"./Ressources/Img/button.png",
+		"./Ressources/Img/button.png");
+	Choice online(sf::Vector2f(WINDOW_WIDTH / 3.5, (WINDOW_HEIGHT / 4.5) + 390),
+		sf::Vector2f(1, 1),
+		"./Ressources/Img/button.png",
+		"./Ressources/Img/button_select.png",
+		"./Ressources/Img/button.png",
+		"./Ressources/Img/button.png");
+	choices.push_back(play);
+	choices.push_back(Credit);
+	choices.push_back(rules);
+	choices.push_back(online);
+
+
+}
+	*/
