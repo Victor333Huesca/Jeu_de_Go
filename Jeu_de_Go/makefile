@@ -52,6 +52,9 @@ $(REP_OBJ) :
 
 
 # Engine
+$(REP_OBJ)Arbre.o: $(REP_SRC)Engine/Arbre.cpp $(REP_SRC)Engine/Arbre.h
+$(REP_SRC)Engine/Arbre.h:
+
 $(REP_OBJ)Etat.o: $(REP_SRC)Engine/Etat.cpp $(REP_SRC)Engine/Etat.h
 $(REP_SRC)Engine/Etat.h:
 

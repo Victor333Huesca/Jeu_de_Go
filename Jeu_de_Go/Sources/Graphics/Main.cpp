@@ -15,11 +15,11 @@ int main()
 	// Main's variables
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_HEIGHT), "Jeu de Go");
     std::vector<Screen*> screens;
-    int cur_screen = 1;
+    int cur_screen = 0;
 
 	// Declare here different screens in order of there use.
 	screens.push_back(new Game_window);
-	screens.push_back(loadMenu1());
+	//screens.push_back(loadMenu1());
 
 #if defined(_WIN32) || MULTITHREAD
 	// disable window's context
@@ -73,6 +73,7 @@ void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, 
 		window.display();
 	}
 }
+
 
 Menu* loadMenu1()
 {
@@ -148,6 +149,5 @@ Menu* loadMenu1()
 	choices.push_back(Credit);
 	choices.push_back(rules);
 	choices.push_back(online);
-
 	*/
 }
