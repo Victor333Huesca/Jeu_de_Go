@@ -1,11 +1,11 @@
 #include "Menu.h"
 
 
-Menu::Menu(const sf::Vector2f & position, sf::Vector2f & scale ,const char* texture_path)
+Menu::Menu(const sf::Vector2f & position, const char* texture, sf::Vector2f & scale)
 {
-	s_background.setPosition(position);
-	t_background.loadFromFile(texture_path);
+	t_background.loadFromFile(texture);
 	s_background.setTexture(t_background);
+	s_background.setPosition(position);
 	s_background.setScale(scale);
 }
 
@@ -16,7 +16,7 @@ Menu::~Menu()
 
 void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    target.draw(s_background);
+    target.draw(s_background, states);
 
     for (auto choice : choices)
         target.draw(choice, states);
@@ -110,7 +110,22 @@ void Menu::keyPressed(const sf::Event::KeyEvent& key)
 
 }
 
-void Menu::addItem(Choice item)
+void Menu::addItem(const Choice& item)
 {
 	choices.push_back(item);
+}
+
+void Menu::setItemsTextures(const char * blank, const char * selected)
+{
+	// Load textures
+	button_blank.loadFromFile(blank);
+	button_selected.loadFromFile(selected);
+
+	// Apply to each choice
+	for (auto c : choices)
+	{
+		c.loadTextures(button_blank, button_selected);
+		std::cout << "Choix charge" << std::endl;
+		system("pause");
+	}
 }

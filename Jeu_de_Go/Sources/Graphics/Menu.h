@@ -8,7 +8,7 @@
 class Menu: public Screen
 {
 public:
-    Menu(const sf::Vector2f& position, sf::Vector2f& scale, const char* texture_path);
+    Menu(const sf::Vector2f& position, const char* texture, sf::Vector2f& scale = sf::Vector2f(1.f, 1.f));
     ~Menu();
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
@@ -23,7 +23,9 @@ public:
     void mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos);
 	void keyPressed(const sf::Event::KeyEvent& key);
 
-	void addItem(Choice item);
+	void addItem(const Choice& item);
+
+	void setItemsTextures(const char* blank, const char* selected);
 
 private:
     // Options
@@ -33,4 +35,8 @@ private:
     // Background
     sf::Sprite s_background;
     sf::Texture t_background;
+
+	// Choices
+	sf::Texture button_blank;
+	sf::Texture button_selected;
 };

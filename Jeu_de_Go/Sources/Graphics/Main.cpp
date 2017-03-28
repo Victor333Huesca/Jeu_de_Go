@@ -77,20 +77,28 @@ void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, 
 Menu* loadMenu1()
 {
 	// On charge le menu
-	Menu* menu = new Menu(sf::Vector2f(0, 0), sf::Vector2f(0.3, 0.3), "./Ressources/Img/Background3.png");
+	Menu* menu = new Menu(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", sf::Vector2f(0.3f, 0.3f));
 
-	const sf::Vector2f sizeItem((WINDOW_WIDTH + INFOS_SIZE) / 3.5, WINDOW_HEIGHT / 4.5);
+	// On charge le style du text
+	sf::Text text_style;
+	text_style.setCharacterSize(86);
+	text_style.setFillColor(sf::Color::Black);
+	sf::Font text_font;
+	text_font.loadFromFile("./Ressources/Font/time.ttf");
+	text_style.setFont(text_font);
+
+	// Position
+	sf::Vector2f pos(0, 0);// (WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE) / 3.5) / 2, WINDOW_HEIGHT + 100);
 
 	// On charge les items
-	menu->addItem(Choice(sizeItem,//sf::Vector2f((WINDOW_WIDTH + INFOS_SIZE - sizeItem.x) / 2, WINDOW_HEIGHT + 100),
-		sf::Vector2f(1, 1),
-		"./Ressources/Img/button.png",
-		"./Ressources/Img/button_select.png",
-		"./Ressources/Img/button.png",
-		"./Ressources/Img/button.png"));
+	menu->addItem(Choice("Jouer", text_style, pos.x, pos.y));
+	menu->addItem(Choice("Options", text_style, pos.x, pos.y + 120));
+	menu->addItem(Choice("Exemples", text_style, pos.x, pos.y + 240));
+	menu->addItem(Choice("Problèmes", text_style, pos.x, pos.y + 360));
+	menu->addItem(Choice("Quitter", text_style, pos.x, pos.y + 480));
 
-
-
+	// Then set items textures and return the menu
+	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
 	return menu;
 
 	/*
