@@ -1,6 +1,5 @@
 #include "Game_window.h"
 
-
 Game_window::Game_window() :
 	board(sf::Vector2u(NB_SQUARES_X, NB_SQUARES_Y)),
 	infos(),
@@ -136,6 +135,7 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 		else if (key.code == sf::Keyboard::Y)
 		{
 			// Ctrl + Y
+<<<<<<< HEAD
 			// It will be more complecated than I expected.
 			std::cout << "_______________Parser v1.1 (console)________________ " << std::endl;
 			std::cout << "Problème disponible (3) : " << std::endl;
@@ -173,6 +173,27 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 			board.load();
 			
 
+=======
+			Goban gob;
+			gob.coord(6,1).setVal(Etat::NOIR);
+			gob.coord(6,2).setVal(Etat::NOIR);
+			gob.coord(6,3).setVal(Etat::NOIR);
+			gob.coord(5,3).setVal(Etat::NOIR);
+			gob.coord(4,3).setVal(Etat::NOIR);
+			gob.coord(2,3).setVal(Etat::NOIR);
+			gob.coord(1,3).setVal(Etat::NOIR);
+			gob.coord(1,5).setVal(Etat::NOIR);
+			gob.coord(1,2).setVal(Etat::BLANC);
+			gob.coord(2,2).setVal(Etat::BLANC);
+			gob.coord(3,2).setVal(Etat::BLANC);
+			gob.coord(4,2).setVal(Etat::BLANC);
+			gob.coord(5,2).setVal(Etat::BLANC);
+			for (size_t x=9; x<TGOBAN; x++){
+				for (size_t y=7; y<TGOBAN; y++){
+					gob.coord(x,y).setVal(Etat::NJ);
+				}
+			}
+>>>>>>> Development
 		}
 	}
 	else
