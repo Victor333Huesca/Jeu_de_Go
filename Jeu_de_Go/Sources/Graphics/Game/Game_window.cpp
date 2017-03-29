@@ -176,26 +176,69 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 				board.engine.coord(5, 2).setVal(Etat::BLANC);
 				break;
 			case 2: 
-				board.engine.coord(3, 1).setVal(Etat::NOIR);
-				board.engine.coord(4, 1).setVal(Etat::NOIR);
-				board.engine.coord(6, 1).setVal(Etat::NOIR);
-				board.engine.coord(7, 1).setVal(Etat::NOIR);
-				board.engine.coord(4, 2).setVal(Etat::NOIR);
-				board.engine.coord(6, 2).setVal(Etat::NOIR);
-				board.engine.coord(5, 3).setVal(Etat::NOIR);
-				board.engine.coord(6, 3).setVal(Etat::NOIR);
-				board.engine.coord(3, 0).setVal(Etat:);
-				board.engine.coord(2, 1).setVal(Etat::BLANC);
-				board.engine.coord(8, 1).setVal(Etat::BLANC);
-				board.engine.coord(3, 2).setVal(Etat::BLANC);
+				board.engine.coord(3, 1).setVal(Etat::BLANC);
+				board.engine.coord(4, 1).setVal(Etat::BLANC);
+				board.engine.coord(6, 1).setVal(Etat::BLANC);
+				board.engine.coord(7, 1).setVal(Etat::BLANC);
 				board.engine.coord(4, 2).setVal(Etat::BLANC);
-				board.engine.coord(4, 3).setVal(Etat::BLANC);
+				board.engine.coord(6, 2).setVal(Etat::BLANC);
 				board.engine.coord(5, 3).setVal(Etat::BLANC);
-				board.engine.coord(6, 4).setVal(Etat::BLANC);
-				board.engine.coord(6, 5).setVal(Etat::BLANC);
-				board.engine.coord(6, 6).setVal(Etat::BLANC);
+				board.engine.coord(6, 3).setVal(Etat::BLANC);
+				
+				board.engine.coord(3, 0).setVal(Etat::NOIR);
+
+				board.engine.coord(2, 1).setVal(Etat::NOIR);
+				board.engine.coord(8, 1).setVal(Etat::NOIR);
+
+				board.engine.coord(3, 2).setVal(Etat::NOIR);
+				board.engine.coord(7, 2).setVal(Etat::NOIR);
+				board.engine.coord(9, 2).setVal(Etat::NOIR);
+
+				board.engine.coord(3, 3).setVal(Etat::NOIR);
+				board.engine.coord(4, 3).setVal(Etat::NOIR);
+				board.engine.coord(7, 3).setVal(Etat::NOIR);
+
+				board.engine.coord(5, 4).setVal(Etat::NOIR);
+				board.engine.coord(6, 4).setVal(Etat::NOIR);
+				board.engine.coord(7, 4).setVal(Etat::NOIR);
 				break;
 			case 3: 
+				board.engine.coord(3, 0).setVal(Etat::BLANC);
+
+				board.engine.coord(0, 1).setVal(Etat::BLANC);
+				board.engine.coord(2, 1).setVal(Etat::BLANC);
+
+				board.engine.coord(1, 2).setVal(Etat::BLANC);
+				board.engine.coord(2, 2).setVal(Etat::BLANC);
+
+				board.engine.coord(2, 3).setVal(Etat::BLANC);
+
+				board.engine.coord(2, 4).setVal(Etat::BLANC);
+
+				board.engine.coord(2, 5).setVal(Etat::BLANC);
+				board.engine.coord(1, 5).setVal(Etat::BLANC);
+
+				board.engine.coord(0, 6).setVal(Etat::BLANC);
+
+				board.engine.coord(1, 0).setVal(Etat::NOIR);
+
+				board.engine.coord(3, 1).setVal(Etat::NOIR);
+				board.engine.coord(5, 1).setVal(Etat::NOIR);
+
+				board.engine.coord(3, 2).setVal(Etat::NOIR);
+
+				board.engine.coord(3, 3).setVal(Etat::NOIR);
+
+				board.engine.coord(3, 4).setVal(Etat::NOIR);
+				board.engine.coord(0, 4).setVal(Etat::NOIR);
+
+				board.engine.coord(3, 5).setVal(Etat::NOIR);
+
+				board.engine.coord(3, 6).setVal(Etat::NOIR);
+				board.engine.coord(2, 6).setVal(Etat::NOIR);
+				board.engine.coord(1, 6).setVal(Etat::NOIR);
+
+				board.engine.coord(1, 8).setVal(Etat::NOIR);
 				break;
 			}
 			

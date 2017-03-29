@@ -5,8 +5,8 @@
 #include <string>
 #include <regex>
 using namespace std;
-
-VAL** parseur(string fichier){ //passer le nom du fichier en paramètre ( a travers une future interface graphique?)
+/*
+//VAL** parseur(string fichier){ //passer le nom du fichier en paramètre ( a travers une future interface graphique?)
 ifstream file(fichier, ios::in);
 extern int TGOBAN; // récupération de la taille du goban
 VAL goban[TGOBAN][TGOBAN]; // création du tableau des états
@@ -48,3 +48,4 @@ else { cout <<"Le fichier n'est pas un .go ! "<<endl;}
 
 
 }
+*/
