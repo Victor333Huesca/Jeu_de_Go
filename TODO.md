@@ -1,4 +1,4 @@
-#TODO list
+﻿#TODO list
 
 ##Jeu online
 * **Ajouter** la possibilité de faire une partie en *joueur contre joueur*.
@@ -6,9 +6,17 @@
 
 ##Menus
 ###Principaux
-* **Créer** un *menu principal* permetyant de lancer une *nouvelle partie*.
+* **Créer** un *menu principal* permetant de lancer une *nouvelle partie*.
   - **Créer** un *onglet* de *chargement de partie*.
   - **Créer** un onglet de *chargement de problèmes*.
+### Implémentation
+* Le main a un tableau d'écran
+* Chaque écran gère sa boucle principale et peut en sortir de 2 manières :
+  - En renvoyant l'indice vers le nouvel écran (changement d'écran).
+  - En appelant à son tour la boucle principale du sous-écran selectionné (uniquement pour les menus).
+* Au démarage de chaque écran (et non à sa création) une fonction d'initialisation est appelée.
+  - Cette fonction charge les textures.
+  - Elle place les sprites.
 
 ###Ingame
 * **Créer** un *menu pause*.
