@@ -61,6 +61,9 @@ $(REP_SRC)Engine/Etat.h:
 $(REP_OBJ)Goban.o: $(REP_SRC)Engine/Goban.cpp $(REP_SRC)Engine/Goban.h
 $(REP_SRC)Engine/Goban.h: $(REP_SRC)Engine/Etat.h $(REP_SRC)Engine/Groupe.h
 
+$(REP_OBJ)Arbre.o: $(REP_SRC)Engine/Arbre.cpp $(REP_SRC)Engine/Arbre.h
+$(REP_SRC)Engine/Arbre.h:$(REP_SRC)Engine/Goban.h
+
 $(REP_OBJ)Groupe.o: $(REP_SRC)Engine/Groupe.cpp $(REP_SRC)Engine/Groupe.h
 $(REP_SRC)Engine/Groupe.h: $(REP_SRC)Engine/Etat.h
 

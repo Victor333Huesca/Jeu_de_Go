@@ -1,12 +1,12 @@
 #include "Menu.h"
 
 
-Menu::Menu(const sf::Vector2f & position, const char* texture, sf::Vector2f & scale)
+Menu::Menu(const sf::Vector2f & position, const char* texture, sf::Vector2f & sc)
 {
 	t_background.loadFromFile(texture);
 	s_background.setTexture(t_background);
 	s_background.setPosition(position);
-	s_background.setScale(scale);
+	s_background.setScale(sc);
 }
 
 Menu::~Menu()
@@ -122,10 +122,10 @@ void Menu::setItemsTextures(const char * blank, const char * selected)
 	button_selected.loadFromFile(selected);
 
 	// Apply to each choice
-	for (auto c : choices)
+	/*for (auto c : choices)
 	{
 		c.loadTextures(button_blank, button_selected);
 		std::cout << "Choix charge" << std::endl;
-		system("pause");
-	}
+		//system("pause");
+	}*/
 }

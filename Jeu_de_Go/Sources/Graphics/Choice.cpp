@@ -17,6 +17,7 @@ Choice::Choice(const char* name, const sf::Text& text_style, sf::Vector2f pos, s
 Choice::Choice(const char * name, const sf::Text & text_style, float posX, float posY, sf::Vector2f scale) :
 	Choice(name, text_style, sf::Vector2f(posX, posY), scale)
 {
+
 }
 
 Choice::~Choice()

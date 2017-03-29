@@ -10,12 +10,13 @@
 
 void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, int* _cur_screen);
 
+// Différents menus
 Menu* loadMenu1();
 
+// A déplacer en méthode de Goban (sauf le test évidement)
 uint8_t* compressGoban(const Goban& goban, int nb_revelent = 0);
 void uncompressGoban(const uint8_t* compressed, const Etat::VAL KO_status, Goban& goban, int nb_revelent = 0);
 void test();
-
 
 int main()
 {
@@ -23,8 +24,6 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_HEIGHT), "Jeu de Go");
     std::vector<Screen*> screens;
     int cur_screen = 0;
-
-	test();
 
 	// Declare here different screens in order of there use.
 	screens.push_back(new Game_window);
@@ -408,7 +407,6 @@ void test()
 	}
 
 	std::cout << goban << std::endl;
-	system("pause");
 
 
 	// Compress it
@@ -418,14 +416,11 @@ void test()
 	{
 		out << comp[i];
 	}
-	
 	out.close();
-	system("pause");
 
 
 	// Uncompress
 	Goban uncomp;
 	uncompressGoban(comp, Etat::VAL::KOBLACK, uncomp);
 	std::cout << "\n" << uncomp << std::endl;
-	system("pause");
 }
