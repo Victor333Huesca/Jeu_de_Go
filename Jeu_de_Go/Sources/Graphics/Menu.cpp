@@ -126,6 +126,6 @@ void Menu::setItemsTextures(const char * blank, const char * selected)
 	{
 		c.loadTextures(button_blank, button_selected);
 		std::cout << "Choix charge" << std::endl;
-		system("pause");
+		//system("pause");
 	}
 }

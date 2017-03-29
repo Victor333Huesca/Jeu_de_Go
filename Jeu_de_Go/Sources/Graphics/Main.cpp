@@ -17,6 +17,8 @@ int main()
     std::vector<Screen*> screens;
     int cur_screen = 0;
 
+	//Menu* menu = new Menu(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", sf::Vector2f(0.3f, 0.3f)); 
+
 	// Declare here different screens in order of there use.
 	screens.push_back(new Game_window);
 	//screens.push_back(loadMenu1());
@@ -87,19 +89,19 @@ Menu* loadMenu1()
 	sf::Font text_font;
 	text_font.loadFromFile("./Ressources/Font/time.ttf");
 	text_style.setFont(text_font);
-
+	
 	// Position
-	sf::Vector2f pos(0, 0);// (WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE) / 3.5) / 2, WINDOW_HEIGHT + 100);
+	sf::Vector2f pos((WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE) / 3.5) / 2, WINDOW_HEIGHT + 100);
 
 	// On charge les items
-	menu->addItem(Choice("Jouer", text_style, pos.x, pos.y));
+	/*menu->addItem(Choice("Jouer", text_style, pos.x, pos.y));
 	menu->addItem(Choice("Options", text_style, pos.x, pos.y + 120));
 	menu->addItem(Choice("Exemples", text_style, pos.x, pos.y + 240));
 	menu->addItem(Choice("Problèmes", text_style, pos.x, pos.y + 360));
 	menu->addItem(Choice("Quitter", text_style, pos.x, pos.y + 480));
 
 	// Then set items textures and return the menu
-	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
+	menu->setItemsTextures("./Ressources/Img/button.png", "./Ressources/Img/button_selected.png");*/
 	return menu;
 
 	/*

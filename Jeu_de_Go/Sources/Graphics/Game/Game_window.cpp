@@ -137,6 +137,42 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 		{
 			// Ctrl + Y
 			// It will be more complecated than I expected.
+			std::cout << "_______________Parser v1.1 (console)________________ " << std::endl;
+			std::cout << "Problème disponible (3) : " << std::endl;
+			std::cout << "Veuillez choisir votre problème : " << std::endl;
+			for (size_t x = 9; x < TGOBAN; x++)
+			{
+				for (size_t y = 7; y < TGOBAN; y++)
+				{
+					board.engine.coord(x, y).setVal(Etat::VIDE);
+				}
+			}
+			
+			for (size_t x = 9; x < TGOBAN; x++)
+			{
+				for (size_t y = 7; y < TGOBAN; y++)
+				{
+					board.engine.coord(x, y).setVal(Etat::NJ);
+				}
+			}
+			board.engine.coord(1, 3).setVal(Etat::NOIR);
+			board.engine.coord(2, 3).setVal(Etat::NOIR);
+			board.engine.coord(3, 3).setVal(Etat::NOIR);
+			board.engine.coord(4, 3).setVal(Etat::NOIR);
+			board.engine.coord(5, 3).setVal(Etat::NOIR);
+			board.engine.coord(6, 3).setVal(Etat::NOIR);
+			board.engine.coord(6, 2).setVal(Etat::NOIR);
+			board.engine.coord(6, 1).setVal(Etat::NOIR);
+			board.engine.coord(1, 5).setVal(Etat::NOIR);
+			board.engine.coord(1, 2).setVal(Etat::BLANC);
+			board.engine.coord(2, 2).setVal(Etat::BLANC);
+			board.engine.coord(3, 2).setVal(Etat::BLANC);
+			board.engine.coord(4, 2).setVal(Etat::BLANC);
+			board.engine.coord(5, 2).setVal(Etat::BLANC);
+
+			board.load();
+			
+
 		}
 	}
 	else
