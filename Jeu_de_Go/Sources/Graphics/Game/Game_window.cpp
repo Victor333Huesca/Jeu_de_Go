@@ -1,5 +1,6 @@
 #include "Game_window.h"
 
+
 Game_window::Game_window() :
 	board(sf::Vector2u(NB_SQUARES_X, NB_SQUARES_Y)),
 	infos(),
@@ -135,19 +136,20 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 		else if (key.code == sf::Keyboard::Y)
 		{
 			// Ctrl + Y
-<<<<<<< HEAD
 			// It will be more complecated than I expected.
+			size_t choix;
 			std::cout << "_______________Parser v1.1 (console)________________ " << std::endl;
 			std::cout << "Problème disponible (3) : " << std::endl;
-			std::cout << "Veuillez choisir votre problème : " << std::endl;
-			for (size_t x = 9; x < TGOBAN; x++)
+			std::cout << "Veuillez choisir votre problème : ";
+			std::cin >> choix;
+			for (size_t x = 0; x < TGOBAN; x++)
 			{
-				for (size_t y = 7; y < TGOBAN; y++)
+				for (size_t y = 0; y < TGOBAN; y++)
 				{
 					board.engine.coord(x, y).setVal(Etat::VIDE);
 				}
 			}
-			
+			board.load();
 			for (size_t x = 9; x < TGOBAN; x++)
 			{
 				for (size_t y = 7; y < TGOBAN; y++)
@@ -155,45 +157,52 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 					board.engine.coord(x, y).setVal(Etat::NJ);
 				}
 			}
-			board.engine.coord(1, 3).setVal(Etat::NOIR);
-			board.engine.coord(2, 3).setVal(Etat::NOIR);
-			board.engine.coord(3, 3).setVal(Etat::NOIR);
-			board.engine.coord(4, 3).setVal(Etat::NOIR);
-			board.engine.coord(5, 3).setVal(Etat::NOIR);
-			board.engine.coord(6, 3).setVal(Etat::NOIR);
-			board.engine.coord(6, 2).setVal(Etat::NOIR);
-			board.engine.coord(6, 1).setVal(Etat::NOIR);
-			board.engine.coord(1, 5).setVal(Etat::NOIR);
-			board.engine.coord(1, 2).setVal(Etat::BLANC);
-			board.engine.coord(2, 2).setVal(Etat::BLANC);
-			board.engine.coord(3, 2).setVal(Etat::BLANC);
-			board.engine.coord(4, 2).setVal(Etat::BLANC);
-			board.engine.coord(5, 2).setVal(Etat::BLANC);
+			switch (choix)
+			{
+			case 1:
+				board.engine.coord(1, 3).setVal(Etat::NOIR);
+				board.engine.coord(2, 3).setVal(Etat::NOIR);
+				board.engine.coord(3, 3).setVal(Etat::NOIR);
+				board.engine.coord(4, 3).setVal(Etat::NOIR);
+				board.engine.coord(5, 3).setVal(Etat::NOIR);
+				board.engine.coord(6, 3).setVal(Etat::NOIR);
+				board.engine.coord(6, 2).setVal(Etat::NOIR);
+				board.engine.coord(6, 1).setVal(Etat::NOIR);
+				board.engine.coord(1, 5).setVal(Etat::NOIR);
+				board.engine.coord(1, 2).setVal(Etat::BLANC);
+				board.engine.coord(2, 2).setVal(Etat::BLANC);
+				board.engine.coord(3, 2).setVal(Etat::BLANC);
+				board.engine.coord(4, 2).setVal(Etat::BLANC);
+				board.engine.coord(5, 2).setVal(Etat::BLANC);
+				break;
+			case 2: 
+				board.engine.coord(3, 1).setVal(Etat::NOIR);
+				board.engine.coord(4, 1).setVal(Etat::NOIR);
+				board.engine.coord(6, 1).setVal(Etat::NOIR);
+				board.engine.coord(7, 1).setVal(Etat::NOIR);
+				board.engine.coord(4, 2).setVal(Etat::NOIR);
+				board.engine.coord(6, 2).setVal(Etat::NOIR);
+				board.engine.coord(5, 3).setVal(Etat::NOIR);
+				board.engine.coord(6, 3).setVal(Etat::NOIR);
+				board.engine.coord(3, 0).setVal(Etat:);
+				board.engine.coord(2, 1).setVal(Etat::BLANC);
+				board.engine.coord(8, 1).setVal(Etat::BLANC);
+				board.engine.coord(3, 2).setVal(Etat::BLANC);
+				board.engine.coord(4, 2).setVal(Etat::BLANC);
+				board.engine.coord(4, 3).setVal(Etat::BLANC);
+				board.engine.coord(5, 3).setVal(Etat::BLANC);
+				board.engine.coord(6, 4).setVal(Etat::BLANC);
+				board.engine.coord(6, 5).setVal(Etat::BLANC);
+				board.engine.coord(6, 6).setVal(Etat::BLANC);
+				break;
+			case 3: 
+				break;
+			}
+			
 
 			board.load();
 			
 
-=======
-			Goban gob;
-			gob.coord(6,1).setVal(Etat::NOIR);
-			gob.coord(6,2).setVal(Etat::NOIR);
-			gob.coord(6,3).setVal(Etat::NOIR);
-			gob.coord(5,3).setVal(Etat::NOIR);
-			gob.coord(4,3).setVal(Etat::NOIR);
-			gob.coord(2,3).setVal(Etat::NOIR);
-			gob.coord(1,3).setVal(Etat::NOIR);
-			gob.coord(1,5).setVal(Etat::NOIR);
-			gob.coord(1,2).setVal(Etat::BLANC);
-			gob.coord(2,2).setVal(Etat::BLANC);
-			gob.coord(3,2).setVal(Etat::BLANC);
-			gob.coord(4,2).setVal(Etat::BLANC);
-			gob.coord(5,2).setVal(Etat::BLANC);
-			for (size_t x=9; x<TGOBAN; x++){
-				for (size_t y=7; y<TGOBAN; y++){
-					gob.coord(x,y).setVal(Etat::NJ);
-				}
-			}
->>>>>>> Development
 		}
 	}
 	else
