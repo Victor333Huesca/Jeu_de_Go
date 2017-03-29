@@ -1,87 +1,51 @@
-#include "Parser.h"
+#include <iostream>
+#include <fstream>
+#include "stdio.h"
+#include "Goban.h"
+#include <string>
+#include <regex>
+using namespace std;
+/*
+//VAL** parseur(string fichier){ //passer le nom du fichier en paramètre ( a travers une future interface graphique?)
+ifstream file(fichier, ios::in);
+extern int TGOBAN; // récupération de la taille du goban
+VAL goban[TGOBAN][TGOBAN]; // création du tableau des états
+int position=0;
+std::regex pattern {".go"}; // on recherche les fichiers d'extensions .go
 
-Parser::Parser()
-{
+if (std::regex_search(fichier,pattern)) {
+if(file) {
+  do {
+    position+=1;
+    char piece;
+    file.get(piece);
+    switch(piece){
+
+      case 'B': {
+        goban[(( position - 1 ) / TGOBAN)][( (postion - 1) % TGOBAN )]=BLANC;
+        break;
+}
+case '_': {
+  goban[(( position - 1 ) / TGOBAN)][( (postion - 1) % TGOBAN )]=VIDE;
+  break;
+}
+case 'N': {
+  goban[(( position - 1 ) / TGOBAN)][( (postion - 1) % TGOBAN )]=NOIR;
+  break;
+}
+    }
+  } while(piece != EOF)
+
+  return goban;
+
+
+}
+else { cout<<"Impossible d'ouvrir le fichier."<<endl;}
+
 }
 
-Parser::~Parser()
-{
+else { cout <<"Le fichier n'est pas un .go ! "<<endl;}
+
+
 }
-
-int Parser::goIntoSgf(const std::string & src_name, const std::string& out_name) const
-{
-	char ch;
-	size_t x, y;
-	char state;								 // B: black, W: white, _: null
-	char goban[NB_SQUARES_X][NB_SQUARES_Y];
-
-	// Initialize the goban
-	for (int i = 0; i < NB_SQUARES_X; i++)
-	{
-		for (int j = 0; j < NB_SQUARES_Y; j++)
-		{
-			goban[i][j] = '_';
-		}
-	}
-
-	// Start reading the .sgf file
-	std::ifstream src_file(src_name);
-	if (!src_file.fail())
-	{
-		// While the file isn't ended
-		while (src_file.get(ch) && ch != EOF)
-		{
-			// Look for the ; instuction
-			if (ch == ';')
-			{
-				// Read the instuction
-				src_file.get(ch);
-				state = ch;
-
-				// Ignore the [ then read the abscissa
-				src_file.get(ch);
-				src_file.get(ch);
-				x = (size_t)ch;
-
-				// Read the ordinate
-				src_file.get(ch);
-				y = (size_t)ch;
-
-				// Transform coordinates from letters a-s to 0-18
-				x = x - 97;
-				y = y - 97;
-
-				// Set up the value
-				goban[x][y] = state;
-			}
-		}
-	}
-	else
-	{
-		std::cerr << "Impossible d'ouvrir le fichier .sgf !" << std::endl;
-		return 1;
-	}
-	src_file.close();
-
-	// Start writing the .go file
-	std::ofstream out_file(out_name);
-	if (!out_file.fail())
-	{
-		for (int i = 0; i < NB_SQUARES_X; i++)
-		{
-			for (int j = 0; j < NB_SQUARES_Y; j++)
-			{
-				out_file << goban[i][j];
-			}
-			out_file << "\n";
-		}
-	}
-	else
-	{
-		std::cerr << "Impossible d'�crire le fichier .go !" << std::endl;
-		return 1;
-	}
-	out_file.close();
-
-	return 0;
-}
+*/

@@ -8,7 +8,7 @@
 class Menu: public Screen
 {
 public:
-    Menu(const sf::Vector2f& position, const char* texture, sf::Vector2f& scale = sf::Vector2f(1.f, 1.f));
+    Menu(const sf::Vector2f& position, const char* texture, sf::Vector2f& sc);
     ~Menu();
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
@@ -28,6 +28,8 @@ public:
 	void setItemsTextures(const char* blank, const char* selected);
 
 private:
+	//Attr
+	sf::Vector2f scale;
     // Options
     std::vector<Choice> choices;
     std::vector<Choice>::iterator cur_choice;

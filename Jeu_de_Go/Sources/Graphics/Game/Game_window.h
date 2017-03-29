@@ -3,6 +3,7 @@
 #include "Board.h"
 #include "Infos.h"
 #include "../Screen.h"
+#include "../../Engine/Goban.h"
 
 class Game_window : public Screen
 {

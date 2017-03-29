@@ -1,12 +1,16 @@
 #include "Choice.h"
 #include <iostream>
 
-Choice::Choice(const char* name, const sf::Text& text_style, sf::Vector2f pos, sf::Vector2f scale) :
+Choice::Choice(const char* name, const sf::Text& text_style, sf::Vector2f pos, sf::Vector2f sc, const char* t) :
 	selected(false)
 {
+	sf::Texture te;
+	if (!te.loadFromFile("./Ressources/Img/button_blank.png"))
+		std::cout << "erreur lors de l'ouvertur du fichier" << std::endl;
+	sprite.setTexture(te);
     // Set Common
     sprite.setPosition(pos);
-	sprite.setScale(scale);
+	sprite.setScale(sc);
 
 	// Set the text
 	text = text_style;
@@ -14,9 +18,10 @@ Choice::Choice(const char* name, const sf::Text& text_style, sf::Vector2f pos, s
 	text.setPosition(pos.x, pos.y + 20);
 }
 
-Choice::Choice(const char * name, const sf::Text & text_style, float posX, float posY, sf::Vector2f scale) :
-	Choice(name, text_style, sf::Vector2f(posX, posY), scale)
+Choice::Choice(const char * name, const sf::Text & text_style, float posX, float posY, sf::Vector2f sc, const char* t) :
+	Choice(name, text_style, sf::Vector2f(posX, posY), sc, t)
 {
+
 }
 
 Choice::~Choice()

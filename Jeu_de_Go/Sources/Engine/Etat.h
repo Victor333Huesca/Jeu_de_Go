@@ -9,7 +9,8 @@ public :
 		NOIR,
 		BLANC,
 		KOWHITE,
-		KOBLACK
+		KOBLACK,
+		NJ
 	};
 
 	//CONSTRUCTORS
