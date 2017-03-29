@@ -1,13 +1,13 @@
-#include"ArbreBrut.h"
+#include"Arbre.h"
 #include <iostream>
 //Constructors
 
-	ArbreBrut::ArbreBrut() : gob(), nbF(0)
+	Arbre::Arbre() : gob(), nbF(0)
 	{
 		fils = NULL;
 	}
 	//par copie
-	ArbreBrut::ArbreBrut(const ArbreBrut & a): gob(a.getGob()), nbF(a.getNbF())
+	Arbre::Arbre(const Arbre & a): gob(a.getGob()), nbF(a.getNbF())
 {
 	fils = new Goban [nbF];
 	for (size_t i = 0; i < nbF; i++)
@@ -17,7 +17,7 @@
 	}
 }
 
-	ArbreBrut::ArbreBrut(Goban& G, Etat::VAL val) {
+	Arbre::Arbre(Goban& G, Etat::VAL val) {
 		gob = G;
 		if (val == Etat::VAL::BLANC)
 				value= Etat::VAL::NOIR;
@@ -27,39 +27,39 @@
 
 	//Destructors
 
-	ArbreBrut::~ArbreBrut()
+	Arbre::~Arbre()
 	{
 		delete fils;
 	}
 
 	//Getters
 
-	Goban ArbreBrut::getFilsIndice(const size_t indice) const
+	Goban Arbre::getFilsIndice(const size_t indice) const
 	{
 		return fils[indice];
 	}
 
-	Goban* ArbreBrut::getFils() const
+	Goban* Arbre::getFils() const
 	{
 		return fils;
 	}
 
-	size_t ArbreBrut::getNbF() const
+	size_t Arbre::getNbF() const
 	{
 		return this->nbF;
 	}
 
-	Goban ArbreBrut::getGob() const
+	Goban Arbre::getGob() const
 	{
 		return this->gob;
 	}
 
-	bool ArbreBrut::getInfo() const
+	bool Arbre::getInfo() const
 	{
 		return this->info;
 	}
 
-	Etat::VAL ArbreBrut::getValue() const
+	Etat::VAL Arbre::getValue() const
 	{
 		return value;
 	}
@@ -67,34 +67,34 @@
 	//Setters
 
 
-		void ArbreBrut::setFils(Goban f, const size_t i)
+		void Arbre::setFils(Goban f, const size_t i)
 		{
 			this->fils[i] = f;
 		}
 
-		void ArbreBrut::setNbF(size_t _nbF)
+		void Arbre::setNbF(size_t _nbF)
 	{
 		this->nbF = _nbF;
 	}
 
-	void ArbreBrut::setGob(Goban _gob)
+	void Arbre::setGob(Goban _gob)
 	{
 		this->gob = _gob;
 	}
 
-	void ArbreBrut::setInfo(bool b)
+	void Arbre::setInfo(bool b)
 	{
 		this->info = b;
 	}
 
-	void ArbreBrut::setValue(Etat::VAL v)
+	void Arbre::setValue(Etat::VAL v)
 	{
 		this->value = v;
 	}
 
-	ArbreBrut ArbreBrut::InitArbreBrut(Goban& G, Etat::VAL value)
+	Arbre Arbre::InitArbre(Goban& G, Etat::VAL value)
 	{
-		ArbreBrut A(G,value);
+		Arbre A(G,value);
 		std::vector<Goban> listG = G.listFils(value);
 		nbF = listG.size();
 		fils = new Goban[nbF];
@@ -105,12 +105,12 @@
 		return A;
 	}
 
-	void ArbreBrut::Tsumego(ArbreBrut& A, Etat cible)
+	void Arbre::Tsumego(Arbre& A, Etat cible)
 	{
 		size_t i=0;
-		ArbreBrut filsA;
-			while (i < A.nbF){
-			filsA.InitArbreBrut(A.fils[i], A.value);
+		Arbre filsA;
+			while (i < A.nbF || A.info==0){
+			filsA.InitArbre(A.fils[i], A.value);
 			if (filsA.gob.coord(cible.getX(),cible.getY()).getVal()==cible.getVal()){
 				// cible en vie
 				if (A.value==cible.getVal()) A.info=1;
@@ -129,13 +129,13 @@
 	}
 
 
-	ArbreBrut ArbreBrut::operator[](unsigned short int i)
+	Arbre Arbre::operator[](unsigned short int i)
 	{
 		return this->fils[i];
 	}
 
 	//overloading methodes
-	ArbreBrut ArbreBrut::operator=(ArbreBrut a) {
+	Arbre Arbre::operator=(Arbre a) {
 		if (this != &a) {
 		    gob = a.gob;
 			nbF = a.nbF;
@@ -147,21 +147,21 @@
 	}
 
 	//Others methods
-	void ArbreBrut::afficher()
+	void Arbre::afficher()
 	{
 		std::cout <<"==============================="<<std::endl;
 		std::cout << "============"<<value<<"=============" << std::endl;
 		std::cout << this->getGob() << std::endl;
 	}
 
-	void ArbreBrut::printArbo(const ArbreBrut&)
+	void Arbre::printArbo(const Arbre&)
 	{
 		//Utiliser dotty ou latex ??
 		std::cout << this->getGob() << std::endl;
 	}
 
 
-	std::ostream& operator<<(std::ostream &os, ArbreBrut &n)
+	std::ostream& operator<<(std::ostream &os, Arbre &n)
 	{
 		n.afficher();
 		return os;
