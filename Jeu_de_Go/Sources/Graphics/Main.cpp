@@ -20,8 +20,8 @@ int main()
 	//Menu* menu = new Menu(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", sf::Vector2f(0.3f, 0.3f)); 
 
 	// Declare here different screens in order of there use.
-	screens.push_back(new Game_window);
-	//screens.push_back(loadMenu1());
+	//screens.push_back(new Game_window);
+	screens.push_back(loadMenu1());
 
 #if defined(_WIN32) || MULTITHREAD
 	// disable window's context
@@ -83,19 +83,21 @@ Menu* loadMenu1()
 	Menu* menu = new Menu(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", sf::Vector2f(0.3f, 0.3f));
 
 	// On charge le style du text
+	std::string str = "coucou";
 	sf::Text text_style;
 	text_style.setCharacterSize(86);
 	text_style.setFillColor(sf::Color::Black);
 	sf::Font text_font;
 	text_font.loadFromFile("./Ressources/Font/time.ttf");
 	text_style.setFont(text_font);
+	text_style.setString(str);
 	
 	// Position
 	sf::Vector2f pos((WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE) / 3.5) / 2, WINDOW_HEIGHT + 100);
 
 	// On charge les items
-	/*menu->addItem(Choice("Jouer", text_style, pos.x, pos.y));
-	menu->addItem(Choice("Options", text_style, pos.x, pos.y + 120));
+	menu->addItem(Choice("Jouer", text_style, sf::Vector2f(250, 250), sf::Vector2f(1, 1), "./Ressources/Img/button.png"));
+	/*menu->addItem(Choice("Options", text_style, pos.x, pos.y + 120));
 	menu->addItem(Choice("Exemples", text_style, pos.x, pos.y + 240));
 	menu->addItem(Choice("Problèmes", text_style, pos.x, pos.y + 360));
 	menu->addItem(Choice("Quitter", text_style, pos.x, pos.y + 480));

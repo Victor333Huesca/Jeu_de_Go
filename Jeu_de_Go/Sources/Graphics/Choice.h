@@ -5,8 +5,8 @@
 class Choice: public sf::Drawable
 {
 public:
-	Choice(const char* name, const sf::Text& text_style, sf::Vector2f pos, sf::Vector2f scale = sf::Vector2f(1, 1));
-	Choice(const char* name, const sf::Text& text_style, float posX, float posY, sf::Vector2f scale = sf::Vector2f(1, 1));
+	Choice(const char* name, const sf::Text& text_style, sf::Vector2f pos, sf::Vector2f sc, const char*);
+	Choice(const char* name, const sf::Text& text_style, float posX, float posY, sf::Vector2f sc, const char*);
     
 	~Choice();
 
