@@ -5,10 +5,12 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
+#define NO_CHANGE -1
+
 class Menu: public Screen
 {
 public:
-    Menu(const sf::Vector2f& position, const char* texture, sf::Vector2f& sc);
+    Menu(const sf::Vector2f& position, const char* texture, const char* font, sf::Vector2f& scale);
     ~Menu();
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
@@ -19,13 +21,13 @@ public:
 
 
     // Gère les interactions utilisateur
-    void click(const sf::Mouse::Button& type, const sf::RenderWindow& window);
-    void mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos);
-	void keyPressed(const sf::Event::KeyEvent& key);
+    int click(const sf::Mouse::Button& type, const sf::RenderWindow& window);		// Renvoie la fenetre à charger et NO_CHANGE sinon 
+    void mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos);				// Sélectionne le menu corresponant à la nouvelle position souris.
+	void keyPressed(const sf::Event::KeyEvent& key);								// Sélectionne le menu corresponant à l'action utilisateur
 
-	void addItem(const Choice& item);
+	void addItem(Choice& item);														// Ajoute un item au menu
 
-	void setItemsTextures(const char* blank, const char* selected);
+	void setItemsTextures(const char* blank, const char* selected);					// Applique la texture à chaque item
 
 private:
 	//Attr
@@ -41,4 +43,5 @@ private:
 	// Choices
 	sf::Texture button_blank;
 	sf::Texture button_selected;
+	sf::Font text_font;
 };

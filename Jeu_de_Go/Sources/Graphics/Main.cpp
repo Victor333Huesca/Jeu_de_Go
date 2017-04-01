@@ -23,11 +23,12 @@ int main()
 	// Main's variables
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_HEIGHT), "Jeu de Go");
     std::vector<Screen*> screens;
-    int cur_screen = 0;
+    int cur_screen = 1;
 
 	// Declare here different screens in order of there use.
 	screens.push_back(new Game_window);
-	//screens.push_back(loadMenu1());
+	screens.push_back(loadMenu1());
+
 
 #if defined(_WIN32) || MULTITHREAD
 	// disable window's context
@@ -86,15 +87,12 @@ void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, 
 Menu* loadMenu1()
 {
 	// On charge le menu
-	Menu* menu = new Menu(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", sf::Vector2f(0.3f, 0.3f));
+	Menu* menu = new Menu(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", "./Ressources/Font/time.ttf", sf::Vector2f(0.3f, 0.3f));
 
-	// On charge le style du text
+	// On charge le style du text sauf la police qui est incluse avec le menu.
 	sf::Text text_style;
 	text_style.setCharacterSize(86);
 	text_style.setFillColor(sf::Color::Black);
-	sf::Font text_font;
-	text_font.loadFromFile("./Ressources/Font/time.ttf");
-	text_style.setFont(text_font);
 
 	// Position
 	sf::Vector2f pos(0, 0);// (WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE) / 3.5) / 2, WINDOW_HEIGHT + 100);
@@ -108,6 +106,9 @@ Menu* loadMenu1()
 
 	// Then set items textures and return the menu
 	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
+	
+	std::cout << "Le Menu 1 à été chargé" << std::endl;
+
 	return menu;
 
 	/*
