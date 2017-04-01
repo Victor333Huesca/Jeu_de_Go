@@ -20,8 +20,11 @@ int main()
 	//Menu* menu = new Menu(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", sf::Vector2f(0.3f, 0.3f)); 
 
 	// Declare here different screens in order of there use.
-	//screens.push_back(new Game_window);
 	screens.push_back(loadMenu1());
+	screens.push_back(new Game_window);
+
+	
+	
 
 #if defined(_WIN32) || MULTITHREAD
 	// disable window's context
@@ -96,14 +99,14 @@ Menu* loadMenu1()
 	sf::Vector2f pos((WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE) / 3.5) / 2, WINDOW_HEIGHT + 100);
 
 	// On charge les items
-	menu->addItem(Choice("Jouer", text_style, sf::Vector2f(250, 250), sf::Vector2f(1, 1), "./Ressources/Img/button.png"));
-	/*menu->addItem(Choice("Options", text_style, pos.x, pos.y + 120));
-	menu->addItem(Choice("Exemples", text_style, pos.x, pos.y + 240));
-	menu->addItem(Choice("Problèmes", text_style, pos.x, pos.y + 360));
-	menu->addItem(Choice("Quitter", text_style, pos.x, pos.y + 480));
+	menu->addItem(Choice("Jouer", WINDOW_WIDTH / 3.5, (WINDOW_HEIGHT / 4.5) + 0, sf::Vector2f(1, 1), "./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png"));
+	menu->addItem(Choice("Options", WINDOW_WIDTH / 3.5, (WINDOW_HEIGHT / 4.5) + 120, sf::Vector2f(1, 1), "./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png"));
+	menu->addItem(Choice("Exemples", WINDOW_WIDTH / 3.5, (WINDOW_HEIGHT / 4.5) + 240, sf::Vector2f(1, 1), "./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png"));
+	menu->addItem(Choice("Problèmes", WINDOW_WIDTH / 3.5, (WINDOW_HEIGHT / 4.5) + 360, sf::Vector2f(1, 1), "./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png"));
+	menu->addItem(Choice("Quitter", WINDOW_WIDTH / 3.5, (WINDOW_HEIGHT / 4.5) + 480, sf::Vector2f(1, 1), "./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png"));
 
 	// Then set items textures and return the menu
-	menu->setItemsTextures("./Ressources/Img/button.png", "./Ressources/Img/button_selected.png");*/
+	//menu->setItemsTextures("./Ressources/Img/button.png", "./Ressources/Img/button_selected.png");*/
 	return menu;
 
 	/*
