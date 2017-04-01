@@ -128,6 +128,7 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 	if (key.control)
 	{
 		// Ctrl + ...
+		
 		if (key.code == sf::Keyboard::Z)
 		{
 			// Ctrl + Z
