@@ -1,26 +1,24 @@
 #include "Choice.h"
-#include <iostream>
 
-Choice::Choice(const char* name, const sf::Text& text_style, sf::Vector2f pos, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale) :
+
+Choice::Choice(sf::Vector2f pos, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale) :
 	Run(_Run),
 	selected(false),
-	t_blank(nullptr),
-	t_selected(nullptr)
+	hover(false),
+	texture(nullptr),
+	t_selected(nullptr),
+	t_hover(nullptr)
 {
-    // Set Common
     sprite.setPosition(pos);
 	sprite.setScale(scale);
 
-	// Set the text
-	text = text_style;
-	text.setString(name);
-	text.setPosition(pos.x + 20, pos.y + -8);
+	effect.setPosition(pos);
+	effect.setScale(scale);
 }
 
-Choice::Choice(const char * name, const sf::Text & text_style, float posX, float posY, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale) :
-	Choice(name, text_style, sf::Vector2f(posX, posY), _Run, scale)
+Choice::Choice(float posX, float posY, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale) :
+	Choice(sf::Vector2f(posX, posY), _Run, scale)
 {
-
 }
 
 Choice::~Choice()
@@ -30,7 +28,7 @@ Choice::~Choice()
 void Choice::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(sprite, states);
-	target.draw(text, states);
+	if (selected || hover)	target.draw(effect, states);
 }
 
 sf::Vector2f Choice::getSize() const
@@ -38,29 +36,26 @@ sf::Vector2f Choice::getSize() const
     return sf::Vector2f(sprite.getTextureRect().width, sprite.getTextureRect().height);
 }
 
-void Choice::move(const sf::Vector2f & offset)
-{
-	sprite.move(offset);
-}
-
-void Choice::loadTextures(const sf::Texture & blank, const sf::Texture & selected)
+void Choice::loadTextures(const sf::Texture& _texture, const sf::Texture& selected, const sf::Texture& hover)
 {
 	// Set texutes
-	t_blank = &blank;
+	texture = &_texture;
 	t_selected = &selected;
+	t_hover = &hover;
 
 	// Apply the one should be
-	sprite.setTexture(*t_blank, true);
-}
-
-void Choice::setFont(const sf::Font & font)
-{
-	text.setFont(font);
+	updateTexture();
 }
 
 void Choice::setSelected(bool state)
 {
 	selected = state;
+	updateTexture();
+}
+
+void Choice::setHover(bool state)
+{
+	hover = state;
 	updateTexture();
 }
 
@@ -71,16 +66,8 @@ sf::FloatRect Choice::getGlobalBounds() const
 
 void Choice::updateTexture()
 {
-	if (selected)	sprite.setTexture(*t_selected);
-	else			sprite.setTexture(*t_blank);
-}
+	sprite.setTexture(*texture);
 
-std::string Choice::getName() const
-{
-	return text.getString().toAnsiString();
-}
-
-const sf::Texture* Choice::getTextureAdress() const
-{
-	return t_blank;
+	if (selected)	effect.setTexture(*t_selected);
+	else if (hover)	effect.setTexture(*t_hover);
 }

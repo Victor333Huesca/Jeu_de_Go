@@ -1,28 +1,31 @@
 #include "Menu.h"
 
 
-Menu::Menu(const sf::Vector2f & position, const char* texture, const char* font, sf::Vector2f & scale) :
+Menu::Menu(const sf::Vector2f & position, const char* texture, const sf::Vector2f & scale) :
+	choices(),
 	cur_choice(nullptr)
 {
 	t_background.loadFromFile(texture);
 	s_background.setTexture(t_background);
 	s_background.setPosition(position);
 	s_background.setScale(scale);
-
-	text_font.loadFromFile(font);
 }
 
 Menu::~Menu()
 {
-
+	for (Choice& c : choices)
+	{
+		Choice* cc = &c;
+		delete cc;
+	}
 }
 
 void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-
     target.draw(s_background, states);
-    for (const Choice& choice : choices)
-        target.draw(choice, states);
+
+	for (const Choice& c : choices)
+		target.draw(c, states);
 }
 
 int Menu::Run(sf::RenderWindow &window)
@@ -152,27 +155,28 @@ void Menu::mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos)
 		}
 	}
 
+	// V2
 	/*
-	sf::Vector2f position(sf::Mouse::getPosition(window));
-	for (Choice& button : choices)
+	for (Choice*& c : _choices)
 	{
-		if (button.Click(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
+		if (c->getGlobalBounds().contains(sf::Vector2f(pos)))
 		{
-			if (!button.getSelected())
+			// c is hover
+			if (cur_choice != c)
 			{
-				button.setSelected(true);  //Voila ici ca ne fonctionne pas, alors ca affiche 1 tant qu'on est ici mais une fois sortie au revoir.
-				
+				// And it isn't the one selected
+				c->setSelected(true);
+				cur_choice = c;
 			}
-				
-			std::cout << button.getSelected() << std::endl;
 		}
 		else
 		{
-			std::cout << button.getSelected() << std::endl;
+			// c isn't hover
+			if (cur_choice != c)
+				// And it in not the one selected too
+				c->setSelected(false);
 		}
-		//button.setTexture("./Ressources/Img/button_blank.png");
-	}
-	*/
+	}*/
 }
 
 void Menu::keyPressed(const sf::Event::KeyEvent& key)
@@ -182,18 +186,6 @@ void Menu::keyPressed(const sf::Event::KeyEvent& key)
 
 void Menu::addItem(Choice& item)
 {
-	item.setFont(text_font);
-	choices.push_back(item);
+	Choice* _item = new Choice(item);
+	choices.push_back(*_item);
 }
-
-void Menu::setItemsTextures(const char * blank, const char * selected)  // Quitte à avoir les boutons autant le déclarer direct au constructeur.
-{
-	// Load textures
-	button_blank.loadFromFile(blank); 
-	button_selected.loadFromFile(selected);
-	
-	// Apply to each choice
-	for (Choice& c : choices)
-		c.loadTextures(button_blank, button_selected);
-}
-

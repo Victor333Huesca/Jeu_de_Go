@@ -1,7 +1,7 @@
 #include "Globals.h"
 #include <thread>
 #include "Screens.h"
-#include "Menu.h"
+#include "Menu_simple.h"
 #include "Game/Game_window.h"
 #include <fstream>
 #include <cassert>
@@ -87,7 +87,10 @@ void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, 
 Menu* loadMenu1()
 {
 	// On charge le menu
-	Menu* menu = new Menu(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", "./Ressources/Font/time.ttf", sf::Vector2f(0.3f, 0.3f));
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", sf::Vector2f(0.3f, 0.3f));
+
+	// Need move aways after
+	menu->setItemsFonts("./Ressources/Font/time.ttf");
 
 	// On charge le style du text sauf la police qui est incluse avec le menu.
 	sf::Text text_style;
@@ -98,15 +101,15 @@ Menu* loadMenu1()
 	sf::Vector2f pos(225, 125);// (WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE) / 3.5) / 2, WINDOW_HEIGHT + 100);
 
 	// On charge les items
-	menu->addItem(Choice("        Jouer", text_style, pos.x, pos.y,	[](const sf::RenderTarget& window) 
+	menu->addItem(Choice_Simple("        Jouer", text_style, pos.x, pos.y,	[](const sf::RenderTarget& window)
 	{ return 0; }));
-	menu->addItem(Choice("       Options", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window)
+	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window)
 	{ return NO_CHANGE; }));
-	menu->addItem(Choice("      Exemples", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window)
+	menu->addItem(Choice_Simple("      Exemples", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window)
 	{ return NO_CHANGE; }));
-	menu->addItem(Choice("      Problèmes", text_style, pos.x, pos.y + 360, [](const sf::RenderTarget& window)
+	menu->addItem(Choice_Simple("      Problèmes", text_style, pos.x, pos.y + 360, [](const sf::RenderTarget& window)
 	{ return NO_CHANGE; }));
-	menu->addItem(Choice("       Quitter", text_style, pos.x, pos.y + 480, [](const sf::RenderTarget& window)
+	menu->addItem(Choice_Simple("       Quitter", text_style, pos.x, pos.y + 480, [](const sf::RenderTarget& window)
 	{ return -1; }));
 
 	// Then set items textures and return the menu

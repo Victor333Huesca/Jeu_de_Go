@@ -136,6 +136,8 @@
     <ClInclude Include="Sources\Engine\History.h" />
     <ClInclude Include="Sources\Engine\Parser.h" />
     <ClInclude Include="Sources\Graphics\Choice.h" />
+    <ClInclude Include="Sources\Graphics\Choice_miniature.h" />
+    <ClInclude Include="Sources\Graphics\Choice_Simple.h" />
     <ClInclude Include="Sources\Graphics\Game\Board.h" />
     <ClInclude Include="Sources\Graphics\Game\Game_window.h" />
     <ClInclude Include="Sources\Graphics\Game\Infos.h" />
@@ -143,6 +145,7 @@
     <ClInclude Include="Sources\Graphics\Game\Timer.h" />
     <ClInclude Include="Sources\Graphics\Globals.h" />
     <ClInclude Include="Sources\Graphics\Menu.h" />
+    <ClInclude Include="Sources\Graphics\Menu_simple.h" />
     <ClInclude Include="Sources\Graphics\Screen.h" />
     <ClInclude Include="Sources\Graphics\Screens.h" />
   </ItemGroup>
@@ -154,6 +157,8 @@
     <ClCompile Include="Sources\Engine\History.cpp" />
     <ClCompile Include="Sources\Engine\Parser.cpp" />
     <ClCompile Include="Sources\Graphics\Choice.cpp" />
+    <ClCompile Include="Sources\Graphics\Choice_miniature.cpp" />
+    <ClCompile Include="Sources\Graphics\Choice_Simple.cpp" />
     <ClCompile Include="Sources\Graphics\Game\Board.cpp" />
     <ClCompile Include="Sources\Graphics\Game\Game_window.cpp" />
     <ClCompile Include="Sources\Graphics\Game\Infos.cpp" />
@@ -161,6 +166,7 @@
     <ClCompile Include="Sources\Graphics\Game\Timer.cpp" />
     <ClCompile Include="Sources\Graphics\Main.cpp" />
     <ClCompile Include="Sources\Graphics\Menu.cpp" />
+    <ClCompile Include="Sources\Graphics\Menu_simple.cpp" />
     <ClCompile Include="Sources\Graphics\Screen.cpp" />
   </ItemGroup>
   <ItemGroup>
