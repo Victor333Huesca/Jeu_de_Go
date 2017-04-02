@@ -1,4 +1,5 @@
-#pragma once
+#ifndef Etat_E
+#define Etat_E
 #include <iostream>
 
 class Etat
@@ -8,12 +9,14 @@ public :
 		VIDE,
 		NOIR,
 		BLANC,
-		KO
+		KOWHITE,
+		KOBLACK,
+		NJ
 	};
 
 	//CONSTRUCTORS
 	Etat();//default constructor
-	Etat(size_t, size_t, VAL);//parametric constructor
+	Etat(const size_t,const size_t,const VAL);//parametric constructor
 	Etat(const Etat&);//copy constructor
 
 	//GETTERS
@@ -33,7 +36,7 @@ public :
 
 	// Methodes
 	bool estVoisine(const Etat& piece) const;
-	bool isPlayable() const;
+	bool isPlayable(const VAL& value) const;
 	bool isAStone() const;
 	bool isAStone(const VAL& value) const;
 	std::ostream& coord(std::ostream& os) const;
@@ -46,3 +49,4 @@ private:
 
   //overloadings functions
 std::ostream& operator<<(std::ostream&, const Etat&);
+#endif

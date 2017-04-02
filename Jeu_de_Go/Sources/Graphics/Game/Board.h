@@ -2,6 +2,7 @@
 #include "../Globals.h"
 #include "Square.h"
 #include "../../Engine/Goban.h"
+#include "../../Engine/Arbre.h"
 
 #define ZOOM_FACTOR 2
 
@@ -25,7 +26,7 @@ public:
 	void load();
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
-
+	Goban engine;
 private:
 	// Goban
 	sf::Vector2u size;			/*!< Number of squares on the goban */
@@ -40,7 +41,7 @@ private:
 	sf::View view_origin;		/*!< Original view */
 
 	// Goban engine
-	Goban engine;				/*!< Engine used by Wissem and Mamadou */
+	//Goban engine;				/*!< Engine used by Wissem and Mamadou */
 
 	// Return case corresponding to view's position
 	bool posToSquare(sf::Vector2i& pos) const;

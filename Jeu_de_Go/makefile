@@ -1,5 +1,5 @@
 # -----   Options   ----- #
-CXXFLAGS = -std=c++14
+CXXFLAGS = -std=c++14 -g
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system -pthread
 
 # -----  Locations  ----- #
@@ -28,6 +28,13 @@ INCLUDE =
 # -----   Target    ----- #
 all : $(EXE)
 
+# ---- See variables ---- #
+obj :
+	@echo $(OBJ)
+
+src :
+	@echo $(SRC)
+
 # -----     Main    ----- #
 $(EXE) : $(OBJ)
 	@echo All files have been compiled with success.
@@ -45,11 +52,17 @@ $(REP_OBJ) :
 
 
 # Engine
+$(REP_OBJ)Arbre.o: $(REP_SRC)Engine/Arbre.cpp $(REP_SRC)Engine/Arbre.h
+$(REP_SRC)Engine/Arbre.h:
+
 $(REP_OBJ)Etat.o: $(REP_SRC)Engine/Etat.cpp $(REP_SRC)Engine/Etat.h
 $(REP_SRC)Engine/Etat.h:
 
 $(REP_OBJ)Goban.o: $(REP_SRC)Engine/Goban.cpp $(REP_SRC)Engine/Goban.h
 $(REP_SRC)Engine/Goban.h: $(REP_SRC)Engine/Etat.h $(REP_SRC)Engine/Groupe.h
+
+$(REP_OBJ)Arbre.o: $(REP_SRC)Engine/Arbre.cpp $(REP_SRC)Engine/Arbre.h
+$(REP_SRC)Engine/Arbre.h:$(REP_SRC)Engine/Goban.h
 
 $(REP_OBJ)Groupe.o: $(REP_SRC)Engine/Groupe.cpp $(REP_SRC)Engine/Groupe.h
 $(REP_SRC)Engine/Groupe.h: $(REP_SRC)Engine/Etat.h
@@ -69,6 +82,12 @@ $(REP_SRC)Graphics/Screens.h: $(REP_SRC)Graphics/Screen.h $(REP_SRC)Graphics/Gam
 
 $(REP_OBJ)Screen.o: $(REP_SRC)Graphics/Screen.cpp $(REP_SRC)Graphics/Screen.h
 $(REP_SRC)Graphics/Screen.h:
+
+$(REP_OBJ)Menu.o: $(REP_SRC)Graphics/Menu.cpp $(REP_SRC)Graphics/Menu.h
+$(REP_SRC)Graphics/Menu.h: $(REP_SRC)Graphics/Screen.h $(REP_SRC)Graphics/Choice.h
+
+$(REP_OBJ)Choice.o: $(REP_SRC)Graphics/Choice.cpp $(REP_SRC)Graphics/Choice.h
+$(REP_SRC)Graphics/Choice.h:
 
 # Graphics --> Game
 $(REP_OBJ)Board.o: $(REP_SRC)Graphics/Game/Board.cpp $(REP_SRC)Graphics/Game/Board.h

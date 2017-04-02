@@ -21,8 +21,8 @@ void Square::loadTextures()
 	white_t.loadFromFile("./Ressources/Img/stone_white3.png");
 	black_t.loadFromFile("./Ressources/Img/stone_black3.png");
 
-	white_t.setSmooth(true);
-	black_t.setSmooth(true);
+	//white_t.setSmooth(true);
+	//black_t.setSmooth(true);
 }
 
 void Square::setPosition(const sf::Vector2f position)
