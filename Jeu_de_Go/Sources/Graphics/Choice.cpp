@@ -1,7 +1,8 @@
 #include "Choice.h"
 #include <iostream>
 
-Choice::Choice(const char* name, const sf::Text& text_style, sf::Vector2f pos, sf::Vector2f scale) :
+Choice::Choice(const char* name, const sf::Text& text_style, sf::Vector2f pos, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale) :
+	Run(_Run),
 	selected(false),
 	t_blank(nullptr),
 	t_selected(nullptr)
@@ -13,11 +14,11 @@ Choice::Choice(const char* name, const sf::Text& text_style, sf::Vector2f pos, s
 	// Set the text
 	text = text_style;
 	text.setString(name);
-	text.setPosition(pos.x, pos.y + 20);
+	text.setPosition(pos.x + 20, pos.y + -8);
 }
 
-Choice::Choice(const char * name, const sf::Text & text_style, float posX, float posY, sf::Vector2f scale) :
-	Choice(name, text_style, sf::Vector2f(posX, posY), scale)
+Choice::Choice(const char * name, const sf::Text & text_style, float posX, float posY, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale) :
+	Choice(name, text_style, sf::Vector2f(posX, posY), _Run, scale)
 {
 
 }
@@ -35,11 +36,6 @@ void Choice::draw(sf::RenderTarget& target, sf::RenderStates states) const
 sf::Vector2f Choice::getSize() const
 {
     return sf::Vector2f(sprite.getTextureRect().width, sprite.getTextureRect().height);
-}
-
-bool Choice::isSelected() const
-{
-	return selected;
 }
 
 void Choice::move(const sf::Vector2f & offset)
@@ -60,6 +56,23 @@ void Choice::loadTextures(const sf::Texture & blank, const sf::Texture & selecte
 void Choice::setFont(const sf::Font & font)
 {
 	text.setFont(font);
+}
+
+void Choice::setSelected(bool state)
+{
+	selected = state;
+	updateTexture();
+}
+
+sf::FloatRect Choice::getGlobalBounds() const
+{
+	return sprite.getGlobalBounds();
+}
+
+void Choice::updateTexture()
+{
+	if (selected)	sprite.setTexture(*t_selected);
+	else			sprite.setTexture(*t_blank);
 }
 
 std::string Choice::getName() const

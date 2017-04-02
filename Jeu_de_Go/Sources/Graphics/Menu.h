@@ -5,7 +5,7 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
-#define NO_CHANGE -1
+#define NO_CHANGE -777
 
 class Menu: public Screen
 {
@@ -30,11 +30,10 @@ public:
 	void setItemsTextures(const char* blank, const char* selected);					// Applique la texture à chaque item
 
 private:
-	//Attr
-	sf::Vector2f scale;
     // Options
     std::vector<Choice> choices;
-    std::vector<Choice>::iterator cur_choice;
+    //std::vector<Choice>::iterator cur_choice;
+	Choice* cur_choice;
 
     // Background
     sf::Sprite s_background;

@@ -1,7 +1,8 @@
 #include "Menu.h"
 
 
-Menu::Menu(const sf::Vector2f & position, const char* texture, const char* font, sf::Vector2f & scale)
+Menu::Menu(const sf::Vector2f & position, const char* texture, const char* font, sf::Vector2f & scale) :
+	cur_choice(nullptr)
 {
 	t_background.loadFromFile(texture);
 	s_background.setTexture(t_background);
@@ -20,7 +21,7 @@ void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 
     target.draw(s_background, states);
-    for (auto choice : choices)
+    for (const Choice& choice : choices)
         target.draw(choice, states);
 }
 
@@ -97,8 +98,12 @@ sf::Vector2f Menu::getPosition() const
 // Interactcions
 int Menu::click(const sf::Mouse::Button& type, const sf::RenderWindow& window)
 {
+	if (cur_choice != nullptr)
+		return cur_choice->Run(window);
+	
+	return NO_CHANGE;
 	/*
-	for (auto button : choices)   //j'ai travaillé ici car il faut renvoyé un int 
+	for (Choice& button : choices)   //j'ai travaillé ici car il faut renvoyé un int 
 	{
 		if (button.Click(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) && (button.id == "Jouer"))
 		{
@@ -118,19 +123,38 @@ int Menu::click(const sf::Mouse::Button& type, const sf::RenderWindow& window)
 
 	// Cherche le menu selectionné
 
-	for (auto button : choices)
+	for (Choice& button : choices)
 	{
 	}
 	*/
-
-	return NO_CHANGE;
 }
 
 void Menu::mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos)
 {
+	for (Choice& c : choices)
+	{
+		if (c.getGlobalBounds().contains(sf::Vector2f(pos)))
+		{
+			// c is hover
+			if (cur_choice != &c)
+			{
+				// And it isn't the one selected
+				c.setSelected(true);
+				cur_choice = &c;
+			}
+		}
+		else
+		{
+			// c isn't hover
+			if (cur_choice != &c)
+				// And it in not the one selected too
+				c.setSelected(false);
+		}
+	}
+
 	/*
 	sf::Vector2f position(sf::Mouse::getPosition(window));
-	for (auto button : choices)
+	for (Choice& button : choices)
 	{
 		if (button.Click(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
 		{
@@ -167,32 +191,9 @@ void Menu::setItemsTextures(const char * blank, const char * selected)  // Quitt
 	// Load textures
 	button_blank.loadFromFile(blank); 
 	button_selected.loadFromFile(selected);
-
-
 	
 	// Apply to each choice
-	for (auto c : choices)
-	{
+	for (Choice& c : choices)
 		c.loadTextures(button_blank, button_selected);
-
-		// Debugg
-		std::cout << "Dans setItemTexture : " << &button_blank << " == " << c.getTextureAdress() << "\n";
-	}
-
-	// Debugg
-	std::cout << "\n\nApres setItemTexture : " << &button_blank << " == " << choices[0].getTextureAdress() << std::endl;
-	
-
-	// Apply to each choice
-	for (int i = 0; i < choices.size(); i++)
-	{
-		choices[i].loadTextures(button_blank, button_selected);
-
-		// Debugg
-		std::cout << "Dans setItemTexture : " << &button_blank << " == " << choices[i].getTextureAdress() << "\n";
-	}
-
-	// Debugg
-	std::cout << "\n\nApres setItemTexture : " << &button_blank << " == " << choices[0].getTextureAdress() << std::endl;
 }
 
