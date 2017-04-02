@@ -70,6 +70,7 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value, const sf::Mouse
 					//std::cout << engine << std::endl;
 
 					std::cout << std::endl;
+
 				}
 			}
 			else
@@ -196,7 +197,7 @@ void Board::draw(sf::RenderTarget & target, sf::RenderStates states) const
 
 Square::Value Board::transform(const Etat::VAL & value)
 {
-	Square::Value tmp;
+	Square::Value tmp = Square::None;
 	switch (value)
 	{
 	case Etat::BLANC:

@@ -2,6 +2,7 @@
 #include "../Globals.h"
 #include "Square.h"
 #include "../../Engine/Goban.h"
+#include "../../Engine/Arbre.h"
 
 #define ZOOM_FACTOR 2
 

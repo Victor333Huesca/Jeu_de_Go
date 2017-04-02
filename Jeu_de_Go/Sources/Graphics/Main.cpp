@@ -87,7 +87,7 @@ void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, 
 Menu* loadMenu1()
 {
 	// On charge le menu
-	Menu* menu = new Menu(sf::Vector2f(0, 0.f), "./Ressources/Img/Background3.png", "./Ressources/Font/time.ttf", sf::Vector2f(0.3f, 0.3f));
+	Menu* menu = new Menu(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", "./Ressources/Font/time.ttf", sf::Vector2f(0.3f, 0.3f));
 
 	// On charge le style du text sauf la police qui est incluse avec le menu.
 	sf::Text text_style;

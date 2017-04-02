@@ -4,32 +4,26 @@
 
 	Arbre::Arbre() : gob(), nbF(0)
 	{
-		fils = NULL;
+		fils=	std::vector<Goban>(0);
+		info=0;
+		value=Etat::NOIR;
 	}
 	//par copie
-	Arbre::Arbre(const Arbre & a): gob(a.getGob()), nbF(a.getNbF())
+	Arbre::Arbre(const Arbre & a)
 {
-	fils = new Goban [nbF];
-	for (size_t i = 0; i < nbF; i++)
-	{
-		Goban g=a.getFilsIndice(i);
-		fils[i] = g;
-	}
+	gob=a.getGob();
+	nbF=a.getNbF();
+	value=a.getValue();
+	fils=a.getFils();
+	info=0;
 }
 
 	Arbre::Arbre(Goban& G, Etat::VAL val) {
 		gob = G;
-		if (val == Etat::VAL::BLANC)
-				value= Etat::VAL::NOIR;
-			else
-				value= Etat::VAL::BLANC;
-	}
-
-	//Destructors
-
-	Arbre::~Arbre()
-	{
-		delete fils;
+		info=false;
+		value=val;
+		fils= 	std::vector<Goban>(0);
+		info=0;
 	}
 
 	//Getters
@@ -39,7 +33,7 @@
 		return fils[indice];
 	}
 
-	Goban* Arbre::getFils() const
+	std::vector<Goban> Arbre::getFils() const
 	{
 		return fils;
 	}
@@ -92,44 +86,66 @@
 		this->value = v;
 	}
 
-	Arbre Arbre::InitArbre(Goban& G, Etat::VAL value)
+	void Arbre::Tsumego(Etat& cible)
 	{
-		Arbre A(G,value);
-		std::vector<Goban> listG = G.listFils(value);
-		nbF = listG.size();
-		fils = new Goban[nbF];
-		for (size_t i = 0; i < nbF; i++)
-		{
-			fils[i] = listG[i];
-		}
-		return A;
-	}
+		//creer list de gobans des fils
+		nbF=gob.listFils(value).size();
+		fils.resize(nbF);
+		fils=gob.listFils(value);
 
-	void Arbre::Tsumego(Arbre& A, Etat cible)
-	{
-		size_t i=0;
-		Arbre filsA;
-			while (i < A.nbF || A.info==0){
-			filsA.InitArbre(A.fils[i], A.value);
-			if (filsA.gob.coord(cible.getX(),cible.getY()).getVal()==cible.getVal()){
-				// cible en vie
-				if (A.value==cible.getVal()) A.info=1;
-				else {
-					size_t j=0;
-					while(j< nbF || info== 0){
-						filsA.Tsumego(filsA.fils[j],inverse(value),cible);
-						if(filsA.fils[j].info==1) A.info=0;
-						else A.info=1;
-						j++;
-					}
+		//CAS D'ARET
+		if (nbF==0){
+				bool enVie=0;
+				if (gob.coord(cible.getX(),cible.getY()).getVal()==cible.getVal()){
+					//cible en vie
+					enVie=1;
 				}
+				if (value==cible.getVal() && enVie)
+					info=1;
+				else if (value!=cible.getVal() && !enVie)
+					info=1;
+					else
+						info=0;
+				std::cout<<gob<<std::endl;
+				return;
+		}
+
+
+		size_t i=0;
+		//creation des fils
+		Arbre filsA;
+		Etat::VAL val;
+		while (i < nbF && info==0){
+		if (value == Etat::VAL::BLANC)
+				val= Etat::VAL::NOIR;
+		else
+				val= Etat::VAL::BLANC;
+		filsA=Arbre(fils[i], val);
+		if (filsA.gob.coord(cible.getX(),cible.getY()).getVal()==cible.getVal()){
+				//cible en vie
+				filsA.Tsumego(cible);
+			}
+			else {
+				//le coup a tué la cible
+				info=1;
+				std::cout<<gob<<std::endl;
+				return;
+			}
+
+			//s'areter si la réponse est deja trouvée (opti)
+			if (filsA.info==1){}
+			else {
+				info=1;
+				std::cout<<gob<<std::endl;
+				return;
 			}
 			i++;
 		}
 	}
 
 
-	Arbre Arbre::operator[](unsigned short int i)
+
+	Goban Arbre::operator[](unsigned short int i)
 	{
 		return this->fils[i];
 	}
@@ -137,13 +153,14 @@
 	//overloading methodes
 	Arbre Arbre::operator=(Arbre a) {
 		if (this != &a) {
-		    gob = a.gob;
+		  gob = a.gob;
 			nbF = a.nbF;
+			fils.resize(a.fils.size());
 			fils = a.fils;
 			info = a.info;
 			value = a.value;
 		}
-		return this;
+		return *this;
 	}
 
 	//Others methods

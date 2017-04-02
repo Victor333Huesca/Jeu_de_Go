@@ -2,6 +2,7 @@
 #include "../Globals.h"
 #include "Board.h"
 #include "Infos.h"
+#include "../../Engine/Arbre.h"
 #include "../Screen.h"
 #include "../../Engine/Goban.h"
 

@@ -1,6 +1,7 @@
 #include "Game_window.h"
 
 
+
 Game_window::Game_window() :
 	board(sf::Vector2u(NB_SQUARES_X, NB_SQUARES_Y)),
 	infos(),
@@ -153,6 +154,13 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 			board.load();
 			for (size_t x = 9; x < TGOBAN; x++)
 			{
+				for (size_t y = 0; y < TGOBAN; y++)
+				{
+					board.engine.coord(x, y).setVal(Etat::NJ);
+				}
+			}
+			for (size_t x = 0; x < TGOBAN; x++)
+			{
 				for (size_t y = 7; y < TGOBAN; y++)
 				{
 					board.engine.coord(x, y).setVal(Etat::NJ);
@@ -243,9 +251,26 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 				break;
 			}
 			
-
+			char c;
 			board.load();
+			//std::cout << board.engine << std::endl;
+			std::cout<<"Lancer le Tsumego Y/N ?  ";
+			std::cin >> c;
+			if (c == 'Y')
+			{
+				std::cout << "lancement du tsumego :" << std::endl;
+				Arbre abr(board.engine, Etat::BLANC);
+				abr.Tsumego(board.engine.coord(1, 2));  //Erreur de free
+			}
+			else
+			{
+				std::cout << "Vous avez épargné votre pc !"<<std::endl;
+			}
+				
 			
+				
+			
+				
 
 		}
 	}

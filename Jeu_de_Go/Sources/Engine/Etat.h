@@ -1,4 +1,5 @@
-#pragma once
+#ifndef Etat_E
+#define Etat_E
 #include <iostream>
 
 class Etat
@@ -15,7 +16,7 @@ public :
 
 	//CONSTRUCTORS
 	Etat();//default constructor
-	Etat(size_t, size_t, VAL);//parametric constructor
+	Etat(const size_t,const size_t,const VAL);//parametric constructor
 	Etat(const Etat&);//copy constructor
 
 	//GETTERS
@@ -48,3 +49,4 @@ private:
 
   //overloadings functions
 std::ostream& operator<<(std::ostream&, const Etat&);
+#endif
