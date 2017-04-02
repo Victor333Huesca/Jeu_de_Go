@@ -1,4 +1,5 @@
-#pragma once
+#ifndef Goban_G
+#define Goban_G
 #include <iostream>
 #include <vector>
 #include "Etat.h"
@@ -57,9 +58,10 @@ public:
 
   //overloadings methodes
   Etat& operator[](const size_t) const;
-  Goban operator= (Goban&);
+  Goban operator= (const Goban&);
   std::vector<Goban> listFils(const Etat::VAL);
 };
 
 //overloadings functions
 std::ostream& operator<<(std::ostream&, const Goban&);
+#endif

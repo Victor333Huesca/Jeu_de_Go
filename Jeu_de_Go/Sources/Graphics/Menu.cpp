@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "Globals.h"
 
 
 Menu::Menu(const sf::Vector2f & position, const char* texture, const char* font, sf::Vector2f & scale)
@@ -18,8 +19,13 @@ Menu::~Menu()
 
 void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-
+	sf::Texture t;  //En attendant car je dois partir 
+	t.loadFromFile("./Ressources/Img/Speaker_off.png");
+	sf::Sprite sound;
+	sound.setPosition(10, 450);
+	sound.setTexture(t);
     target.draw(s_background, states);
+	target.draw(sound, states);
     for (auto choice : choices)
         target.draw(choice, states);
 }
@@ -27,7 +33,7 @@ void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 int Menu::Run(sf::RenderWindow &window)
 {
     // To stay alive
-	bool Running = true;
+	bool Running = true; //je ne crois pas que ce soit utile 
 
 	while (Running)
 	{
@@ -48,8 +54,9 @@ int Menu::Run(sf::RenderWindow &window)
 				break;
 			case sf::Event::MouseButtonReleased:
 			{
+				//return click(event.mouseButton.button, window);
 				int res = click(event.mouseButton.button, window);
-				if (res != NO_CHANGE)
+				if (res != -2)
 					return res;
 				break;
 			}
@@ -110,7 +117,7 @@ int Menu::click(const sf::Mouse::Button& type, const sf::RenderWindow& window)
 		}
 
 	}
-
+	*/
 
 	// On récurpère la position de la souris
 	sf::Vector2f position(sf::Mouse::getPosition(window));
@@ -120,10 +127,18 @@ int Menu::click(const sf::Mouse::Button& type, const sf::RenderWindow& window)
 
 	for (auto button : choices)
 	{
+		if (button.isSelected(position) && (button.getName() == "Jouer"))
+		{
+			return 0;
+		}
+		if (button.isSelected(position) && (button.getName() == "Quitter"))
+		{
+			return -1;
+		}
 	}
-	*/
+	
 
-	return NO_CHANGE;
+	return -2;
 }
 
 void Menu::mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos)

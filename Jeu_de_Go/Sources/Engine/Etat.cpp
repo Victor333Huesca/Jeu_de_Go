@@ -9,7 +9,7 @@ Etat::Etat(){//default constructor
   val=VIDE;
 }
 
-Etat::Etat(size_t X, size_t Y, VAL V){//parametric constructor
+Etat::Etat(const size_t X,const size_t Y,const VAL V){//parametric constructor
   x= X;
   y= Y;
   val= V;

@@ -10,23 +10,18 @@ private:
 	Etat::VAL value;
 	bool info;
 	size_t nbF;
-	Goban * fils;
+	std::vector<Goban> fils;
 public:
 	//Constructors
 	Arbre();
 	Arbre(const Arbre&);
-	Arbre(Goban&);
 	Arbre(Goban&, Etat::VAL);
-	Arbre(const bool);
 	Arbre(Goban&, const size_t);
 	Arbre(Goban& _gob, const size_t _nbF, Goban * _fils);
 
-	//Destructors
-	~Arbre();
-
 	//Getters
 	Goban getFilsIndice(const size_t) const;
-	Goban* getFils() const;
+	std::vector<Goban> getFils() const;
 	size_t getNbF() const;
 	Goban getGob() const;
 	bool getInfo() const;
@@ -41,11 +36,10 @@ public:
 
 	//overloading methodes
 	Arbre operator=(Arbre);
-	Arbre operator[](unsigned short int);
+	Goban operator[](unsigned short int);
 
 	//Others methods
-	Arbre InitArbre(Goban&, Etat::VAL);
-	void Tsumego(Arbre&, Etat);
+	void Tsumego(Etat&);
 	void afficher();
 	void printArbo(const Arbre&);
 };

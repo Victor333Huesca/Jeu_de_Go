@@ -1,4 +1,5 @@
 #pragma once
+#include "Globals.h"
 #include <SFML/Graphics.hpp>
 #include <string>
 
@@ -12,7 +13,7 @@ public:
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
     sf::Vector2f getSize() const;
-	bool isSelected() const;
+	bool isSelected(sf::Vector2f) const;
 
 	// Pas certain de son utilité à celle-ci, elle va surement sauter.
 	void move(const sf::Vector2f& offset);

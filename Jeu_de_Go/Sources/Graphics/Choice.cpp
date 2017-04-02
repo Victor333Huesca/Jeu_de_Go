@@ -13,7 +13,7 @@ Choice::Choice(const char* name, const sf::Text& text_style, sf::Vector2f pos, s
 	// Set the text
 	text = text_style;
 	text.setString(name);
-	text.setPosition(pos.x, pos.y + 20);
+	text.setPosition(pos.x + ((pos.x / 2)-(strlen(name)*0.5)), pos.y - 10);  //posistionnement au milieu est en fonction de la taille de la chaine.
 }
 
 Choice::Choice(const char * name, const sf::Text & text_style, float posX, float posY, sf::Vector2f scale) :
@@ -37,9 +37,11 @@ sf::Vector2f Choice::getSize() const
     return sf::Vector2f(sprite.getTextureRect().width, sprite.getTextureRect().height);
 }
 
-bool Choice::isSelected() const
+bool Choice::isSelected(sf::Vector2f pos) const
 {
-	return selected;
+	sf::FloatRect Box = sprite.getGlobalBounds();
+	return Box.contains(pos); //selected
+	std::cout << Box.contains(pos) << std::endl;
 }
 
 void Choice::move(const sf::Vector2f & offset)

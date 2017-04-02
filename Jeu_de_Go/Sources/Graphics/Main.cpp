@@ -91,11 +91,11 @@ Menu* loadMenu1()
 
 	// On charge le style du text sauf la police qui est incluse avec le menu.
 	sf::Text text_style;
-	text_style.setCharacterSize(86);
+	text_style.setCharacterSize(56);
 	text_style.setFillColor(sf::Color::Black);
 
 	// Position
-	sf::Vector2f pos(0, 0);// (WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE) / 3.5) / 2, WINDOW_HEIGHT + 100);
+	sf::Vector2f pos((WINDOW_WIDTH / 3.5), (WINDOW_HEIGHT / 4.5) - 80);   // WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE / 3.5) / 2, WINDOW_HEIGHT + 100);
 
 	// On charge les items
 	menu->addItem(Choice("Jouer", text_style, pos.x, pos.y));

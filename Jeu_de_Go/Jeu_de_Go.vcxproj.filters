@@ -60,6 +60,9 @@
     <ClInclude Include="Sources\Graphics\Choice.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Engine\Arbre.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Graphics\Main.cpp">
@@ -104,6 +107,9 @@
     <ClCompile Include="Sources\Graphics\Choice.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Engine\Arbre.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Ressources\Img\background3.png">
@@ -128,6 +134,12 @@
       <Filter>Fichiers de ressources</Filter>
     </Image>
     <Image Include="Ressources\Img\button_select.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Ressources\Img\Speaker_on.jpg">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Ressources\Img\Speaker_off.jpg">
       <Filter>Fichiers de ressources</Filter>
     </Image>
   </ItemGroup>

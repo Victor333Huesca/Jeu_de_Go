@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Engine\Arbre.h" />
     <ClInclude Include="Sources\Engine\Etat.h" />
     <ClInclude Include="Sources\Engine\Goban.h" />
     <ClInclude Include="Sources\Engine\Groupe.h" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Sources\Graphics\Screens.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Engine\Arbre.cpp" />
     <ClCompile Include="Sources\Engine\Etat.cpp" />
     <ClCompile Include="Sources\Engine\Goban.cpp" />
     <ClCompile Include="Sources\Engine\Groupe.cpp" />
@@ -168,6 +170,8 @@
     <Image Include="Ressources\Img\infos_bg.png" />
     <Image Include="Ressources\Img\infos_black.png" />
     <Image Include="Ressources\Img\infos_white.png" />
+    <Image Include="Ressources\Img\Speaker_off.jpg" />
+    <Image Include="Ressources\Img\Speaker_on.jpg" />
     <Image Include="Ressources\Img\stone_black3.png" />
     <Image Include="Ressources\Img\stone_white3.png" />
   </ItemGroup>
