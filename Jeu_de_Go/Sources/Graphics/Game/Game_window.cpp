@@ -249,6 +249,32 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 
 				board.engine.coord(1, 8).setVal(Etat::NOIR);
 				break;
+			case 4:
+				board.engine.coord(0, 3).setVal(Etat::BLANC);
+				board.engine.coord(1, 3).setVal(Etat::BLANC);
+				board.engine.coord(2, 3).setVal(Etat::BLANC);
+
+				board.engine.coord(2, 2).setVal(Etat::BLANC);
+				
+				board.engine.coord(2, 1).setVal(Etat::BLANC);
+				
+				board.engine.coord(2, 0).setVal(Etat::BLANC);
+
+				board.engine.coord(0, 4).setVal(Etat::NOIR);
+
+				board.engine.coord(1, 4).setVal(Etat::NOIR);
+				board.engine.coord(2, 4).setVal(Etat::NOIR);
+
+				board.engine.coord(3, 4).setVal(Etat::NOIR);
+
+				board.engine.coord(3, 3).setVal(Etat::NOIR);
+
+				board.engine.coord(3, 2).setVal(Etat::NOIR);
+				board.engine.coord(3, 1).setVal(Etat::NOIR);
+
+				board.engine.coord(3, 0).setVal(Etat::NOIR);
+
+				break;
 			}
 			
 			char c;
