@@ -46,7 +46,7 @@ int main()
 	std::thread thread_rendering(renderingThread, &window, &screens, &cur_screen);
 #endif
 
-	window.setFramerateLimit(300);
+	window.setFramerateLimit(60);
 
 	//Main loop
 	while (cur_screen >= 0)
@@ -143,7 +143,7 @@ Menu* loadMenu2()
 	// On charge les items
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg", 
 		pos.x, pos.y, 
-		[](const sf::RenderTarget& window) { return NO_CHANGE; }));
+		[](const sf::RenderTarget& window) { return 0; }));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
 		pos.x + 250, pos.y,
 		[](const sf::RenderTarget& window) { return NO_CHANGE; }));
@@ -155,7 +155,7 @@ Menu* loadMenu2()
 		[](const sf::RenderTarget& window) { return NO_CHANGE; }));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
 		pos.x + 250, pos.y + 250,
-		[](const sf::RenderTarget& window) { return NO_CHANGE; }));
+		[](const sf::RenderTarget& window) { return 1; }));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
 		pos.x + 500, pos.y + 250,
 		[](const sf::RenderTarget& window) { return NO_CHANGE; }));
