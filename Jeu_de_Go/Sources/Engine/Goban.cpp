@@ -534,7 +534,7 @@ std::vector<Goban> Goban::listFils(const Etat::VAL value) {
 		 coordonates=itoc(i);
 		 x=itoc(i)[0];
 		 y = itoc(i)[1];
-		 delete[] coordonates;
+		 //delete[] coordonates;
 		 Goban g(*this);
 		if (g.move(value, x , y))
 		{

@@ -22,6 +22,9 @@ public:
 	// Ajoute un item au menu
 	virtual void addItem(Choice& item);
 
+	// Debugg
+	void showAdresses() const;
+
 private:
     // Gère les interactions utilisateur (sont appellées depuis le Run
     int click(const sf::Mouse::Button& type, const sf::RenderWindow& window);		// Renvoie la fenetre à charger et NO_CHANGE sinon 

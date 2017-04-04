@@ -189,3 +189,12 @@ void Menu::addItem(Choice& item)
 	Choice* _item = new Choice(item);
 	choices.push_back(*_item);
 }
+
+void Menu::showAdresses() const
+{
+	std::cout << "\nTextures : " <<
+		"\n  - Background : " << &t_background;
+
+	for (Choice& c : choices)
+		c.showAdressTextures();
+}

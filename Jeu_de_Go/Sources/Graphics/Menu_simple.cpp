@@ -22,7 +22,7 @@ void Menu_simple::setItemsTextures(const char * blank, const char * selected, co
 
 	// Apply to each choice
 	for (Choice& c : choices)
-		c.loadTextures(button_blank, button_selected, button_hover);
+		c.loadTextures(&button_blank, &button_selected, &button_hover);
 }
 
 void Menu_simple::setItemsFonts(const char * font)

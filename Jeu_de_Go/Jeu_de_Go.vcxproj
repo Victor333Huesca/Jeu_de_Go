@@ -145,6 +145,7 @@
     <ClInclude Include="Sources\Graphics\Game\Timer.h" />
     <ClInclude Include="Sources\Graphics\Globals.h" />
     <ClInclude Include="Sources\Graphics\Menu.h" />
+    <ClInclude Include="Sources\Graphics\Menu_Miniature.h" />
     <ClInclude Include="Sources\Graphics\Menu_simple.h" />
     <ClInclude Include="Sources\Graphics\Screen.h" />
     <ClInclude Include="Sources\Graphics\Screens.h" />
@@ -166,6 +167,7 @@
     <ClCompile Include="Sources\Graphics\Game\Timer.cpp" />
     <ClCompile Include="Sources\Graphics\Main.cpp" />
     <ClCompile Include="Sources\Graphics\Menu.cpp" />
+    <ClCompile Include="Sources\Graphics\Menu_Miniature.cpp" />
     <ClCompile Include="Sources\Graphics\Menu_simple.cpp" />
     <ClCompile Include="Sources\Graphics\Screen.cpp" />
   </ItemGroup>

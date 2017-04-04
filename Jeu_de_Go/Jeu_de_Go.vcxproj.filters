@@ -72,6 +72,9 @@
     <ClInclude Include="Sources\Graphics\Choice_Simple.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Graphics\Menu_Miniature.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Graphics\Main.cpp">
@@ -126,6 +129,9 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Graphics\Choice_Simple.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Menu_Miniature.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

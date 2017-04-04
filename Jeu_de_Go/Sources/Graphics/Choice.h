@@ -16,7 +16,7 @@ public:
     sf::Vector2f getSize() const;
 
 	// Charge les attributs communs pour un groupe d'item (i.e. un choix ne peut vivre sans le menu auquel il appartient).
-	virtual void loadTextures(const sf::Texture& _texture, const sf::Texture& selected, const sf::Texture& hover);
+	virtual void loadTextures(const sf::Texture* _texture, const sf::Texture* selected, const sf::Texture* hover);
 
 	// Permet de changer l'état du choix
 	void setSelected(bool state = true);
@@ -31,6 +31,9 @@ public:
 	// Fonction a appeller lors du click
 	const std::function<int(const sf::RenderTarget&)> Run;
 
+	// Pour le debugg
+	void showAdressTextures() const;
+
 private:
     // Somes infos
     bool selected;
@@ -41,7 +44,7 @@ private:
 	const sf::Texture* t_selected;
 	const sf::Texture* t_hover;
 	
-protected:
+private:
 	sf::Sprite sprite;
 	sf::Sprite effect;
 };

@@ -9,8 +9,8 @@ public:
 	~Menu_simple();
 
 	// Applique la texture et la police à chaque item
-	void setItemsTextures(const char* blank, const char* selected ,const char* hover = nullptr);
-	void setItemsFonts(const char* font);
+	virtual void setItemsTextures(const char* blank, const char* selected ,const char* hover = nullptr);
+	virtual void setItemsFonts(const char* font);
 
 	// Ajoute un item au menu
 	virtual void addItem(Choice_Simple& item);

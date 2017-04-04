@@ -36,15 +36,21 @@ sf::Vector2f Choice::getSize() const
     return sf::Vector2f(sprite.getTextureRect().width, sprite.getTextureRect().height);
 }
 
-void Choice::loadTextures(const sf::Texture& _texture, const sf::Texture& selected, const sf::Texture& hover)
+void Choice::loadTextures(const sf::Texture* _texture, const sf::Texture* selected, const sf::Texture* hover)
 {
-	// Set texutes
-	texture = &_texture;
-	t_selected = &selected;
-	t_hover = &hover;
+	// Set textures if specified
+	if (_texture != nullptr)	texture = _texture;
+	if (selected != nullptr)	t_selected = selected;
+	if (hover != nullptr)		t_hover = hover;
 
 	// Apply the one should be
 	updateTexture();
+
+
+	std::cout << "textures appliquees : " <<
+		(_texture ? "Normale, " : "       ") <<
+		(selected ? "Selected, " : "        ") <<
+		(hover ? "Hover" : "     ") << "\n";
 }
 
 void Choice::setSelected(bool state)
@@ -70,4 +76,13 @@ void Choice::updateTexture()
 
 	if (selected)	effect.setTexture(*t_selected);
 	else if (hover)	effect.setTexture(*t_hover);
+}
+
+void Choice::showAdressTextures() const
+{
+	std::cout << "\n  - Choix : " <<
+		"\n    - Normale : " << texture <<
+		"\n    - Selected : " << t_selected <<
+		"\n    - Hover : " << t_hover <<
+		"\n    ---> Current : " << sprite.getTexture();
 }
