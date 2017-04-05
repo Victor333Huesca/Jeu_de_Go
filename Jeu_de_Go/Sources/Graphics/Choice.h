@@ -32,7 +32,7 @@ public:
 	const std::function<int(const sf::RenderTarget&)> Run;
 
 	// Pour le debugg
-	void showAdressTextures() const;
+	virtual void showAdressTextures() const;
 
 private:
     // Somes infos

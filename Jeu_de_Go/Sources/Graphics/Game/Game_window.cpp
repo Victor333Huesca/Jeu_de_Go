@@ -140,8 +140,8 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 			// Ctrl + Y
 			// It will be more complecated than I expected.
 			size_t choix;
-			std::cout << "_______________Parser v1.1 (console)________________ " << std::endl;
-			std::cout << "Problème disponible (3) : " << std::endl;
+			std::cout << "\n_______________Parser v1.1 (console)________________ " << std::endl;
+			std::cout << "Problème disponible (4) : " << std::endl;
 			std::cout << "Veuillez choisir votre problème : ";
 			std::cin >> choix;
 			for (size_t x = 0; x < TGOBAN; x++)

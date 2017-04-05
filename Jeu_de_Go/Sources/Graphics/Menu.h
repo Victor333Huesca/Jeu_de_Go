@@ -23,7 +23,7 @@ public:
 	virtual void addItem(Choice& item);
 
 	// Debugg
-	void showAdresses() const;
+	virtual void showAdresses() const;
 
 private:
     // Gère les interactions utilisateur (sont appellées depuis le Run

@@ -11,7 +11,6 @@ public:
 	// Applique la texture et la police à chaque item
 	virtual void setItemsTextures(const char* selected, const char* hover = nullptr);
 
-
 private:
 	sf::Texture button_selected;
 	sf::Texture button_hover;

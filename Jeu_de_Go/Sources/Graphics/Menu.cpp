@@ -105,31 +105,6 @@ int Menu::click(const sf::Mouse::Button& type, const sf::RenderWindow& window)
 		return cur_choice->Run(window);
 	
 	return NO_CHANGE;
-	/*
-	for (Choice& button : choices)   //j'ai travaillé ici car il faut renvoyé un int 
-	{
-		if (button.Click(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) && (button.id == "Jouer"))
-		{
-			return 1;
-		}
-		if (button.Click(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) && (button.id == "Quitter"))
-		{
-			return -1;
-		}
-
-	}
-
-
-	// On récurpère la position de la souris
-	sf::Vector2f position(sf::Mouse::getPosition(window));
-
-
-	// Cherche le menu selectionné
-
-	for (Choice& button : choices)
-	{
-	}
-	*/
 }
 
 void Menu::mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos)
@@ -154,29 +129,6 @@ void Menu::mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos)
 				c.setSelected(false);
 		}
 	}
-
-	// V2
-	/*
-	for (Choice*& c : _choices)
-	{
-		if (c->getGlobalBounds().contains(sf::Vector2f(pos)))
-		{
-			// c is hover
-			if (cur_choice != c)
-			{
-				// And it isn't the one selected
-				c->setSelected(true);
-				cur_choice = c;
-			}
-		}
-		else
-		{
-			// c isn't hover
-			if (cur_choice != c)
-				// And it in not the one selected too
-				c->setSelected(false);
-		}
-	}*/
 }
 
 void Menu::keyPressed(const sf::Event::KeyEvent& key)

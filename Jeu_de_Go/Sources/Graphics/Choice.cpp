@@ -27,15 +27,7 @@ Choice::~Choice()
 
 void Choice::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	if (sprite.getTexture() == nullptr)
-	{
-		std::cerr << "Le sprite n'a pas de texture !";
-		system("pause");
-	}
-	const sf::Texture txt = *sprite.getTexture();
-	const sf::Image img = txt.copyToImage();
-	if (!img.saveToFile("test_sprite.png"))
-		std::cerr << "Impossible de créer l'image \n";
+	assert(sprite.getTexture() != nullptr);
 
 	target.draw(sprite, states);
 	if (selected || hover)	target.draw(effect, states);
@@ -55,12 +47,6 @@ void Choice::loadTextures(const sf::Texture* _texture, const sf::Texture* select
 
 	// Apply the one should be
 	updateTexture();
-
-
-	std::cout << "textures appliquees : " <<
-		(_texture ? "Normale, " : "       ") <<
-		(selected ? "Selected, " : "        ") <<
-		(hover ? "Hover" : "     ") << "\n";
 }
 
 void Choice::setSelected(bool state)

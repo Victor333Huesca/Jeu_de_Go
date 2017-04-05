@@ -21,6 +21,8 @@ uint8_t* compressGoban(const Goban& goban, int nb_revelent = 0);
 void uncompressGoban(const uint8_t* compressed, const Etat::VAL KO_status, Goban& goban, int nb_revelent = 0);
 void test();
 
+extern std::ofstream log_file("trace.log");
+
 int main()
 {
 	// Main's variables
@@ -32,10 +34,6 @@ int main()
 	screens.push_back(new Game_window);
 	screens.push_back(loadMenu1());
 	screens.push_back(loadMenu2());
-
-	// Ici ca permet de constater ques les textures sont supposées être appliquées...
-	Menu* menu = loadMenu2();
-	menu->showAdresses();
 
 
 #if defined(_WIN32) || MULTITHREAD
@@ -95,7 +93,6 @@ void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, 
 	}
 }
 
-
 Menu* loadMenu1()
 {
 	// On charge le menu
@@ -141,7 +138,7 @@ Menu* loadMenu2()
 	sf::Vector2f pos(50, 50);// (WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE) / 3.5) / 2, WINDOW_HEIGHT + 100);
 
 	// On charge les items
-	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg", 
+	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_on.jpg", 
 		pos.x, pos.y, 
 		[](const sf::RenderTarget& window) { return 0; }));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
@@ -153,7 +150,7 @@ Menu* loadMenu2()
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
 		pos.x, pos.y + 250,
 		[](const sf::RenderTarget& window) { return NO_CHANGE; }));
-	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
+	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_on.jpg",
 		pos.x + 250, pos.y + 250,
 		[](const sf::RenderTarget& window) { return 1; }));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
@@ -166,7 +163,6 @@ Menu* loadMenu2()
 
 	return menu;
 }
-
 
 uint8_t* compressGoban(const Goban& goban, int nb_revelent)
 {

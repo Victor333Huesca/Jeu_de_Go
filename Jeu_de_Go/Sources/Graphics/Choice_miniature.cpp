@@ -3,11 +3,12 @@
 
 
 Choice_miniature::Choice_miniature(const char* _texture, sf::Vector2f pos, std::function<int(const sf::RenderTarget&window)> _Run, sf::Vector2f scale) :
-	Choice(pos, _Run)
+	Choice(pos, _Run),
+	texture(*new sf::Texture())
 {
-	texture.loadFromFile(_texture);
-	std::cout << "@Texture : " << &texture << "    -->    ";
-	Choice::loadTextures(&texture, nullptr, nullptr);
+	texture.get().loadFromFile(_texture);
+
+	Choice::loadTextures(&texture.get(), nullptr, nullptr);
 }
 
 Choice_miniature::Choice_miniature(const char* _texture, float posX, float posY, std::function<int(const sf::RenderTarget&window)> _Run, sf::Vector2f scale) :
@@ -15,9 +16,13 @@ Choice_miniature::Choice_miniature(const char* _texture, float posX, float posY,
 {
 }
 
-void Choice_miniature::draw(sf::RenderTarget & target, sf::RenderStates states) const
+Choice_miniature::~Choice_miniature()
 {
-	std::cout << "Vat planter !" << std::endl;
-	Choice::draw(target, states);
-	std::cout << "A plante !" << std::endl;
+	log_file << "~Choice_miniature()\n";
+	//delete &texture.get();
+}
+
+void Choice_miniature::showAdressTextures() const
+{
+	Choice::showAdressTextures();
 }

@@ -106,7 +106,7 @@
 					info=1;
 					else
 						info=0;
-				std::cout<<gob<<std::endl;
+				//std::cout<<gob<<std::endl;
 				return;
 		}
 
@@ -128,7 +128,7 @@
 			else {
 				//le coup a tué la cible
 				info=1;
-				std::cout<<gob<<std::endl;
+				//std::cout<<gob<<std::endl;
 				return;
 			}
 
@@ -136,7 +136,7 @@
 			if (filsA.info==1){}
 			else {
 				info=1;
-				std::cout<<gob<<std::endl;
+				//std::cout<<gob<<std::endl;
 				return;
 			}
 			i++;
