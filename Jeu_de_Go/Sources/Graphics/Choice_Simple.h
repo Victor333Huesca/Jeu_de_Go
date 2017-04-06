@@ -6,7 +6,7 @@ class Choice_Simple : public Choice
 public:
 	Choice_Simple(const char* name, const sf::Text& text_style, sf::Vector2f pos, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale = sf::Vector2f(1, 1));
 	Choice_Simple(const char* name, const sf::Text& text_style, float posX, float posY, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale = sf::Vector2f(1, 1));
-	~Choice_Simple();
+	virtual ~Choice_Simple();
 
 	// Polymorphism
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;

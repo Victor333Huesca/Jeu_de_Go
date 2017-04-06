@@ -10,7 +10,7 @@ public:
 	Choice(sf::Vector2f pos, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale = sf::Vector2f(1, 1));
 	Choice(float posX, float posY, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale = sf::Vector2f(1, 1));
     
-	~Choice();
+	virtual ~Choice();
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
     sf::Vector2f getSize() const;

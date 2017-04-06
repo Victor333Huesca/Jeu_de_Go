@@ -65,9 +65,13 @@ int main()
 	screens.clear();
 
 	window.close();
+	log_file.close();
 
 #ifdef _WIN32
+	system("start notepad trace.log");
 	system("pause");
+#else
+	system("gedit trace.log&");
 #endif // _WIN32
 
 	return 0;
@@ -100,7 +104,7 @@ Menu* loadMenu1()
 
 	// Need move aways after
 	menu->setItemsFonts("./Ressources/Font/time.ttf");
-
+	
 	// On charge le style du text sauf la police qui est incluse avec le menu.
 	sf::Text text_style;
 	text_style.setCharacterSize(50);
@@ -124,7 +128,7 @@ Menu* loadMenu1()
 	// Then set items textures and return the menu
 	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
 	
-	std::cout << "Le Menu 1 à été chargé" << std::endl;
+	log_file << "\nLe Menu 1 à été chargé\n" << std::endl;
 
 	return menu;
 }
@@ -159,7 +163,7 @@ Menu* loadMenu2()
 
 	menu->setItemsTextures("./Ressources/Img/miniature_selected.png", "./Ressources/Img/miniature_selected.png");
 
-	std::cout << "Le Menu 2 à été chargé" << std::endl;
+	log_file << "\nLe Menu 2 à été chargé\n" << std::endl;
 
 	return menu;
 }

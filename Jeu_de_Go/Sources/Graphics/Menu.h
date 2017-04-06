@@ -11,7 +11,7 @@ class Menu: public Screen
 {
 public:
     Menu(const sf::Vector2f& position, const char* texture, const sf::Vector2f& scale = sf::Vector2f(1, 1));
-    ~Menu();
+    virtual ~Menu();
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
     virtual int Run(sf::RenderWindow &window);

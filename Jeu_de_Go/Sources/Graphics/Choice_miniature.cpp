@@ -9,6 +9,10 @@ Choice_miniature::Choice_miniature(const char* _texture, sf::Vector2f pos, std::
 	texture.get().loadFromFile(_texture);
 
 	Choice::loadTextures(&texture.get(), nullptr, nullptr);
+
+#if __ERROR_LEVEL__ > 0
+	log_file << "Choice_miniature::Choice_miniature(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
 
 Choice_miniature::Choice_miniature(const char* _texture, float posX, float posY, std::function<int(const sf::RenderTarget&window)> _Run, sf::Vector2f scale) :
@@ -18,8 +22,10 @@ Choice_miniature::Choice_miniature(const char* _texture, float posX, float posY,
 
 Choice_miniature::~Choice_miniature()
 {
-	log_file << "~Choice_miniature()\n";
 	//delete &texture.get();
+#if __ERROR_LEVEL__ > 0
+	log_file << "Choice_miniature::~Choice_miniature(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
 
 void Choice_miniature::showAdressTextures() const

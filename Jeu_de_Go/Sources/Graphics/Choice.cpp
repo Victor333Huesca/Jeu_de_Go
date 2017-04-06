@@ -14,6 +14,10 @@ Choice::Choice(sf::Vector2f pos, std::function<int(const sf::RenderTarget& windo
 
 	effect.setPosition(pos);
 	effect.setScale(scale);
+
+#if __ERROR_LEVEL__ > 0
+	log_file << "Choice::Choice(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
 
 Choice::Choice(float posX, float posY, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale) :
@@ -23,6 +27,9 @@ Choice::Choice(float posX, float posY, std::function<int(const sf::RenderTarget&
 
 Choice::~Choice()
 {
+#if __ERROR_LEVEL__ > 0
+	log_file << "Choice::~Choice()" << std::endl;
+#endif // __ERROR_LEVEL__ > 0
 }
 
 void Choice::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -47,6 +54,10 @@ void Choice::loadTextures(const sf::Texture* _texture, const sf::Texture* select
 
 	// Apply the one should be
 	updateTexture();
+
+#if __ERROR_LEVEL__ > 0
+	log_file << "Choice::loadTextures(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
 
 void Choice::setSelected(bool state)

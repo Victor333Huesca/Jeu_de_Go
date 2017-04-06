@@ -9,6 +9,10 @@ Menu::Menu(const sf::Vector2f & position, const char* texture, const sf::Vector2
 	s_background.setTexture(t_background);
 	s_background.setPosition(position);
 	s_background.setScale(scale);
+
+#if __ERROR_LEVEL__ > 0
+	log_file << "Menu::Menu(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
 
 Menu::~Menu()
@@ -18,6 +22,10 @@ Menu::~Menu()
 		Choice* cc = &c;
 		delete cc;
 	}
+
+#if __ERROR_LEVEL__ > 0
+	log_file << "Menu::~Menu()" << std::endl;
+#endif // __ERROR_LEVEL__ > 0
 }
 
 void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -140,6 +148,10 @@ void Menu::addItem(Choice& item)
 {
 	Choice* _item = new Choice(item);
 	choices.push_back(*_item);
+
+#if __ERROR_LEVEL__ > 0
+	log_file << "Menu::addItem(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
 
 void Menu::showAdresses() const

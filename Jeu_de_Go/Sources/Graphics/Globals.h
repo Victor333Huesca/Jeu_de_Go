@@ -5,6 +5,8 @@
 #include <string>
 #include <fstream>
 #include <cassert>
+#include <stdexcept>
+
 
 #ifdef _WIN32
 #define CLEAR_CMD "cls"
@@ -48,4 +50,7 @@
 #define INFOS_TIMER_POS_BLACK sf::Vector2f(520, 2500)
 #define INFOS_TIMER_SIZE 100
 
+// Declare globals variables here
 extern std::ofstream log_file;
+
+#define __ERROR_LEVEL__ 100

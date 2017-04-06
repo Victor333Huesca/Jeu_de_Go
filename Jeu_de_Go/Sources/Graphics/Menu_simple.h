@@ -6,7 +6,7 @@ class Menu_simple : public Menu
 {
 public:
 	Menu_simple(const sf::Vector2f& position, const char* texture, const sf::Vector2f& scale = sf::Vector2f(1, 1));
-	~Menu_simple();
+	virtual ~Menu_simple();
 
 	// Applique la texture et la police à chaque item
 	virtual void setItemsTextures(const char* blank, const char* selected ,const char* hover = nullptr);

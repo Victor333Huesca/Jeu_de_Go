@@ -5,12 +5,16 @@
 Menu_Miniature::Menu_Miniature(const sf::Vector2f & position, const char * texture, const sf::Vector2f & scale) :
 	Menu(position, texture, scale)
 {
-
+#if __ERROR_LEVEL__ > 0
+	log_file << "Menu_Miniature::Menu_Miniature(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
 
 Menu_Miniature::~Menu_Miniature()
 {
-	Menu::~Menu();
+#if __ERROR_LEVEL__ > 0
+	log_file << "Menu_Miniature::~Menu_Miniature(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
 
 void Menu_Miniature::setItemsTextures(const char * selected, const char * hover)
@@ -23,4 +27,8 @@ void Menu_Miniature::setItemsTextures(const char * selected, const char * hover)
 	// Apply to each choice
 	for (Choice& c : choices)
 		c.loadTextures(nullptr, &button_selected, &button_hover);
+
+#if __ERROR_LEVEL__ > 0
+	log_file << "Menu_Miniature::setItemTextures(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
