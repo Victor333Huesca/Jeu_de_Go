@@ -66,7 +66,7 @@ bool History::cancel()
 
 void History::clear()
 {
-	clear();
+	std::list<Etat>::clear();
 	_current = begin();
 }
 

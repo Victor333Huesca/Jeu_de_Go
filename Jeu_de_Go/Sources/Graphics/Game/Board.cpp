@@ -97,7 +97,7 @@ void Board::zoom(const float delta, const sf::Vector2i& pos)
 		if (view.getSize().x > view_origin.getSize().x / ZOOM_FACTOR)
 		{
 			// Zoom in
-			view.zoom(delta - 0.1);
+			view.zoom(delta - 0.1f);
 
 			// Fix zoom overflow
 			if (view.getSize().x < view_origin.getSize().x / ZOOM_FACTOR)
@@ -118,7 +118,7 @@ void Board::zoom(const float delta, const sf::Vector2i& pos)
 		if (view.getSize().x < view_origin.getSize().x)
 		{
 			// Zoom out
-			view.zoom(-delta + 0.1);
+			view.zoom(-delta + 0.1f);
 
 			// Fix overflow
 			if (view.getSize().x > view_origin.getSize().x)

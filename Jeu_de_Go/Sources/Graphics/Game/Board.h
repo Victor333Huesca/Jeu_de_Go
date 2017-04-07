@@ -70,7 +70,7 @@ Board::Board(const sf::Vector2<T>& _size) :
 		array[i] = new Square[size.y];
 		for (size_t j = 0; j < size.y; j++)
 		{
-			array[i][j].setPosition(sf::Vector2f(i, j));
+			array[i][j].setPosition(sf::Vector2f((float)i, (float)j));
 		}
 	}
 }

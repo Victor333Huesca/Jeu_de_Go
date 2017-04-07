@@ -1,8 +1,8 @@
 #include "Choice.h"
 
 
-Choice::Choice(sf::Vector2f pos, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale) :
-	Run(_Run),
+Choice::Choice(sf::Vector2f pos, std::function<int(const sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :
+	run(_Run),
 	selected(false),
 	hover(false),
 	texture(nullptr),
@@ -20,7 +20,7 @@ Choice::Choice(sf::Vector2f pos, std::function<int(const sf::RenderTarget& windo
 #endif // __ERROR_LEVEL__ > 0
 }
 
-Choice::Choice(float posX, float posY, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale) :
+Choice::Choice(float posX, float posY, std::function<int(const sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :
 	Choice(sf::Vector2f(posX, posY), _Run, scale)
 {
 }
@@ -42,7 +42,7 @@ void Choice::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 sf::Vector2f Choice::getSize() const
 {
-    return sf::Vector2f(sprite.getTextureRect().width, sprite.getTextureRect().height);
+    return sf::Vector2f((float)sprite.getTextureRect().width, (float)sprite.getTextureRect().height);
 }
 
 void Choice::loadTextures(const sf::Texture* _texture, const sf::Texture* selected, const sf::Texture* hover)
@@ -83,6 +83,11 @@ void Choice::updateTexture()
 
 	if (selected)	effect.setTexture(*t_selected);
 	else if (hover)	effect.setTexture(*t_hover);
+}
+
+int Choice::Run(const sf::RenderTarget& window, Game_window& game)
+{
+	return run(window, game);
 }
 
 void Choice::showAdressTextures() const

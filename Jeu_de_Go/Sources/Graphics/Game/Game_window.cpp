@@ -31,7 +31,7 @@ void Game_window::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	target.setView(cur_view);
 }
 
-int Game_window::Run(sf::RenderWindow &window)
+int Game_window::Run(sf::RenderWindow &window, Game_window&)
 {
 	// To stay alive
 	bool Running = true;

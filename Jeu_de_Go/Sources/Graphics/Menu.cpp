@@ -36,7 +36,7 @@ void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		target.draw(c, states);
 }
 
-int Menu::Run(sf::RenderWindow &window)
+int Menu::Run(sf::RenderWindow &window, Game_window& game)
 {
     // To stay alive
 	bool Running = true;
@@ -60,7 +60,7 @@ int Menu::Run(sf::RenderWindow &window)
 				break;
 			case sf::Event::MouseButtonReleased:
 			{
-				int res = click(event.mouseButton.button, window);
+				int res = click(event.mouseButton.button, window, game);
 				if (res != NO_CHANGE)
 					return res;
 				break;
@@ -97,7 +97,7 @@ int Menu::Run(sf::RenderWindow &window)
 
 sf::Vector2f Menu::getSize() const
 {
-    return sf::Vector2f(s_background.getTextureRect().width, s_background.getTextureRect().height);
+    return sf::Vector2f((float)s_background.getTextureRect().width, (float)s_background.getTextureRect().height);
 }
 
 sf::Vector2f Menu::getPosition() const
@@ -107,10 +107,10 @@ sf::Vector2f Menu::getPosition() const
 
 
 // Interactcions
-int Menu::click(const sf::Mouse::Button& type, const sf::RenderWindow& window)
+int Menu::click(const sf::Mouse::Button& type, const sf::RenderWindow& window, Game_window& game)
 {
 	if (cur_choice != nullptr)
-		return cur_choice->Run(window);
+		return cur_choice->Run(window, game);
 	
 	return NO_CHANGE;
 }

@@ -30,8 +30,11 @@ int main()
     std::vector<Screen*> screens;
     int cur_screen = 1;
 
+	// The game
+	Game_window* game = new Game_window();
+
 	// Declare here different screens in order of there use.
-	screens.push_back(new Game_window);
+	screens.push_back(game);
 	screens.push_back(loadMenu1());
 	screens.push_back(loadMenu2());
 
@@ -49,7 +52,7 @@ int main()
 	//Main loop
 	while (cur_screen >= 0)
 	{
-		cur_screen = screens[cur_screen]->Run(window);
+		cur_screen = screens[cur_screen]->Run(window, *game);
 	}
 
 	// Wait for the rendering thread has finished its instructions before exit
@@ -114,15 +117,15 @@ Menu* loadMenu1()
 	sf::Vector2f pos(225, 125);// (WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE) / 3.5) / 2, WINDOW_HEIGHT + 100);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("        Jouer", text_style, pos.x, pos.y,	[](const sf::RenderTarget& window)
+	menu->addItem(Choice_Simple("        Jouer", text_style, pos.x, pos.y,	[](const sf::RenderTarget& window, Game_window& game)
 	{ return 0; }));
-	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window)
+	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window, Game_window& game)
 	{ return NO_CHANGE; }));
-	menu->addItem(Choice_Simple("      Exemples", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window)
+	menu->addItem(Choice_Simple("      Exemples", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
 	{ return NO_CHANGE; }));
-	menu->addItem(Choice_Simple("      Problèmes", text_style, pos.x, pos.y + 360, [](const sf::RenderTarget& window)
+	menu->addItem(Choice_Simple("      Problèmes", text_style, pos.x, pos.y + 360, [](const sf::RenderTarget& window, Game_window& game)
 	{ return 2; }));
-	menu->addItem(Choice_Simple("       Quitter", text_style, pos.x, pos.y + 480, [](const sf::RenderTarget& window)
+	menu->addItem(Choice_Simple("       Quitter", text_style, pos.x, pos.y + 480, [](const sf::RenderTarget& window, Game_window& game)
 	{ return -1; }));
 
 	// Then set items textures and return the menu
@@ -139,27 +142,27 @@ Menu* loadMenu2()
 	Menu_Miniature* menu = new Menu_Miniature(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", sf::Vector2f(0.3f, 0.3f));
 
 	// Position
-	sf::Vector2f pos(50, 50);// (WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE) / 3.5) / 2, WINDOW_HEIGHT + 100);
+	sf::Vector2f pos(50, 50);
 
 	// On charge les items
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_on.jpg", 
 		pos.x, pos.y, 
-		[](const sf::RenderTarget& window) { return 0; }));
+		[](const sf::RenderTarget& window, Game_window& game) { /* Charger le jeu depuis le parseur */; return 0; }));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
 		pos.x + 250, pos.y,
-		[](const sf::RenderTarget& window) { return NO_CHANGE; }));
+		[](const sf::RenderTarget& window, Game_window& game) { return NO_CHANGE; }));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
 		pos.x + 500, pos.y,
-		[](const sf::RenderTarget& window) { return NO_CHANGE; }));
+		[](const sf::RenderTarget& window, Game_window& game) { return NO_CHANGE; }));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
 		pos.x, pos.y + 250,
-		[](const sf::RenderTarget& window) { return NO_CHANGE; }));
+		[](const sf::RenderTarget& window, Game_window& game) { return NO_CHANGE; }));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_on.jpg",
 		pos.x + 250, pos.y + 250,
-		[](const sf::RenderTarget& window) { return 1; }));
+		[](const sf::RenderTarget& window, Game_window& game) { return 1; }));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
 		pos.x + 500, pos.y + 250,
-		[](const sf::RenderTarget& window) { return NO_CHANGE; }));
+		[](const sf::RenderTarget& window, Game_window& game) { return NO_CHANGE; }));
 
 	menu->setItemsTextures("./Ressources/Img/miniature_selected.png", "./Ressources/Img/miniature_selected.png");
 
@@ -198,7 +201,7 @@ uint8_t* compressGoban(const Goban& goban, int nb_revelent)
 	}
 
 	// So start compression now
-	int nb_bytes = ceil(nb_revelent / 8.f);			// 90.25 --> 91
+	int nb_bytes = (int)ceil(nb_revelent / 8.f);			// 90.25 --> 91
 	int nb_wasted_bits = 8 - nb_revelent % 8;		// 8 - 2  --> 6
 	uint8_t* compressed = new uint8_t[nb_bytes];
 
@@ -285,7 +288,7 @@ void uncompressGoban(const uint8_t* compressed, const Etat::VAL KO_status, Goban
 		}
 	}
 
-	int nb_bytes = ceil(nb_revelent / 8.f);			// 90.25 --> 91
+	int nb_bytes = (int)ceil(nb_revelent / 8.f);			// 90.25 --> 91
 	int nb_wasted_bits = 8 - nb_revelent % 8;		// 8 - 2  --> 6
 
 	// Start looking at the first place of the goban so -1 avoid skipping this first location.
