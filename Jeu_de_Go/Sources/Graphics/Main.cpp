@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include <thread>
 #include "Screens.h"
+#include "../Engine/Parser.h"
 #include "Menu_simple.h"
 #include "Menu_Miniature.h"
 #include "Choice_miniature.h"
@@ -139,15 +140,15 @@ Menu* loadMenu1()
 Menu* loadMenu2()
 {
 	// On charge le menu
-	Menu_Miniature* menu = new Menu_Miniature(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", sf::Vector2f(0.3f, 0.3f));
+	Menu_Miniature* menu = new Menu_Miniature(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background2.png", sf::Vector2f(0.3f, 0.3f));
 
 	// Position
 	sf::Vector2f pos(50, 50);
 
 	// On charge les items
-	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_on.jpg", 
+	menu->addItem(Choice_miniature("./Ressources/Img/probleme_6_en_coin_blank.png", 
 		pos.x, pos.y, 
-		[](const sf::RenderTarget& window, Game_window& game) { /* Charger le jeu depuis le parseur */; return 0; }));
+		[](const sf::RenderTarget& window, Game_window& game) { game.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go")); return 0; }, sf::Vector2f(0.3, 0.3)));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
 		pos.x + 250, pos.y,
 		[](const sf::RenderTarget& window, Game_window& game) { return NO_CHANGE; }));

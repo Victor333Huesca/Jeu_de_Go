@@ -1,10 +1,42 @@
-#include <iostream>
-#include <fstream>
-#include "stdio.h"
-#include "Goban.h"
-#include <string>
-#include <regex>
-using namespace std;
+#include "Parser.h"
+//using namespace std;
+
+Goban parseur(std::string n_file)
+{
+	//std::string location = "./Ressource";
+	std::ifstream file(n_file, std::ios::in);
+	Goban goban;
+	
+	short int position = 0;
+	char c;
+	std::regex pattern{ ".go" };
+	if (std::regex_search(n_file, pattern))
+	{
+		if (file)
+		{
+
+			do
+			{
+				position += 1;
+				file.get(c);
+				switch (c)
+					{
+					case 'B': 
+						goban.coord(((position - 1) / TGOBAN), ((position - 1) % TGOBAN)).setVal(Etat::BLANC);
+						break;		
+					case '_': 
+						goban.coord(((position - 1) / TGOBAN), ((position - 1) % TGOBAN)).setVal(Etat::VIDE);
+						break;
+					case 'N': 
+						goban.coord(((position - 1) / TGOBAN), ((position - 1) % TGOBAN)).setVal(Etat::NOIR);
+						break;
+					}
+				
+			} while (c != EOF);
+		}
+	}
+	return goban;
+}
 /*
 //VAL** parseur(string fichier){ //passer le nom du fichier en paramètre ( a travers une future interface graphique?)
 ifstream file(fichier, ios::in);

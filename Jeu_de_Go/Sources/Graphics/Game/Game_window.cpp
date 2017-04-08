@@ -135,6 +135,10 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 			// Ctrl + Z
 			board.cancel();
 		}
+		else if (key.code == sf::Keyboard::A)
+		{
+			territoire();
+		}
 		else if (key.code == sf::Keyboard::Y)
 		{
 			// Ctrl + Y
@@ -304,4 +308,43 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 	{
 		// Not Ctrl
 	}
+}
+
+void Game_window::setGoban(const Goban goban)
+{
+	for (size_t x = 0; x < TGOBAN; x++)
+	{
+		for (size_t y = 0; y < TGOBAN; y++)
+		{
+			board.engine.coord(x, y).setVal(goban.coord(x, y).getVal());
+		}
+	}
+}
+
+void Game_window::territoire()
+{
+	//Affiche le territoire de chaque joueur
+	//Groupe groupsBlack, groupsWhite;
+	//std::cout << board.engine.getGroupsBlack()[0]<< std::endl;
+	/*for (size_t i = 0; i < 19; i++)
+	{
+		board.engine.coord(i, j).;
+	}*/
+
+	/*
+	Pour chaque groupe renvoi le nombre d'oeil : 4 configuration 
+		-   (x-1, y) (x+1, y) (x, y-1) (x, y+1) (l'oeil classique)  
+		-   (x+1, y) (x, y+1) (l'oeil en coin)
+		-   (x, y-1) (x+1, y) (x, y+1) (l'oeil de coté
+		-   (x-1, y) (x+2, y) (x, y-1) (x, y-1) (x, y+1) (x+1, y-1) (x+1, y+1) (grand oeil) 
+	
+	ps : nous permettra de savoir si un groupe survivra sans arrivé à la fin d'une recherche (au moins deux yeux).
+
+	Pour chaque groupe calcul la distance la plus courte avec les bords (haut, bas, droite, gauche)
+		- Colore pour chaque groupe une tâche de la couleur du groupe de deux cases autour en direction du bords le plus proche.
+		+ Colore l'intérieur des yeux 
+		++ Si le groupe a moins de deux libertés testé les deux coups pour prévoir si il va mourir et le colorer de la couleur opposé.
+
+
+		*/
 }

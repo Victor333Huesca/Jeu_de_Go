@@ -178,6 +178,7 @@
     <Image Include="Ressources\Img\infos_bg.png" />
     <Image Include="Ressources\Img\infos_black.png" />
     <Image Include="Ressources\Img\infos_white.png" />
+    <Image Include="Ressources\Img\probleme_6_en_coin_blank.png" />
     <Image Include="Ressources\Img\Speaker_off.jpg" />
     <Image Include="Ressources\Img\Speaker_on.jpg" />
     <Image Include="Ressources\Img\stone_black3.png" />

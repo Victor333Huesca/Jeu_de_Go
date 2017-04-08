@@ -1,5 +1,10 @@
 #include <iostream>
+#include <fstream>
 #include "stdio.h"
-using namespace std;
+#include "Goban.h"
+#include "../Graphics/Globals.h"
+#include <string>
+#include <regex>
 
-void parseur(string);
+
+Goban parseur(std::string);

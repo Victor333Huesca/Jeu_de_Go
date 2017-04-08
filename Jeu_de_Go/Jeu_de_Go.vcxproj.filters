@@ -166,6 +166,9 @@
     <Image Include="Ressources\Img\Speaker_off.jpg">
       <Filter>Fichiers de ressources</Filter>
     </Image>
+    <Image Include="Ressources\Img\probleme_6_en_coin_blank.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Ressources\Font\time.ttf">
