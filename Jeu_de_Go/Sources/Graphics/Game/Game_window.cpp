@@ -312,17 +312,42 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 
 void Game_window::setGoban(const Goban goban)
 {
-	for (short int x = 0; x < TGOBAN; x++)
-	{
-		for (short int y = 0; y < TGOBAN; y++)
-		{
-			board.engine.coord(x, y).setVal(goban.coord(x, y).getVal());
-		}
-	}
+	board.load(goban);
 }
 
 void Game_window::territoire()
 {
+	/*						A l'attention de Julien       
+		En faisant ça tu perds les avantages de l'encapsualtion, je m'explique :
+			- Game_Window est la classe contenant une instance d'un jeu, c'est à dire
+		l'état d'une partie de go mais aussi le menu contextuel trouvable sur le 
+		coté. C'est cette classe qui gère les entrées / sorties et les transmet à 
+		qui de droit (ici c'est souvent au 'engine') qui lui traite cette information.
+			- Board quand à elle est la classe qui gère ce que représente une partie de Go.
+		C'est à dire toute les textures du plateau, la vu actuelle du (la partie 
+		zoomée du plateau), et évidement la partie elle même (le fameau 'engine').
+		Tout ces attributs DOIVENT être en PRIVÉ sous peine de donner un accès à
+		des parties qui sont cruciales et doivent être contrôlée. On ne veux pas en 
+		effet que n'importe qui tente de charger une texture comme ça lui plait sans 
+		passer la fonction qui permet elle de charger la texture de façon contrôlée.
+		De même pour modifier l'état du goban on passe par une méthode et on ne touche 
+		jamais au grand jamais directement au goban lui-même.
+			- Goban est la classequi gère une partie de Go du point de vu des règles.
+		En effet c'est elle qui valide ou non un coup, c'est elle qui permet de 
+		récupèrer des informations spécifique à une partie de Go qui, si les règle de 
+		ce jeu vennaient à varier- devrait être modifier sans que cela n'impacte le 
+		reste des classes Board et Game_window.
+			- Il se trouve qu'ici Goban est aussi utilisée pour jouer le tsumego, c'est un
+		point de vu discutable car rajouter des fonctions telles que le tsumego 
+		directement à la classe l'allorudie et la rends bien moins modulaire.
+		J'aurais plus la vision d'une classe specifique qui gère ce genre de cas d'étude.
+		Après c'est un ressenti et étant donné que ce projet n'est -à priori- qu'un 
+		"one shoot" et n'a donc pas pour but d'être repris, integrer directement des 
+		fonctinons en dur dans une classe est défendable. */
+
+	// PS : Ne pas supprimer ce message, on doit pouvoir le réutiliser pour le rapport.
+
+
 	//Affiche le territoire de chaque joueur
 	//Groupe groupsBlack, groupsWhite;
 	//std::cout << board.engine.getGroupsBlack()[0]<< std::endl;

@@ -148,7 +148,9 @@ Menu* loadMenu2()
 	// On charge les items
 	menu->addItem(Choice_miniature("./Ressources/Img/probleme_6_en_coin_blank.png", 
 		pos.x, pos.y, 
-		[](const sf::RenderTarget& window, Game_window& game) { /*game.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go"));**/ return 0; }, sf::Vector2f(0.3, 0.3)));
+		[](const sf::RenderTarget& window, Game_window& game) 
+	{ game.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go")); return 0; }, 
+		sf::Vector2f(0.3f, 0.3f)));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
 		pos.x + 250, pos.y,
 		[](const sf::RenderTarget& window, Game_window& game) { return NO_CHANGE; }));

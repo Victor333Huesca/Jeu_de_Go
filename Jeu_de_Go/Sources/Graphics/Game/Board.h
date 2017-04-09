@@ -24,6 +24,7 @@ public:
 
 	// Loading
 	void load();
+	void load(const Goban& copy);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
 	Goban engine;

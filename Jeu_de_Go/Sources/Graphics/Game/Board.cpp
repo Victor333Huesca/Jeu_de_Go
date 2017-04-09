@@ -180,6 +180,12 @@ void Board::load()
 	}
 }
 
+void Board::load(const Goban & copy)
+{
+	engine = copy;
+	load();
+}
+
 void Board::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	// Draw background
