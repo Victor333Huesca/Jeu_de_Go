@@ -204,6 +204,7 @@ void Game_window::territoire()
 
 	// PS : Ne pas supprimer ce message, on doit pouvoir le réutiliser pour le rapport.
 
+	//L'idée avait l'air sympathique à éxploiter.
 
 	//Affiche le territoire de chaque joueur
 	//Groupe groupsBlack, groupsWhite;

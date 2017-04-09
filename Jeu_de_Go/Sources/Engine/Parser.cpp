@@ -30,6 +30,9 @@ Goban parseur(std::string fichier)
 				case 'N':
 					goban.coord(x, y).setVal(Etat::NOIR);
 					break;
+				case '-':
+					goban.coord(x, y).setVal(Etat::NJ);
+					break;
 				case '\n':
 					// Is okay on a juste lu un '\n'
 					y++;
