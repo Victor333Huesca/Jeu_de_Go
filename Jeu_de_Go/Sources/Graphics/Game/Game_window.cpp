@@ -312,9 +312,9 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 
 void Game_window::setGoban(const Goban goban)
 {
-	for (size_t x = 0; x < TGOBAN; x++)
+	for (short int x = 0; x < TGOBAN; x++)
 	{
-		for (size_t y = 0; y < TGOBAN; y++)
+		for (short int y = 0; y < TGOBAN; y++)
 		{
 			board.engine.coord(x, y).setVal(goban.coord(x, y).getVal());
 		}

@@ -7,28 +7,32 @@ Goban parseur(std::string n_file)
 	std::ifstream file(n_file, std::ios::in);
 	Goban goban;
 	
-	short int position = 0;
+	short int x = 0, y = 0;
 	char c;
 	std::regex pattern{ ".go" };
 	if (std::regex_search(n_file, pattern))
 	{
 		if (file)
 		{
-
 			do
 			{
-				position += 1;
+				x += 1;
+				if (x > 19)
+				{
+					x = 0;
+					y++;
+				}
 				file.get(c);
 				switch (c)
 					{
 					case 'B': 
-						goban.coord(((position - 1) / TGOBAN), ((position - 1) % TGOBAN)).setVal(Etat::BLANC);
+						goban.coord(x, y).setVal(Etat::BLANC);
 						break;		
 					case '_': 
-						goban.coord(((position - 1) / TGOBAN), ((position - 1) % TGOBAN)).setVal(Etat::VIDE);
+						goban.coord(x, y).setVal(Etat::VIDE);
 						break;
 					case 'N': 
-						goban.coord(((position - 1) / TGOBAN), ((position - 1) % TGOBAN)).setVal(Etat::NOIR);
+						goban.coord(x, y).setVal(Etat::NOIR);
 						break;
 					}
 				
