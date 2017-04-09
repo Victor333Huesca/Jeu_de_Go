@@ -39,16 +39,25 @@ Goban::Goban() :
 	groups_black(0),
 	history()
 {
-  array= new Etat[TGOBAN*TGOBAN];
-  size_t i=0;
-  for (size_t y=0;y<TGOBAN; y++){
-    for (size_t x=0;x<TGOBAN; x++){
-      array[i].setX(x);
-      array[i].setY(y);
-      array[i].setVal(Etat::VIDE);
-      i++;
-    }
-  }
+	try
+	{
+		array = new Etat[TGOBAN*TGOBAN];
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what();
+		exit(-1);
+	}
+
+	size_t i=0;
+	for (size_t y=0;y<TGOBAN; y++){
+		for (size_t x=0;x<TGOBAN; x++){
+			array[i].setX(x);
+			array[i].setY(y);
+			array[i].setVal(Etat::VIDE);
+			i++;
+		}
+	}
 }
 
 Goban::Goban(const Goban& goban){

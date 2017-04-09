@@ -186,6 +186,11 @@ void Board::load(const Goban & copy)
 	load();
 }
 
+Goban Board::getGoban() const
+{
+	return engine;
+}
+
 void Board::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	// Draw background

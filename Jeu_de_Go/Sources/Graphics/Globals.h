@@ -54,3 +54,19 @@
 extern std::ofstream log_file;
 
 #define __ERROR_LEVEL__ 100
+
+// Here are the differents screens
+enum Screens
+{
+	// Game modes
+	GAME = 0,
+
+	// Menus
+	MAIN_MENU = 1,
+	PROBLEMS_MENU = 2,
+	OTPION_MENU = 3,
+
+	// Other
+	EXIT = -1,
+	NO_CHANGE = -777
+};

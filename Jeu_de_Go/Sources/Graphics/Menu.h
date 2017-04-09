@@ -5,8 +5,6 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
-#define NO_CHANGE -777
-
 class Menu: public Screen
 {
 public:

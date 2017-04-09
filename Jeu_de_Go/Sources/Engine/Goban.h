@@ -5,6 +5,7 @@
 #include "Etat.h"
 #include "Groupe.h"
 #include "History.h"
+#include <stdexcept>
 
 //Goban's size
 const size_t TGOBAN = 19;

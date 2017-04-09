@@ -119,15 +119,15 @@ Menu* loadMenu1()
 
 	// On charge les items
 	menu->addItem(Choice_Simple("        Jouer", text_style, pos.x, pos.y,	[](const sf::RenderTarget& window, Game_window& game)
-	{ return 0; }));
+	{ return GAME; }));
 	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window, Game_window& game)
 	{ return NO_CHANGE; }));
 	menu->addItem(Choice_Simple("      Exemples", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
 	{ return NO_CHANGE; }));
 	menu->addItem(Choice_Simple("      Problèmes", text_style, pos.x, pos.y + 360, [](const sf::RenderTarget& window, Game_window& game)
-	{ return 2; }));
+	{ return PROBLEMS_MENU; }));
 	menu->addItem(Choice_Simple("       Quitter", text_style, pos.x, pos.y + 480, [](const sf::RenderTarget& window, Game_window& game)
-	{ return -1; }));
+	{ return EXIT; }));
 
 	// Then set items textures and return the menu
 	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
@@ -149,7 +149,7 @@ Menu* loadMenu2()
 	menu->addItem(Choice_miniature("./Ressources/Img/probleme_6_en_coin_blank.png", 
 		pos.x, pos.y, 
 		[](const sf::RenderTarget& window, Game_window& game) 
-	{ game.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go")); return 0; }, 
+	{ game.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go")); return GAME; }, 
 		sf::Vector2f(0.3f, 0.3f)));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
 		pos.x + 250, pos.y,
@@ -162,7 +162,7 @@ Menu* loadMenu2()
 		[](const sf::RenderTarget& window, Game_window& game) { return NO_CHANGE; }));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_on.jpg",
 		pos.x + 250, pos.y + 250,
-		[](const sf::RenderTarget& window, Game_window& game) { return 1; }));
+		[](const sf::RenderTarget& window, Game_window& game) { return MAIN_MENU; }));
 	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
 		pos.x + 500, pos.y + 250,
 		[](const sf::RenderTarget& window, Game_window& game) { return NO_CHANGE; }));

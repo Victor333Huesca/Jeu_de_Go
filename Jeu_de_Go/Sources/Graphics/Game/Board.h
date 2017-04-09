@@ -26,10 +26,13 @@ public:
 	void load();
 	void load(const Goban& copy);
 
+	// Pour récuperer une copie du Goban
+	Goban getGoban() const;
+
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
-	Goban engine;
 private:
 	// Goban
+	Goban engine;
 	sf::Vector2u size;			/*!< Number of squares on the goban */
 	Square** array;				/*!< Goban's intersections representation */
 
