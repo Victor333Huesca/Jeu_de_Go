@@ -31,10 +31,11 @@ void Game_window::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	target.setView(cur_view);
 }
 
-int Game_window::Run(sf::RenderWindow &window, Game_window&)
+Screens Game_window::Run(sf::RenderWindow &window, Game_window& game)
 {
 	// To stay alive
 	bool Running = true;
+	Screens sc = NO_CHANGE;
 
 	while (Running)
 	{
@@ -46,24 +47,27 @@ int Game_window::Run(sf::RenderWindow &window, Game_window&)
 			switch (event.type)
 			{
 			case sf::Event::Closed:
-				return EXIT;
+				sc = EXIT;
 				break;
 			case sf::Event::LostFocus:
 				break;
 			case sf::Event::GainedFocus:
 				break;
 			case sf::Event::MouseButtonReleased:
-				click(window, sf::Mouse::getPosition(window), event.mouseButton.button);
+				sc = click(window, sf::Mouse::getPosition(window), event.mouseButton.button);
 				break;
 			case sf::Event::MouseWheelScrolled:
 				zoom(event.mouseWheelScroll.delta, sf::Mouse::getPosition(window), window);
 				break;
 			case sf::Event::KeyPressed:
-				keyPressed(event.key);
+				sc = keyPressed(event.key);
 				break;
 			default:
 				break;
 			}
+
+			if (sc != NO_CHANGE)
+				return sc;
 		}
 
 		// Treate real-time actions
@@ -83,10 +87,10 @@ int Game_window::Run(sf::RenderWindow &window, Game_window&)
 
 
 	// Not suppose to reach here but just in case
-	return -1;
+	return ERROR;
 }
 
-void Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, const sf::Mouse::Button & type)
+Screens Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, const sf::Mouse::Button & type)
 {
 	// Test if mouse was in the board or the info menu
 	if (pos.x <= WINDOW_WIDTH)
@@ -113,6 +117,8 @@ void Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, const
 	{
 
 	}
+
+	return NO_CHANGE;
 }
 
 void Game_window::zoom(const float delta, sf::Vector2i pos, sf::RenderWindow& window)
@@ -124,7 +130,7 @@ void Game_window::zoom(const float delta, sf::Vector2i pos, sf::RenderWindow& wi
 	board.zoom(delta, pos);
 }
 
-void Game_window::keyPressed(const sf::Event::KeyEvent & key)
+Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 {
 	if (key.control)
 	{
@@ -163,6 +169,11 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 	}
 	else
 	{
+		if (key.code == sf::Keyboard::Escape)
+		{
+			// Escape
+			return PAUSE;
+		}
 		// Not Ctrl
 	}
 }
@@ -170,6 +181,11 @@ void Game_window::keyPressed(const sf::Event::KeyEvent & key)
 void Game_window::setGoban(const Goban goban)
 {
 	board.load(goban);
+}
+
+void Game_window::setView(const sf::FloatRect& zone)
+{
+	board.setView(zone);
 }
 
 void Game_window::territoire()

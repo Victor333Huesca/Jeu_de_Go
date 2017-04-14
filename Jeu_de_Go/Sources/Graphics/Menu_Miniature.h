@@ -5,7 +5,7 @@
 class Menu_Miniature : public Menu
 {
 public:
-	Menu_Miniature(const sf::Vector2f& position, const char* texture, const sf::Vector2f& scale = sf::Vector2f(1, 1));
+	Menu_Miniature(const sf::Vector2f& position, const char* texture, const Screens& _previous, const sf::Vector2f& scale = sf::Vector2f(1, 1));
 	virtual ~Menu_Miniature();
 
 	// Applique la texture et la police à chaque item

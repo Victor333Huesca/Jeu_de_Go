@@ -148,6 +148,12 @@ sf::View Board::getView() const
 	return view;
 }
 
+void Board::setView(const sf::FloatRect& zone)
+{
+	view.reset(zone);
+	viewBound();
+}
+
 bool Board::posToSquare(sf::Vector2i& pos) const
 {
 	sf::Vector2i tmp;

@@ -11,11 +11,16 @@
 
 #define	MULTITHREAD false
 
-void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, int* _cur_screen);
+void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, Screens* _cur_screen);
 
 // Différents menus
+void loadMenu(std::vector<Screen*>& screens, const Screens& menu);
 Menu* loadMenu1();
 Menu* loadMenu2();
+Menu* loadMenu3();
+Menu* loadMenu4();
+Menu* loadMenu5();
+Menu* loadMenu6();
 
 // A déplacer en méthode de Goban (sauf le test évidement)
 uint8_t* compressGoban(const Goban& goban, int nb_revelent = 0);
@@ -28,16 +33,20 @@ int main()
 {
 	// Main's variables
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_HEIGHT), "Jeu de Go");
-    std::vector<Screen*> screens;
-    int cur_screen = 1;
+    std::vector<Screen*> screens(10, nullptr);
+    Screens cur_screen = MAIN_MENU;
 
 	// The game
 	Game_window* game = new Game_window();
 
 	// Declare here different screens in order of there use.
-	screens.push_back(game);
-	screens.push_back(loadMenu1());
-	screens.push_back(loadMenu2());
+	screens[GAME] = game;
+	loadMenu(screens, MAIN_MENU);
+	loadMenu(screens, PROBLEMS_MENU);
+	loadMenu(screens, OPTIONS_MENU);
+	loadMenu(screens, AUDIO);
+	loadMenu(screens, VIDEO);
+	loadMenu(screens, PAUSE);
 
 
 #if defined(_WIN32) || MULTITHREAD
@@ -51,9 +60,12 @@ int main()
 	window.setFramerateLimit(60);
 
 	//Main loop
-	while (cur_screen >= 0)
+	while (cur_screen >= CONTINUE)
 	{
-		cur_screen = screens[cur_screen]->Run(window, *game);
+		if (screens[cur_screen])
+			cur_screen = screens[cur_screen]->Run(window, *game);
+		else
+			std::cerr << "Le menu demandé n'a pas été chargé !\n";
 	}
 
 	// Wait for the rendering thread has finished its instructions before exit
@@ -81,14 +93,14 @@ int main()
 	return 0;
 }
 
-void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, int* _cur_screen)
+void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, Screens* _cur_screen)
 {
 	// Get the render window
 	sf::RenderWindow& window = *_window;
 	std::vector<Screen*>& screens = *_screens;
-	int& cur_screen = *_cur_screen;
+	Screens& cur_screen = *_cur_screen;
 
-	while (cur_screen >= 0)
+	while (cur_screen >= CONTINUE)
 	{
 		// Clear the window with a black screen
 		window.clear(sf::Color::Black);
@@ -101,10 +113,45 @@ void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, 
 	}
 }
 
+void loadMenu(std::vector<Screen*>& screens, const Screens& menu)
+{
+	// The loaded menu
+	Menu* m = nullptr;
+
+	// Look witch is demanded
+	switch (menu)
+	{
+	case MAIN_MENU:
+		m = loadMenu1();
+		break;
+	case PROBLEMS_MENU:
+		m = loadMenu2();
+		break;
+	case OPTIONS_MENU:
+		m = loadMenu3();
+		break;
+	case AUDIO:
+		m = loadMenu4();
+		break;
+	case VIDEO:
+		m = loadMenu5();
+		break;
+	case PAUSE:
+		m = loadMenu6();
+		break;
+	default:
+		std::cerr << "Le menu demandé (" << menu << ") ne peut être chargé !\n";
+		break;
+	}
+
+	// Load menu
+	screens[menu] = m;
+}
+
 Menu* loadMenu1()
 {
 	// On charge le menu
-	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", sf::Vector2f(0.3f, 0.3f));
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", NO_CHANGE, sf::Vector2f(0.3f, 0.3f));
 
 	// Need move aways after
 	menu->setItemsFonts("./Ressources/Font/time.ttf");
@@ -121,7 +168,7 @@ Menu* loadMenu1()
 	menu->addItem(Choice_Simple("        Jouer", text_style, pos.x, pos.y,	[](const sf::RenderTarget& window, Game_window& game)
 	{ return GAME; }));
 	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window, Game_window& game)
-	{ return NO_CHANGE; }));
+	{ return OPTIONS_MENU; }));
 	menu->addItem(Choice_Simple("      Exemples", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
 	{ return NO_CHANGE; }));
 	menu->addItem(Choice_Simple("      Problèmes", text_style, pos.x, pos.y + 360, [](const sf::RenderTarget& window, Game_window& game)
@@ -140,39 +187,171 @@ Menu* loadMenu1()
 Menu* loadMenu2()
 {
 	// On charge le menu
-	Menu_Miniature* menu = new Menu_Miniature(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background2.png", sf::Vector2f(0.3f, 0.3f));
+	Menu_Miniature* menu = new Menu_Miniature(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background2.png", MAIN_MENU, sf::Vector2f(0.3f, 0.3f));
 
 	// Position
 	sf::Vector2f pos(50, 50);
 
-	// On charge les items
-	menu->addItem(Choice_miniature("./Ressources/Img/probleme_6_en_coin_blank.png", 
-		pos.x, pos.y, 
-		[](const sf::RenderTarget& window, Game_window& game) 
-	{ game.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go")); return GAME; }, 
-		sf::Vector2f(0.3f, 0.3f)));
-	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
-		pos.x + 250, pos.y,
-		[](const sf::RenderTarget& window, Game_window& game) { return NO_CHANGE; }));
-	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
-		pos.x + 500, pos.y,
-		[](const sf::RenderTarget& window, Game_window& game) { return NO_CHANGE; }));
-	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
-		pos.x, pos.y + 250,
-		[](const sf::RenderTarget& window, Game_window& game) { return NO_CHANGE; }));
-	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_on.jpg",
-		pos.x + 250, pos.y + 250,
-		[](const sf::RenderTarget& window, Game_window& game) { return MAIN_MENU; }));
-	menu->addItem(Choice_miniature("./Ressources/Img/Speaker_off.jpg",
-		pos.x + 500, pos.y + 250,
-		[](const sf::RenderTarget& window, Game_window& game) { return NO_CHANGE; }));
+	/* -----  On charge les items  ----- */
+	// Retour
+	menu->addItem(Choice_miniature("./Ressources/Img/problème_0.png",
+		pos.x + 250, pos.y, [](const sf::RenderTarget& window, Game_window& game)
+	{
+		return PREVIOUS;
+	}));
 
+	// 6 en coins
+	menu->addItem(Choice_miniature("./Ressources/Img/probleme_6_en_coin_blank.png", 
+		pos.x + 250, pos.y, [](const sf::RenderTarget& window, Game_window& game) 
+	{ 
+		game.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go"));
+		game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME; 
+	}));
+
+	/* --- Fin du chargement des items  --- */
+
+
+	// On applique les textures
 	menu->setItemsTextures("./Ressources/Img/miniature_selected.png", "./Ressources/Img/miniature_selected.png");
 
 	log_file << "\nLe Menu 2 à été chargé\n" << std::endl;
 
 	return menu;
 }
+
+Menu* loadMenu3()
+{
+	// On charge le menu
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", MAIN_MENU, sf::Vector2f(0.3f, 0.3f));
+
+	// Need move aways after
+	menu->setItemsFonts("./Ressources/Font/time.ttf");
+
+	// On charge le style du text sauf la police qui est incluse avec le menu.
+	sf::Text text_style;
+	text_style.setCharacterSize(50);
+	text_style.setFillColor(sf::Color::Black);
+
+	// Position
+	sf::Vector2f pos(225, 200);
+
+	// On charge les items
+	menu->addItem(Choice_Simple("        Audio", text_style, pos.x, pos.y, [](const sf::RenderTarget& window, Game_window& game)
+	{ return AUDIO; }));
+	menu->addItem(Choice_Simple("        Vidéo", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window, Game_window& game)
+	{ return VIDEO; }));
+	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
+	{ return PREVIOUS; }));
+
+	// Then set items textures and return the menu
+	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
+
+	log_file << "\nLe Menu 3 à été chargé\n" << std::endl;
+
+	return menu;
+}
+
+Menu* loadMenu4()
+{
+	// On charge le menu
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", OPTIONS_MENU, sf::Vector2f(0.3f, 0.3f));
+
+	// Need move aways after
+	menu->setItemsFonts("./Ressources/Font/time.ttf");
+
+	// On charge le style du text sauf la police qui est incluse avec le menu.
+	sf::Text text_style;
+	text_style.setCharacterSize(50);
+	text_style.setFillColor(sf::Color::Black);
+
+	// Position
+	sf::Vector2f pos(225, 200);
+
+	// On charge les items
+
+	/* Pour les volumes dans un premier temps afficher juste un sprite avec : Aucun, Léger, Moyen, Fort, Très Fort
+	Créer directement une barre de progression risque d'être bien trop long et fastidieux*/
+
+	menu->addItem(Choice_Simple("        Musiques", text_style, pos.x, pos.y, [](const sf::RenderTarget& window, Game_window& game)
+	{ return NO_CHANGE; }));
+	menu->addItem(Choice_Simple("         Sons", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window, Game_window& game)
+	{ return NO_CHANGE; }));
+	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
+	{ return PREVIOUS; }));
+
+	// Then set items textures and return the menu
+	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
+
+	log_file << "\nLe Menu 4 à été chargé\n" << std::endl;
+
+	return menu;
+}
+
+Menu* loadMenu5()
+{
+	// On charge le menu
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", OPTIONS_MENU, sf::Vector2f(0.3f, 0.3f));
+
+	// Need move aways after
+	menu->setItemsFonts("./Ressources/Font/time.ttf");
+
+	// On charge le style du text sauf la police qui est incluse avec le menu.
+	sf::Text text_style;
+	text_style.setCharacterSize(50);
+	text_style.setFillColor(sf::Color::Black);
+
+	// Position
+	sf::Vector2f pos(225, 400);
+
+	// On charge les items
+	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
+	{ return PREVIOUS; }));
+
+	// Then set items textures and return the menu
+	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
+
+	log_file << "\nLe Menu 5 à été chargé\n" << std::endl;
+
+	return menu;
+}
+
+Menu* loadMenu6()
+{
+	// On charge le menu
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", GAME, sf::Vector2f(0.3f, 0.3f));
+
+	// Need move aways after
+	menu->setItemsFonts("./Ressources/Font/time.ttf");
+
+	// On charge le style du text sauf la police qui est incluse avec le menu.
+	sf::Text text_style;
+	text_style.setCharacterSize(44);
+	text_style.setFillColor(sf::Color::Black);
+
+	// Position
+	sf::Vector2f pos(225, 100);
+
+	// On charge les items
+	menu->addItem(Choice_Simple("         Audio", text_style, pos.x, pos.y, [](const sf::RenderTarget& window, Game_window& game)
+	{ return AUDIO; }));
+	menu->addItem(Choice_Simple("         Vidéo", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window, Game_window& game)
+	{ return VIDEO; }));
+	menu->addItem(Choice_Simple("    Retour au jeu", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
+	{ return PREVIOUS; }));
+	menu->addItem(Choice_Simple(" Quitter la partie", text_style, pos.x, pos.y + 360, [](const sf::RenderTarget& window, Game_window& game)
+	{ return MAIN_MENU; }));
+	menu->addItem(Choice_Simple("Revenir au bureau", text_style, pos.x, pos.y + 480, [](const sf::RenderTarget& window, Game_window& game)
+	{ return EXIT; }));
+
+	// Then set items textures and return the menu
+	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
+
+	log_file << "\nLe Menu 3 à été chargé\n" << std::endl;
+
+	return menu;
+}
+
 
 uint8_t* compressGoban(const Goban& goban, int nb_revelent)
 {

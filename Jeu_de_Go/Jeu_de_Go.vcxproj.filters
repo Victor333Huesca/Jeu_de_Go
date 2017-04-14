@@ -80,9 +80,6 @@
     <ClCompile Include="Sources\Graphics\Main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Graphics\Screen.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\Graphics\Game\Board.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>

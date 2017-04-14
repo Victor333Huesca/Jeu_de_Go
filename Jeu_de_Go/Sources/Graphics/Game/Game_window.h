@@ -13,12 +13,13 @@ public:
 	~Game_window();
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
-	virtual int Run(sf::RenderWindow &App, Game_window&);
+	virtual Screens Run(sf::RenderWindow &App, Game_window&);
 
-	void click(const sf::RenderWindow& window, sf::Vector2i pos, const sf::Mouse::Button& type = sf::Mouse::Button::Left);
+	Screens click(const sf::RenderWindow& window, sf::Vector2i pos, const sf::Mouse::Button& type = sf::Mouse::Button::Left);
 	void zoom(const float delta, sf::Vector2i pos, sf::RenderWindow& window);
-	void keyPressed(const sf::Event::KeyEvent& key);
+	Screens keyPressed(const sf::Event::KeyEvent& key);
 	void setGoban(const Goban goban);
+	void setView(const sf::FloatRect& zone);
 	void territoire();
 
 private:

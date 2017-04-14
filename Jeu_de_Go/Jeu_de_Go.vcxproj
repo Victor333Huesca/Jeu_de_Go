@@ -169,7 +169,6 @@
     <ClCompile Include="Sources\Graphics\Menu.cpp" />
     <ClCompile Include="Sources\Graphics\Menu_Miniature.cpp" />
     <ClCompile Include="Sources\Graphics\Menu_simple.cpp" />
-    <ClCompile Include="Sources\Graphics\Screen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Menu\button.png" />

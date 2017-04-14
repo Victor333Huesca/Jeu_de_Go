@@ -1,9 +1,12 @@
 #include "Menu.h"
 
 
-Menu::Menu(const sf::Vector2f & position, const char* texture, const sf::Vector2f & scale) :
+Menu::Menu(const sf::Vector2f & position, const char* texture, const Screens& _previous, const sf::Vector2f & scale) :
 	choices(),
-	cur_choice(nullptr)
+	cur_choice(nullptr),
+	s_background(),
+	t_background(),
+	previous(_previous)
 {
 	t_background.loadFromFile(texture);
 	s_background.setTexture(t_background);
@@ -36,7 +39,7 @@ void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		target.draw(c, states);
 }
 
-int Menu::Run(sf::RenderWindow &window, Game_window& game)
+Screens Menu::Run(sf::RenderWindow &window, Game_window& game)
 {
     // To stay alive
 	bool Running = true;
@@ -52,7 +55,7 @@ int Menu::Run(sf::RenderWindow &window, Game_window& game)
 			switch (event.type)
 			{
 			case sf::Event::Closed:
-				return -1;
+				return EXIT;
 				break;
 			case sf::Event::LostFocus:
 				break;
@@ -60,9 +63,14 @@ int Menu::Run(sf::RenderWindow &window, Game_window& game)
 				break;
 			case sf::Event::MouseButtonReleased:
 			{
-				int res = click(event.mouseButton.button, window, game);
+				Screens res = click(event.mouseButton.button, window, game);
 				if (res != NO_CHANGE)
-					return res;
+				{
+					if (res == PREVIOUS)
+						return previous;
+					else
+						return res;
+				}
 				break;
 			}
 			case sf::Event::MouseMoved:
@@ -92,7 +100,7 @@ int Menu::Run(sf::RenderWindow &window, Game_window& game)
 	}
 
 	// Not suppose to reach here but just in case
-	return -1;
+	return ERROR;
 }
 
 sf::Vector2f Menu::getSize() const
@@ -107,7 +115,7 @@ sf::Vector2f Menu::getPosition() const
 
 
 // Interactcions
-int Menu::click(const sf::Mouse::Button& type, const sf::RenderWindow& window, Game_window& game)
+Screens Menu::click(const sf::Mouse::Button& type, const sf::RenderWindow& window, Game_window& game)
 {
 	if (cur_choice != nullptr)
 		return cur_choice->Run(window, game);

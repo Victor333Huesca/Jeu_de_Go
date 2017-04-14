@@ -59,14 +59,21 @@ extern std::ofstream log_file;
 enum Screens
 {
 	// Game modes
-	GAME = 0,
+	GAME = 8,
 
 	// Menus
 	MAIN_MENU = 1,
 	PROBLEMS_MENU = 2,
-	OTPION_MENU = 3,
+	OPTIONS_MENU = 3,
+	AUDIO = 5,
+	VIDEO = 6,
+	PAUSE = 7,
+
 
 	// Other
+	CONTINUE = 0,
 	EXIT = -1,
-	NO_CHANGE = -777
+	PREVIOUS = -33,
+	NO_CHANGE = -777,
+	ERROR = -34
 };

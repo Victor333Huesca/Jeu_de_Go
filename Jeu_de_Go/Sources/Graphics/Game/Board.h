@@ -21,6 +21,7 @@ public:
 	void zoom(const float delta, const sf::Vector2i& pos);
 	void cancel();
 	sf::View getView() const;
+	void setView(const sf::FloatRect& zone);
 
 	// Loading
 	void load();
@@ -31,8 +32,6 @@ public:
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
 private:
-	// Goban
-	Goban engine;
 	sf::Vector2u size;			/*!< Number of squares on the goban */
 	Square** array;				/*!< Goban's intersections representation */
 
@@ -45,7 +44,7 @@ private:
 	sf::View view_origin;		/*!< Original view */
 
 	// Goban engine
-	//Goban engine;				/*!< Engine used by Wissem and Mamadou */
+	Goban engine;				/*!< Engine used by Wissem and Mamadou */
 
 	// Return case corresponding to view's position
 	bool posToSquare(sf::Vector2i& pos) const;

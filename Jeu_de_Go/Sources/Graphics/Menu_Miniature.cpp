@@ -2,8 +2,8 @@
 
 
 
-Menu_Miniature::Menu_Miniature(const sf::Vector2f & position, const char * texture, const sf::Vector2f & scale) :
-	Menu(position, texture, scale)
+Menu_Miniature::Menu_Miniature(const sf::Vector2f & position, const char * texture, const Screens& _previous, const sf::Vector2f & scale) :
+	Menu(position, texture, _previous, scale)
 {
 #if __ERROR_LEVEL__ > 0
 	log_file << "Menu_Miniature::Menu_Miniature(), ";
