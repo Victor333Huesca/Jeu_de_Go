@@ -1,5 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -76,4 +79,9 @@ enum Screens
 	PREVIOUS = -33,
 	NO_CHANGE = -777,
 	ERROR = -34
+};
+
+enum Musics
+{
+	PISTE_1
 };

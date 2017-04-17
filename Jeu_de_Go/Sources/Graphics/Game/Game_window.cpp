@@ -176,6 +176,9 @@ Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 		}
 		// Not Ctrl
 	}
+
+	// Else
+	return NO_CHANGE;
 }
 
 void Game_window::setGoban(const Goban goban)

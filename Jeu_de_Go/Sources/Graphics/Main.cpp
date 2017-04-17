@@ -36,10 +36,18 @@ int main()
     std::vector<Screen*> screens(10, nullptr);
     Screens cur_screen = MAIN_MENU;
 
+	// Music !
+	std::vector<sf::Music> musics(5);
+	sf::Music* cur_music = &musics[PISTE_1];
+
+	// Open each music
+	musics[PISTE_1].openFromFile("./Ressources/Music/piste_1.ogg");
+
+
 	// The game
 	Game_window* game = new Game_window();
 
-	// Declare here different screens in order of there use.
+	// Declare here different screens
 	screens[GAME] = game;
 	loadMenu(screens, MAIN_MENU);
 	loadMenu(screens, PROBLEMS_MENU);
@@ -58,6 +66,7 @@ int main()
 #endif
 
 	window.setFramerateLimit(60);
+	cur_music->play();
 
 	//Main loop
 	while (cur_screen >= CONTINUE)
@@ -73,15 +82,17 @@ int main()
 	thread_rendering.join();
 #endif
 
+	// Close window & cie
+	window.close();
+	log_file.close();
+	cur_music->stop();
+
 	// Free screens
 	for (Screen*& sc : screens)
 	{
 		delete sc;
 	}
 	screens.clear();
-
-	window.close();
-	log_file.close();
 
 #ifdef _WIN32
 	system("start notepad trace.log");
