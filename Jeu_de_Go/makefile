@@ -1,6 +1,6 @@
 # -----   Options   ----- #
 CXXFLAGS = -std=c++14 -g
-LIBS = -lsfml-graphics -lsfml-window -lsfml-system -pthread
+LIBS = -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system -lpthread
 
 # -----  Locations  ----- #
 REP_SRC = Sources/
@@ -83,11 +83,26 @@ $(REP_SRC)Graphics/Screens.h: $(REP_SRC)Graphics/Screen.h $(REP_SRC)Graphics/Gam
 $(REP_OBJ)Screen.o: $(REP_SRC)Graphics/Screen.cpp $(REP_SRC)Graphics/Screen.h
 $(REP_SRC)Graphics/Screen.h:
 
+# Menus
 $(REP_OBJ)Menu.o: $(REP_SRC)Graphics/Menu.cpp $(REP_SRC)Graphics/Menu.h
-$(REP_SRC)Graphics/Menu.h: $(REP_SRC)Graphics/Screen.h $(REP_SRC)Graphics/Choice.h
+$(REP_SRC)Graphics/Menu.h: $(REP_SRC)Graphics/Screen.h $(REP_SRC)Graphics/Choice.h $(REP_SRC)Graphics/Globals.h
 
+$(REP_OBJ)Menu_simple.o: $(REP_SRC)Graphics/Menu_simple.cpp $(REP_SRC)Graphics/Menu_simple.h
+$(REP_SRC)Graphics/Menu_simple.h: $(REP_SRC)Graphics/Menu.h $(REP_SRC)Graphics/Choice_Simple.h
+
+$(REP_OBJ)Menu_Miniature.o: $(REP_SRC)Graphics/Menu_Miniature.cpp $(REP_SRC)Graphics/Menu_Miniature.h
+$(REP_SRC)Graphics/Menu_Miniature.h: $(REP_SRC)Graphics/Menu.h $(REP_SRC)Graphics/Choice_miniature.h
+
+# Choices 
 $(REP_OBJ)Choice.o: $(REP_SRC)Graphics/Choice.cpp $(REP_SRC)Graphics/Choice.h
-$(REP_SRC)Graphics/Choice.h:
+$(REP_SRC)Graphics/Choice.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Game_window.h
+
+$(REP_OBJ)Choice_Simple.o: $(REP_SRC)Graphics/Choice_Simple.cpp $(REP_SRC)Graphics/Choice_Simple.h
+$(REP_SRC)Graphics/Choice_Simple.h: $(REP_SRC)Graphics/Choice.h
+
+$(REP_OBJ)Choice_miniature.o: $(REP_SRC)Graphics/Choice_miniature.cpp $(REP_SRC)Graphics/Choice_miniature.h
+$(REP_SRC)Graphics/Choice_miniature.h: $(REP_SRC)Graphics/Choice.h
+
 
 # Graphics --> Game
 $(REP_OBJ)Board.o: $(REP_SRC)Graphics/Game/Board.cpp $(REP_SRC)Graphics/Game/Board.h
