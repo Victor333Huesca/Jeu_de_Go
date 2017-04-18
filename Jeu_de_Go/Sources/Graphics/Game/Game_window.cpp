@@ -135,7 +135,7 @@ Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 	if (key.control)
 	{
 		// Ctrl + ...
-		
+
 		if (key.code == sf::Keyboard::Z)
 		{
 			// Ctrl + Z
@@ -154,16 +154,17 @@ Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 			char c;
 			std::cout << "Lancer le Tsumego Y/N ?  ";
 			std::cin >> c;
-			
+
 			if (c == 'Y' || c == 'y')
 			{
 				std::cout << "lancement du tsumego :" << std::endl;
-				Arbre abr(board.getGoban(), Etat::BLANC);
+				Goban gob=board.getGoban();
+				Arbre abr(gob, Etat::BLANC);
 				abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
 			}
 			else
 			{
-				std::cout << "Vous avez épargné votre pc !"<<std::endl;
+				std::cout << "Vous avez ï¿½pargnï¿½ votre pc !"<<std::endl;
 			}
 		}
 	}
@@ -193,37 +194,37 @@ void Game_window::setView(const sf::FloatRect& zone)
 
 void Game_window::territoire()
 {
-	/*						A l'attention de Julien       
-		En faisant ça tu perds les avantages de l'encapsualtion, je m'explique :
-			- Game_Window est la classe contenant une instance d'un jeu, c'est à dire
-		l'état d'une partie de go mais aussi le menu contextuel trouvable sur le 
-		coté. C'est cette classe qui gère les entrées / sorties et les transmet à 
+	/*						A l'attention de Julien
+		En faisant ï¿½a tu perds les avantages de l'encapsualtion, je m'explique :
+			- Game_Window est la classe contenant une instance d'un jeu, c'est ï¿½ dire
+		l'ï¿½tat d'une partie de go mais aussi le menu contextuel trouvable sur le
+		cotï¿½. C'est cette classe qui gï¿½re les entrï¿½es / sorties et les transmet ï¿½
 		qui de droit (ici c'est souvent au 'engine') qui lui traite cette information.
-			- Board quand à elle est la classe qui gère ce que représente une partie de Go.
-		C'est à dire toute les textures du plateau, la vu actuelle du (la partie 
-		zoomée du plateau), et évidement la partie elle même (le fameau 'engine').
-		Tout ces attributs DOIVENT être en PRIVÉ sous peine de donner un accès à
-		des parties qui sont cruciales et doivent être contrôlée. On ne veux pas en 
-		effet que n'importe qui tente de charger une texture comme ça lui plait sans 
-		passer la fonction qui permet elle de charger la texture de façon contrôlée.
-		De même pour modifier l'état du goban on passe par une méthode et on ne touche 
-		jamais au grand jamais directement au goban lui-même.
-			- Goban est la classequi gère une partie de Go du point de vu des règles.
-		En effet c'est elle qui valide ou non un coup, c'est elle qui permet de 
-		récupèrer des informations spécifique à une partie de Go qui, si les règle de 
-		ce jeu vennaient à varier- devrait être modifier sans que cela n'impacte le 
+			- Board quand ï¿½ elle est la classe qui gï¿½re ce que reprï¿½sente une partie de Go.
+		C'est ï¿½ dire toute les textures du plateau, la vu actuelle du (la partie
+		zoomï¿½e du plateau), et ï¿½videment la partie elle mï¿½me (le fameau 'engine').
+		Tout ces attributs DOIVENT ï¿½tre en PRIVï¿½ sous peine de donner un accï¿½s ï¿½
+		des parties qui sont cruciales et doivent ï¿½tre contrï¿½lï¿½e. On ne veux pas en
+		effet que n'importe qui tente de charger une texture comme ï¿½a lui plait sans
+		passer la fonction qui permet elle de charger la texture de faï¿½on contrï¿½lï¿½e.
+		De mï¿½me pour modifier l'ï¿½tat du goban on passe par une mï¿½thode et on ne touche
+		jamais au grand jamais directement au goban lui-mï¿½me.
+			- Goban est la classequi gï¿½re une partie de Go du point de vu des rï¿½gles.
+		En effet c'est elle qui valide ou non un coup, c'est elle qui permet de
+		rï¿½cupï¿½rer des informations spï¿½cifique ï¿½ une partie de Go qui, si les rï¿½gle de
+		ce jeu vennaient ï¿½ varier- devrait ï¿½tre modifier sans que cela n'impacte le
 		reste des classes Board et Game_window.
-			- Il se trouve qu'ici Goban est aussi utilisée pour jouer le tsumego, c'est un
-		point de vu discutable car rajouter des fonctions telles que le tsumego 
-		directement à la classe l'allorudie et la rends bien moins modulaire.
-		J'aurais plus la vision d'une classe specifique qui gère ce genre de cas d'étude.
-		Après c'est un ressenti et étant donné que ce projet n'est -à priori- qu'un 
-		"one shoot" et n'a donc pas pour but d'être repris, integrer directement des 
-		fonctinons en dur dans une classe est défendable. */
+			- Il se trouve qu'ici Goban est aussi utilisï¿½e pour jouer le tsumego, c'est un
+		point de vu discutable car rajouter des fonctions telles que le tsumego
+		directement ï¿½ la classe l'allorudie et la rends bien moins modulaire.
+		J'aurais plus la vision d'une classe specifique qui gï¿½re ce genre de cas d'ï¿½tude.
+		Aprï¿½s c'est un ressenti et ï¿½tant donnï¿½ que ce projet n'est -ï¿½ priori- qu'un
+		"one shoot" et n'a donc pas pour but d'ï¿½tre repris, integrer directement des
+		fonctinons en dur dans une classe est dï¿½fendable. */
 
-	// PS : Ne pas supprimer ce message, on doit pouvoir le réutiliser pour le rapport.
+	// PS : Ne pas supprimer ce message, on doit pouvoir le rï¿½utiliser pour le rapport.
 
-	//L'idée avait l'air sympathique à éxploiter.
+	//L'idï¿½e avait l'air sympathique ï¿½ ï¿½xploiter.
 
 	//Affiche le territoire de chaque joueur
 	//Groupe groupsBlack, groupsWhite;
@@ -234,18 +235,18 @@ void Game_window::territoire()
 	}*/
 
 	/*
-	Pour chaque groupe renvoi le nombre d'oeil : 4 configuration 
-		-   (x-1, y) (x+1, y) (x, y-1) (x, y+1) (l'oeil classique)  
+	Pour chaque groupe renvoi le nombre d'oeil : 4 configuration
+		-   (x-1, y) (x+1, y) (x, y-1) (x, y+1) (l'oeil classique)
 		-   (x+1, y) (x, y+1) (l'oeil en coin)
-		-   (x, y-1) (x+1, y) (x, y+1) (l'oeil de coté
-		-   (x-1, y) (x+2, y) (x, y-1) (x, y-1) (x, y+1) (x+1, y-1) (x+1, y+1) (grand oeil) 
-	
-	ps : nous permettra de savoir si un groupe survivra sans arrivé à la fin d'une recherche (au moins deux yeux).
+		-   (x, y-1) (x+1, y) (x, y+1) (l'oeil de cotï¿½
+		-   (x-1, y) (x+2, y) (x, y-1) (x, y-1) (x, y+1) (x+1, y-1) (x+1, y+1) (grand oeil)
+
+	ps : nous permettra de savoir si un groupe survivra sans arrivï¿½ ï¿½ la fin d'une recherche (au moins deux yeux).
 
 	Pour chaque groupe calcul la distance la plus courte avec les bords (haut, bas, droite, gauche)
-		- Colore pour chaque groupe une tâche de la couleur du groupe de deux cases autour en direction du bords le plus proche.
-		+ Colore l'intérieur des yeux 
-		++ Si le groupe a moins de deux libertés testé les deux coups pour prévoir si il va mourir et le colorer de la couleur opposé.
+		- Colore pour chaque groupe une tï¿½che de la couleur du groupe de deux cases autour en direction du bords le plus proche.
+		+ Colore l'intï¿½rieur des yeux
+		++ Si le groupe a moins de deux libertï¿½s testï¿½ les deux coups pour prï¿½voir si il va mourir et le colorer de la couleur opposï¿½.
 
 
 		*/
