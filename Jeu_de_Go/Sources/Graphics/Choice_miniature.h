@@ -1,6 +1,5 @@
 #pragma once
 #include "Choice.h"
-#include "Globals.h"
 
 class Choice_miniature : public Choice
 {
