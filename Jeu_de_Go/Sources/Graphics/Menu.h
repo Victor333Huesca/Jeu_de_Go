@@ -18,7 +18,7 @@ public:
     sf::Vector2f getPosition() const;
 
 	// Ajoute un item au menu
-	virtual void addItem(Choice& item);
+	virtual void addItem(const Choice& item);
 	void setPrevious(const Screens& sc);
 
 	// Debugg

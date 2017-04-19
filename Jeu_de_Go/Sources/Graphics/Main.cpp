@@ -95,10 +95,10 @@ int main()
 	screens.clear();
 
 #ifdef _WIN32
-	system("start notepad trace.log");
-	system("pause");
+	//system("start notepad trace.log");
+	//system("pause");
 #else
-	system("gedit trace.log&");
+	//system("gedit trace.log&");
 #endif // _WIN32
 
 	return 0;
@@ -153,7 +153,7 @@ void loadMenu(std::vector<Screen*>& screens, const Screens& menu)
 		m = loadMenu6();
 		break;
 	default:
-		std::cerr << "Le menu demandé (" << menu << ") ne peut étre chargé !\n";
+		std::cerr << "Le menu demandé (" << menu << ") ne peut être chargé !\n";
 		break;
 	}
 
@@ -288,7 +288,7 @@ Menu* loadMenu4()
 	// On charge les items
 
 	/* Pour les volumes dans un premier temps afficher juste un sprite avec : Aucun, Léger, Moyen, Fort, Trés Fort
-	Créer directement une barre de progression risque d'étre bien trop long et fastidieux*/
+	Créer directement une barre de progression risque d'être bien trop long et fastidieux*/
 
 	menu->addItem(Choice_Simple("      Musiques", text_style, pos.x, pos.y, [](const sf::RenderTarget& window, Game_window& game)
 	{ return NO_CHANGE; }));

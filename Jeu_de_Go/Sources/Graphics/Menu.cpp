@@ -152,7 +152,7 @@ void Menu::keyPressed(const sf::Event::KeyEvent& key)
 
 }
 
-void Menu::addItem(Choice& item)
+void Menu::addItem(const Choice& item)
 {
 	Choice* _item = new Choice(item);
 	choices.push_back(*_item);
