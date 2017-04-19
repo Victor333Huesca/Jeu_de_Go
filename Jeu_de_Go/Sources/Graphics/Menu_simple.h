@@ -13,7 +13,7 @@ public:
 	virtual void setItemsFonts(const char* font);
 
 	// Ajoute un item au menu
-	virtual void addItem(Choice_Simple& item);
+	virtual void addItem(const Choice_Simple& item);
 
 
 private:

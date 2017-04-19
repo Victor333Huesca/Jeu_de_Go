@@ -42,11 +42,10 @@ void Menu_simple::setItemsFonts(const char * font)
 #endif // __ERROR_LEVEL__ > 0
 }
 
-void Menu_simple::addItem(Choice_Simple & item)
-{
-	item.setFont(text_font);
-	
+void Menu_simple::addItem(const Choice_Simple & item)
+{	
 	Choice_Simple* _item = new Choice_Simple(item);
+	_item->setFont(text_font);
 	choices.push_back(*_item);
 
 #if __ERROR_LEVEL__ > 0
