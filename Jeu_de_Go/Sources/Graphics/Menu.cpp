@@ -162,6 +162,11 @@ void Menu::addItem(Choice& item)
 #endif // __ERROR_LEVEL__ > 0
 }
 
+void Menu::setPrevious(const Screens & sc)
+{
+	previous = sc;
+}
+
 void Menu::showAdresses() const
 {
 	std::cout << "\nTextures : " <<
