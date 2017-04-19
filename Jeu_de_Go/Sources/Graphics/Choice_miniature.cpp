@@ -1,4 +1,4 @@
-#include "Choice_miniature.h"
+﻿#include "Choice_miniature.h"
 
 
 

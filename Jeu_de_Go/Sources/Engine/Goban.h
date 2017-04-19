@@ -1,4 +1,4 @@
-#ifndef Goban_G
+﻿#ifndef Goban_G
 #define Goban_G
 #include <iostream>
 #include <vector>

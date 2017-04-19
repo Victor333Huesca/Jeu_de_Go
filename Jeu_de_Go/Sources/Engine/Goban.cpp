@@ -1,4 +1,4 @@
-#include "Goban.h"
+﻿#include "Goban.h"
 //PRIVATE METHODS
 bool Goban::isMoveLegal(const Etat::VAL& value, const int& x, const int& y) const
 {
@@ -137,7 +137,7 @@ std::ostream& Goban::afficheGroupes(std::ostream& stream, const Etat::VAL & val)
 	}
 	else
 	{
-		stream << "Error : mauvais groupe demmand� !\n";
+		stream << "Error : mauvais groupe demmandé !\n";
 	}
 
 	return stream;

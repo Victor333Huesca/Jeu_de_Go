@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Screen.h"
 
 // Include differents screens

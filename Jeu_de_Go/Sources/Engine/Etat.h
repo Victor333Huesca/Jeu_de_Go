@@ -1,4 +1,4 @@
-#ifndef Etat_E
+﻿#ifndef Etat_E
 #define Etat_E
 #include <iostream>
 

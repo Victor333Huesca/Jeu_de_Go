@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../Globals.h"
 #include "Square.h"
 #include "../../Engine/Goban.h"
@@ -27,7 +27,7 @@ public:
 	void load();
 	void load(const Goban& copy);
 
-	// Pour r�cuperer une copie du Goban
+	// Pour récuperer une copie du Goban
 	Goban getGoban() const;
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;

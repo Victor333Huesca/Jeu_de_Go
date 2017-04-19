@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Menu.h"
 #include "Choice_miniature.h"
 
@@ -8,7 +8,7 @@ public:
 	Menu_Miniature(const sf::Vector2f& position, const char* texture, const Screens& _previous, const sf::Vector2f& scale = sf::Vector2f(1, 1));
 	virtual ~Menu_Miniature();
 
-	// Applique la texture et la police � chaque item
+	// Applique la texture et la police à chaque item
 	virtual void setItemsTextures(const char* selected, const char* hover = nullptr);
 
 private:

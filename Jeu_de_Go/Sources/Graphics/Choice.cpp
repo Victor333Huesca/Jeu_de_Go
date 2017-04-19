@@ -1,4 +1,4 @@
-#include "Choice.h"
+﻿#include "Choice.h"
 
 
 Choice::Choice(sf::Vector2f pos, std::function<Screens(const sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :

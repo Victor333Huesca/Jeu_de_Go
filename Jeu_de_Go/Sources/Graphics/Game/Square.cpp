@@ -1,4 +1,4 @@
-#include "Square.h"
+﻿#include "Square.h"
 
 sf::Texture Square::white_t;
 sf::Texture Square::black_t;

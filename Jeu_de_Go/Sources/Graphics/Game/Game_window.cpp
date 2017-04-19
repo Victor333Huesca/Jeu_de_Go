@@ -1,4 +1,4 @@
-#include "Game_window.h"
+﻿#include "Game_window.h"
 
 
 
@@ -164,7 +164,7 @@ Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 			}
 			else
 			{
-				std::cout << "Vous avez �pargn� votre pc !"<<std::endl;
+				std::cout << "Vous avez épargné votre pc !"<<std::endl;
 			}
 		}
 	}

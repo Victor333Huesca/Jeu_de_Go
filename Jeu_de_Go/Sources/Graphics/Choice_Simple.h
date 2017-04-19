@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Choice.h"
 
 class Choice_Simple : public Choice

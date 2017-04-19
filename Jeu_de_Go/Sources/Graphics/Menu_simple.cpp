@@ -1,4 +1,4 @@
-#include "Menu_simple.h"
+﻿#include "Menu_simple.h"
 
 
 Menu_simple::Menu_simple(const sf::Vector2f & position, const char * texture, const Screens& _previous, const sf::Vector2f & scale) :

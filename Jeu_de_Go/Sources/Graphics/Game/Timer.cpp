@@ -1,4 +1,4 @@
-#include "Timer.h"
+﻿#include "Timer.h"
 
 sf::Font Timer::font = sf::Font();
 

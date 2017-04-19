@@ -126,13 +126,13 @@
 				filsA.Tsumego(cible);
 			}
 			else {
-				//le coup a tuÃ© la cible
+				//le coup a tué la cible
 				info=1;
 				//std::cout<<gob<<std::endl;
 				return;
 			}
 
-			//s'areter si la rÃ©ponse est deja trouvÃ©e (opti)
+			//s'areter si la réponse est deja trouvée (opti)
 			if (filsA.info==1){}
 			else {
 				info=1;

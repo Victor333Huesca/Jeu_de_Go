@@ -1,4 +1,4 @@
-#include "Globals.h"
+ï»¿#include "Globals.h"
 #include <thread>
 #include "Screens.h"
 #include "../Engine/Parser.h"
@@ -14,7 +14,7 @@
 
 void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, Screens* _cur_screen);
 
-// Différents menus
+// DiffÃ©rents menus
 void loadMenu(std::vector<Screen*>& screens, const Screens& menu);
 Menu* loadMenu1();
 Menu* loadMenu2();
@@ -23,7 +23,7 @@ Menu* loadMenu4();
 Menu* loadMenu5();
 Menu* loadMenu6();
 
-// A déplacer en méthode de Goban (sauf le test évidement)
+// A dÃ©placer en mÃ©thode de Goban (sauf le test Ã©videment)
 uint8_t* compressGoban(const Goban& goban, int nb_revelent = 0);
 void uncompressGoban(const uint8_t* compressed, const Etat::VAL KO_status, Goban& goban, int nb_revelent = 0);
 void test();
@@ -74,7 +74,7 @@ int main()
 		if (screens[cur_screen])
 			cur_screen = screens[cur_screen]->Run(window, *game);
 		else
-			std::cerr << "Le menu demandé n'a pas été chargé !\n";
+			std::cerr << "Le menu demandÃ© n'a pas Ã©tÃ© chargÃ© !\n";
 	}
 
 	// Wait for the rendering thread has finished its instructions before exit
@@ -153,7 +153,7 @@ void loadMenu(std::vector<Screen*>& screens, const Screens& menu)
 		m = loadMenu6();
 		break;
 	default:
-		std::cerr << "Le menu demandé (" << menu << ") ne peut être chargé !\n";
+		std::cerr << "Le menu demandÃ© (" << menu << ") ne peut Ãªtre chargÃ© !\n";
 		break;
 	}
 
@@ -185,7 +185,7 @@ Menu* loadMenu1()
 	{ return OPTIONS_MENU; }));
 	menu->addItem(Choice_Simple("      Exemples", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
 	{ return NO_CHANGE; }));
-	menu->addItem(Choice_Simple("      Problèmes", text_style, pos.x, pos.y + 360, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("      ProblÃ¨mes", text_style, pos.x, pos.y + 360, [](const sf::RenderTarget& window, Game_window& game)
 	{ return PROBLEMS_MENU; }));
 	menu->addItem(Choice_Simple("       Quitter", text_style, pos.x, pos.y + 480, [](const sf::RenderTarget& window, Game_window& game)
 	{ return EXIT; }));
@@ -193,12 +193,12 @@ Menu* loadMenu1()
 	// Then set items textures and return the menu
 	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
 
-	log_file << "\nLe Menu 1 à été chargé\n" << std::endl;
+	log_file << "\nLe Menu 1 Ã  Ã©tÃ© chargÃ©\n" << std::endl;
 
 	return menu;
 }
 
-// Problèmes
+// ProblÃ¨mes
 Menu* loadMenu2()
 {
 	// On charge le menu
@@ -230,7 +230,7 @@ Menu* loadMenu2()
 	// On applique les textures
 	menu->setItemsTextures("./Ressources/Img/miniature_selected.png", "./Ressources/Img/miniature_selected.png");
 
-	log_file << "\nLe Menu 2 à été chargé\n" << std::endl;
+	log_file << "\nLe Menu 2 Ã  Ã©tÃ© chargÃ©\n" << std::endl;
 
 	return menu;
 }
@@ -255,7 +255,7 @@ Menu* loadMenu3()
 	// On charge les items
 	menu->addItem(Choice_Simple("        Audio", text_style, pos.x, pos.y, [](const sf::RenderTarget& window, Game_window& game)
 	{ return AUDIO; }));
-	menu->addItem(Choice_Simple("        Vidéo", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("        VidÃ©o", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window, Game_window& game)
 	{ return VIDEO; }));
 	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
 	{ return PREVIOUS; }));
@@ -263,7 +263,7 @@ Menu* loadMenu3()
 	// Then set items textures and return the menu
 	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
 
-	log_file << "\nLe Menu 3 à été chargé\n" << std::endl;
+	log_file << "\nLe Menu 3 Ã  Ã©tÃ© chargÃ©\n" << std::endl;
 
 	return menu;
 }
@@ -287,8 +287,8 @@ Menu* loadMenu4()
 
 	// On charge les items
 
-	/* Pour les volumes dans un premier temps afficher juste un sprite avec : Aucun, Léger, Moyen, Fort, Trés Fort
-	Créer directement une barre de progression risque d'être bien trop long et fastidieux*/
+	/* Pour les volumes dans un premier temps afficher juste un sprite avec : Aucun, LÃ©ger, Moyen, Fort, TrÃ©s Fort
+	CrÃ©er directement une barre de progression risque d'Ãªtre bien trop long et fastidieux*/
 
 	menu->addItem(Choice_Simple("      Musiques", text_style, pos.x, pos.y, [](const sf::RenderTarget& window, Game_window& game)
 	{ return NO_CHANGE; }));
@@ -300,12 +300,12 @@ Menu* loadMenu4()
 	// Then set items textures and return the menu
 	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
 
-	log_file << "\nLe Menu 4 à été chargé\n" << std::endl;
+	log_file << "\nLe Menu 4 Ã  Ã©tÃ© chargÃ©\n" << std::endl;
 
 	return menu;
 }
 
-// Vidéo
+// VidÃ©o
 Menu* loadMenu5()
 {
 	// On charge le menu
@@ -329,7 +329,7 @@ Menu* loadMenu5()
 	// Then set items textures and return the menu
 	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
 
-	log_file << "\nLe Menu 5 à été chargé\n" << std::endl;
+	log_file << "\nLe Menu 5 Ã  Ã©tÃ© chargÃ©\n" << std::endl;
 
 	return menu;
 }
@@ -364,7 +364,7 @@ Menu* loadMenu6()
 	// Then set items textures and return the menu
 	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
 
-	log_file << "\nLe Menu 3 à été chargé\n" << std::endl;
+	log_file << "\nLe Menu 3 Ã  Ã©tÃ© chargÃ©\n" << std::endl;
 
 	return menu;
 }

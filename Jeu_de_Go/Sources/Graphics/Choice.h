@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Globals.h"
 #include <string>
 #include <functional>
@@ -19,14 +19,14 @@ public:
 	// Charge les attributs communs pour un groupe d'item (i.e. un choix ne peut vivre sans le menu auquel il appartient).
 	virtual void loadTextures(const sf::Texture* _texture, const sf::Texture* selected, const sf::Texture* hover);
 
-	// Permet de changer l'état du choix
+	// Permet de changer l'Ã©tat du choix
 	void setSelected(bool state = true);
 	void setHover(bool state = true);
 
-	// Permet de récuperer sa boite englobante
+	// Permet de rÃ©cuperer sa boite englobante
 	sf::FloatRect getGlobalBounds() const;
 
-	// Applique la texture correspondant à l'état actuel de l'item
+	// Applique la texture correspondant Ã  l'Ã©tat actuel de l'item
 	void updateTexture();
 
 	// Evenement en cas de click

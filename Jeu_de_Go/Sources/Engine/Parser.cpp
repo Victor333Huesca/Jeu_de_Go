@@ -1,19 +1,19 @@
 #include "Parser.h"
 
-// Passer le nom du fichier en paramÃ¨tre ( a travers une future interface graphique?)
+// Passer le nom du fichier en paramètre ( a travers une future interface graphique?)
 Goban parseur(std::string fichier)
 { 
-	// On crÃ©e un goban vierge
+	// On crée un goban vierge
 	Goban goban;
 
-	// on vÃ©rifie que le fichier passÃ© en paramÃ¨tre soit bien un .go
+	// on vérifie que le fichier passé en paramètre soit bien un .go
 	if (std::regex_search(fichier, std::regex(".go")))
 	{
 		// C'est bien un .go --> On ouvre le fichier
 		std::ifstream file(fichier);
 		if (file)
 		{
-			// L'ouverture a rÃ©ussie --> On lit le fichier
+			// L'ouverture a réussie --> On lit le fichier
 			char piece;
 			int x = 0, y = 0;
 
@@ -38,7 +38,7 @@ Goban parseur(std::string fichier)
 					y++;
 					break;
 				default:
-					std::cerr << "CaractÃ¨re lu inconnu Ã  la position (" << x << ", " << y << ") !" << std::endl;
+					std::cerr << "Caractère lu inconnu à la position (" << x << ", " << y << ") !" << std::endl;
 					break;
 				}
 
@@ -58,8 +58,8 @@ Goban parseur(std::string fichier)
 	}
 
 	// Cet endroit est atteint en cas d'erreur (soit mauvaise extention, soit lecture imossible, etc...)
-	// Je met ce retour uniquement pour que la fonction retourne bien ce qu'elle est suppoÃ©e retournÃ©e.
-	// En rÃ©alitÃ©e les 'else' prÃ©cÃ©dents devraient lancer une exeption et ce cas ne sera jamais atteint, 
-	// c'est purement pour garder une cohÃ©rence vis Ã  vis tu type de retour.
+	// Je met ce retour uniquement pour que la fonction retourne bien ce qu'elle est suppoée retournée.
+	// En réalitée les 'else' précédents devraient lancer une exeption et ce cas ne sera jamais atteint, 
+	// c'est purement pour garder une cohérence vis à vis tu type de retour.
 	return Goban();
 }
