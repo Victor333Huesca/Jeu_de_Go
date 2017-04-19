@@ -165,7 +165,7 @@ void loadMenu(std::vector<Screen*>& screens, const Screens& menu)
 Menu* loadMenu1()
 {
 	// On charge le menu
-	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", NO_CHANGE, sf::Vector2f(0.3f, 0.3f));
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/background3.png", NO_CHANGE, sf::Vector2f(0.3f, 0.3f));
 
 	// Need move aways after
 	menu->setItemsFonts("./Ressources/Font/time.ttf");
@@ -239,7 +239,7 @@ Menu* loadMenu2()
 Menu* loadMenu3()
 {
 	// On charge le menu
-	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", MAIN_MENU, sf::Vector2f(0.3f, 0.3f));
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/background3.png", MAIN_MENU, sf::Vector2f(0.3f, 0.3f));
 
 	// Need move aways after
 	menu->setItemsFonts("./Ressources/Font/time.ttf");
@@ -272,7 +272,7 @@ Menu* loadMenu3()
 Menu* loadMenu4()
 {
 	// On charge le menu
-	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", OPTIONS_MENU, sf::Vector2f(0.3f, 0.3f));
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/background3.png", OPTIONS_MENU, sf::Vector2f(0.3f, 0.3f));
 
 	// Need move aways after
 	menu->setItemsFonts("./Ressources/Font/time.ttf");
@@ -309,7 +309,7 @@ Menu* loadMenu4()
 Menu* loadMenu5()
 {
 	// On charge le menu
-	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", OPTIONS_MENU, sf::Vector2f(0.3f, 0.3f));
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/background3.png", OPTIONS_MENU, sf::Vector2f(0.3f, 0.3f));
 
 	// Need move aways after
 	menu->setItemsFonts("./Ressources/Font/time.ttf");
@@ -338,7 +338,7 @@ Menu* loadMenu5()
 Menu* loadMenu6()
 {
 	// On charge le menu
-	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background3.png", GAME, sf::Vector2f(0.3f, 0.3f));
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/background3.png", GAME, sf::Vector2f(0.3f, 0.3f));
 
 	// Need move aways after
 	menu->setItemsFonts("./Ressources/Font/time.ttf");
