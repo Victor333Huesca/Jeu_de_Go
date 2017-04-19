@@ -407,7 +407,7 @@ uint8_t* compressGoban(const Goban& goban, int nb_revelent)
 	int current = 0;
 	short int buff_used = 0;
 
-	const enum Codes : uint8_t	{ empty = 0, black = 1, white = 2, KO = 3 };
+	enum Codes : uint8_t { empty = 0, black = 1, white = 2, KO = 3 };
 
 	for (int i = 0; i < TGOBAN; i++)
 	{
@@ -496,7 +496,7 @@ void uncompressGoban(const uint8_t* compressed, const Etat::VAL KO_status, Goban
 	uint8_t masque = ~0;
 	masque <<= (8 - used_bits);
 
-	const enum Codes : uint8_t { empty = 0, black = 1, white = 2, KO = 3 };
+	enum Codes : uint8_t { empty = 0, black = 1, white = 2, KO = 3 };
 
 	// Read each byte untill last which contain waste
 	for (int i = 0; i < nb_bytes - 1; i++)
