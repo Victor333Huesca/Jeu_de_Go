@@ -202,7 +202,7 @@ Menu* loadMenu1()
 Menu* loadMenu2()
 {
 	// On charge le menu
-	Menu_Miniature* menu = new Menu_Miniature(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Background2.png", MAIN_MENU, sf::Vector2f(0.3f, 0.3f));
+	Menu_Miniature* menu = new Menu_Miniature(sf::Vector2f(0.f, 0.f), "./Ressources/Img/background2.png", MAIN_MENU, sf::Vector2f(0.3f, 0.3f));
 
 	// Position
 	sf::Vector2f pos(50, 50);
