@@ -19,6 +19,7 @@ public:
 
 	// Ajoute un item au menu
 	virtual void addItem(Choice& item);
+	void setPrevious(const Screens& sc);
 
 	// Debugg
 	virtual void showAdresses() const;
