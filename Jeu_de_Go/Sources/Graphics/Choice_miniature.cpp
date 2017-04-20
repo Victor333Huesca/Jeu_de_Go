@@ -2,7 +2,7 @@
 
 
 
-Choice_miniature::Choice_miniature(const char* _texture, sf::Vector2f pos, std::function<Screens(const sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :
+Choice_miniature::Choice_miniature(const char* _texture, sf::Vector2f pos, std::function<Screens(sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :
 	Choice(pos, _Run, scale),
 	texture(*new sf::Texture())
 {
@@ -15,7 +15,7 @@ Choice_miniature::Choice_miniature(const char* _texture, sf::Vector2f pos, std::
 #endif // __ERROR_LEVEL__ > 0
 }
 
-Choice_miniature::Choice_miniature(const char* _texture, float posX, float posY, std::function<Screens(const sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :
+Choice_miniature::Choice_miniature(const char* _texture, float posX, float posY, std::function<Screens(sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :
 	Choice_miniature(_texture, sf::Vector2f(posX, posY), _Run, scale)
 {
 }

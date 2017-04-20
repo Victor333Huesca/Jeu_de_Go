@@ -115,7 +115,7 @@ sf::Vector2f Menu::getPosition() const
 
 
 // Interactcions
-Screens Menu::click(const sf::Mouse::Button& type, const sf::RenderWindow& window, Game_window& game)
+Screens Menu::click(const sf::Mouse::Button& type, sf::RenderWindow& window, Game_window& game)
 {
 	if (cur_choice != nullptr)
 		return cur_choice->Run(window, game);

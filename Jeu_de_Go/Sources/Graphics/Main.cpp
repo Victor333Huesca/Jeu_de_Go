@@ -130,7 +130,6 @@ void loadMenu(std::vector<Screen*>& screens, const Screens& menu)
 {
 	// The loaded menu
 	Menu* m = nullptr;
-
 	// Look which is demanded
 	switch (menu)
 	{
@@ -179,15 +178,15 @@ Menu* loadMenu1()
 	sf::Vector2f pos(225, 125);// (WINDOW_WIDTH + INFOS_SIZE - (WINDOW_WIDTH + INFOS_SIZE) / 3.5) / 2, WINDOW_HEIGHT + 100);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("        Jouer", text_style, pos.x, pos.y,	[](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("        Jouer", text_style, pos.x, pos.y,	[](sf::RenderTarget& window, Game_window& game)
 	{ return GAME; }));
-	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Game_window& game)
 	{ return OPTIONS_MENU; }));
-	menu->addItem(Choice_Simple("      Exemples", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("      Exemples", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Game_window& game)
 	{ return NO_CHANGE; }));
-	menu->addItem(Choice_Simple("      Problèmes", text_style, pos.x, pos.y + 360, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("      Problèmes", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Game_window& game)
 	{ return PROBLEMS_MENU; }));
-	menu->addItem(Choice_Simple("       Quitter", text_style, pos.x, pos.y + 480, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("       Quitter", text_style, pos.x, pos.y + 480, [](sf::RenderTarget& window, Game_window& game)
 	{ return EXIT; }));
 
 	// Then set items textures and return the menu
@@ -202,35 +201,187 @@ Menu* loadMenu1()
 Menu* loadMenu2()
 {
 	// On charge le menu
-	Menu_Miniature* menu = new Menu_Miniature(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Backgrounds/background2.png", MAIN_MENU, sf::Vector2f(0.3f, 0.3f));
+	Menu_Miniature* menu = new Menu_Miniature(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Backgrounds/background1.jpg", MAIN_MENU, sf::Vector2f(0.3f, 0.3f));
 
 	// Position
 	sf::Vector2f pos(50, 50);
-
+	
 	/* -----  On charge les items  ----- */
 	// Retour
 	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/retour.png",
-		pos.x, pos.y, [](const sf::RenderTarget& window, Game_window& game)
+		pos.x, pos.y, [](sf::RenderTarget& window, Game_window& game)
 	{
 		return PREVIOUS;
 	}));
 
 	// 6 en coins
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/probleme_6_en_coin_blank.png",
-		pos.x + 250, pos.y, [](const sf::RenderTarget& window, Game_window& game)
+		pos.x + 250, pos.y, [](sf::RenderTarget& window, Game_window& game)
 	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
 		game.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go"));
 		game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
-	menu->addItem(Choice_miniature("./Ressources/Img/Problems/probleme_6_en_coin_blank.png",
-		pos.x + 500, pos.y, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/1_blank.png",
+		pos.x + 500, pos.y, [](sf::RenderTarget& window, Game_window& game)
 	{
-		game.setGoban(parseur("./Ressources/Problems/probleme_tres_facile.go"));
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/1.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/2_blank.png",
+		pos.x, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/2.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/3_blank.png",
+		pos.x+250, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/3.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/4_blank.png",
+		pos.x+500, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/4.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/5_blank.png",
+		pos.x, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/5.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/6_blank.png",
+		pos.x+250, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/6.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/suivant.png",
+		pos.x + 500, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(1100, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		return NO_CHANGE;
+	}));
+	
+	//Fin de la page 1
+
+	// Retour
+	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/retour.png",
+		pos.x +1100, pos.y, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		return NO_CHANGE;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/7_blank.png",
+		pos.x + 250 +1100, pos.y, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/7.go"));
 		game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/8_blank.png",
+		pos.x + 500 + 1100, pos.y, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/8.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	/*menu->addItem(Choice_miniature("./Ressources/Img/Problems/2_blank.png",
+		pos.x + 1100, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/2.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));*/
+
+	/*menu->addItem(Choice_miniature("./Ressources/Img/Problems/3_blank.png",
+		pos.x + 250 + 1100, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/3.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));*/
+
+	/*menu->addItem(Choice_miniature("./Ressources/Img/Problems/4_blank.png",
+		pos.x + 500 + 1100, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/4.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));*/
+
+	/*menu->addItem(Choice_miniature("./Ressources/Img/Problems/5_blank.png",
+		pos.x + 1100, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/5.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));*/
+
+	/*menu->addItem(Choice_miniature("./Ressources/Img/Problems/6_blank.png",
+		pos.x + 250 + 1100, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/6.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));*/
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/suivant.png",
+		pos.x + 500 + 1100, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(2200, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		return NO_CHANGE;
+	}));
+
+	//fin de la page 2
+
+	// Retour
+	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/retour.png",
+		pos.x + 2200, pos.y, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(1100, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		return NO_CHANGE;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/suivant.png",
+		pos.x + 500 + 2200, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(3300, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		return NO_CHANGE;
+	}));
+
 
 	/* --- Fin du chargement des items  --- */
 
@@ -242,6 +393,7 @@ Menu* loadMenu2()
 
 	return menu;
 }
+
 
 // Options
 Menu* loadMenu3()
@@ -261,11 +413,11 @@ Menu* loadMenu3()
 	sf::Vector2f pos(225, 200);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("        Audio", text_style, pos.x, pos.y, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("        Audio", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Game_window& game)
 	{ return AUDIO; }));
-	menu->addItem(Choice_Simple("        Vidéo", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("        Vidéo", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Game_window& game)
 	{ return VIDEO; }));
-	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Game_window& game)
 	{ return PREVIOUS; }));
 
 	// Then set items textures and return the menu
@@ -298,11 +450,11 @@ Menu* loadMenu4()
 	/* Pour les volumes dans un premier temps afficher juste un sprite avec : Aucun, Léger, Moyen, Fort, Trés Fort
 	Créer directement une barre de progression risque d'être bien trop long et fastidieux*/
 
-	menu->addItem(Choice_Simple("      Musiques", text_style, pos.x, pos.y, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("      Musiques", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Game_window& game)
 	{ return NO_CHANGE; }));
-	menu->addItem(Choice_Simple("         Sons", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("         Sons", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Game_window& game)
 	{ return NO_CHANGE; }));
-	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Game_window& game)
 	{ return PREVIOUS; }));
 
 	// Then set items textures and return the menu
@@ -331,7 +483,7 @@ Menu* loadMenu5()
 	sf::Vector2f pos(225, 200);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Game_window& game)
 	{ return PREVIOUS; }));
 
 	// Then set items textures and return the menu
@@ -360,13 +512,13 @@ Menu* loadMenu6()
 	sf::Vector2f pos(225, 125);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Game_window& game)
 	{ return OPTIONS_MENU; }));
-	menu->addItem(Choice_Simple("    Retour au jeu", text_style, pos.x, pos.y + 120, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("    Retour au jeu", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Game_window& game)
 	{ return PREVIOUS; }));
-	menu->addItem(Choice_Simple(" Quitter la partie", text_style, pos.x, pos.y + 240, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple(" Quitter la partie", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Game_window& game)
 	{ return MAIN_MENU; }));
-	menu->addItem(Choice_Simple("Revenir au bureau", text_style, pos.x, pos.y + 360, [](const sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("Revenir au bureau", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Game_window& game)
 	{ return EXIT; }));
 
 	// Then set items textures and return the menu

@@ -104,7 +104,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Libraries\SFML-2.4.1-x86_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-audio-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-network-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-audio-d-2.lib;sfml-graphics-d-2.lib;sfml-window-d-2.lib;sfml-network-d-2.lib;sfml-system-d-2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

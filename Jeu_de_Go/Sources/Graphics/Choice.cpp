@@ -1,7 +1,7 @@
 ﻿#include "Choice.h"
 
 
-Choice::Choice(sf::Vector2f pos, std::function<Screens(const sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :
+Choice::Choice(sf::Vector2f pos, std::function<Screens(sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :
 	run(_Run),
 	selected(false),
 	hover(false),
@@ -20,10 +20,11 @@ Choice::Choice(sf::Vector2f pos, std::function<Screens(const sf::RenderTarget&, 
 #endif // __ERROR_LEVEL__ > 0
 }
 
-Choice::Choice(float posX, float posY, std::function<Screens(const sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :
+Choice::Choice(float posX, float posY, std::function<Screens(sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :
 	Choice(sf::Vector2f(posX, posY), _Run, scale)
 {
 }
+
 
 Choice::~Choice()
 {
@@ -85,7 +86,7 @@ void Choice::updateTexture()
 	else if (hover)	effect.setTexture(*t_hover);
 }
 
-Screens Choice::Run(const sf::RenderTarget& window, Game_window& game)
+Screens Choice::Run(sf::RenderTarget& window, Game_window& game)
 {
 	return run(window, game);
 }

@@ -8,8 +8,8 @@
 class Choice: public sf::Drawable
 {
 public:
-	Choice(sf::Vector2f pos, std::function<Screens(const sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale = sf::Vector2f(1, 1));
-	Choice(float posX, float posY, std::function<Screens(const sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale = sf::Vector2f(1, 1));
+	Choice(sf::Vector2f pos, std::function<Screens(sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale = sf::Vector2f(1, 1));
+	Choice(float posX, float posY, std::function<Screens(sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale = sf::Vector2f(1, 1));
     
 	virtual ~Choice();
 
@@ -30,7 +30,7 @@ public:
 	void updateTexture();
 
 	// Evenement en cas de click
-	Screens Run(const sf::RenderTarget& window, Game_window& game);
+	Screens Run(sf::RenderTarget& window, Game_window& game);
 
 	// Pour le debugg
 	virtual void showAdressTextures() const;
@@ -50,5 +50,5 @@ private:
 	sf::Sprite effect;
 
 	// Fonction a appeller lors du click
-	const std::function<Screens(const sf::RenderTarget&, Game_window&)> run;
+	const std::function<Screens(sf::RenderTarget&, Game_window&)> run;
 };
