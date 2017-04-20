@@ -1,0 +1,211 @@
+\hypertarget{class_game__window}{}\section{Game\+\_\+window Class Reference}
+\label{class_game__window}\index{Game\+\_\+window@{Game\+\_\+window}}
+
+
+{\ttfamily \#include $<$Game\+\_\+window.\+h$>$}
+
+
+
+Inheritance diagram for Game\+\_\+window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_game__window__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Game\+\_\+window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_game__window__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game__window_a1d0ac99e8c117a5016883b52446c6530}{Game\+\_\+window} ()
+\item 
+\hyperlink{class_game__window_a5e84f0f55c4526bb0ea3a592c439c16f}{$\sim$\+Game\+\_\+window} ()
+\item 
+virtual void \hyperlink{class_game__window_aafdea9d00265261abfac6ad233b54638}{draw} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states=sf\+::\+Render\+States\+::\+Default) const
+\item 
+virtual \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \hyperlink{class_game__window_aec21feecf4c72d73c13d82aa12df6930}{Run} (sf\+::\+Render\+Window \&App, \hyperlink{class_game__window}{Game\+\_\+window} \&)
+\item 
+\hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \hyperlink{class_game__window_afa942088809bf10731bb31d0d37b878d}{click} (const sf\+::\+Render\+Window \&window, sf\+::\+Vector2i pos, const sf\+::\+Mouse\+::\+Button \&type=sf\+::\+Mouse\+::\+Button\+::\+Left)
+\item 
+void \hyperlink{class_game__window_a9b9b15469cb0ced1a22f28e447983b56}{zoom} (const float delta, sf\+::\+Vector2i pos, sf\+::\+Render\+Window \&window)
+\item 
+\hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \hyperlink{class_game__window_a72304de2044c29f1373037bd818f674f}{key\+Pressed} (const sf\+::\+Event\+::\+Key\+Event \&key)
+\item 
+void \hyperlink{class_game__window_a35801adc41e40f90a36cff6db14defcd}{set\+Goban} (const \hyperlink{class_goban}{Goban} goban)
+\item 
+void \hyperlink{class_game__window_a5d130eb03ee63de5d63f91bcf6c56fa5}{set\+View} (const sf\+::\+Float\+Rect \&zone)
+\item 
+void \hyperlink{class_game__window_a8ad36b6ebe4760954dd01e94fc5762f1}{territoire} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game__window_a1d0ac99e8c117a5016883b52446c6530}\label{class_game__window_a1d0ac99e8c117a5016883b52446c6530}} 
+\index{Game\+\_\+window@{Game\+\_\+window}!Game\+\_\+window@{Game\+\_\+window}}
+\index{Game\+\_\+window@{Game\+\_\+window}!Game\+\_\+window@{Game\+\_\+window}}
+\subsubsection{\texorpdfstring{Game\+\_\+window()}{Game\_window()}}
+{\footnotesize\ttfamily Game\+\_\+window\+::\+Game\+\_\+window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game__window_a1d0ac99e8c117a5016883b52446c6530_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_game__window_a5e84f0f55c4526bb0ea3a592c439c16f}\label{class_game__window_a5e84f0f55c4526bb0ea3a592c439c16f}} 
+\index{Game\+\_\+window@{Game\+\_\+window}!````~Game\+\_\+window@{$\sim$\+Game\+\_\+window}}
+\index{````~Game\+\_\+window@{$\sim$\+Game\+\_\+window}!Game\+\_\+window@{Game\+\_\+window}}
+\subsubsection{\texorpdfstring{$\sim$\+Game\+\_\+window()}{~Game\_window()}}
+{\footnotesize\ttfamily Game\+\_\+window\+::$\sim$\+Game\+\_\+window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game__window_afa942088809bf10731bb31d0d37b878d}\label{class_game__window_afa942088809bf10731bb31d0d37b878d}} 
+\index{Game\+\_\+window@{Game\+\_\+window}!click@{click}}
+\index{click@{click}!Game\+\_\+window@{Game\+\_\+window}}
+\subsubsection{\texorpdfstring{click()}{click()}}
+{\footnotesize\ttfamily \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} Game\+\_\+window\+::click (\begin{DoxyParamCaption}\item[{const sf\+::\+Render\+Window \&}]{window,  }\item[{sf\+::\+Vector2i}]{pos,  }\item[{const sf\+::\+Mouse\+::\+Button \&}]{type = {\ttfamily sf\+:\+:Mouse\+:\+:Button\+:\+:Left} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game__window_afa942088809bf10731bb31d0d37b878d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{class_game__window_afa942088809bf10731bb31d0d37b878d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_game__window_aafdea9d00265261abfac6ad233b54638}\label{class_game__window_aafdea9d00265261abfac6ad233b54638}} 
+\index{Game\+\_\+window@{Game\+\_\+window}!draw@{draw}}
+\index{draw@{draw}!Game\+\_\+window@{Game\+\_\+window}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Game\+\_\+window\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target,  }\item[{sf\+::\+Render\+States}]{states = {\ttfamily sf\+:\+:RenderStates\+:\+:Default} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{class_screen_abcb5544dfe717c7da181520803f43e25}{Screen}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{class_game__window_aafdea9d00265261abfac6ad233b54638_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_game__window_a72304de2044c29f1373037bd818f674f}\label{class_game__window_a72304de2044c29f1373037bd818f674f}} 
+\index{Game\+\_\+window@{Game\+\_\+window}!key\+Pressed@{key\+Pressed}}
+\index{key\+Pressed@{key\+Pressed}!Game\+\_\+window@{Game\+\_\+window}}
+\subsubsection{\texorpdfstring{key\+Pressed()}{keyPressed()}}
+{\footnotesize\ttfamily \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} Game\+\_\+window\+::key\+Pressed (\begin{DoxyParamCaption}\item[{const sf\+::\+Event\+::\+Key\+Event \&}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game__window_a72304de2044c29f1373037bd818f674f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game__window_a72304de2044c29f1373037bd818f674f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_game__window_aec21feecf4c72d73c13d82aa12df6930}\label{class_game__window_aec21feecf4c72d73c13d82aa12df6930}} 
+\index{Game\+\_\+window@{Game\+\_\+window}!Run@{Run}}
+\index{Run@{Run}!Game\+\_\+window@{Game\+\_\+window}}
+\subsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} Game\+\_\+window\+::\+Run (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{App,  }\item[{\hyperlink{class_game__window}{Game\+\_\+window} \&}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{class_screen_aadaffbe93949a54f04e2a87c5602f610}{Screen}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game__window_aec21feecf4c72d73c13d82aa12df6930_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_game__window_a35801adc41e40f90a36cff6db14defcd}\label{class_game__window_a35801adc41e40f90a36cff6db14defcd}} 
+\index{Game\+\_\+window@{Game\+\_\+window}!set\+Goban@{set\+Goban}}
+\index{set\+Goban@{set\+Goban}!Game\+\_\+window@{Game\+\_\+window}}
+\subsubsection{\texorpdfstring{set\+Goban()}{setGoban()}}
+{\footnotesize\ttfamily void Game\+\_\+window\+::set\+Goban (\begin{DoxyParamCaption}\item[{const \hyperlink{class_goban}{Goban}}]{goban }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game__window_a35801adc41e40f90a36cff6db14defcd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_game__window_a5d130eb03ee63de5d63f91bcf6c56fa5}\label{class_game__window_a5d130eb03ee63de5d63f91bcf6c56fa5}} 
+\index{Game\+\_\+window@{Game\+\_\+window}!set\+View@{set\+View}}
+\index{set\+View@{set\+View}!Game\+\_\+window@{Game\+\_\+window}}
+\subsubsection{\texorpdfstring{set\+View()}{setView()}}
+{\footnotesize\ttfamily void Game\+\_\+window\+::set\+View (\begin{DoxyParamCaption}\item[{const sf\+::\+Float\+Rect \&}]{zone }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_game__window_a5d130eb03ee63de5d63f91bcf6c56fa5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_game__window_a8ad36b6ebe4760954dd01e94fc5762f1}\label{class_game__window_a8ad36b6ebe4760954dd01e94fc5762f1}} 
+\index{Game\+\_\+window@{Game\+\_\+window}!territoire@{territoire}}
+\index{territoire@{territoire}!Game\+\_\+window@{Game\+\_\+window}}
+\subsubsection{\texorpdfstring{territoire()}{territoire()}}
+{\footnotesize\ttfamily void Game\+\_\+window\+::territoire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game__window_a8ad36b6ebe4760954dd01e94fc5762f1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_game__window_a9b9b15469cb0ced1a22f28e447983b56}\label{class_game__window_a9b9b15469cb0ced1a22f28e447983b56}} 
+\index{Game\+\_\+window@{Game\+\_\+window}!zoom@{zoom}}
+\index{zoom@{zoom}!Game\+\_\+window@{Game\+\_\+window}}
+\subsubsection{\texorpdfstring{zoom()}{zoom()}}
+{\footnotesize\ttfamily void Game\+\_\+window\+::zoom (\begin{DoxyParamCaption}\item[{const float}]{delta,  }\item[{sf\+::\+Vector2i}]{pos,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{class_game__window_a9b9b15469cb0ced1a22f28e447983b56_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{class_game__window_a9b9b15469cb0ced1a22f28e447983b56_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\+Game/\hyperlink{_game__window_8h}{Game\+\_\+window.\+h}\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\+Game/\hyperlink{_game__window_8cpp}{Game\+\_\+window.\+cpp}\end{DoxyCompactItemize}

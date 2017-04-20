@@ -1,0 +1,15 @@
+<map id="D:/Users/Victor/OneDrive/Documents/Visual Studio 2017/Projects/Jeu_de_Go/Jeu_de_Go/Sources/Graphics/Menu.h" name="D:/Users/Victor/OneDrive/Documents/Visual Studio 2017/Projects/Jeu_de_Go/Jeu_de_Go/Sources/Graphics/Menu.h">
+<area shape="rect" id="node2" href="$_screen_8h.html" title="Screen.h" alt="" coords="228,348,303,375"/>
+<area shape="rect" id="node4" href="$_globals_8h.html" title="Globals.h" alt="" coords="475,572,552,599"/>
+<area shape="rect" id="node14" href="$_choice_8h.html" title="Choice.h" alt="" coords="393,124,466,151"/>
+<area shape="rect" id="node16" href="$_game__window_8h.html" title="Game/Game_window.h" alt="" coords="531,199,687,225"/>
+<area shape="rect" id="node17" href="$_board_8h.html" title="Board.h" alt="" coords="676,273,743,300"/>
+<area shape="rect" id="node20" href="$_goban_8h.html" title="../../Engine/Goban.h" alt="" coords="855,423,993,449"/>
+<area shape="rect" id="node25" href="$_arbre_8h.html" title="../../Engine/Arbre.h" alt="" coords="858,348,990,375"/>
+<area shape="rect" id="node26" href="$_infos_8h.html" title="Infos.h" alt="" coords="537,423,597,449"/>
+<area shape="rect" id="node18" href="$_square_8h.html" title="Square.h" alt="" coords="672,497,747,524"/>
+<area shape="rect" id="node19" href="$_etat_8h.html" title="../../Engine/Etat.h" alt="" coords="893,572,1019,599"/>
+<area shape="rect" id="node22" href="$_groupe_8h.html" title="Groupe.h" alt="" coords="971,497,1045,524"/>
+<area shape="rect" id="node23" href="$_history_8h.html" title="History.h" alt="" coords="821,497,896,524"/>
+<area shape="rect" id="node27" href="$_timer_8h.html" title="Timer.h" alt="" coords="481,497,546,524"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Game_window::setGoban" name="Game_window::setGoban">
+<area shape="rect" id="node2" href="$class_board.html#a841a248dac4743611ba1825afd5d1297" title="Board::load" alt="" coords="224,56,312,83"/>
+<area shape="rect" id="node3" href="$class_square.html#a5fa0cbfce721c687308eec8e1a029d25" title="Square::setValue" alt="" coords="360,5,483,32"/>
+<area shape="rect" id="node4" href="$class_goban.html#a29aaf8df380fe614845d48cba057747c" title="Goban::coord" alt="" coords="371,56,471,83"/>
+<area shape="rect" id="node5" href="$class_etat.html#ac0b81bbcf64cb3cc574e5a9dcdf94382" title="Etat::getVal" alt="" coords="376,107,467,133"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Choice" name="Choice">
+<area shape="rect" id="node3" href="$class_choice__miniature.html" title="{Choice_miniature\n||+ Choice_miniature()\l+ Choice_miniature()\l+ ~Choice_miniature()\l+ showAdressTextures()\l}" alt="" coords="5,425,168,546"/>
+<area shape="rect" id="node4" href="$class_choice___simple.html" title="{Choice_Simple\n||+ Choice_Simple()\l+ Choice_Simple()\l+ ~Choice_Simple()\l+ draw()\l+ setFont()\l}" alt="" coords="193,417,330,553"/>
+</map>

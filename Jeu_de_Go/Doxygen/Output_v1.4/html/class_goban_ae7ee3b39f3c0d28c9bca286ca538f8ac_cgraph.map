@@ -1,0 +1,7 @@
+<map id="Goban::cancel" name="Goban::cancel">
+<area shape="rect" id="node2" href="$class_goban.html#a29aaf8df380fe614845d48cba057747c" title="Goban::coord" alt="" coords="165,5,265,32"/>
+<area shape="rect" id="node3" href="$class_history.html#a0ca66ba5a026689877e027754fc5bd52" title="Access current position. " alt="" coords="160,56,271,83"/>
+<area shape="rect" id="node4" href="$class_etat.html#aa25e66b110bc835523819392435e78c6" title="Etat::getX" alt="" coords="176,107,255,133"/>
+<area shape="rect" id="node5" href="$class_etat.html#a3e3e915f2261c83989a983e84b1273c1" title="Etat::getY" alt="" coords="175,157,256,184"/>
+<area shape="rect" id="node6" href="$class_history.html#a6e1bcaa1d3ecc646131e6f73a2544f35" title="History::cancel" alt="" coords="161,208,270,235"/>
+</map>

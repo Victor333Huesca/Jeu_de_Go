@@ -1,0 +1,17 @@
+<map id="Etat::getVal" name="Etat::getVal">
+<area shape="rect" id="node2" href="$class_arbre.html#acd12cae4820bb7780a628716a0615d10" title="Arbre::Tsumego" alt="" coords="351,29,465,56"/>
+<area shape="rect" id="node5" href="$_etat_8h.html#a1a56483b3043376a37fcc4b81aac6f98" title="operator\&lt;\&lt;" alt="" coords="167,55,252,81"/>
+<area shape="rect" id="node6" href="$class_goban.html#a8c49da36e406f11d33671a4c8a4c19b2" title="Goban::Goban" alt="" coords="156,105,263,132"/>
+<area shape="rect" id="node7" href="$class_goban.html#a8b95ea2b51c078381562e361ff7febac" title="Goban::isSuicide" alt="" coords="149,156,270,183"/>
+<area shape="rect" id="node8" href="$class_board.html#a841a248dac4743611ba1825afd5d1297" title="Board::load" alt="" coords="165,207,253,233"/>
+<area shape="rect" id="node14" href="$_main_8cpp.html#a015a298e56541fc04e0b8a214322507f" title="compressGoban" alt="" coords="151,257,268,284"/>
+<area shape="rect" id="node16" href="$_main_8cpp.html#abe2b758b8f0c5163537fb4f1ae2b3838" title="uncompressGoban" alt="" coords="144,308,275,335"/>
+<area shape="rect" id="node3" href="$class_game__window.html#a72304de2044c29f1373037bd818f674f" title="Game_window::keyPressed" alt="" coords="541,105,724,132"/>
+<area shape="rect" id="node4" href="$class_game__window.html#aec21feecf4c72d73c13d82aa12df6930" title="Game_window::Run" alt="" coords="772,131,909,157"/>
+<area shape="rect" id="node9" href="$class_board.html#a5fda73da080403d8a71a8593d581c350" title="Board::click" alt="" coords="363,156,453,183"/>
+<area shape="rect" id="node11" href="$class_board.html#ac7ec911a62371650afd340d1535a1742" title="Board::cancel" alt="" coords="357,105,459,132"/>
+<area shape="rect" id="node12" href="$class_board.html#a3cea4df16e41c21666cf51789b7e9e78" title="Board::load" alt="" coords="364,207,452,233"/>
+<area shape="rect" id="node13" href="$class_game__window.html#a35801adc41e40f90a36cff6db14defcd" title="Game_window::setGoban" alt="" coords="323,257,493,284"/>
+<area shape="rect" id="node10" href="$class_game__window.html#afa942088809bf10731bb31d0d37b878d" title="Game_window::click" alt="" coords="562,156,703,183"/>
+<area shape="rect" id="node15" href="$_main_8cpp.html#ae1a3968e7947464bee7714f6d43b7002" title="test" alt="" coords="386,308,430,335"/>
+</map>

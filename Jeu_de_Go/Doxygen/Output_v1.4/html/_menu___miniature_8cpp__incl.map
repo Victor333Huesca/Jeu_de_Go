@@ -1,0 +1,18 @@
+<map id="D:/Users/Victor/OneDrive/Documents/Visual Studio 2017/Projects/Jeu_de_Go/Jeu_de_Go/Sources/Graphics/Menu_Miniature.cpp" name="D:/Users/Victor/OneDrive/Documents/Visual Studio 2017/Projects/Jeu_de_Go/Jeu_de_Go/Sources/Graphics/Menu_Miniature.cpp">
+<area shape="rect" id="node2" href="$_menu___miniature_8h.html" title="Menu_Miniature.h" alt="" coords="664,139,789,165"/>
+<area shape="rect" id="node3" href="$_menu_8h.html" title="Menu.h" alt="" coords="422,213,487,240"/>
+<area shape="rect" id="node30" href="$_choice__miniature_8h.html" title="Choice_miniature.h" alt="" coords="933,213,1067,240"/>
+<area shape="rect" id="node4" href="$_screen_8h.html" title="Screen.h" alt="" coords="232,512,307,539"/>
+<area shape="rect" id="node6" href="$_globals_8h.html" title="Globals.h" alt="" coords="499,736,576,763"/>
+<area shape="rect" id="node16" href="$_choice_8h.html" title="Choice.h" alt="" coords="1175,288,1249,315"/>
+<area shape="rect" id="node18" href="$_game__window_8h.html" title="Game/Game_window.h" alt="" coords="607,363,763,389"/>
+<area shape="rect" id="node19" href="$_board_8h.html" title="Board.h" alt="" coords="652,437,719,464"/>
+<area shape="rect" id="node22" href="$_goban_8h.html" title="../../Engine/Goban.h" alt="" coords="813,587,952,613"/>
+<area shape="rect" id="node27" href="$_arbre_8h.html" title="../../Engine/Arbre.h" alt="" coords="817,512,949,539"/>
+<area shape="rect" id="node28" href="$_infos_8h.html" title="Infos.h" alt="" coords="439,587,499,613"/>
+<area shape="rect" id="node20" href="$_square_8h.html" title="Square.h" alt="" coords="625,661,700,688"/>
+<area shape="rect" id="node21" href="$_etat_8h.html" title="../../Engine/Etat.h" alt="" coords="839,736,964,763"/>
+<area shape="rect" id="node24" href="$_groupe_8h.html" title="Groupe.h" alt="" coords="975,661,1049,688"/>
+<area shape="rect" id="node25" href="$_history_8h.html" title="History.h" alt="" coords="775,661,849,688"/>
+<area shape="rect" id="node29" href="$_timer_8h.html" title="Timer.h" alt="" coords="383,661,449,688"/>
+</map>

@@ -1,0 +1,298 @@
+\hypertarget{_main_8cpp}{}\section{D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\+Main.cpp File Reference}
+\label{_main_8cpp}\index{D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\+Main.\+cpp@{D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\+Main.\+cpp}}
+{\ttfamily \#include \char`\"{}Globals.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include \char`\"{}Screens.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+Engine/\+Parser.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Menu\+\_\+simple.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Menu\+\_\+\+Miniature.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Choice\+\_\+miniature.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Choice\+\_\+\+Simple.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Game/\+Game\+\_\+window.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+Include dependency graph for Main.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_main_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_main_8cpp_aad8b66443738fa8cb6b684196d8009e1}{M\+U\+L\+T\+I\+T\+H\+R\+E\+AD}~false
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_main_8cpp_acf8398f20066f90da960ab94e728cc6c}{rendering\+Thread} (sf\+::\+Render\+Window $\ast$\+\_\+window, std\+::vector$<$ \hyperlink{class_screen}{Screen} $\ast$$>$ $\ast$\+\_\+screens, \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} $\ast$\+\_\+cur\+\_\+screen)
+\item 
+void \hyperlink{_main_8cpp_a38bed9713fcae949ee78e6bc604db8fe}{load\+Menu} (std\+::vector$<$ \hyperlink{class_screen}{Screen} $\ast$$>$ \&screens, const \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \&menu)
+\item 
+\hyperlink{class_menu}{Menu} $\ast$ \hyperlink{_main_8cpp_ab2ff3dd66804b9f8e614cc3d8f62b851}{load\+Menu1} ()
+\item 
+\hyperlink{class_menu}{Menu} $\ast$ \hyperlink{_main_8cpp_a4d2b8dfc9654f97dcbfd580ffeeb8048}{load\+Menu2} ()
+\item 
+\hyperlink{class_menu}{Menu} $\ast$ \hyperlink{_main_8cpp_a1862c57029f25299b350b89a3fef7bac}{load\+Menu3} ()
+\item 
+\hyperlink{class_menu}{Menu} $\ast$ \hyperlink{_main_8cpp_a3153201e1f35afab1a2de7fa1dea810a}{load\+Menu4} ()
+\item 
+\hyperlink{class_menu}{Menu} $\ast$ \hyperlink{_main_8cpp_aee704d9ab9bae25e3fecbe7f6a106f7a}{load\+Menu5} ()
+\item 
+\hyperlink{class_menu}{Menu} $\ast$ \hyperlink{_main_8cpp_a0a424bcea43ed2e1fc6b5d516bafd12c}{load\+Menu6} ()
+\item 
+uint8\+\_\+t $\ast$ \hyperlink{_main_8cpp_a015a298e56541fc04e0b8a214322507f}{compress\+Goban} (const \hyperlink{class_goban}{Goban} \&goban, int nb\+\_\+revelent=0)
+\item 
+void \hyperlink{_main_8cpp_abe2b758b8f0c5163537fb4f1ae2b3838}{uncompress\+Goban} (const uint8\+\_\+t $\ast$compressed, const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} K\+O\+\_\+status, \hyperlink{class_goban}{Goban} \&goban, int nb\+\_\+revelent=0)
+\item 
+void \hyperlink{_main_8cpp_ae1a3968e7947464bee7714f6d43b7002}{test} ()
+\item 
+std\+::ofstream \hyperlink{_main_8cpp_ad43822cd5cf43d5891d7dbdd6fdb1802}{log\+\_\+file} (\char`\"{}trace.\+log\char`\"{})
+\item 
+int \hyperlink{_main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_main_8cpp_aad8b66443738fa8cb6b684196d8009e1}\label{_main_8cpp_aad8b66443738fa8cb6b684196d8009e1}} 
+\index{Main.\+cpp@{Main.\+cpp}!M\+U\+L\+T\+I\+T\+H\+R\+E\+AD@{M\+U\+L\+T\+I\+T\+H\+R\+E\+AD}}
+\index{M\+U\+L\+T\+I\+T\+H\+R\+E\+AD@{M\+U\+L\+T\+I\+T\+H\+R\+E\+AD}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{M\+U\+L\+T\+I\+T\+H\+R\+E\+AD}{MULTITHREAD}}
+{\footnotesize\ttfamily \#define M\+U\+L\+T\+I\+T\+H\+R\+E\+AD~false}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_main_8cpp_a015a298e56541fc04e0b8a214322507f}\label{_main_8cpp_a015a298e56541fc04e0b8a214322507f}} 
+\index{Main.\+cpp@{Main.\+cpp}!compress\+Goban@{compress\+Goban}}
+\index{compress\+Goban@{compress\+Goban}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{compress\+Goban()}{compressGoban()}}
+{\footnotesize\ttfamily uint8\+\_\+t $\ast$ compress\+Goban (\begin{DoxyParamCaption}\item[{const \hyperlink{class_goban}{Goban} \&}]{goban,  }\item[{int}]{nb\+\_\+revelent = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{_main_8cpp_a015a298e56541fc04e0b8a214322507f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{_main_8cpp_a015a298e56541fc04e0b8a214322507f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_main_8cpp_a38bed9713fcae949ee78e6bc604db8fe}\label{_main_8cpp_a38bed9713fcae949ee78e6bc604db8fe}} 
+\index{Main.\+cpp@{Main.\+cpp}!load\+Menu@{load\+Menu}}
+\index{load\+Menu@{load\+Menu}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{load\+Menu()}{loadMenu()}}
+{\footnotesize\ttfamily void load\+Menu (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{class_screen}{Screen} $\ast$$>$ \&}]{screens,  }\item[{const \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \&}]{menu }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_main_8cpp_a38bed9713fcae949ee78e6bc604db8fe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{_main_8cpp_a38bed9713fcae949ee78e6bc604db8fe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_main_8cpp_ab2ff3dd66804b9f8e614cc3d8f62b851}\label{_main_8cpp_ab2ff3dd66804b9f8e614cc3d8f62b851}} 
+\index{Main.\+cpp@{Main.\+cpp}!load\+Menu1@{load\+Menu1}}
+\index{load\+Menu1@{load\+Menu1}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{load\+Menu1()}{loadMenu1()}}
+{\footnotesize\ttfamily \hyperlink{class_menu}{Menu} $\ast$ load\+Menu1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_main_8cpp_ab2ff3dd66804b9f8e614cc3d8f62b851_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{_main_8cpp_ab2ff3dd66804b9f8e614cc3d8f62b851_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_main_8cpp_a4d2b8dfc9654f97dcbfd580ffeeb8048}\label{_main_8cpp_a4d2b8dfc9654f97dcbfd580ffeeb8048}} 
+\index{Main.\+cpp@{Main.\+cpp}!load\+Menu2@{load\+Menu2}}
+\index{load\+Menu2@{load\+Menu2}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{load\+Menu2()}{loadMenu2()}}
+{\footnotesize\ttfamily \hyperlink{class_menu}{Menu} $\ast$ load\+Menu2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{_main_8cpp_a4d2b8dfc9654f97dcbfd580ffeeb8048_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{_main_8cpp_a4d2b8dfc9654f97dcbfd580ffeeb8048_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_main_8cpp_a1862c57029f25299b350b89a3fef7bac}\label{_main_8cpp_a1862c57029f25299b350b89a3fef7bac}} 
+\index{Main.\+cpp@{Main.\+cpp}!load\+Menu3@{load\+Menu3}}
+\index{load\+Menu3@{load\+Menu3}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{load\+Menu3()}{loadMenu3()}}
+{\footnotesize\ttfamily \hyperlink{class_menu}{Menu} $\ast$ load\+Menu3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_main_8cpp_a1862c57029f25299b350b89a3fef7bac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{_main_8cpp_a1862c57029f25299b350b89a3fef7bac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_main_8cpp_a3153201e1f35afab1a2de7fa1dea810a}\label{_main_8cpp_a3153201e1f35afab1a2de7fa1dea810a}} 
+\index{Main.\+cpp@{Main.\+cpp}!load\+Menu4@{load\+Menu4}}
+\index{load\+Menu4@{load\+Menu4}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{load\+Menu4()}{loadMenu4()}}
+{\footnotesize\ttfamily \hyperlink{class_menu}{Menu} $\ast$ load\+Menu4 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_main_8cpp_a3153201e1f35afab1a2de7fa1dea810a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{_main_8cpp_a3153201e1f35afab1a2de7fa1dea810a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_main_8cpp_aee704d9ab9bae25e3fecbe7f6a106f7a}\label{_main_8cpp_aee704d9ab9bae25e3fecbe7f6a106f7a}} 
+\index{Main.\+cpp@{Main.\+cpp}!load\+Menu5@{load\+Menu5}}
+\index{load\+Menu5@{load\+Menu5}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{load\+Menu5()}{loadMenu5()}}
+{\footnotesize\ttfamily \hyperlink{class_menu}{Menu} $\ast$ load\+Menu5 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_main_8cpp_aee704d9ab9bae25e3fecbe7f6a106f7a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{_main_8cpp_aee704d9ab9bae25e3fecbe7f6a106f7a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_main_8cpp_a0a424bcea43ed2e1fc6b5d516bafd12c}\label{_main_8cpp_a0a424bcea43ed2e1fc6b5d516bafd12c}} 
+\index{Main.\+cpp@{Main.\+cpp}!load\+Menu6@{load\+Menu6}}
+\index{load\+Menu6@{load\+Menu6}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{load\+Menu6()}{loadMenu6()}}
+{\footnotesize\ttfamily \hyperlink{class_menu}{Menu} $\ast$ load\+Menu6 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_main_8cpp_a0a424bcea43ed2e1fc6b5d516bafd12c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{_main_8cpp_a0a424bcea43ed2e1fc6b5d516bafd12c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_main_8cpp_ad43822cd5cf43d5891d7dbdd6fdb1802}\label{_main_8cpp_ad43822cd5cf43d5891d7dbdd6fdb1802}} 
+\index{Main.\+cpp@{Main.\+cpp}!log\+\_\+file@{log\+\_\+file}}
+\index{log\+\_\+file@{log\+\_\+file}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{log\+\_\+file()}{log\_file()}}
+{\footnotesize\ttfamily std\+::ofstream log\+\_\+file (\begin{DoxyParamCaption}\item[{\char`\"{}trace.\+log\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_main_8cpp_ad43822cd5cf43d5891d7dbdd6fdb1802_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{_main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{Main.\+cpp@{Main.\+cpp}!main@{main}}
+\index{main@{main}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_main_8cpp_acf8398f20066f90da960ab94e728cc6c}\label{_main_8cpp_acf8398f20066f90da960ab94e728cc6c}} 
+\index{Main.\+cpp@{Main.\+cpp}!rendering\+Thread@{rendering\+Thread}}
+\index{rendering\+Thread@{rendering\+Thread}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{rendering\+Thread()}{renderingThread()}}
+{\footnotesize\ttfamily void rendering\+Thread (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window $\ast$}]{\+\_\+window,  }\item[{std\+::vector$<$ \hyperlink{class_screen}{Screen} $\ast$$>$ $\ast$}]{\+\_\+screens,  }\item[{\hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} $\ast$}]{\+\_\+cur\+\_\+screen }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{_main_8cpp_acf8398f20066f90da960ab94e728cc6c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_main_8cpp_ae1a3968e7947464bee7714f6d43b7002}\label{_main_8cpp_ae1a3968e7947464bee7714f6d43b7002}} 
+\index{Main.\+cpp@{Main.\+cpp}!test@{test}}
+\index{test@{test}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{test()}{test()}}
+{\footnotesize\ttfamily void test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_main_8cpp_ae1a3968e7947464bee7714f6d43b7002_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_main_8cpp_abe2b758b8f0c5163537fb4f1ae2b3838}\label{_main_8cpp_abe2b758b8f0c5163537fb4f1ae2b3838}} 
+\index{Main.\+cpp@{Main.\+cpp}!uncompress\+Goban@{uncompress\+Goban}}
+\index{uncompress\+Goban@{uncompress\+Goban}!Main.\+cpp@{Main.\+cpp}}
+\subsubsection{\texorpdfstring{uncompress\+Goban()}{uncompressGoban()}}
+{\footnotesize\ttfamily void uncompress\+Goban (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{compressed,  }\item[{const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL}}]{K\+O\+\_\+status,  }\item[{\hyperlink{class_goban}{Goban} \&}]{goban,  }\item[{int}]{nb\+\_\+revelent = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{_main_8cpp_abe2b758b8f0c5163537fb4f1ae2b3838_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{_main_8cpp_abe2b758b8f0c5163537fb4f1ae2b3838_icgraph}
+\end{center}
+\end{figure}

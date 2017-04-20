@@ -1,0 +1,17 @@
+<map id="D:/Users/Victor/OneDrive/Documents/Visual Studio 2017/Projects/Jeu_de_Go/Jeu_de_Go/Sources/Graphics/Menu_simple.h" name="D:/Users/Victor/OneDrive/Documents/Visual Studio 2017/Projects/Jeu_de_Go/Jeu_de_Go/Sources/Graphics/Menu_simple.h">
+<area shape="rect" id="node2" href="$_menu_8h.html" title="Menu.h" alt="" coords="423,139,489,165"/>
+<area shape="rect" id="node29" href="$_choice___simple_8h.html" title="Choice_Simple.h" alt="" coords="939,139,1059,165"/>
+<area shape="rect" id="node3" href="$_screen_8h.html" title="Screen.h" alt="" coords="232,437,307,464"/>
+<area shape="rect" id="node5" href="$_globals_8h.html" title="Globals.h" alt="" coords="499,661,576,688"/>
+<area shape="rect" id="node15" href="$_choice_8h.html" title="Choice.h" alt="" coords="1175,213,1249,240"/>
+<area shape="rect" id="node17" href="$_game__window_8h.html" title="Game/Game_window.h" alt="" coords="607,288,763,315"/>
+<area shape="rect" id="node18" href="$_board_8h.html" title="Board.h" alt="" coords="652,363,719,389"/>
+<area shape="rect" id="node21" href="$_goban_8h.html" title="../../Engine/Goban.h" alt="" coords="813,512,952,539"/>
+<area shape="rect" id="node26" href="$_arbre_8h.html" title="../../Engine/Arbre.h" alt="" coords="817,437,949,464"/>
+<area shape="rect" id="node27" href="$_infos_8h.html" title="Infos.h" alt="" coords="439,512,499,539"/>
+<area shape="rect" id="node19" href="$_square_8h.html" title="Square.h" alt="" coords="625,587,700,613"/>
+<area shape="rect" id="node20" href="$_etat_8h.html" title="../../Engine/Etat.h" alt="" coords="839,661,964,688"/>
+<area shape="rect" id="node23" href="$_groupe_8h.html" title="Groupe.h" alt="" coords="975,587,1049,613"/>
+<area shape="rect" id="node24" href="$_history_8h.html" title="History.h" alt="" coords="775,587,849,613"/>
+<area shape="rect" id="node28" href="$_timer_8h.html" title="Timer.h" alt="" coords="383,587,449,613"/>
+</map>

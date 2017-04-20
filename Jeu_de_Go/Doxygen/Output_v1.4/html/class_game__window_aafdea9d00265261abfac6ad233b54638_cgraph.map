@@ -1,0 +1,4 @@
+<map id="Game_window::draw" name="Game_window::draw">
+<area shape="rect" id="node2" href="$class_board.html#ad3c413e185668418d3a16c1fec68e70d" title="Board::getView" alt="" coords="195,5,305,32"/>
+<area shape="rect" id="node3" href="$class_infos.html#af68a0d5dafcc767ae4b2b46ac8d7fbe2" title="Infos::getView" alt="" coords="199,56,301,83"/>
+</map>

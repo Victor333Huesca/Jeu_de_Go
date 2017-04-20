@@ -1,0 +1,16 @@
+<map id="Etat::getX" name="Etat::getX">
+<area shape="rect" id="node2" href="$class_arbre.html#acd12cae4820bb7780a628716a0615d10" title="Arbre::Tsumego" alt="" coords="963,119,1077,145"/>
+<area shape="rect" id="node5" href="$_etat_8h.html#a1a56483b3043376a37fcc4b81aac6f98" title="operator\&lt;\&lt;" alt="" coords="163,208,248,235"/>
+<area shape="rect" id="node6" href="$class_goban.html#a84f36324eb9ddc29f522d481f04c13e7" title="Goban::listOfLiberties" alt="" coords="132,157,279,184"/>
+<area shape="rect" id="node10" href="$class_goban.html#a8b95ea2b51c078381562e361ff7febac" title="Goban::isSuicide" alt="" coords="783,107,904,133"/>
+<area shape="rect" id="node14" href="$class_goban.html#ae7ee3b39f3c0d28c9bca286ca538f8ac" title="Goban::cancel" alt="" coords="355,5,461,32"/>
+<area shape="rect" id="node3" href="$class_game__window.html#a72304de2044c29f1373037bd818f674f" title="Game_window::keyPressed" alt="" coords="1125,119,1308,145"/>
+<area shape="rect" id="node4" href="$class_game__window.html#aec21feecf4c72d73c13d82aa12df6930" title="Game_window::Run" alt="" coords="1356,157,1493,184"/>
+<area shape="rect" id="node7" href="$class_goban.html#a1ec70508987f66afff5f8df381731fac" title="Goban::eliminateGroups" alt="" coords="327,208,489,235"/>
+<area shape="rect" id="node8" href="$class_goban.html#a7858b815885e4af36f05f9d26182cb07" title="Goban::eliminateOppGroups" alt="" coords="537,208,724,235"/>
+<area shape="rect" id="node9" href="$class_goban.html#a799390f04139eec16f7bb8c79b381303" title="Goban::legalEvenKO" alt="" coords="772,208,915,235"/>
+<area shape="rect" id="node11" href="$class_goban.html#a36ab256c9430e070b620052a0f13f051" title="Goban::listFils" alt="" coords="790,157,897,184"/>
+<area shape="rect" id="node12" href="$class_board.html#a5fda73da080403d8a71a8593d581c350" title="Board::click" alt="" coords="975,207,1065,233"/>
+<area shape="rect" id="node13" href="$class_game__window.html#afa942088809bf10731bb31d0d37b878d" title="Game_window::click" alt="" coords="1146,195,1287,221"/>
+<area shape="rect" id="node15" href="$class_board.html#ac7ec911a62371650afd340d1535a1742" title="Board::cancel" alt="" coords="579,5,682,32"/>
+</map>

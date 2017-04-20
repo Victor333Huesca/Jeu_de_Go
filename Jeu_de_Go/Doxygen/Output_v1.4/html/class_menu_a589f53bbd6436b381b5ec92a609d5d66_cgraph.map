@@ -1,0 +1,5 @@
+<map id="Menu::getPosition" name="Menu::getPosition">
+<area shape="rect" id="node2" href="$class_choice.html#aafd399c5b27102d38871a2a886eecd70" title="Choice::Run" alt="" coords="203,5,296,32"/>
+<area shape="rect" id="node3" href="$class_choice.html#aa4bbe520ca9f933327fc1f678d6626f8" title="Choice::setSelected" alt="" coords="180,56,319,83"/>
+<area shape="rect" id="node4" href="$class_choice.html#aa3113d895017610a03fff73795cf22fd" title="Choice::updateTexture" alt="" coords="367,56,519,83"/>
+</map>

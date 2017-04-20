@@ -1,0 +1,243 @@
+\hypertarget{class_board}{}\section{Board Class Reference}
+\label{class_board}\index{Board@{Board}}
+
+
+{\ttfamily \#include $<$Board.\+h$>$}
+
+
+
+Inheritance diagram for Board\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=154pt]{class_board__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Board\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=154pt]{class_board__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_board_a9ee491d4fea680cf69b033374a9fdfcb}{Board} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\\hyperlink{class_board_a3ab3bc5a15b6f8fb4aa8473fed2afdcb}{Board} (const sf\+::\+Vector2$<$ T $>$ \&\+\_\+size)
+\item 
+{\footnotesize template$<$typename T $>$ }\\\hyperlink{class_board_abda1ce2449776e76715fc7b59c912935}{Board} (const T \&x, const T \&y)
+\item 
+\hyperlink{class_board_af73f45730119a1fd8f6670f53f959e68}{$\sim$\+Board} ()
+\item 
+bool \hyperlink{class_board_a5fda73da080403d8a71a8593d581c350}{click} (sf\+::\+Vector2i pos, const \hyperlink{class_square_a7feeec236c037a9849114226adaa4ecc}{Square\+::\+Value} \&value, const sf\+::\+Mouse\+::\+Button \&event)
+\item 
+void \hyperlink{class_board_a0b098808fd9214c752097a623a7c717e}{zoom} (const float delta, const sf\+::\+Vector2i \&pos)
+\item 
+void \hyperlink{class_board_ac7ec911a62371650afd340d1535a1742}{cancel} ()
+\item 
+sf\+::\+View \hyperlink{class_board_ad3c413e185668418d3a16c1fec68e70d}{get\+View} () const
+\item 
+void \hyperlink{class_board_afb8c7e3266134506f024b29e08fef695}{set\+View} (const sf\+::\+Float\+Rect \&zone)
+\item 
+void \hyperlink{class_board_a841a248dac4743611ba1825afd5d1297}{load} ()
+\item 
+void \hyperlink{class_board_a3cea4df16e41c21666cf51789b7e9e78}{load} (const \hyperlink{class_goban}{Goban} \&copy)
+\item 
+\hyperlink{class_goban}{Goban} \hyperlink{class_board_a19af96f42f5c38336010da2983abbf5c}{get\+Goban} () const
+\item 
+virtual void \hyperlink{class_board_a8c86104f9ff30a54cbd7520e006cd609}{draw} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states=sf\+::\+Render\+States\+::\+Default) const
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_board_a9ee491d4fea680cf69b033374a9fdfcb}\label{class_board_a9ee491d4fea680cf69b033374a9fdfcb}} 
+\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\subsubsection{\texorpdfstring{Board()}{Board()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Board\+::\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{class_board_a9ee491d4fea680cf69b033374a9fdfcb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_board_a3ab3bc5a15b6f8fb4aa8473fed2afdcb}\label{class_board_a3ab3bc5a15b6f8fb4aa8473fed2afdcb}} 
+\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\subsubsection{\texorpdfstring{Board()}{Board()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+Board\+::\+Board (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2$<$ T $>$ \&}]{\+\_\+size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{class_board_a3ab3bc5a15b6f8fb4aa8473fed2afdcb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_board_abda1ce2449776e76715fc7b59c912935}\label{class_board_abda1ce2449776e76715fc7b59c912935}} 
+\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\subsubsection{\texorpdfstring{Board()}{Board()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+Board\+::\+Board (\begin{DoxyParamCaption}\item[{const T \&}]{x,  }\item[{const T \&}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_board_af73f45730119a1fd8f6670f53f959e68}\label{class_board_af73f45730119a1fd8f6670f53f959e68}} 
+\index{Board@{Board}!````~Board@{$\sim$\+Board}}
+\index{````~Board@{$\sim$\+Board}!Board@{Board}}
+\subsubsection{\texorpdfstring{$\sim$\+Board()}{~Board()}}
+{\footnotesize\ttfamily Board\+::$\sim$\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_board_ac7ec911a62371650afd340d1535a1742}\label{class_board_ac7ec911a62371650afd340d1535a1742}} 
+\index{Board@{Board}!cancel@{cancel}}
+\index{cancel@{cancel}!Board@{Board}}
+\subsubsection{\texorpdfstring{cancel()}{cancel()}}
+{\footnotesize\ttfamily void Board\+::cancel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_board_ac7ec911a62371650afd340d1535a1742_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_board_ac7ec911a62371650afd340d1535a1742_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_board_a5fda73da080403d8a71a8593d581c350}\label{class_board_a5fda73da080403d8a71a8593d581c350}} 
+\index{Board@{Board}!click@{click}}
+\index{click@{click}!Board@{Board}}
+\subsubsection{\texorpdfstring{click()}{click()}}
+{\footnotesize\ttfamily bool Board\+::click (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2i}]{pos,  }\item[{const \hyperlink{class_square_a7feeec236c037a9849114226adaa4ecc}{Square\+::\+Value} \&}]{value,  }\item[{const sf\+::\+Mouse\+::\+Button \&}]{event }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_board_a5fda73da080403d8a71a8593d581c350_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_board_a5fda73da080403d8a71a8593d581c350_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_board_a8c86104f9ff30a54cbd7520e006cd609}\label{class_board_a8c86104f9ff30a54cbd7520e006cd609}} 
+\index{Board@{Board}!draw@{draw}}
+\index{draw@{draw}!Board@{Board}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Board\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target,  }\item[{sf\+::\+Render\+States}]{states = {\ttfamily sf\+:\+:RenderStates\+:\+:Default} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{class_board_a8c86104f9ff30a54cbd7520e006cd609_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_board_a19af96f42f5c38336010da2983abbf5c}\label{class_board_a19af96f42f5c38336010da2983abbf5c}} 
+\index{Board@{Board}!get\+Goban@{get\+Goban}}
+\index{get\+Goban@{get\+Goban}!Board@{Board}}
+\subsubsection{\texorpdfstring{get\+Goban()}{getGoban()}}
+{\footnotesize\ttfamily \hyperlink{class_goban}{Goban} Board\+::get\+Goban (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_board_a19af96f42f5c38336010da2983abbf5c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_board_ad3c413e185668418d3a16c1fec68e70d}\label{class_board_ad3c413e185668418d3a16c1fec68e70d}} 
+\index{Board@{Board}!get\+View@{get\+View}}
+\index{get\+View@{get\+View}!Board@{Board}}
+\subsubsection{\texorpdfstring{get\+View()}{getView()}}
+{\footnotesize\ttfamily sf\+::\+View Board\+::get\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_board_ad3c413e185668418d3a16c1fec68e70d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_board_a841a248dac4743611ba1825afd5d1297}\label{class_board_a841a248dac4743611ba1825afd5d1297}} 
+\index{Board@{Board}!load@{load}}
+\index{load@{load}!Board@{Board}}
+\subsubsection{\texorpdfstring{load()}{load()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Board\+::load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{class_board_a841a248dac4743611ba1825afd5d1297_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_board_a841a248dac4743611ba1825afd5d1297_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_board_a3cea4df16e41c21666cf51789b7e9e78}\label{class_board_a3cea4df16e41c21666cf51789b7e9e78}} 
+\index{Board@{Board}!load@{load}}
+\index{load@{load}!Board@{Board}}
+\subsubsection{\texorpdfstring{load()}{load()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Board\+::load (\begin{DoxyParamCaption}\item[{const \hyperlink{class_goban}{Goban} \&}]{copy }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_board_a3cea4df16e41c21666cf51789b7e9e78_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_board_afb8c7e3266134506f024b29e08fef695}\label{class_board_afb8c7e3266134506f024b29e08fef695}} 
+\index{Board@{Board}!set\+View@{set\+View}}
+\index{set\+View@{set\+View}!Board@{Board}}
+\subsubsection{\texorpdfstring{set\+View()}{setView()}}
+{\footnotesize\ttfamily void Board\+::set\+View (\begin{DoxyParamCaption}\item[{const sf\+::\+Float\+Rect \&}]{zone }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_board_afb8c7e3266134506f024b29e08fef695_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_board_a0b098808fd9214c752097a623a7c717e}\label{class_board_a0b098808fd9214c752097a623a7c717e}} 
+\index{Board@{Board}!zoom@{zoom}}
+\index{zoom@{zoom}!Board@{Board}}
+\subsubsection{\texorpdfstring{zoom()}{zoom()}}
+{\footnotesize\ttfamily void Board\+::zoom (\begin{DoxyParamCaption}\item[{const float}]{delta,  }\item[{const sf\+::\+Vector2i \&}]{pos }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_board_a0b098808fd9214c752097a623a7c717e_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\+Game/\hyperlink{_board_8h}{Board.\+h}\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\+Game/\hyperlink{_board_8cpp}{Board.\+cpp}\end{DoxyCompactItemize}
