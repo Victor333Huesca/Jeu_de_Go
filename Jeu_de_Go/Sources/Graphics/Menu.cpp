@@ -127,7 +127,8 @@ void Menu::mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos)
 {
 	for (Choice& c : choices)
 	{
-		if (c.getGlobalBounds().contains(sf::Vector2f(pos)))
+		//if (c.getGlobalBounds().contains(sf::Vector2f(pos)))
+		if (c.getGlobalBounds().contains(window.mapPixelToCoords(pos)))
 		{
 			// c is hover
 			if (cur_choice != &c)
