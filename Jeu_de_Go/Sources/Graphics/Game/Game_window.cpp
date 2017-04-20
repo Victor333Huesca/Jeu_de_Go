@@ -87,7 +87,7 @@ Screens Game_window::Run(sf::RenderWindow &window, Game_window& game)
 
 
 	// Not suppose to reach here but just in case
-	return ERROR;
+	return ERROR_SCREEN;
 }
 
 Screens Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, const sf::Mouse::Button & type)
@@ -160,7 +160,8 @@ Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 				std::cout << "lancement du tsumego :" << std::endl;
 				Goban gob=board.getGoban();
 				Arbre abr(gob, Etat::BLANC);
-				abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
+				//abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
+				Tsumego(abr, board.getGoban().coord(0, 1));
 			}
 			else
 			{

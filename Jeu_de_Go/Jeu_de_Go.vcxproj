@@ -145,6 +145,7 @@
     <ClInclude Include="Sources\Engine\Goban.h" />
     <ClInclude Include="Sources\Engine\Groupe.h" />
     <ClInclude Include="Sources\Engine\History.h" />
+    <ClInclude Include="Sources\Engine\IA.h" />
     <ClInclude Include="Sources\Engine\Parser.h" />
     <ClInclude Include="Sources\Graphics\Choice.h" />
     <ClInclude Include="Sources\Graphics\Choice_miniature.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="Sources\Engine\Goban.cpp" />
     <ClCompile Include="Sources\Engine\Groupe.cpp" />
     <ClCompile Include="Sources\Engine\History.cpp" />
+    <ClCompile Include="Sources\Engine\IA.cpp" />
     <ClCompile Include="Sources\Engine\Parser.cpp" />
     <ClCompile Include="Sources\Graphics\Choice.cpp" />
     <ClCompile Include="Sources\Graphics\Choice_miniature.cpp" />

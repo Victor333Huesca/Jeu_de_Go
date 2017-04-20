@@ -5,6 +5,7 @@
 #include "../../Engine/Arbre.h"
 #include "../Screen.h"
 #include "../../Engine/Goban.h"
+#include "../../Engine/IA.h"
 
 class Game_window : public Screen
 {

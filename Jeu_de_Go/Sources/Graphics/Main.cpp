@@ -165,7 +165,7 @@ void loadMenu(std::vector<Screen*>& screens, const Screens& menu)
 Menu* loadMenu1()
 {
 	// On charge le menu
-	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/background3.png", NO_CHANGE, sf::Vector2f(0.3f, 0.3f));
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Backgrounds/background3.png", NO_CHANGE, sf::Vector2f(0.3f, 0.3f));
 
 	// Need move aways after
 	menu->setItemsFonts("./Ressources/Font/time.ttf");
@@ -191,7 +191,7 @@ Menu* loadMenu1()
 	{ return EXIT; }));
 
 	// Then set items textures and return the menu
-	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
+	menu->setItemsTextures("./Ressources/Img/Buttons/button_blank.png", "./Ressources/Img/Buttons/button_selected.png");
 
 	log_file << "\nLe Menu 1 à été chargé\n" << std::endl;
 
@@ -202,24 +202,32 @@ Menu* loadMenu1()
 Menu* loadMenu2()
 {
 	// On charge le menu
-	Menu_Miniature* menu = new Menu_Miniature(sf::Vector2f(0.f, 0.f), "./Ressources/Img/background2.png", MAIN_MENU, sf::Vector2f(0.3f, 0.3f));
+	Menu_Miniature* menu = new Menu_Miniature(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Backgrounds/background2.png", MAIN_MENU, sf::Vector2f(0.3f, 0.3f));
 
 	// Position
 	sf::Vector2f pos(50, 50);
 
 	/* -----  On charge les items  ----- */
 	// Retour
-	menu->addItem(Choice_miniature("./Ressources/Img/retour.png",
+	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/retour.png",
 		pos.x, pos.y, [](const sf::RenderTarget& window, Game_window& game)
 	{
 		return PREVIOUS;
 	}));
 
 	// 6 en coins
-	menu->addItem(Choice_miniature("./Ressources/Img/probleme_6_en_coin_blank.png",
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/probleme_6_en_coin_blank.png",
 		pos.x + 250, pos.y, [](const sf::RenderTarget& window, Game_window& game)
 	{
 		game.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go"));
+		game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/probleme_6_en_coin_blank.png",
+		pos.x + 500, pos.y, [](const sf::RenderTarget& window, Game_window& game)
+	{
+		game.setGoban(parseur("./Ressources/Problems/probleme_tres_facile.go"));
 		game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
@@ -228,7 +236,7 @@ Menu* loadMenu2()
 
 
 	// On applique les textures
-	menu->setItemsTextures("./Ressources/Img/miniature_selected.png", "./Ressources/Img/miniature_selected.png");
+	menu->setItemsTextures("./Ressources/Img/Buttons/miniature_selected.png", "./Ressources/Img/Buttons/miniature_selected.png");
 
 	log_file << "\nLe Menu 2 à été chargé\n" << std::endl;
 
@@ -239,7 +247,7 @@ Menu* loadMenu2()
 Menu* loadMenu3()
 {
 	// On charge le menu
-	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/background3.png", MAIN_MENU, sf::Vector2f(0.3f, 0.3f));
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Backgrounds/background3.png", MAIN_MENU, sf::Vector2f(0.3f, 0.3f));
 
 	// Need move aways after
 	menu->setItemsFonts("./Ressources/Font/time.ttf");
@@ -261,7 +269,7 @@ Menu* loadMenu3()
 	{ return PREVIOUS; }));
 
 	// Then set items textures and return the menu
-	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
+	menu->setItemsTextures("./Ressources/Img/Buttons/button_blank.png", "./Ressources/Img/Buttons/button_selected.png");
 
 	log_file << "\nLe Menu 3 à été chargé\n" << std::endl;
 
@@ -272,7 +280,7 @@ Menu* loadMenu3()
 Menu* loadMenu4()
 {
 	// On charge le menu
-	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/background3.png", OPTIONS_MENU, sf::Vector2f(0.3f, 0.3f));
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Backgrounds/background3.png", OPTIONS_MENU, sf::Vector2f(0.3f, 0.3f));
 
 	// Need move aways after
 	menu->setItemsFonts("./Ressources/Font/time.ttf");
@@ -298,7 +306,7 @@ Menu* loadMenu4()
 	{ return PREVIOUS; }));
 
 	// Then set items textures and return the menu
-	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
+	menu->setItemsTextures("./Ressources/Img/Buttons/button_blank.png", "./Ressources/Img/Buttons/button_selected.png");
 
 	log_file << "\nLe Menu 4 à été chargé\n" << std::endl;
 
@@ -309,7 +317,7 @@ Menu* loadMenu4()
 Menu* loadMenu5()
 {
 	// On charge le menu
-	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/background3.png", OPTIONS_MENU, sf::Vector2f(0.3f, 0.3f));
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Backgrounds/background3.png", OPTIONS_MENU, sf::Vector2f(0.3f, 0.3f));
 
 	// Need move aways after
 	menu->setItemsFonts("./Ressources/Font/time.ttf");
@@ -327,7 +335,7 @@ Menu* loadMenu5()
 	{ return PREVIOUS; }));
 
 	// Then set items textures and return the menu
-	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
+	menu->setItemsTextures("./Ressources/Img/Buttons/button_blank.png", "./Ressources/Img/Buttons/button_selected.png");
 
 	log_file << "\nLe Menu 5 à été chargé\n" << std::endl;
 
@@ -338,7 +346,7 @@ Menu* loadMenu5()
 Menu* loadMenu6()
 {
 	// On charge le menu
-	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/background3.png", GAME, sf::Vector2f(0.3f, 0.3f));
+	Menu_simple* menu = new Menu_simple(sf::Vector2f(0.f, 0.f), "./Ressources/Img/Backgrounds/background3.png", GAME, sf::Vector2f(0.3f, 0.3f));
 
 	// Need move aways after
 	menu->setItemsFonts("./Ressources/Font/time.ttf");
@@ -362,7 +370,7 @@ Menu* loadMenu6()
 	{ return EXIT; }));
 
 	// Then set items textures and return the menu
-	menu->setItemsTextures("./Ressources/Img/button_blank.png", "./Ressources/Img/button_selected.png");
+	menu->setItemsTextures("./Ressources/Img/Buttons/button_blank.png", "./Ressources/Img/Buttons/button_selected.png");
 
 	log_file << "\nLe Menu 3 à été chargé\n" << std::endl;
 

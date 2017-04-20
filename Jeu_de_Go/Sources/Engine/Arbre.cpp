@@ -61,9 +61,9 @@
 	//Setters
 
 
-		void Arbre::setFils(Goban f, const size_t i)
+		void Arbre::setFils(Goban f)
 		{
-			this->fils[i] = f;
+			this->fils.push_back(f);
 		}
 
 		void Arbre::setNbF(size_t _nbF)
@@ -86,7 +86,7 @@
 		this->value = v;
 	}
 
-	void Arbre::Tsumego(Etat& cible)
+	/*void Arbre::Tsumego(Etat& cible)
 	{
 		//creer list de gobans des fils
 		nbF=gob.listFils(value).size();
@@ -143,7 +143,7 @@
 		}
 	}
 
-
+	*/
 
 	Goban Arbre::operator[](unsigned short int i)
 	{

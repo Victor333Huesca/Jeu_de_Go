@@ -13,8 +13,10 @@
 
 #ifdef _WIN32
 #define CLEAR_CMD "cls"
+#define Win32 true
 #else
 #define CLEAR_CMD "clear"
+#define Win32 false
 #endif // _WIN32
 
 #define SQUARE_WIDTH 144
@@ -78,7 +80,7 @@ enum Screens
 	EXIT = -1,
 	PREVIOUS = -33,
 	NO_CHANGE = -777,
-	ERROR = -34
+	ERROR_SCREEN = -34
 };
 
 enum Musics

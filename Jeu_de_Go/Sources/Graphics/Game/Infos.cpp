@@ -11,13 +11,13 @@ Infos::Infos() :
 		(float)INFOS_SIZE / (WINDOW_WIDTH + INFOS_SIZE), 1));
 
 	// Load background
-	bg_txr.loadFromFile("./Ressources/Img/infos_bg.png");
+	bg_txr.loadFromFile("./Ressources/Img/Others/infos_bg.png");
 	bg_spr.setTexture(bg_txr);
 	bg_spr.setPosition(VIEW_INFOS_POS_X, VIEW_INFOS_POS_Y);
 
 	// Load player textures
-	white_turn_txr.loadFromFile("./Ressources/Img/infos_white.png");
-	black_turn_txr.loadFromFile("./Ressources/Img/infos_black.png");
+	white_turn_txr.loadFromFile("./Ressources/Img/Others/infos_white.png");
+	black_turn_txr.loadFromFile("./Ressources/Img/Others/infos_black.png");
 	player_turn_spr.setTexture(white_turn_txr);
 	player_turn_spr.setPosition(VIEW_INFOS_POS_X + INFOS_TURN_POS.x, VIEW_INFOS_POS_Y + INFOS_TURN_POS.y);
 

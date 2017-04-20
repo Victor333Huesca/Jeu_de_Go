@@ -100,7 +100,7 @@ Screens Menu::Run(sf::RenderWindow &window, Game_window& game)
 	}
 
 	// Not suppose to reach here but just in case
-	return ERROR;
+	return ERROR_SCREEN;
 }
 
 sf::Vector2f Menu::getSize() const
