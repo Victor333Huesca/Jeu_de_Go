@@ -80,7 +80,7 @@ enum Screens
 	EXIT = -1,
 	PREVIOUS = -33,
 	NO_CHANGE = -777,
-	ERROR = -34
+	ERROR_SCREEN = -34
 };
 
 enum Musics

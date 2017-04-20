@@ -21,12 +21,14 @@ bool IA::warning()
 {	
 	unsigned long VirtualMemory;
 	bool b = false;
+	std::cout << "coucou" << std::endl;
 	if (Win32)  //Si on est sur Windows
 	{
 		MEMORYSTATUSEX *MS = new MEMORYSTATUSEX;
 		GlobalMemoryStatusEx(MS);
 		VirtualMemory = MS->ullTotalVirtual; // résultat en octets 
-		if (VirtualMemory - 100 < 0)
+		std::cout << VirtualMemory << std::endl;
+		if (VirtualMemory - 2000000 < 0)
 			b = true;
 		delete MS;
 	}
@@ -55,7 +57,7 @@ void IA::Tsumego(Arbre& A, Etat& cible)
 	NODE_NUMBER = NODE_NUMBER + 1;
 	//creer list de gobans des fils
 	A.setNbF(A.getGob().listFils(A.getValue()).size());
-	for (short int petit_int_mignon = 0; petit_int_mignon < A.getNbF(); petit_int_mignon++)
+	for (short int petit_int_mignon = 0; petit_int_mignon < A.getNbF() - 1; petit_int_mignon++)
 	{
 		A.setFils(A.getGob().listFils(A.getValue()).at(petit_int_mignon), A.getNbF());
 	}

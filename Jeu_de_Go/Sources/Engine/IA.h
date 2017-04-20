@@ -1,5 +1,6 @@
 #pragma once
 #include"Arbre.h"
+#include"../Others/Windows.h"
 //#include"../Graphics/Globals.h"
 
 class IA : public Arbre
