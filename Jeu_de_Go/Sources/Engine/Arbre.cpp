@@ -61,9 +61,9 @@
 	//Setters
 
 
-		void Arbre::setFils(Goban f, const size_t i)
+		void Arbre::setFils(Goban f)
 		{
-			this->fils[i] = f;
+			this->fils.push_back(f);
 		}
 
 		void Arbre::setNbF(size_t _nbF)

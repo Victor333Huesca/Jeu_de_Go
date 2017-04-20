@@ -160,7 +160,9 @@ Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 				std::cout << "lancement du tsumego :" << std::endl;
 				Goban gob=board.getGoban();
 				Arbre abr(gob, Etat::BLANC);
-				abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
+				//abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
+				IA ia;
+				ia.Tsumego_abr(abr, board.getGoban().coord(1, 2));
 			}
 			else
 			{

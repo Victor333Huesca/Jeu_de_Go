@@ -28,7 +28,7 @@ public:
 	Etat::VAL getValue() const;
 
 	//Setters
-	void setFils(Goban, const size_t);
+	void setFils(Goban);
 	void setNbF(size_t);
 	void setGob(Goban);
 	void setInfo(bool);
