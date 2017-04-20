@@ -224,6 +224,14 @@ Menu* loadMenu2()
 		return GAME;
 	}));
 
+	menu->addItem(Choice_miniature("./Ressources/Img/probleme_6_en_coin_blank.png",
+		pos.x + 500, pos.y, [](const sf::RenderTarget& window, Game_window& game)
+	{
+		game.setGoban(parseur("./Ressources/Problems/probleme_tres_facile.go"));
+		game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
 	/* --- Fin du chargement des items  --- */
 
 

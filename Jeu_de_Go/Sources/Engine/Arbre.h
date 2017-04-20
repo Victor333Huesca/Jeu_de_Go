@@ -39,7 +39,7 @@ public:
 	Goban operator[](unsigned short int);
 
 	//Others methods
-	void Tsumego(Etat&);
+	//void Tsumego(Etat&);
 	void afficher();
 	void printArbo(const Arbre&);
 };

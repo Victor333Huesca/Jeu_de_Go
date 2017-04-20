@@ -49,11 +49,14 @@ bool IA::warning()
 void Tsumego(Arbre& A, Etat& cible)
 {
 	IA ia;
+	ia.loadNumber(A);
 	ia.Tsumego_abr(A, cible);
 }
 
 void IA::Tsumego_abr(Arbre& A, Etat& cible)
 {
+	std::cout << "Nombre de noeuds restant : " << std::endl;
+	std::cout << TOTAL_NODE_NUMBER - NODE_NUMBER << std::endl;
 	if (warning())
 	{
 		std::cout << "Plus de mémoire disponible !" << std::endl;
@@ -62,6 +65,7 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 	NODE_NUMBER = NODE_NUMBER + 1;
 	//creer list de gobans des fils
 	A.setNbF(A.getGob().listFils(A.getValue()).size());
+	//std::cout << A.getNbF() << "  " << A.getInfo() << std::endl;
 	for (short int petit_int_mignon = 0; petit_int_mignon < A.getNbF(); petit_int_mignon++)
 	{
 		A.setFils(A.getGob().listFils(A.getValue()).at(petit_int_mignon));
@@ -80,7 +84,7 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 			A.setInfo(1);
 		else
 			A.setInfo(1);
-		//std::cout<<gob<<std::endl;
+		//std::cout<<A.getGob()<<std::endl;
 		return;
 	}
 
@@ -102,7 +106,7 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 		else {
 			//le coup a tué la cible
 			A.setInfo(1);
-			//std::cout<<gob<<std::endl;
+			std::cout<< A.getGob() <<std::endl;
 			return;
 		}
 
@@ -110,7 +114,7 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 		if (filsA.getInfo() == 1) {}
 		else {
 			A.setInfo(1);
-			//std::cout<<gob<<std::endl;
+			//std::cout<< A.getGob() <<std::endl;
 			return;
 		}
 		i++;
