@@ -26,7 +26,7 @@ bool IA::warning()
 		MEMORYSTATUSEX *MS = new MEMORYSTATUSEX;
 		GlobalMemoryStatusEx(MS);
 		VirtualMemory = MS->ullTotalVirtual; // résultat en octets 
-		std::cout << VirtualMemory - 20000000 <<std::endl;
+		//std::cout << VirtualMemory <<std::endl;
 		if (VirtualMemory - 20000000 < 0)
 			b = true;
 		delete MS;
