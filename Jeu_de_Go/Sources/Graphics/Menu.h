@@ -26,7 +26,7 @@ public:
 
 private:
     // Gère les interactions utilisateur (sont appellées depuis le Run
-	Screens click(const sf::Mouse::Button& type, const sf::RenderWindow& window, Game_window& game);		// Renvoie la fenetre à charger et NO_CHANGE sinon 
+	Screens click(const sf::Mouse::Button& type, sf::RenderWindow& window, Game_window& game);		// Renvoie la fenetre à charger et NO_CHANGE sinon 
     void mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos);				// Sélectionne le menu corresponant à la nouvelle position souris.
 	void keyPressed(const sf::Event::KeyEvent& key);								// Sélectionne le menu corresponant à l'action utilisateur
 
@@ -40,5 +40,5 @@ private:
     // Background
     sf::Sprite s_background;
     sf::Texture t_background;
-	Screens previous;
+	Screens previous;	
 };

@@ -14,5 +14,6 @@ public:
 private:
 	sf::Texture button_selected;
 	sf::Texture button_hover;
+
 };
 

@@ -69,6 +69,9 @@ enum Screens
 	// Menus
 	MAIN_MENU = 1,
 	PROBLEMS_MENU = 2,
+	PROBLEMS_MENU_2 = 12,
+	PROBLEMS_MENU_3 = 22,
+	PROBLEMS_MENU_4 = 32,
 	OPTIONS_MENU = 3,
 	AUDIO = 5,
 	VIDEO = 6,

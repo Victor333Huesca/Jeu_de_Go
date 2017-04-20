@@ -32,3 +32,4 @@ void Menu_Miniature::setItemsTextures(const char * selected, const char * hover)
 	log_file << "Menu_Miniature::setItemTextures(), ";
 #endif // __ERROR_LEVEL__ > 0
 }
+
