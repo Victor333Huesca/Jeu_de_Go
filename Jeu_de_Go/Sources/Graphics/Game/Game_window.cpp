@@ -1,6 +1,6 @@
 ﻿#include "Game_window.h"
 
-
+extern bool sound;
 
 Game_window::Game_window() :
 	board(sf::Vector2u(NB_SQUARES_X, NB_SQUARES_Y)),
@@ -8,6 +8,7 @@ Game_window::Game_window() :
 	cur_player(Square::White)
 {
 	infos.setCurPlayer(Square::White);
+	pose_s.openFromFile("./Ressources/Music/posing.ogg");
 }
 
 Game_window::~Game_window()
@@ -107,6 +108,8 @@ Screens Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, co
 				Square::Value::White :
 				Square::Value::Black;
 			infos.setCurPlayer(cur_player);
+			if (true)
+				pose_s.play();
 		}
 		else // Value didn't changed
 		{

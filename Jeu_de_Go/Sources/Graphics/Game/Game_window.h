@@ -27,4 +27,5 @@ private:
 	Board board;
 	Infos infos;
 	Square::Value cur_player;
+	sf::Music pose_s;
 };

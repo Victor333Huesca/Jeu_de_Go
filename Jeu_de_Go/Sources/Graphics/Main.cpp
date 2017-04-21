@@ -12,6 +12,8 @@
 
 #define	MULTITHREAD false
 
+bool sound = true;
+
 void renderingThread(sf::RenderWindow* _window, std::vector<Screen*>* _screens, Screens* _cur_screen);
 
 // Différents menus
@@ -66,7 +68,8 @@ int main()
 #endif
 
 	window.setFramerateLimit(60);
-	cur_music->play();
+	if(sound)
+		cur_music->play();
 
 	//Main loop
 	while (cur_screen >= CONTINUE)
