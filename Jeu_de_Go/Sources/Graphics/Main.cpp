@@ -220,7 +220,7 @@ Menu* loadMenu2()
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
 		game.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go"));
-		game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
@@ -256,7 +256,7 @@ Menu* loadMenu2()
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
 		game.setGoban(parseur("./Ressources/Problems/Facile/4.go"));
-		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		//game.setView(sf::FloatRect(0, 0, 1000, 1000));
 		return GAME;
 	}));
 
@@ -299,8 +299,8 @@ Menu* loadMenu2()
 		pos.x + 250 +1100, pos.y, [](sf::RenderTarget& window, Game_window& game)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/7.go"));
-		game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		game.setGoban(parseur("./Ressources/Problems/Facile/7.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
@@ -313,50 +313,50 @@ Menu* loadMenu2()
 		return GAME;
 	}));
 
-	/*menu->addItem(Choice_miniature("./Ressources/Img/Problems/2_blank.png",
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/9_blank.png",
 		pos.x + 1100, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/2.go"));
+		game.setGoban(parseur("./Ressources/Problems/Facile/9.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
-	}));*/
+	}));
 
-	/*menu->addItem(Choice_miniature("./Ressources/Img/Problems/3_blank.png",
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/10_blank.png",
 		pos.x + 250 + 1100, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/3.go"));
+		game.setGoban(parseur("./Ressources/Problems/Facile/10.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
-	}));*/
+	}));
 
-	/*menu->addItem(Choice_miniature("./Ressources/Img/Problems/4_blank.png",
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/11_blank.png",
 		pos.x + 500 + 1100, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/4.go"));
+		game.setGoban(parseur("./Ressources/Problems/Facile/11.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
-	}));*/
+	}));
 
-	/*menu->addItem(Choice_miniature("./Ressources/Img/Problems/5_blank.png",
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/12_blank.png",
 		pos.x + 1100, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/5.go"));
+		game.setGoban(parseur("./Ressources/Problems/Facile/12.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
-	}));*/
+	}));
 
-	/*menu->addItem(Choice_miniature("./Ressources/Img/Problems/6_blank.png",
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/13_blank.png",
 		pos.x + 250 + 1100, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/6.go"));
+		game.setGoban(parseur("./Ressources/Problems/Facile/13.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
-	}));*/
+	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/suivant.png",
 		pos.x + 500 + 1100, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
@@ -375,12 +375,110 @@ Menu* loadMenu2()
 		return NO_CHANGE;
 	}));
 
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/14_blank.png",
+		pos.x + 250 + 2200, pos.y, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/14.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/15_blank.png",
+		pos.x + 500 + 2200, pos.y, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/15.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/16_blank.png",
+		pos.x + 2200, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/16.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/17_blank.png",
+		pos.x + 250+ 2200, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/17.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/18_blank.png",
+		pos.x + 500 + 2200, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/18.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/19_blank.png",
+		pos.x+2200, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/19.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/20_blank.png",
+		pos.x + 250+ 2200, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/20.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
 	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/suivant.png",
 		pos.x + 500 + 2200, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
 	{
 		window.setView(sf::View(sf::FloatRect(3300, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		return NO_CHANGE;
 	}));
+
+	//fin de la page 3
+
+	// Retour
+	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/retour.png",
+		pos.x + 3300, pos.y, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(2200, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		return NO_CHANGE;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/21_blank.png",
+		pos.x + 250 + 3300, pos.y, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/21.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/22_blank.png",
+		pos.x + 500 + 3300, pos.y, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		game.setGoban(parseur("./Ressources/Problems/Facile/22.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	/*menu->addItem(Choice_miniature("./Ressources/Img/Buttons/suivant.png",
+		pos.x + 500 + 3300, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+	{
+		window.setView(sf::View(sf::FloatRect(3300, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		return NO_CHANGE;
+	}));*/
 
 
 	/* --- Fin du chargement des items  --- */
