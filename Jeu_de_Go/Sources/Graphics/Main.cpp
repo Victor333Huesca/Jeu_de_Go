@@ -59,6 +59,7 @@ int main()
 	loadMenu(screens, VIDEO);
 	loadMenu(screens, PAUSE);
 
+
 #if defined(_WIN32) || MULTITHREAD
 	// disable window's context
 	window.setActive(false);
@@ -221,7 +222,7 @@ Menu* loadMenu2()
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/probleme_6_en_coin_blank.png",
 		pos.x + 250, pos.y, [](sf::RenderTarget& window, Game_window& game)
 	{
-		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		game.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
@@ -230,7 +231,7 @@ Menu* loadMenu2()
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/1_blank.png",
 		pos.x + 500, pos.y, [](sf::RenderTarget& window, Game_window& game)
 	{
-		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		game.setGoban(parseur("./Ressources/Problems/Facile/1.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
@@ -239,7 +240,7 @@ Menu* loadMenu2()
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/2_blank.png",
 		pos.x, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
 	{
-		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		game.setGoban(parseur("./Ressources/Problems/Facile/2.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
@@ -248,7 +249,7 @@ Menu* loadMenu2()
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/3_blank.png",
 		pos.x+250, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
 	{
-		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		game.setGoban(parseur("./Ressources/Problems/Facile/3.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
@@ -257,7 +258,7 @@ Menu* loadMenu2()
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/4_blank.png",
 		pos.x+500, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
 	{
-		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		game.setGoban(parseur("./Ressources/Problems/Facile/4.go"));
 		//game.setView(sf::FloatRect(0, 0, 1000, 1000));
 		return GAME;
@@ -266,7 +267,7 @@ Menu* loadMenu2()
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/5_blank.png",
 		pos.x, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
 	{
-		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		game.setGoban(parseur("./Ressources/Problems/Facile/5.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
@@ -275,7 +276,7 @@ Menu* loadMenu2()
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/6_blank.png",
 		pos.x+250, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
 	{
-		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		game.setGoban(parseur("./Ressources/Problems/Facile/6.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
@@ -284,7 +285,7 @@ Menu* loadMenu2()
 	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/suivant.png",
 		pos.x + 500, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
 	{
-		window.setView(sf::View(sf::FloatRect(1100, 0, WINDOW_WIDTH+200, WINDOW_HEIGHT)));
+		window.setView(sf::View(sf::FloatRect(1100, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		return NO_CHANGE;
 	}));
 	
@@ -494,7 +495,6 @@ Menu* loadMenu2()
 
 	return menu;
 }
-
 
 // Options
 Menu* loadMenu3()

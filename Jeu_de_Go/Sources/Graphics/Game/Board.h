@@ -46,6 +46,12 @@ private:
 	// Goban engine
 	Goban engine;				/*!< Engine used by Wissem and Mamadou */
 
+	// Sounds effects
+	sf::Sound group_killed_snd;
+	sf::SoundBuffer group_killed_sndbuff;
+	sf::Sound stone_put_snd;
+	sf::SoundBuffer stone_put_sndbuff;
+
 	// Return case corresponding to view's position
 	bool posToSquare(sf::Vector2i& pos) const;
 

@@ -16,6 +16,12 @@ Board::Board() :
 	bg_spr.setTexture(bg_txr);
 	bg_spr.setPosition(sf::Vector2f(VIEW_BOARD_POS_X, VIEW_BOARD_POS_X));
 
+	// Load audio
+	group_killed_sndbuff.loadFromFile("./Ressources/Audio/grp_killed.ogg");
+	group_killed_snd.setBuffer(group_killed_sndbuff);
+	stone_put_sndbuff.loadFromFile("./Ressources/Audio/stone_played.ogg");
+	stone_put_snd.setBuffer(stone_put_sndbuff);
+
 	// Set viewport
 	view.setViewport(sf::FloatRect(0, 0, (float)WINDOW_WIDTH / (WINDOW_WIDTH + INFOS_SIZE), 1));
 }
@@ -62,7 +68,18 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value, const sf::Mouse
 					engine.rechercheGroupes();
 					engine.afficheGroupes(std::cout);
 					//ELIMINATE GROUPS
-					engine.eliminateOppGroups(transform(value));
+					if (engine.eliminateOppGroups(transform(value)))
+					{
+						// Groups have been killed
+						group_killed_snd.play();
+						std::cout << "\n\nGroup killed\n\n";
+					}
+					else
+					{
+						// No group killed
+						stone_put_snd.play();
+					}
+
 					// Change square's value
 					load();
 
