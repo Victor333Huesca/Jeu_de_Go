@@ -19,7 +19,7 @@ void IA::loadNumber(Arbre& A)
 
 bool IA::warning()
 {	
-	unsigned long VirtualMemory;
+	DWORDLONG VirtualMemory;
 	bool b = false;
 	if (Win32)  //Si on est sur Windows
 	{
@@ -66,7 +66,7 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 	//creer list de gobans des fils
 	A.setNbF(A.getGob().listFils(A.getValue()).size());
 	//std::cout << A.getNbF() << "  " << A.getInfo() << std::endl;
-	for (short int petit_int_mignon = 0; petit_int_mignon < A.getNbF(); petit_int_mignon++)
+	for (size_t petit_int_mignon = 0; petit_int_mignon < A.getNbF(); petit_int_mignon++)
 	{
 		A.setFils(A.getGob().listFils(A.getValue()).at(petit_int_mignon));
 	}
