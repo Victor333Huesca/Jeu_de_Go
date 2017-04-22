@@ -59,7 +59,7 @@ void Go_Solver::Run(sf::RenderWindow & window)
 	while (cur_screen >= CONTINUE)
 	{
 		if (screens[cur_screen])
-			cur_screen = screens[cur_screen]->Run(window, *game);
+			cur_screen = screens[cur_screen]->Run(window, *this);
 		else
 			std::cerr << "Le menu demandé n'a pas été chargé !\n";
 	}
@@ -120,15 +120,15 @@ Menu* Go_Solver::loadMenu1()
 	sf::Vector2f pos(225, 125);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("        Jouer", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("        Jouer", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return GAME; }));
-	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return OPTIONS_MENU; }));
-	menu->addItem(Choice_Simple("      Exemples", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("      Exemples", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return NO_CHANGE; }));
-	menu->addItem(Choice_Simple("      Problèmes", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("      Problèmes", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PROBLEMS_MENU; }));
-	menu->addItem(Choice_Simple("       Quitter", text_style, pos.x, pos.y + 480, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("       Quitter", text_style, pos.x, pos.y + 480, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return EXIT; }));
 
 	// Then set items textures and return the menu
@@ -151,77 +151,77 @@ Menu* Go_Solver::loadMenu2()
 	/* -----  On charge les items  ----- */
 	// Retour
 	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/retour.png",
-		pos.x, pos.y, [](sf::RenderTarget& window, Game_window& game)
+		pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		return PREVIOUS;
 	}));
 
 	// 6 en coins
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/probleme_6_en_coin_blank.png",
-		pos.x + 250, pos.y, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 250, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go"));
+		solver.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/1_blank.png",
-		pos.x + 500, pos.y, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 500, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/1.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/1.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/2_blank.png",
-		pos.x, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+		pos.x, pos.y + 250, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/2.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/2.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/3_blank.png",
-		pos.x + 250, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 250, pos.y + 250, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/3.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/3.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/4_blank.png",
-		pos.x + 500, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 500, pos.y + 250, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/4.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/4.go"));
 		//game.setView(sf::FloatRect(0, 0, 1000, 1000));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/5_blank.png",
-		pos.x, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+		pos.x, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/5.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/5.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/6_blank.png",
-		pos.x + 250, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 250, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/6.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/6.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/suivant.png",
-		pos.x + 500, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 500, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(1100, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		return NO_CHANGE;
@@ -231,77 +231,77 @@ Menu* Go_Solver::loadMenu2()
 
 	// Retour
 	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/retour.png",
-		pos.x + 1100, pos.y, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 1100, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		return NO_CHANGE;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/7_blank.png",
-		pos.x + 250 + 1100, pos.y, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 250 + 1100, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/7.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/7.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/8_blank.png",
-		pos.x + 500 + 1100, pos.y, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 500 + 1100, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/8.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/8.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/9_blank.png",
-		pos.x + 1100, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 1100, pos.y + 250, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/9.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/9.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/10_blank.png",
-		pos.x + 250 + 1100, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 250 + 1100, pos.y + 250, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/10.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/10.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/11_blank.png",
-		pos.x + 500 + 1100, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 500 + 1100, pos.y + 250, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/11.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/11.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/12_blank.png",
-		pos.x + 1100, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 1100, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/12.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/12.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/13_blank.png",
-		pos.x + 250 + 1100, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 250 + 1100, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/13.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/13.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/suivant.png",
-		pos.x + 500 + 1100, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 500 + 1100, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(2200, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		return NO_CHANGE;
@@ -311,77 +311,77 @@ Menu* Go_Solver::loadMenu2()
 
 	// Retour
 	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/retour.png",
-		pos.x + 2200, pos.y, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 2200, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(1100, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		return NO_CHANGE;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/14_blank.png",
-		pos.x + 250 + 2200, pos.y, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 250 + 2200, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/14.go"));
+		solver.setGoban(parseur("./Ressources/Problems/14.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/15_blank.png",
-		pos.x + 500 + 2200, pos.y, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 500 + 2200, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/15.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/15.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/16_blank.png",
-		pos.x + 2200, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 2200, pos.y + 250, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/16.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/16.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/17_blank.png",
-		pos.x + 250 + 2200, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 250 + 2200, pos.y + 250, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/17.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/17.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/18_blank.png",
-		pos.x + 500 + 2200, pos.y + 250, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 500 + 2200, pos.y + 250, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/18.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/18.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/19_blank.png",
-		pos.x + 2200, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 2200, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/19.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/19.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/20_blank.png",
-		pos.x + 250 + 2200, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 250 + 2200, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/20.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/20.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/suivant.png",
-		pos.x + 500 + 2200, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 500 + 2200, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(3300, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		return NO_CHANGE;
@@ -391,32 +391,32 @@ Menu* Go_Solver::loadMenu2()
 
 	// Retour
 	menu->addItem(Choice_miniature("./Ressources/Img/Buttons/retour.png",
-		pos.x + 3300, pos.y, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 3300, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(2200, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		return NO_CHANGE;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/21_blank.png",
-		pos.x + 250 + 3300, pos.y, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 250 + 3300, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/21.go"));
+		solver.setGoban(parseur("./Ressources/Problems/21.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/22_blank.png",
-		pos.x + 500 + 3300, pos.y, [](sf::RenderTarget& window, Game_window& game)
+		pos.x + 500 + 3300, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
-		game.setGoban(parseur("./Ressources/Problems/Facile/22.go"));
+		solver.setGoban(parseur("./Ressources/Problems/Facile/22.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
 	}));
 
 	/*menu->addItem(Choice_miniature("./Ressources/Img/Buttons/suivant.png",
-	pos.x + 500 + 3300, pos.y + 500, [](sf::RenderTarget& window, Game_window& game)
+	pos.x + 500 + 3300, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 	window.setView(sf::View(sf::FloatRect(3300, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 	return NO_CHANGE;
@@ -452,11 +452,11 @@ Menu* Go_Solver::loadMenu3()
 	sf::Vector2f pos(225, 200);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("        Audio", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("        Audio", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return AUDIO; }));
-	menu->addItem(Choice_Simple("        Vidéo", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("        Vidéo", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return VIDEO; }));
-	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PREVIOUS; }));
 
 	// Then set items textures and return the menu
@@ -489,11 +489,17 @@ Menu* Go_Solver::loadMenu4()
 	/* Pour les volumes dans un premier temps afficher juste un sprite avec : Aucun, Léger, Moyen, Fort, Trés Fort
 	Créer directement une barre de progression risque d'être bien trop long et fastidieux*/
 
-	menu->addItem(Choice_Simple("      Musiques", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Game_window& game)
-	{ return NO_CHANGE; }));
-	menu->addItem(Choice_Simple("         Sons", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Game_window& game)
-	{ return NO_CHANGE; }));
-	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("      Musiques", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
+	{ 
+		solver.turnMusicUp();
+		return NO_CHANGE;
+	}));
+	menu->addItem(Choice_Simple("         Sons", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
+	{ 
+		solver.turnSoundsUp();
+		return NO_CHANGE;
+	}));
+	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PREVIOUS; }));
 
 	// Then set items textures and return the menu
@@ -522,7 +528,7 @@ Menu* Go_Solver::loadMenu5()
 	sf::Vector2f pos(225, 200);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PREVIOUS; }));
 
 	// Then set items textures and return the menu
@@ -551,13 +557,13 @@ Menu* Go_Solver::loadMenu6()
 	sf::Vector2f pos(225, 125);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return OPTIONS_MENU; }));
-	menu->addItem(Choice_Simple("    Retour au jeu", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("    Retour au jeu", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PREVIOUS; }));
-	menu->addItem(Choice_Simple(" Quitter la partie", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple(" Quitter la partie", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return MAIN_MENU; }));
-	menu->addItem(Choice_Simple("Revenir au bureau", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Game_window& game)
+	menu->addItem(Choice_Simple("Revenir au bureau", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return EXIT; }));
 
 	// Then set items textures and return the menu
@@ -580,7 +586,7 @@ void Go_Solver::setMusic(const Musics & mus)
 	musics[cur_music]->play();
 }
 
-void Go_Solver::turnVolumeUp()
+void Go_Solver::turnMusicUp()
 {
 	float vol = getMusic().getVolume();
 	vol += 33.f;
@@ -588,12 +594,27 @@ void Go_Solver::turnVolumeUp()
 	musics[cur_music]->setVolume(vol);
 }
 
-void Go_Solver::turnVolumeDown()
+void Go_Solver::turnMusicDown()
 {
 	float vol = getMusic().getVolume();
 	vol -= 33.f;
 	if (vol < 0.f)	vol = 100.f;
 	musics[cur_music]->setVolume(vol);
+}
+
+void Go_Solver::turnSoundsUp()
+{
+	game->turnSoundsUp();
+}
+
+void Go_Solver::turnSoundsDown()
+{
+	game->turnSoundsDown();
+}
+
+void Go_Solver::setGoban(const Goban & goban)
+{
+	game->setGoban(goban);
 }
 
 const std::vector<Screen*>& Go_Solver::getScreens() const

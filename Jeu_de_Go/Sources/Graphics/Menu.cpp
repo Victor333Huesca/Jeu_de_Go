@@ -39,7 +39,7 @@ void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		target.draw(c, states);
 }
 
-Screens Menu::Run(sf::RenderWindow &window, Game_window& game)
+Screens Menu::Run(sf::RenderWindow &window, Go_Solver& solver)
 {
     // To stay alive
 	bool Running = true;
@@ -63,7 +63,7 @@ Screens Menu::Run(sf::RenderWindow &window, Game_window& game)
 				break;
 			case sf::Event::MouseButtonReleased:
 			{
-				Screens res = click(event.mouseButton.button, window, game);
+				Screens res = click(event.mouseButton.button, window, solver);
 				if (res != NO_CHANGE)
 				{
 					if (res == PREVIOUS)
@@ -115,10 +115,10 @@ sf::Vector2f Menu::getPosition() const
 
 
 // Interactcions
-Screens Menu::click(const sf::Mouse::Button& type, sf::RenderWindow& window, Game_window& game)
+Screens Menu::click(const sf::Mouse::Button& type, sf::RenderWindow& window, Go_Solver& solver)
 {
 	if (cur_choice != nullptr)
-		return cur_choice->Run(window, game);
+		return cur_choice->Run(window, solver);
 	
 	return NO_CHANGE;
 }

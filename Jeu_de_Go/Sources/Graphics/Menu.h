@@ -5,6 +5,8 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
+class Go_Solver;
+
 class Menu: public Screen
 {
 public:
@@ -12,7 +14,7 @@ public:
     virtual ~Menu();
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
-    virtual Screens Run(sf::RenderWindow &window, Game_window& game);
+    virtual Screens Run(sf::RenderWindow &window, Go_Solver& solver);
 
     sf::Vector2f getSize() const;
     sf::Vector2f getPosition() const;
@@ -26,7 +28,7 @@ public:
 
 private:
     // Gère les interactions utilisateur (sont appellées depuis le Run
-	Screens click(const sf::Mouse::Button& type, sf::RenderWindow& window, Game_window& game);		// Renvoie la fenetre à charger et NO_CHANGE sinon 
+	Screens click(const sf::Mouse::Button& type, sf::RenderWindow& window, Go_Solver& solver);		// Renvoie la fenetre à charger et NO_CHANGE sinon 
     void mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos);				// Sélectionne le menu corresponant à la nouvelle position souris.
 	void keyPressed(const sf::Event::KeyEvent& key);								// Sélectionne le menu corresponant à l'action utilisateur
 

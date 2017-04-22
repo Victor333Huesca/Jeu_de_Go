@@ -1,14 +1,8 @@
-﻿#include "Globals.h"
-#include <thread>
-#include "Screens.h"
-#include "../Engine/Parser.h"
-#include "Menu_simple.h"
-#include "Menu_Miniature.h"
-#include "Choice_miniature.h"
-#include "Choice_Simple.h"
-#include "Game/Game_window.h"
+﻿#include <thread>
 #include <fstream>
 #include <cassert>
+
+#include "Globals.h"
 #include "Go_Solver.h"
 
 #define	MULTITHREAD false

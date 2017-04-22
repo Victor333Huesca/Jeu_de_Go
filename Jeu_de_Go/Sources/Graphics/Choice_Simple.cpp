@@ -1,7 +1,7 @@
 ﻿#include "Choice_Simple.h"
 
 
-Choice_Simple::Choice_Simple(const char * name, const sf::Text & text_style, sf::Vector2f pos, std::function<Screens(sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :
+Choice_Simple::Choice_Simple(const char * name, const sf::Text & text_style, sf::Vector2f pos, std::function<Screens(sf::RenderTarget&, Go_Solver&)> _Run, sf::Vector2f scale) :
 	Choice(pos, _Run, scale)
 {
 	text = text_style;
@@ -13,7 +13,7 @@ Choice_Simple::Choice_Simple(const char * name, const sf::Text & text_style, sf:
 #endif // __ERROR_LEVEL__ > 0
 }
 
-Choice_Simple::Choice_Simple(const char * name, const sf::Text & text_style, float posX, float posY, std::function<Screens(sf::RenderTarget&, Game_window&)> _Run, sf::Vector2f scale) :
+Choice_Simple::Choice_Simple(const char * name, const sf::Text & text_style, float posX, float posY, std::function<Screens(sf::RenderTarget&, Go_Solver&)> _Run, sf::Vector2f scale) :
 	Choice_Simple(name, text_style, sf::Vector2f(posX, posY), _Run, scale)
 {
 }

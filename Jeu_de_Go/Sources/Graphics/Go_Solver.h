@@ -23,8 +23,13 @@ public:
 	const sf::Music& getMusic() const;
 	void setMusic(const Musics& mus);
 
-	void turnVolumeUp();
-	void turnVolumeDown();
+	void turnMusicUp();
+	void turnMusicDown();
+
+	void turnSoundsUp();
+	void turnSoundsDown();
+
+	void setGoban(const Goban& goban);
 
 	const std::vector<Screen*>& getScreens() const;
 	const Screens& getScreen() const;

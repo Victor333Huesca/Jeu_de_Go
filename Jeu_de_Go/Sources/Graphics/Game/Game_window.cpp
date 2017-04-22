@@ -32,7 +32,7 @@ void Game_window::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	target.setView(cur_view);
 }
 
-Screens Game_window::Run(sf::RenderWindow &window, Game_window& game)
+Screens Game_window::Run(sf::RenderWindow &window, Go_Solver& solver)
 {
 	// To stay alive
 	bool Running = true;
@@ -186,7 +186,7 @@ Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 	return NO_CHANGE;
 }
 
-void Game_window::setGoban(const Goban goban)
+void Game_window::setGoban(const Goban & goban)
 {
 	board.load(goban);
 }
@@ -254,4 +254,20 @@ void Game_window::territoire()
 
 
 		*/
+}
+
+void Game_window::turnSoundsUp()
+{
+	float vol = pose_s.getVolume();
+	vol += 33.f;
+	if (vol > 100.f)	vol = 0.f;
+	pose_s.setVolume(vol);
+}
+
+void Game_window::turnSoundsDown()
+{
+	float vol = pose_s.getVolume();
+	vol += 33.f;
+	if (vol < 0.f)	vol = 100.f;
+	pose_s.setVolume(vol);
 }
