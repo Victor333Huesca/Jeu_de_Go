@@ -17,6 +17,7 @@ void IA::loadNumber(Arbre& A)
 	TOTAL_NODE_NUMBER = n * n;
 }
 
+#ifdef _WIN32
 bool IA::warning()
 {	
 	DWORDLONG VirtualMemory;
@@ -45,6 +46,7 @@ bool IA::warning()
 	
 	return b;
 }
+#endif
 
 void Tsumego(Arbre& A, Etat& cible)
 {

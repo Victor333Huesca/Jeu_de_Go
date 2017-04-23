@@ -8,7 +8,6 @@ Game_window::Game_window() :
 	cur_player(Square::White)
 {
 	infos.setCurPlayer(Square::White);
-	pose_s.openFromFile("./Ressources/Music/posing.ogg");
 }
 
 Game_window::~Game_window()
@@ -108,8 +107,6 @@ Screens Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, co
 				Square::Value::White :
 				Square::Value::Black;
 			infos.setCurPlayer(cur_player);
-			if (true)
-				pose_s.play();
 		}
 		else // Value didn't changed
 		{
@@ -258,16 +255,10 @@ void Game_window::territoire()
 
 void Game_window::turnSoundsUp()
 {
-	float vol = pose_s.getVolume();
-	vol += 33.f;
-	if (vol > 100.f)	vol = 0.f;
-	pose_s.setVolume(vol);
+	board.turnSoundsUp();
 }
 
 void Game_window::turnSoundsDown()
 {
-	float vol = pose_s.getVolume();
-	vol += 33.f;
-	if (vol < 0.f)	vol = 100.f;
-	pose_s.setVolume(vol);
+	board.turnSoundsDown();
 }

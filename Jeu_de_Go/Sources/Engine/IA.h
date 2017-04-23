@@ -15,7 +15,9 @@ class IA : public Arbre
 public :
 	//Infos methods
 	void loadNumber(Arbre&);
+#ifdef _WIN32
 	bool warning();
+#endif
 	//Tsumego methods 
 	void Tsumego_naif(Arbre&, Etat&);
 	void Tsumego_abr(Arbre&, Etat&);

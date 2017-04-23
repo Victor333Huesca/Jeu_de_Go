@@ -23,7 +23,7 @@ int main()
 	Go_Solver* solver = new Go_Solver();
 
 	// Test a supprimer d'ici
-	test();
+	//test();
 	// Din du test
 	
 	// Limit the framerate

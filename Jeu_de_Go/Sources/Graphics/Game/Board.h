@@ -27,6 +27,12 @@ public:
 	void load();
 	void load(const Goban& copy);
 
+	// Rules audio
+	float getVolume() const;
+	void setVolume(float vol);
+	void turnSoundsUp();
+	void turnSoundsDown();
+
 	// Pour récuperer une copie du Goban
 	Goban getGoban() const;
 

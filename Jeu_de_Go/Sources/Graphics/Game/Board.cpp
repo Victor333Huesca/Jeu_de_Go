@@ -209,6 +209,34 @@ void Board::load(const Goban & copy)
 	load();
 }
 
+float Board::getVolume() const
+{
+	// One volume is enought cause they have all the same value
+	return group_killed_snd.getVolume();
+}
+
+void Board::setVolume(float vol)
+{
+	group_killed_snd.setVolume(vol);
+	stone_put_snd.setVolume(vol);
+}
+
+void Board::turnSoundsUp()
+{
+	float vol = getVolume();
+	vol += 33.f;
+	if (vol > 100.f)	vol = 0.f;
+	setVolume(vol);
+}
+
+void Board::turnSoundsDown()
+{
+	float vol = getVolume();
+	vol += 33.f;
+	if (vol < 0.f)	vol = 100.f;
+	setVolume(vol);
+}
+
 Goban Board::getGoban() const
 {
 	return engine;
