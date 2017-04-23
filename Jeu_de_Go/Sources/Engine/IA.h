@@ -1,22 +1,26 @@
 #pragma once
-#include"Arbre.h"
 
 #ifdef _WIN32
 #include <Windows.h>
 #endif
 
-//#include"../Others/Windows.h"
-//#include"../Graphics/Globals.h"
-
-void Tsumego(Arbre&, Etat&);
+#include"Arbre.h"
 
 class IA : public Arbre
 {
 public :
-	//Infos methods
-	void loadNumber(Arbre&);
-	bool warning();
-	//Tsumego methods 
-	void Tsumego_naif(Arbre&, Etat&);
-	void Tsumego_abr(Arbre&, Etat&);
+	// Tsumego
+	static void Tsumego(Arbre&, Etat&);
+
+	// Infos methods
+	static void loadNumber(Arbre&);
+	static bool warning();
+
+	// Tsumego methods 
+	//void Tsumego_naif(Arbre&, Etat&);
+	static void Tsumego_abr(Arbre&, Etat&);
+
+private:
+	static int TOTAL_NODE_NUMBER;
+	static int NODE_NUMBER;
 };

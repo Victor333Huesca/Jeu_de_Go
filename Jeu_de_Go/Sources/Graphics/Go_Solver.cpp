@@ -562,7 +562,7 @@ Menu* Go_Solver::loadMenu6()
 	{ return OPTIONS_MENU; }));
 	menu->addItem(Choice_Simple("    Retour au jeu", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PREVIOUS; }));
-	menu->addItem(Choice_Simple(" Lancer le Tsumego", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple("Lancer le Tsumego", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ 
 		solver.launchTsumego();
 		return GAME;
@@ -647,7 +647,7 @@ void Go_Solver::launchTsumego()
 	Goban gob = getGoban();
 	Arbre abr(gob, Etat::BLANC);
 	//abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
-	Tsumego(abr, getGoban().coord(0, 1));
+	IA::Tsumego(abr, getGoban().coord(0, 1));
 }
 
 const std::vector<Screen*>& Go_Solver::getScreens() const

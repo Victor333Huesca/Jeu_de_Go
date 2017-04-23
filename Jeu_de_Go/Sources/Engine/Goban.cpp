@@ -70,17 +70,19 @@ Goban::Goban(const Goban& goban)
 		}
 		catch (const std::bad_alloc& e)
 		{
-			const char * msg = "Impossible d'allouer plus de mémoire pour le tsumego --> Fin d'execution";
+			std::string msg = "Impossible d'allouer l'espace nécessaire à la création d'un Goban --> ";
+			msg += e.what();
 			log_file <<  msg;
 			std::cerr << msg;
 
-			exit(-1);
-			throw;
+			throw e;
 		}
 
 		size_t i=0;
-		for (size_t y=0;y<TGOBAN; y++){
-			for (size_t x=0;x<TGOBAN; x++){
+		for (size_t y=0;y<TGOBAN; y++)
+		{
+			for (size_t x=0;x<TGOBAN; x++)
+			{
 				array[i].setX(x);
 				array[i].setY(y);
 				array[i].setVal(goban.coord(x,y).getVal());
@@ -752,25 +754,73 @@ std::ostream& operator<<(std::ostream& os, const Goban& goban)
 }
 
 
-Goban Goban::operator= (const Goban& g) {
-	if (this != &g) {
-		//this->array = g.array;
+Goban Goban::operator= (const Goban& g) 
+{
+	if (this != &g) 
+	{
+		// Copy groupe 1
+		groups_black.clear();
 		groups_black.resize( g.groups_black.size());
-		for (size_t i=0; i<g.groups_black.size();i++){
+		for (size_t i=0; i<g.groups_black.size();i++)
+		{
 			groups_black[i] = g.groups_black[i];
 		}
+
+		// Copy group 2
+		groups_white.clear();
 		groups_white.resize(g.groups_white.size());
-		for (size_t i=0; i<g.groups_black.size();i++){
+		for (size_t i=0; i<g.groups_black.size();i++)
+		{
 			groups_white[i] = g.groups_white[i];
 		}
+
+		// copy history
 		history = g.history;
-		delete[] array;
-		Etat* array2=new Etat[TGOBAN*TGOBAN];
-		for (size_t i=0; i< TGOBAN*TGOBAN; i++){
-			array2[i]=g.array[i];
+
+		// Copy array
+		try
+		{
+			delete[] array;
 		}
-		array=array2;
+		catch (const std::bad_alloc& e)
+		{
+			std::string msg = "Impossible de désaolouer un Etat[] pour la nouelle affectation d'un Goban --> ";
+			msg += e.what();
+			log_file << msg;
+			std::cerr << msg;
+
+			throw e;
+		}
+		catch (const std::exception& e)
+		{
+			std::string msg = "Erreur inconnue --> ";
+			msg += e.what();
+			log_file << msg;
+			std::cerr << msg;
+
+			throw e;
+		}
+		
+		try
+		{
+			Etat* array = new Etat[TGOBAN * TGOBAN];
+		}
+		catch (const std::bad_alloc& e)
+		{
+			std::string msg = "Impossible d'allouer l'espace nécessaire à la création d'un Etat[] pour la nouelle affectation d'un Goban --> ";
+			msg += e.what();
+			log_file << msg;
+			std::cerr << msg;
+
+			throw e;
+		}
+
+		for (size_t i = 0; i< TGOBAN * TGOBAN; i++)
+		{
+			array[i] = g.array[i];
+		}
 	}
+
 	return *this;
 }
 

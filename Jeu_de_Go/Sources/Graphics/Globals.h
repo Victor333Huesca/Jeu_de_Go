@@ -13,10 +13,8 @@
 
 #ifdef _WIN32
 #define CLEAR_CMD "cls"
-#define Win32 true
 #else
 #define CLEAR_CMD "clear"
-#define Win32 false
 #endif // _WIN32
 
 #define SQUARE_WIDTH 144
