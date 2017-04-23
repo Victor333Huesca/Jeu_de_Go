@@ -2,11 +2,9 @@
 #include "../Globals.h"
 #include "Board.h"
 #include "Infos.h"
-#include "../../Engine/Arbre.h"
 #include "../Screen.h"
 #include "../../Engine/Goban.h"
 #include "../../Engine/IA.h"
-//#include "../Go_Solver.h"
 
 class Go_Solver;
 

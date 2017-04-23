@@ -481,6 +481,232 @@ bool Goban::cancel()
 
 	return history.cancel();
 }
+
+/* ---------- Compressions ----------- */
+
+uint8_t * Goban::compress(int nb_revelent) const
+{
+	const Goban& goban = *this;
+
+	const short unsigned used_bits = 2;	// Has to be a power of 2 lower than 8.
+
+	// Firstly just count numher on revelent intersections if the user doesn't specify it
+	if (!nb_revelent)
+	{
+		for (int i = 0; i < TGOBAN; i++)
+		{
+			for (int j = 0; j < TGOBAN; j++)
+			{
+				switch (goban.coord(i, j).getVal())
+				{
+				case Etat::VAL::BLANC:
+				case Etat::VAL::NOIR:
+				case Etat::VAL::VIDE:
+				case Etat::VAL::KOBLACK:
+				case Etat::VAL::KOWHITE:
+					// The intersection has to be compressed in all these cases
+					nb_revelent += used_bits;
+					break;
+
+				default:
+					break;
+				}
+			}
+		}
+	}
+
+	// So start compression now
+	int nb_bytes = (int)ceil(nb_revelent / 8.f);			// 90.25 --> 91
+	int nb_wasted_bits = 8 - nb_revelent % 8;		// 8 - 2  --> 6
+	uint8_t* compressed = new uint8_t[nb_bytes];
+
+	int current = 0;
+	short int buff_used = 0;
+
+	enum Codes : uint8_t { empty = 0, black = 1, white = 2, KO = 3 };
+
+	for (int i = 0; i < TGOBAN; i++)
+	{
+		for (int j = 0; j < TGOBAN; j++)
+		{
+			switch (goban.coord(i, j).getVal())
+			{
+			case Etat::VAL::BLANC:
+				compressed[current] <<= used_bits;
+				compressed[current] += Codes::white;
+				buff_used += used_bits;
+				break;
+
+			case Etat::VAL::NOIR:
+				compressed[current] <<= used_bits;
+				compressed[current] += Codes::black;
+				buff_used += used_bits;
+				break;
+
+			case Etat::VAL::VIDE:
+				compressed[current] <<= used_bits;
+				compressed[current] += Codes::empty;
+				buff_used += used_bits;
+				break;
+
+			case Etat::VAL::KOBLACK:
+			case Etat::VAL::KOWHITE:
+				compressed[current] <<= used_bits;
+				compressed[current] += Codes::KO;
+				buff_used += used_bits;
+				break;
+
+			default:
+				break;
+			}
+
+			if (buff_used == 8)
+			{
+				current++;
+				buff_used = 0;
+			}
+		}
+	}
+
+	// Remplir le vide;
+	compressed[nb_bytes - 1] <<= nb_wasted_bits;
+
+	return compressed;
+}
+
+void Goban::uncompress(const uint8_t * compressed, const Etat::VAL KO_status, int nb_revelent)
+{
+	Goban& goban = *this;
+	const short unsigned used_bits = 2;	// Has to be a power of 2 lower than 8.
+
+										// Firstly just count numher on revelent intersections if the user doesn't specify it
+	if (!nb_revelent)
+	{
+		for (int i = 0; i < TGOBAN; i++)
+		{
+			for (int j = 0; j < TGOBAN; j++)
+			{
+				switch (goban.coord(i, j).getVal())
+				{
+				case Etat::VAL::VIDE:
+				case Etat::VAL::BLANC:
+				case Etat::VAL::NOIR:
+				case Etat::VAL::KOBLACK:
+				case Etat::VAL::KOWHITE:
+					// The intersection has to be compressed in all these cases
+					nb_revelent += used_bits;
+					break;
+
+				default:
+					break;
+				}
+			}
+		}
+	}
+
+	int nb_bytes = (int)ceil(nb_revelent / 8.f);			// 90.25 --> 91
+	int nb_wasted_bits = 8 - nb_revelent % 8;		// 8 - 2  --> 6
+
+													// Start looking at the first place of the goban so -1 avoid skipping this first location.
+	int current = -1;
+
+	uint8_t masque = ~0;
+	masque <<= (8 - used_bits);
+
+	enum Codes : uint8_t { empty = 0, black = 1, white = 2, KO = 3 };
+
+	// Read each byte untill last which contain waste
+	for (int i = 0; i < nb_bytes - 1; i++)
+	{
+		// Read current
+		int current_byte = compressed[i];
+
+		for (int j = 0; j < 8; j += used_bits)
+		{
+			// Read bits
+			int _tmp = (current_byte & masque) >> (8 - used_bits);
+			current_byte <<= used_bits;
+			assert(_tmp <= 3 && _tmp >= 0);				// Check that read value is correct
+			Codes tmp = (Codes)_tmp;
+
+			// Seach next available location in the goban
+			do
+			{
+				current++;
+			} while (goban[current].getVal() != Etat::VAL::VIDE &&
+				goban[current].getVal() != Etat::VAL::BLANC &&
+				goban[current].getVal() != Etat::VAL::NOIR &&
+				goban[current].getVal() != Etat::VAL::KOBLACK &&
+				goban[current].getVal() != Etat::VAL::KOWHITE);
+
+			// Start interpreting
+			switch (tmp)
+			{
+			case Codes::white:
+				goban[current].setVal(Etat::VAL::BLANC);
+				break;
+			case Codes::black:
+				goban[current].setVal(Etat::VAL::NOIR);
+				break;
+			case Codes::empty:
+				goban[current].setVal(Etat::VAL::VIDE);
+				break;
+			case Codes::KO:
+				goban[current].setVal(KO_status);
+				break;
+			default:
+				std::cerr << "Error : Wrong Code readed \"" << tmp << "\" !" << std::endl;
+				exit(-1);
+				break;
+			}
+		}
+	}
+
+	// Read last byte
+	int current_byte = compressed[nb_bytes - 1];
+	for (int i = 0; i < 8 - nb_wasted_bits; i += used_bits)
+	{
+		// Read bits
+		int _tmp = (current_byte & masque);
+		current_byte <<= used_bits;
+		assert(_tmp <= 3 && _tmp >= 0);				// Check that read value is correct
+		Codes tmp = (Codes)_tmp;
+
+		// Seach next available location in the goban
+		do
+		{
+			current++;
+		} while (goban[current].getVal() != Etat::VAL::VIDE &&
+			goban[current].getVal() != Etat::VAL::BLANC &&
+			goban[current].getVal() != Etat::VAL::NOIR &&
+			goban[current].getVal() != Etat::VAL::KOBLACK &&
+			goban[current].getVal() != Etat::VAL::KOWHITE);
+
+		// Start interpreting
+		switch (tmp)
+		{
+		case Codes::white:
+			goban[current].setVal(Etat::VAL::BLANC);
+			break;
+		case Codes::black:
+			goban[current].setVal(Etat::VAL::NOIR);
+			break;
+		case Codes::empty:
+			goban[current].setVal(Etat::VAL::VIDE);
+			break;
+		case Codes::KO:
+			goban[current].setVal(KO_status);
+			break;
+		default:
+			std::cerr << "Error : Wrong Code readed \"" << tmp << "\" !" << std::endl;
+			exit(-1);
+			break;
+		}
+	}
+}
+
+/* ------- Fin de compression -------- */
+
   void Goban::eliminateOppositeKO(const Etat::VAL& value){
 		if (value == Etat::BLANC){
 			for (size_t i=0; i< TGOBAN*TGOBAN; i++){

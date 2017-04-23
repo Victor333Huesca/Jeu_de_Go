@@ -1,6 +1,11 @@
 #pragma once
 #include"Arbre.h"
-#include"../Others/Windows.h"
+
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
+//#include"../Others/Windows.h"
 //#include"../Graphics/Globals.h"
 
 void Tsumego(Arbre&, Etat&);

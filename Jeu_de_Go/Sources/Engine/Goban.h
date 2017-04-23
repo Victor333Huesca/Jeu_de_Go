@@ -57,6 +57,11 @@ public:
 
   bool cancel(); //return back to the state n-1 of the goban
 
+  /*   --------- Méthodes de compressions ----------   */
+  // Prend le goban en paramètre avec les zones non jouables marquées et renvoie le goban compressé.
+  uint8_t* compress(int nb_revelent = 0) const;
+  void uncompress(const uint8_t* compressed, const Etat::VAL KO_status, int nb_revelent = 0);
+
   //overloadings methodes
   Etat& operator[](const size_t) const;
   Goban operator= (const Goban&);

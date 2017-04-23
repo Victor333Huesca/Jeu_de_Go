@@ -73,6 +73,9 @@ $(REP_SRC)Engine/History.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Engine/Etat.h
 $(REP_OBJ)Parser.o: $(REP_SRC)Engine/Parser.cpp $(REP_SRC)Engine/Parser.h
 $(REP_SRC)Engine/Parser.h: $(REP_SRC)Graphics/Globals.h
 
+$(REP_OBJ)IA.o: $(REP_SRC)Engine/IA.cpp $(REP_SRC)Engine/IA.h
+$(REP_SCR)IA.h: $(REP_SCR)Engine/Arbre.h
+
 
 # Graphics
 $(REP_OBJ)Main.o: $(REP_SRC)Graphics/Main.cpp $(REP_SRC)Graphics/Game/Game_window.h $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Screens.h
@@ -82,6 +85,9 @@ $(REP_SRC)Graphics/Screens.h: $(REP_SRC)Graphics/Screen.h $(REP_SRC)Graphics/Gam
 
 $(REP_OBJ)Screen.o: $(REP_SRC)Graphics/Screen.cpp $(REP_SRC)Graphics/Screen.h
 $(REP_SRC)Graphics/Screen.h:
+
+$(REP_OBJ)Go_Solver.o: $(REP_SRC)Graphics/Go_Solver.cpp $(REP_SRC)Graphics/Go_Solver.h
+$(REP_SCR)Graphics/Go_Solver.h: $(REP_SRC)Engine/Parser.h
 
 # Menus
 $(REP_OBJ)Menu.o: $(REP_SRC)Graphics/Menu.cpp $(REP_SRC)Graphics/Menu.h
@@ -109,7 +115,7 @@ $(REP_OBJ)Board.o: $(REP_SRC)Graphics/Game/Board.cpp $(REP_SRC)Graphics/Game/Boa
 $(REP_SRC)Graphics/Game/Board.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Square.h $(REP_SRC)Engine/Goban.h
 
 $(REP_OBJ)Game_window.o: $(REP_SRC)Graphics/Game/Game_window.cpp $(REP_SRC)Graphics/Game/Game_window.h
-$(REP_SRC)Graphics/Game/Game_window.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Board.h $(REP_SRC)Graphics/Game/Infos.h $(REP_SRC)Graphics/Screen.h
+$(REP_SRC)Graphics/Game/Game_window.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Board.h $(REP_SRC)Graphics/Game/Infos.h $(REP_SRC)Graphics/Screen.h $(REP_SRC)Engine/IA.h $(REP_SCR)Engine/Goban.h
 
 $(REP_OBJ)Infos.o: $(REP_SRC)Graphics/Game/Infos.cpp $(REP_SRC)Graphics/Game/Infos.h
 $(REP_SRC)Graphics/Game/Infos.h: $(REP_SRC)Graphics/Globals.h $(REP_SRC)Graphics/Game/Square.h $(REP_SRC)Graphics/Game/Timer.h
