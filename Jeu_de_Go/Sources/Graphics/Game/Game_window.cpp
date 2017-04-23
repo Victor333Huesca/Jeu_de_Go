@@ -158,7 +158,7 @@ Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 			if (c == 'Y' || c == 'y')
 			{
 				std::cout << "lancement du tsumego :" << std::endl;
-				Goban gob=board.getGoban();
+				Goban gob = board.getGoban();
 				Arbre abr(gob, Etat::BLANC);
 				//abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
 				Tsumego(abr, board.getGoban().coord(0, 1));
@@ -186,6 +186,11 @@ Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 void Game_window::setGoban(const Goban & goban)
 {
 	board.load(goban);
+}
+
+Goban Game_window::getGoban() const
+{
+	return board.getGoban();
 }
 
 void Game_window::setView(const sf::FloatRect& zone)

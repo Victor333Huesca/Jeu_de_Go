@@ -60,9 +60,24 @@ Goban::Goban() :
 	}
 }
 
-Goban::Goban(const Goban& goban){
-	if (&goban != this){
-		array= new Etat[TGOBAN*TGOBAN];
+Goban::Goban(const Goban& goban)
+{
+	if (&goban != this)
+	{
+		try
+		{
+			array = new Etat[TGOBAN * TGOBAN];
+		}
+		catch (const std::bad_alloc& e)
+		{
+			const char * msg = "Impossible d'allouer plus de mémoire pour le tsumego --> Fin d'execution";
+			log_file <<  msg;
+			std::cerr << msg;
+
+			exit(-1);
+			throw;
+		}
+
 		size_t i=0;
 		for (size_t y=0;y<TGOBAN; y++){
 			for (size_t x=0;x<TGOBAN; x++){

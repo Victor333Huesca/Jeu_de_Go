@@ -67,6 +67,7 @@ void Go_Solver::Run(sf::RenderWindow & window)
 	musics[cur_music]->stop();
 }
 
+/* ----- Charge les différents menus ----- */
 // 'Template'
 void Go_Solver::loadMenu(const Screens& menu)
 {
@@ -561,9 +562,14 @@ Menu* Go_Solver::loadMenu6()
 	{ return OPTIONS_MENU; }));
 	menu->addItem(Choice_Simple("    Retour au jeu", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PREVIOUS; }));
-	menu->addItem(Choice_Simple(" Quitter la partie", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(" Lancer le Tsumego", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
+	{ 
+		solver.launchTsumego();
+		return GAME;
+	}));
+	menu->addItem(Choice_Simple(" Quitter la partie", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return MAIN_MENU; }));
-	menu->addItem(Choice_Simple("Revenir au bureau", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple("Revenir au bureau", text_style, pos.x, pos.y + 480, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return EXIT; }));
 
 	// Then set items textures and return the menu
@@ -573,6 +579,7 @@ Menu* Go_Solver::loadMenu6()
 
 	return menu;
 }
+/* ----- Fin du cargement des menus ----- */
 
 const sf::Music& Go_Solver::getMusic() const
 {
@@ -615,6 +622,32 @@ void Go_Solver::turnSoundsDown()
 void Go_Solver::setGoban(const Goban & goban)
 {
 	game->setGoban(goban);
+}
+
+Goban Go_Solver::getGoban() const
+{
+	return game->getGoban();
+}
+
+void Go_Solver::launchTsumego()
+{
+	/* On abandonne cette idée le Tsumego n'a vraiment 
+	pas été penssé pour être utilisable proprement...
+
+	std::cout << "lancement du tsumego :" << std::endl;
+	sf::Text txt;
+	sf::Font font;
+	font.loadFromFile("./Ressources/Font/time.ttf");
+	txt.setFont(font);
+	txt.setCharacterSize(50);
+	txt.setFillColor(sf::Color::Blue);
+	txt.setPosition(sf::Vector2f(100, 300));
+	window.draw(txt); */
+
+	Goban gob = getGoban();
+	Arbre abr(gob, Etat::BLANC);
+	//abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
+	Tsumego(abr, getGoban().coord(0, 1));
 }
 
 const std::vector<Screen*>& Go_Solver::getScreens() const

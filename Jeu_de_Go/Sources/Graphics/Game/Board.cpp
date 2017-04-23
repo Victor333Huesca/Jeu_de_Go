@@ -252,6 +252,7 @@ void Board::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
 		for (size_t j = 0; j < size.y; j++)
 		{
+			//target.draw(array[i][j], states);
 			array[i][j].draw(target, states);
 		}
 	}

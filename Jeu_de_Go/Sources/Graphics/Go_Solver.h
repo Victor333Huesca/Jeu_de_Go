@@ -30,6 +30,9 @@ public:
 	void turnSoundsDown();
 
 	void setGoban(const Goban& goban);
+	Goban getGoban() const;
+
+	void launchTsumego();
 
 	const std::vector<Screen*>& getScreens() const;
 	const Screens& getScreen() const;

@@ -21,6 +21,7 @@ public:
 	void zoom(const float delta, sf::Vector2i pos, sf::RenderWindow& window);
 	Screens keyPressed(const sf::Event::KeyEvent& key);
 	void setGoban(const Goban& goban);
+	Goban getGoban() const;
 	void setView(const sf::FloatRect& zone);
 	void territoire();
 
