@@ -17,9 +17,9 @@ void IA::loadNumber(Arbre& A)
 	TOTAL_NODE_NUMBER = n * n;
 }
 
-#ifdef _WIN32
 bool IA::warning()
-{	
+{
+#ifdef _WIN32
 	DWORDLONG VirtualMemory;
 	bool b = false;
 	if (Win32)  //Si on est sur Windows
@@ -45,8 +45,11 @@ bool IA::warning()
 	}
 	
 	return b;
-}
+#else
+	return false;
 #endif
+}
+
 
 void Tsumego(Arbre& A, Etat& cible)
 {
