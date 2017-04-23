@@ -37,6 +37,8 @@ Goban::Goban() :
 	array(nullptr),
 	groups_white(0),
 	groups_black(0),
+	score_black(0),
+	score_white(0),
 	history()
 {
 	try
@@ -116,7 +118,21 @@ std::vector<Groupe> Goban::getGroupsBlack() const{
 	return this->groups_black;
 }
 
+//ACCESSEURS AU SCORE
+int Goban::getScoreBlack() const{
+	return this->score_white;
+}
+int Goban::getScoreWhite() const{
+	return this->score_white;
+}
 
+void Goban::setScoreBlack(int score){
+	this->score_black += score;
+}
+
+void Goban::setScoreWhite(int score){
+	this->score_white += score;
+}
 std::ostream& Goban::afficheGroupes(std::ostream& stream, const Etat::VAL & val) const
 {
 	if (val == Etat::BLANC)
@@ -350,12 +366,13 @@ Groupe Goban::listOfLiberties(const Etat& stone) const{
   return liberties;
 }
 bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
+	int score=0;
 	bool resultat=false;//FALSE if KO stay effective and TRUE if it's deleted
   Groupe liberties;
-  bool estLibre =0;
+  bool estLibre = 0;
   size_t j=0,//index of stones in a group
          k=0;//index of liberties
-  for (size_t i=0; i< GroupsColor.size();i++){//for each group
+  for (size_t i=0; i < GroupsColor.size();i++){//for each group
 	  estLibre = 0;
     liberties.clear();
     j=0;
@@ -384,6 +401,7 @@ bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
 				resultat=true;
 				for (size_t z=0; z< GroupsColor[i].size();z++){
         	this->coord(GroupsColor[i][z].getX(),GroupsColor[i][z].getY()).setVal(Etat::VIDE);
+					score++;
       	}
 			}
       for (size_t h=i; h< GroupsColor.size()-1;h++){
@@ -392,7 +410,17 @@ bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
       GroupsColor.erase(GroupsColor.begin()+GroupsColor.size()-1);//delete the last group after move groups back
 			i--; //test
     }
-  }
+		if(score!=0){
+			if(GroupsColor[0][0].getVal() == Etat::NOIR){
+				this->setScoreWhite(score);
+				score = 0;
+			}
+			else {
+				this->setScoreBlack(score);
+				score = 0;
+		}
+  	}
+	}
 	return resultat;
 }
 bool Goban::eliminateOppGroups(const Etat::VAL& value){

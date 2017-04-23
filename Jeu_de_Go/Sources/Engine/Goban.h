@@ -15,7 +15,10 @@ private:
   Etat* array;
   std::vector<Groupe> groups_white;
   std::vector<Groupe> groups_black;
+  int score_black;
+  int score_white;
   History history;
+
 
   // Privates methods
   bool isMoveLegal(const Etat::VAL& value,const int& x, const int& y) const;
@@ -35,6 +38,12 @@ public:
   std::vector<Groupe> getGroupsBlack() const;
   Etat* getArray();
 
+  //ACCESSEURS AU SCORE
+  int getScoreBlack() const;
+  int getScoreWhite() const;
+
+  void setScoreBlack(int score);
+  void setScoreWhite(int score);
   //GROUPS
   std::ostream& afficheGroupes(std::ostream& stream, const Etat::VAL& val) const;
   std::ostream& afficheGroupes(std::ostream& stream) const;
