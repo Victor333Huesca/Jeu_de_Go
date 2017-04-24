@@ -1,6 +1,7 @@
 ﻿#ifndef Goban_G
 #define Goban_G
 #include <iostream>
+#include <cmath>
 #include <vector>
 #include "Etat.h"
 #include "Groupe.h"
