@@ -21,8 +21,6 @@ bool IA::warning()
 	GlobalMemoryStatusEx(MS);
 	DWORDLONG VirtualMemory = MS->ullTotalVirtual; // résultat en octets 
 	delete MS;
-
-	return VirtualMemory - 20000000 < 0;
 #else
 	//Si on est sur linux
 	long long VirtualMemory;
@@ -34,9 +32,9 @@ bool IA::warning()
 			c[i] = c[i + 8];
 	}
 	VirtualMemory = strtoul(c, NULL, 10);
-
-	return false;
 #endif
+
+	return VirtualMemory - 20000000 < 0;
 }
 
 
