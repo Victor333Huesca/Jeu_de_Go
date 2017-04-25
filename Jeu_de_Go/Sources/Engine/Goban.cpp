@@ -2,32 +2,33 @@
 //PRIVATE METHODS
 bool Goban::isMoveLegal(const Etat::VAL& value, const int& x, const int& y) const
 {
-	bool ko = false, suicide;
+	bool eliminateKo = false, suicide;
+	//Is it legal even if there's a KO
+	if (value == Etat::BLANC){
+		if (coord(x, y).getVal() == Etat::KOWHITE){
+			eliminateKo= legalEvenKO(value,x,y);
+		}
+	}
+	else {
+		if (coord(x, y).getVal() == Etat::KOBLACK){
+			eliminateKo= legalEvenKO(value,x,y);
+		}
+	}
 	//IS IT AN EMPTY CASE
-	if (coord(x, y).isPlayable(value)){
+	if (coord(x, y).isPlayable(value,eliminateKo)){
 		//IS IT A SUICIDE
 		Etat stone (x, y, value);
 		suicide=isSuicide(stone);
-		//Is it legal even if there's a KO
-		if (value == Etat::BLANC){
-			if (coord(x, y).getVal() == Etat::KOWHITE){
-				ko= legalEvenKO(value,x,y);
-			}
-		}
-		else {
-			if (coord(x, y).getVal() == Etat::KOWHITE){
-				ko= legalEvenKO(value,x,y);
-			}
-		}
 	}
 	else return false;
 
-	return !(ko || suicide);
+	return !(suicide);
 }
 
 bool Goban::legalEvenKO(const Etat::VAL& value, const int& x, const int& y) const
 {
 	Goban GOB(*this);
+	GOB.coord(x,y).setVal(value);
 	GOB.rechercheGroupes();
 	return GOB.eliminateOppGroups(value);
 }
@@ -782,9 +783,9 @@ std::ostream& operator<<(std::ostream& os, const Goban& goban)
 }
 
 
-Goban Goban::operator= (const Goban& g) 
+Goban Goban::operator= (const Goban& g)
 {
-	if (this != &g) 
+	if (this != &g)
 	{
 		// Copy groupe 1
 		groups_black.clear();
@@ -828,7 +829,7 @@ Goban Goban::operator= (const Goban& g)
 
 			throw e;
 		}
-		
+
 		try
 		{
 			Etat* array = new Etat[TGOBAN * TGOBAN];
