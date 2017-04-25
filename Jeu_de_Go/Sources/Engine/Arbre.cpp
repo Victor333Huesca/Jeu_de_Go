@@ -7,7 +7,7 @@
 		fils=	std::vector<Goban>(0);
 		info=0;
 		value=Etat::NOIR;
-		coup=Etat();
+		indice=0;
 	}
 	//par copie
 	Arbre::Arbre(const Arbre & a)
@@ -17,7 +17,7 @@
 	value = a.getValue();
 	fils = a.getFils();
 	info = 0;
-	coup = a.getCoup();
+	indice = a.getIndice();
 }
 
 Arbre::Arbre(Goban& G, Etat::VAL val)
@@ -29,7 +29,7 @@ Arbre::Arbre(Goban& G, Etat::VAL val)
 	value=val;
 	fils= 	std::vector<Goban>(0);
 	info=0;
-	coup = Etat();
+	indice = 0;
 	std::cout << "Apres Arbre::Arbre()" << std::endl;
 }
 
@@ -65,9 +65,9 @@ Etat::VAL Arbre::getValue() const
 	return value;
 }
 
-Etat Arbre::getCoup() const
+size_t Arbre::getIndice() const
 {
-	return coup;
+	return indice;
 }
 
 //Setters
@@ -98,9 +98,9 @@ void Arbre::setValue(Etat::VAL v)
 	this->value = v;
 }
 
-void Arbre::setCoup(const Etat &c)
+void Arbre::setIndice(const size_t i)
 {
-	coup = c;
+	indice = i;
 }
 
 /*void Arbre::Tsumego(Etat& cible)
