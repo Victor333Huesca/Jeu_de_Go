@@ -11,7 +11,7 @@
 	//par copie
 	Arbre::Arbre(const Arbre & a)
 {
-	gob = a.getGob();
+	gob = new Goban(a.getGob());
 	nbF = a.getNbF();
 	value = a.getValue();
 	fils = a.getFils();
@@ -22,7 +22,7 @@ Arbre::Arbre(Goban& G, Etat::VAL val)
 {
 	std::cout << "Avant	 Arbre::Arbre()" << std::endl;
 
-	gob = G;
+	gob = new Goban(G);
 	info=false;
 	value=val;
 	fils= 	std::vector<Goban>(0);
@@ -30,7 +30,10 @@ Arbre::Arbre(Goban& G, Etat::VAL val)
 
 	std::cout << "Apres Arbre::Arbre()" << std::endl;
 }
-
+//Distructor
+Arbre::~Arbre(){
+	delete gob;
+}
 //Getters
 
 Goban Arbre::getFilsIndice(const size_t indice) const
@@ -50,7 +53,7 @@ size_t Arbre::getNbF() const
 
 Goban Arbre::getGob() const
 {
-	return this->gob;
+	return *gob;
 }
 
 bool Arbre::getInfo() const
@@ -78,7 +81,7 @@ void Arbre::setNbF(size_t _nbF)
 
 void Arbre::setGob(const Goban& _gob)
 {
-	this->gob = _gob;
+	this->gob = new Goban(_gob);
 }
 
 void Arbre::setInfo(bool b)
@@ -90,65 +93,6 @@ void Arbre::setValue(Etat::VAL v)
 {
 	this->value = v;
 }
-
-/*void Arbre::Tsumego(Etat& cible)
-{
-	//creer list de gobans des fils
-	nbF=gob.listFils(value).size();
-	fils.resize(nbF);
-	fils=gob.listFils(value);
-
-	//CAS D'ARET
-	if (nbF==0){
-			bool enVie=0;
-			if (gob.coord(cible.getX(),cible.getY()).getVal()==cible.getVal()){
-				//cible en vie
-				enVie=1;
-			}
-			if (value==cible.getVal() && enVie)
-				info=1;
-			else if (value!=cible.getVal() && !enVie)
-				info=1;
-				else
-					info=0;
-			//std::cout<<gob<<std::endl;
-			return;
-	}
-
-
-	size_t i=0;
-	//creation des fils
-	Arbre filsA;
-	Etat::VAL val;
-	while (i < nbF && info==0){
-	if (value == Etat::VAL::BLANC)
-			val= Etat::VAL::NOIR;
-	else
-			val= Etat::VAL::BLANC;
-	filsA=Arbre(fils[i], val);
-	if (filsA.gob.coord(cible.getX(),cible.getY()).getVal()==cible.getVal()){
-			//cible en vie
-			filsA.Tsumego(cible);
-		}
-		else {
-			//le coup a tu� la cible
-			info=1;
-			//std::cout<<gob<<std::endl;
-			return;
-		}
-
-		//s'areter si la r�ponse est deja trouv�e (opti)
-		if (filsA.info==1){}
-		else {
-			info=1;
-			//std::cout<<gob<<std::endl;
-			return;
-		}
-		i++;
-	}
-}
-
-*/
 
 Goban& Arbre::operator[](unsigned short int i)
 {
@@ -175,7 +119,11 @@ Arbre Arbre::operator=(Arbre a)
 	return *this;
 }
 
-//Others methods
+//Others methodes
+void Arbre::effacerGoban(){ 
+	delete gob;
+}
+
 void Arbre::afficher()
 {
 	std::cout <<"==============================="<<std::endl;

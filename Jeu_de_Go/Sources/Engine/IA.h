@@ -19,7 +19,7 @@ public :
 	// Tsumego methods
 	//void Tsumego_naif(Arbre&, Etat&);
 	static void Tsumego_abr(Arbre&, Etat&);
-	static void Tsumego_Opti(Arbre& A, Etat& cible);
+	static void Tsumego_abrCopieDeGarde(Arbre& A, Etat& cible);
 
 private:
 	static int TOTAL_NODE_NUMBER;

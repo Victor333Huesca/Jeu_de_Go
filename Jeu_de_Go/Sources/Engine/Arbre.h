@@ -6,12 +6,13 @@
 
 class Arbre {
 private:
-	Goban gob;
+	Goban* gob;
 	Etat::VAL value;
 	bool info;
 	size_t nbF;
 	std::vector<Goban> fils;
-	
+	size_t indiceGagnant;
+
 public:
 	//Constructors
 	Arbre();
@@ -19,6 +20,8 @@ public:
 	Arbre(Goban&, Etat::VAL);
 	Arbre(Goban&, const size_t);
 	Arbre(Goban& _gob, const size_t _nbF, Goban * _fils);
+	//Sistructor
+	~Arbre();
 
 	//Getters
 	Goban getFilsIndice(const size_t) const;
@@ -39,8 +42,8 @@ public:
 	Arbre operator=(Arbre);
 	Goban& operator[](unsigned short int);
 
-	//Others methods
-	//void Tsumego(Etat&);
+	//Others methodes
+	void effacerGoban();  
 	void afficher();
 	void printArbo(const Arbre&);
 };
