@@ -11,6 +11,7 @@ class IA : public Arbre
 public :
 	// Tsumego
 	static void Tsumego(Arbre&, Etat&);
+	static bool Tsumego2(Arbre&, Etat&);
 
 	// Infos methods
 	static void loadNumber(Arbre&);

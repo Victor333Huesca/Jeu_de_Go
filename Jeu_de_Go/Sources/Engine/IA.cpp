@@ -33,6 +33,8 @@ bool IA::warning()
 	}
 	VirtualMemory = strtoul(c, NULL, 10);
 #endif
+
+	return VirtualMemory - 1000000000;
 }
 
 void IA::Tsumego(Arbre& A, Etat& cible)
@@ -40,6 +42,70 @@ void IA::Tsumego(Arbre& A, Etat& cible)
 	IA::loadNumber(A);
 	IA::Tsumego_abr(A, cible);
 }
+
+/*
+static bool IA::Tsumego2(Arbre& A, Etat& cible)
+{
+	//loadNumber(A);
+	//IA::Tsumego_abr(A, cible);
+	if (false)//warning())
+	{
+		std::cout << "Plus de mémoire disponible !" << std::endl;
+		return 0;
+	}
+	A.setNbF(A.getGob().listFils(A.getValue()).size());
+	std::cout << A.getNbF() << std::endl;
+	std::vector<Goban> fils = A.getGob().listFils(A.getValue());
+	if (A.getNbF() == 0)
+	{
+		bool enVie = 0;
+		if (A.getGob().coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
+		{
+			// Cible en vie
+			enVie = 1;
+		}
+		if (A.getValue() == cible.getVal() && enVie)
+		{
+			A.setInfo(1);
+			return 1;
+		}
+		else if (A.getValue() != cible.getVal() && !enVie)
+		{
+			A.setInfo(1);
+			return 1;
+		}
+		else
+		{
+			A.setInfo(0);
+			return 0;
+		}
+	}
+	for (size_t i = 0; i < A.getNbF(); i++)
+	{
+		A.setFils(fils.at(i));
+
+		if (fils[i].coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
+		{
+			if (A.getValue() == Etat::BLANC)
+			{
+				return !Tsumego2(Arbre(fils.at(i), Etat::NOIR), cible);
+			}
+			else
+			{
+				return !Tsumego2(Arbre(fils.at(i), Etat::BLANC), cible);
+			}
+		}
+		else
+		{
+			std::cout << fils.at(i) << std::endl;
+			A.setInfo(1);
+			return 1;
+		}
+	}
+	return 0;
+
+}
+*/
 
 void IA::Tsumego_abr(Arbre& A, Etat& cible)
 {
@@ -88,13 +154,14 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 		return;
 	}
 
-
 	size_t i = 0;
 	uint8_t* gobcomp = A.getGob().compress();
+	A.setIndice(0);
 	// Creation d'un fils
 	Arbre* filsA = nullptr;
 	Etat::VAL val;
-	while (i < A.getNbF() && A.getInfo() == 0)
+
+	while (A.getIndice() < A.getNbF() && A.getInfo() == 0)
 	{
 		if (A.getValue() == Etat::VAL::BLANC)
 			val = Etat::VAL::NOIR;
@@ -103,7 +170,7 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 
 		//std::cout << "Avant filsA" << std::endl;
 		delete filsA;
-		filsA = new Arbre(A.getFils().at(i), val);
+		filsA = new Arbre(A.getFils().at(A.getIndice()), val);
 		//std::cout << "Apres filsA" << std::endl;
 
 		if (filsA->getGob().coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
@@ -146,7 +213,7 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 			//std::cout<< A.getGob() <<std::endl;
 			return;
 		}
-		i++;
+		A.setIndice(A.getIndice() + 1);
 	}
 }
 

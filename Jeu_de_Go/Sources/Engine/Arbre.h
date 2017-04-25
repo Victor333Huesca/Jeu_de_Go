@@ -12,7 +12,7 @@ private:
 	size_t nbF;
 	std::vector<Goban> fils;
 	size_t indiceGagnant;
-
+	size_t indice;
 public:
 	//Constructors
 	Arbre();
@@ -30,6 +30,7 @@ public:
 	Goban getGob() const;
 	bool getInfo() const;
 	Etat::VAL getValue() const;
+	size_t getIndice() const;
 
 	//Setters
 	void setFils(const Goban& g);
@@ -37,13 +38,14 @@ public:
 	void setGob(const Goban& g);
 	void setInfo(bool);
 	void setValue(Etat::VAL);
+	void setIndice(const size_t);
 
 	//overloading methodes
 	Arbre operator=(Arbre);
 	Goban& operator[](unsigned short int);
 
 	//Others methodes
-	void effacerGoban();  
+	void effacerGoban();
 	void afficher();
 	void printArbo(const Arbre&);
 };
