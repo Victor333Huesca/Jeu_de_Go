@@ -151,11 +151,11 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 	}
 
 
-	size_t i = 0;
+	A.setIndice(0);
 	// Creation d'un fils
 	Arbre* filsA = nullptr;
 	Etat::VAL val;
-	while (i < A.getNbF() && A.getInfo() == 0)
+	while (A.getIndice() < A.getNbF() && A.getInfo() == 0)
 	{
 		if (A.getValue() == Etat::VAL::BLANC)
 			val = Etat::VAL::NOIR;
@@ -164,7 +164,7 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 
 		//std::cout << "Avant filsA" << std::endl;
 		delete filsA;
-		filsA = new Arbre(A.getFils().at(i), val);
+		filsA = new Arbre(A.getFils().at(A.getIndice()), val);
 		//std::cout << "Apres filsA" << std::endl;
 
 		if (filsA->getGob().coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
@@ -191,7 +191,7 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 			//std::cout<< A.getGob() <<std::endl;
 			return;
 		}
-		i++;
+		A.setIndice(A.getIndice() + 1);
 	}
 }
 
