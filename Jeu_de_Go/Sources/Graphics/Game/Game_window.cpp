@@ -161,7 +161,7 @@ Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 				Goban gob = board.getGoban();
 				Arbre abr(gob, Etat::BLANC);
 				//abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
-				std::cout<<IA::Tsumego2(abr, board.getGoban().coord(0, 1))<<std::endl;
+				IA::Tsumego(abr, board.getGoban().coord(0, 1));
 			}
 			else
 			{
