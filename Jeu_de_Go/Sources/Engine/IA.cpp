@@ -54,13 +54,16 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 
 	NODE_NUMBER++;
 
-	// Savoir la taille des fils pour rédimensionner le vector fils
-	A.setNbF(A.getGob().listFils(A.getValue()).size());
-	A.getFils().resize(A.getNbF());
-	A.getFils()=A.getGob().listFils(A.getValue());
 
-
-
+	std::vector<Goban> fils = A.getGob().listFils(A.getValue());
+	// Creer list de gobans des fils
+	A.setNbF(fils.size());
+	//std::cout << A.getNbF() << "  " << A.getInfo() << std::endl;
+	A.getFils().resize(0);
+	for (size_t i = 0; i < A.getNbF(); i++)
+	{
+		A.setFils(fils[i]);
+	}
 
 	//std::cout << A.getNbF() << "  " << A.getInfo() << std::endl;
 
@@ -139,9 +142,6 @@ void IA::Tsumego_Opti(Arbre& A, Etat& cible)
 		return;
 	}
 	*/
-
-	std::cout << "Yolo" << std::endl;
-
 
 	NODE_NUMBER++;
 
