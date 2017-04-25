@@ -33,6 +33,8 @@ bool IA::warning()
 	}
 	VirtualMemory = strtoul(c, NULL, 10);
 #endif
+
+	return VirtualMemory - 1000000000;
 }
 
 void IA::Tsumego(Arbre& A, Etat& cible)
