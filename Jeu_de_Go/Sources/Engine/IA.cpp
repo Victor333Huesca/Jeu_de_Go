@@ -96,6 +96,7 @@ bool IA::Tsumego2(Arbre& A, Etat& cible)
 		}
 		else
 		{
+			std::cout << fils.at(i) << std::endl;
 			A.setInfo(1);
 			return 1;
 		}
@@ -140,7 +141,7 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 			enVie = 1;
 		}
 		if (A.getValue() == cible.getVal() && enVie)
-			A.setInfo(1);
+			A.setInfo(1); 
 		else if (A.getValue() != cible.getVal() && !enVie)
 			A.setInfo(1);
 		else

@@ -11,6 +11,7 @@ private:
 	bool info;
 	size_t nbF;
 	std::vector<Goban> fils;
+	Etat coup;
 	
 public:
 	//Constructors
@@ -27,6 +28,7 @@ public:
 	Goban getGob() const;
 	bool getInfo() const;
 	Etat::VAL getValue() const;
+	Etat getCoup() const;
 
 	//Setters
 	void setFils(const Goban& g);
@@ -34,6 +36,7 @@ public:
 	void setGob(const Goban& g);
 	void setInfo(bool);
 	void setValue(Etat::VAL);
+	void setCoup(const Etat&);
 
 	//overloading methodes
 	Arbre operator=(Arbre);
