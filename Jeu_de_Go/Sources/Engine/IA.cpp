@@ -19,7 +19,7 @@ bool IA::warning()
 #ifdef _WIN32
 	MEMORYSTATUSEX *MS = new MEMORYSTATUSEX;
 	GlobalMemoryStatusEx(MS);
-	DWORDLONG VirtualMemory = MS->ullTotalVirtual; // résultat en octets 
+	DWORDLONG VirtualMemory = MS->ullTotalVirtual; // rï¿½sultat en octets
 	delete MS;
 #else
 	//Si on est sur linux
@@ -33,10 +33,7 @@ bool IA::warning()
 	}
 	VirtualMemory = strtoul(c, NULL, 10);
 #endif
-
-	return VirtualMemory - 20000000 < 0;
 }
-
 
 void IA::Tsumego(Arbre& A, Etat& cible)
 {
@@ -46,33 +43,32 @@ void IA::Tsumego(Arbre& A, Etat& cible)
 
 void IA::Tsumego_abr(Arbre& A, Etat& cible)
 {
-	std::cout << "Nombre de noeuds restant : " << std::endl;
-	std::cout << TOTAL_NODE_NUMBER - NODE_NUMBER << std::endl;
-
+	std::cout << "Nombre de noeuds restant : " << TOTAL_NODE_NUMBER - NODE_NUMBER << std::endl;
+	/*
 	if (warning())
 	{
-		std::cout << "Plus de mémoire disponible !" << std::endl;
+		std::cout << "Plus de mï¿½moire disponible !" << std::endl;
 		return;
 	}
+	*/
 
 	NODE_NUMBER++;
 
-	// Creer list de gobans des fils
-	A.setNbF(A.getGob().listFils(A.getValue()).size());
 
-	//std::cout << A.getNbF() << "  " << A.getInfo() << std::endl;
-	
-	std::cout << "Avant\n";
 	std::vector<Goban> fils = A.getGob().listFils(A.getValue());
-	std::cout << "Après" << std::endl;
-
+	// Creer list de gobans des fils
+	A.setNbF(fils.size());
+	//std::cout << A.getNbF() << "  " << A.getInfo() << std::endl;
+	A.getFils().resize(0);
 	for (size_t i = 0; i < A.getNbF(); i++)
 	{
 		A.setFils(fils[i]);
 	}
-	
+
+	//std::cout << A.getNbF() << "  " << A.getInfo() << std::endl;
+
 	// CAS D'ARET
-	if (A.getNbF() == 0) 
+	if (A.getNbF() == 0)
 	{
 		bool enVie = 0;
 		if (A.getGob().coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
@@ -85,7 +81,97 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 		else if (A.getValue() != cible.getVal() && !enVie)
 			A.setInfo(1);
 		else
+			A.setInfo(0);
+		//std::cout<<A.getGob()<<std::endl;
+		return;
+	}
+
+
+	size_t i = 0;
+	// Creation d'un fils
+	Arbre* filsA = nullptr;
+	Etat::VAL val;
+	while (i < A.getNbF() && A.getInfo() == 0)
+	{
+		if (A.getValue() == Etat::VAL::BLANC)
+			val = Etat::VAL::NOIR;
+		else
+			val = Etat::VAL::BLANC;
+
+		//std::cout << "Avant filsA" << std::endl;
+		delete filsA;
+		filsA = new Arbre(A.getFils().at(i), val);
+		//std::cout << "Apres filsA" << std::endl;
+
+		if (filsA->getGob().coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
+		{
+			//cible en vie
+			Tsumego_abr(*filsA, cible);
+		}
+		else
+		{
+			// Le coup a tuï¿½ la cible
 			A.setInfo(1);
+			//std::cout<< A.getGob() <<std::endl;
+			return;
+		}
+
+		// S'areter si la rï¿½ponse est deja trouvï¿½e (opti)
+		if (filsA->getInfo() == 1)
+		{
+			//filsA est Ã  1 donc A est a 0, donc A cherche le fils suivant
+		}
+		else
+		{
+			A.setInfo(1);
+			//std::cout<< A.getGob() <<std::endl;
+			return;
+		}
+		i++;
+	}
+}
+
+void IA::Tsumego_Opti(Arbre& A, Etat& cible)
+{
+	std::cout << "Nombre de noeuds restant : ma bite :" << TOTAL_NODE_NUMBER - NODE_NUMBER << std::endl;
+
+	/*
+	if (warning())
+	{
+		std::cout << "Plus de mï¿½moire disponible !" << std::endl;
+		return;
+	}
+	*/
+
+	NODE_NUMBER++;
+
+	std::vector<Goban> fils = A.getGob().listFils(A.getValue());
+
+	// Creer list de gobans des fils
+	A.setNbF(fils.size());
+
+	//std::cout << A.getNbF() << "  " << A.getInfo() << std::endl;
+
+	for (size_t i = 0; i < A.getNbF(); i++)
+	{
+		A.setFils(fils[i]);
+	}
+
+	// CAS D'ARET
+	if (A.getNbF() == 0)
+	{
+		bool enVie = 0;
+		if (A.getGob().coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
+		{
+			// Cible en vie
+			enVie = 1;
+		}
+		if (A.getValue() == cible.getVal() && enVie)
+			A.setInfo(1);
+		else if (A.getValue() != cible.getVal() && !enVie)
+			A.setInfo(1);
+		else
+			A.setInfo(0);
 		//std::cout<<A.getGob()<<std::endl;
 		return;
 	}
@@ -93,7 +179,7 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 
 	size_t i = 0;
 
-	// Creation des fils
+	// Creation d'un fils
 	Arbre filsA;
 	Etat::VAL val;
 	while (i < A.getNbF() && A.getInfo() == 0)
@@ -106,21 +192,22 @@ void IA::Tsumego_abr(Arbre& A, Etat& cible)
 		if (filsA.getGob().coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
 		{
 			//cible en vie
-			Tsumego_abr(filsA, cible);
+			Tsumego_Opti(filsA, cible);
 		}
-		else 
+		else
 		{
-			// Le coup a tué la cible
+			// Le coup a tuï¿½ la cible
 			A.setInfo(1);
-			std::cout<< A.getGob() <<std::endl;
+			//std::cout<< A.getGob() <<std::endl;
 			return;
 		}
 
-		// S'areter si la réponse est deja trouvée (opti)
-		if (filsA.getInfo() == 1) 
+		// S'areter si la rï¿½ponse est deja trouvï¿½e (opti)
+		if (filsA.getInfo() == 1)
 		{
+			//filsA est Ã  1 donc A est a 0, donc A cherche le fils suivant
 		}
-		else 
+		else
 		{
 			A.setInfo(1);
 			//std::cout<< A.getGob() <<std::endl;

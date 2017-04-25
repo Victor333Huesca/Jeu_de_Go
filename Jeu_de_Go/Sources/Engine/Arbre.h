@@ -11,6 +11,7 @@ private:
 	bool info;
 	size_t nbF;
 	std::vector<Goban> fils;
+	
 public:
 	//Constructors
 	Arbre();
@@ -36,7 +37,7 @@ public:
 
 	//overloading methodes
 	Arbre operator=(Arbre);
-	Goban operator[](unsigned short int);
+	Goban& operator[](unsigned short int);
 
 	//Others methods
 	//void Tsumego(Etat&);

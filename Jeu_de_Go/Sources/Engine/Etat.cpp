@@ -93,15 +93,15 @@ bool Etat::estVoisine(const Etat & piece) const
 	return false;
 }
 
-bool Etat::isPlayable(const VAL& value) const
+bool Etat::isPlayable(const VAL& value, const bool eliminateKo) const
 {
-  if (value == NOIR){
-	 return (val == VIDE || val == KOWHITE);
- }
+  if (eliminateKo)
+    return (val == VIDE || val == KOWHITE || val == KOBLACK);
+
+  if (value == NOIR)
+      return (val == VIDE || val == KOWHITE);
   else
-  {
-    return (val == VIDE || val == KOBLACK);
-  }
+      return (val == VIDE || val == KOBLACK);
 }
 
 bool Etat::isAStone() const
