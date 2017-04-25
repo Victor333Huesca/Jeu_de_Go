@@ -18,12 +18,17 @@
 	info = 0;
 }
 
-Arbre::Arbre(Goban& G, Etat::VAL val) {
+Arbre::Arbre(Goban& G, Etat::VAL val)
+{
+	std::cout << "Avant	 Arbre::Arbre()" << std::endl;
+
 	gob = G;
 	info=false;
 	value=val;
 	fils= 	std::vector<Goban>(0);
 	info=0;
+
+	std::cout << "Apres Arbre::Arbre()" << std::endl;
 }
 
 //Getters
@@ -126,13 +131,13 @@ void Arbre::setValue(Etat::VAL v)
 			filsA.Tsumego(cible);
 		}
 		else {
-			//le coup a tué la cible
+			//le coup a tuï¿½ la cible
 			info=1;
 			//std::cout<<gob<<std::endl;
 			return;
 		}
 
-		//s'areter si la réponse est deja trouvée (opti)
+		//s'areter si la rï¿½ponse est deja trouvï¿½e (opti)
 		if (filsA.info==1){}
 		else {
 			info=1;
@@ -145,15 +150,17 @@ void Arbre::setValue(Etat::VAL v)
 
 */
 
-Goban Arbre::operator[](unsigned short int i)
+Goban& Arbre::operator[](unsigned short int i)
 {
-	return this->fils[i];
+	return fils[i];
 }
 
 //overloading methodes
-Arbre Arbre::operator=(Arbre a) 
+Arbre Arbre::operator=(Arbre a)
 {
-	if (this != &a) 
+	std::cout << "Avant Arbre::operator=" << std::endl;
+
+	if (this != &a)
 	{
 		gob = a.gob;
 		nbF = a.nbF;
@@ -162,6 +169,8 @@ Arbre Arbre::operator=(Arbre a)
 		info = a.info;
 		value = a.value;
 	}
+
+	std::cout << "Apres Arbre::operator=" << std::endl;
 
 	return *this;
 }

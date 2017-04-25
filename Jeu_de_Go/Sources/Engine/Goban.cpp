@@ -94,6 +94,10 @@ Goban::Goban(const Goban& goban)
 		}
 	}
 }
+//DECONSTRUCTOR
+Goban::~Goban(){
+	delete[] array;
+}
 //overloadings methodes
 
 Etat& Goban::operator[](const size_t i)const{
@@ -571,9 +575,9 @@ uint8_t * Goban::compress(int nb_revelent) const
 
 	enum Codes : uint8_t { empty = 0, black = 1, white = 2, KO = 3 };
 
-	for (int i = 0; i < TGOBAN; i++)
+	for (size_t i = 0; i < TGOBAN; i++)
 	{
-		for (int j = 0; j < TGOBAN; j++)
+		for (size_t j = 0; j < TGOBAN; j++)
 		{
 			switch (goban.coord(i, j).getVal())
 			{
@@ -628,9 +632,9 @@ void Goban::uncompress(const uint8_t * compressed, const Etat::VAL KO_status, in
 										// Firstly just count numher on revelent intersections if the user doesn't specify it
 	if (!nb_revelent)
 	{
-		for (int i = 0; i < TGOBAN; i++)
+		for (size_t i = 0; i < TGOBAN; i++)
 		{
-			for (int j = 0; j < TGOBAN; j++)
+			for (size_t j = 0; j < TGOBAN; j++)
 			{
 				switch (goban.coord(i, j).getVal())
 				{
@@ -785,6 +789,8 @@ std::ostream& operator<<(std::ostream& os, const Goban& goban)
 
 Goban Goban::operator= (const Goban& g)
 {
+	std::cout << "Avant Goban::operator=" << std::endl;
+
 	if (this != &g)
 	{
 		// Copy groupe 1
@@ -798,7 +804,7 @@ Goban Goban::operator= (const Goban& g)
 		// Copy group 2
 		groups_white.clear();
 		groups_white.resize(g.groups_white.size());
-		for (size_t i=0; i<g.groups_black.size();i++)
+		for (size_t i=0; i<g.groups_white.size();i++)
 		{
 			groups_white[i] = g.groups_white[i];
 		}
@@ -818,7 +824,7 @@ Goban Goban::operator= (const Goban& g)
 			log_file << msg;
 			std::cerr << msg;
 
-			throw e;
+			throw;
 		}
 		catch (const std::exception& e)
 		{
@@ -827,28 +833,18 @@ Goban Goban::operator= (const Goban& g)
 			log_file << msg;
 			std::cerr << msg;
 
-			throw e;
+			throw;
 		}
 
-		try
-		{
-			Etat* array = new Etat[TGOBAN * TGOBAN];
-		}
-		catch (const std::bad_alloc& e)
-		{
-			std::string msg = "Impossible d'allouer l'espace nécessaire à la création d'un Etat[] pour la nouelle affectation d'un Goban --> ";
-			msg += e.what();
-			log_file << msg;
-			std::cerr << msg;
 
-			throw e;
-		}
-
+		Etat* array2 = new Etat[TGOBAN * TGOBAN];
 		for (size_t i = 0; i< TGOBAN * TGOBAN; i++)
 		{
-			array[i] = g.array[i];
+			array2[i] = g.array[i];
 		}
+		array=array2;
 	}
+	std::cout << "Apres Goban::operator=" << std::endl;
 
 	return *this;
 }

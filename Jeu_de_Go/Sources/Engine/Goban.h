@@ -29,6 +29,8 @@ public:
   //CONSTRUCTORS
   Goban();//default constructor
   Goban(const Goban&);//copy constructor
+  //DESTRUCTOR
+  ~Goban();//destructor
   // Access to a state
   Etat& coord(const int& x, const int& y);		// access to element of array with (x,y)
   const Etat& coord(const int& x, const int& y) const;		// access to element of array with (x,y)
