@@ -43,6 +43,67 @@ void IA::Tsumego(Arbre& A, Etat& cible)
 	IA::Tsumego_abr(A, cible);
 }
 
+bool IA::Tsumego2(Arbre& A, Etat& cible)
+{
+	//loadNumber(A);
+	//IA::Tsumego_abr(A, cible);
+	if (false)//warning())
+	{
+		std::cout << "Plus de mémoire disponible !" << std::endl;
+		return 0;
+	}
+	A.setNbF(A.getGob().listFils(A.getValue()).size());
+	std::cout << A.getNbF() << std::endl;
+	std::vector<Goban> fils = A.getGob().listFils(A.getValue());
+	if (A.getNbF() == 0)
+	{
+		bool enVie = 0;
+		if (A.getGob().coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
+		{
+			// Cible en vie
+			enVie = 1;
+		}
+		if (A.getValue() == cible.getVal() && enVie)
+		{
+			A.setInfo(1);
+			return 1;
+		}
+		else if (A.getValue() != cible.getVal() && !enVie)
+		{
+			A.setInfo(1);
+			return 1;
+		}
+		else
+		{
+			A.setInfo(0);
+			return 0;
+		}
+	}
+	for (size_t i = 0; i < A.getNbF(); i++)
+	{
+		A.setFils(fils.at(i));
+		
+		if (fils[i].coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
+		{
+			if (A.getValue() == Etat::BLANC)
+			{
+				return !Tsumego2(Arbre(fils.at(i), Etat::NOIR), cible);
+			}
+			else
+			{
+				return !Tsumego2(Arbre(fils.at(i), Etat::BLANC), cible);
+			}
+		}
+		else
+		{
+			A.setInfo(1);
+			return 1;
+		}
+	}
+	return 0;
+
+}
+
 void IA::Tsumego_abr(Arbre& A, Etat& cible)
 {
 	std::cout << "Nombre de noeuds restant : " << TOTAL_NODE_NUMBER - NODE_NUMBER << std::endl;
