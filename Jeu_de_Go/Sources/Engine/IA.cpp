@@ -161,7 +161,7 @@ void IA::Tsumego_naif(Arbre& A, Etat& cible)
 	Arbre* filsA = nullptr;
 	Etat::VAL val;
 
-	while (A.getIndice() < A.getNbF() && A.getInfo() == 0)
+	while (A.getIndice() < A.getNbF())
 	{
 		if (A.getValue() == Etat::VAL::BLANC)
 			val = Etat::VAL::NOIR;
