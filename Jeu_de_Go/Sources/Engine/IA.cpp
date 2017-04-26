@@ -43,8 +43,8 @@ void IA::Tsumego(Arbre& A, Etat& cible)
 	IA::Tsumego_abr(A, cible);
 }
 
-/*
-static bool IA::Tsumego2(Arbre& A, Etat& cible)
+
+bool IA::Tsumego2(Arbre& A, Etat& cible)
 {
 	//loadNumber(A);
 	//IA::Tsumego_abr(A, cible);
@@ -105,7 +105,7 @@ static bool IA::Tsumego2(Arbre& A, Etat& cible)
 	return 0;
 
 }
-*/
+
 
 void IA::Tsumego_naif(Arbre& A, Etat& cible)
 {
