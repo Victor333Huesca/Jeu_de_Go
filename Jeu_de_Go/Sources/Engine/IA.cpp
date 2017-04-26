@@ -107,6 +107,91 @@ static bool IA::Tsumego2(Arbre& A, Etat& cible)
 }
 */
 
+void IA::Tsumego_naif(Arbre& A, Etat& cible)
+{
+	std::cout << "Nombre de noeuds restant : " << TOTAL_NODE_NUMBER - NODE_NUMBER << std::endl;
+	/*
+	if (warning())
+	{
+		std::cout << "Plus de m�moire disponible !" << std::endl;
+		return;
+	}
+	*/
+
+	NODE_NUMBER++;
+
+
+	std::vector<Goban> fils = A.getGob().listFils(A.getValue());
+	// Creer list de gobans des fils
+	A.setNbF(fils.size());
+	//std::cout << A.getNbF() << "  " << A.getInfo() << std::endl;
+	A.getFils().resize(0);
+	for (size_t i = 0; i < A.getNbF(); i++)
+	{
+		A.setFils(fils[i]);
+	}
+	//on vide le vector fils initial
+	fils.resize(0);
+
+	//std::cout << A.getNbF() << "  " << A.getInfo() << std::endl;
+
+	// CAS D'ARET
+	if (A.getNbF() == 0)
+	{
+		bool enVie = 0;
+		if (A.getGob().coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
+		{
+			// Cible en vie
+			enVie = 1;
+		}
+		if (A.getValue() == cible.getVal() && enVie)
+			A.setInfo(1);
+		else if (A.getValue() != cible.getVal() && !enVie)
+			A.setInfo(1);
+		else
+			A.setInfo(0);
+		//std::cout<<A.getGob()<<std::endl;
+		return;
+	}
+
+	size_t i = 0;
+	uint8_t* gobcomp = A.getGob().compress();
+	A.setIndice(0);
+	// Creation d'un fils
+	Arbre* filsA = nullptr;
+	Etat::VAL val;
+
+	while (A.getIndice() < A.getNbF() && A.getInfo() == 0)
+	{
+		if (A.getValue() == Etat::VAL::BLANC)
+			val = Etat::VAL::NOIR;
+		else
+			val = Etat::VAL::BLANC;
+
+		//std::cout << "Avant filsA" << std::endl;
+		delete filsA;
+		filsA = new Arbre(A.getFils().at(A.getIndice()), val);
+		//std::cout << "Apres filsA" << std::endl;
+
+		if (filsA->getGob().coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
+		{
+			//cible en vie
+			//reinitialiser A.fils[] à 0 et garder le compresseur de A.goban en effacant le goban
+			//lancer tsumego sur le fils
+			A.getFils().resize(0);
+			Tsumego_abr(*filsA, cible);
+		}
+		else
+		{
+			// Le coup a tu� la cible
+			A.setInfo(1);
+			//std::cout<< A.getGob() <<std::endl;
+			return;
+		}
+		A.setIndice(A.getIndice() + 1);
+	}
+}
+
 void IA::Tsumego_abr(Arbre& A, Etat& cible)
 {
 	std::cout << "Nombre de noeuds restant : " << TOTAL_NODE_NUMBER - NODE_NUMBER << std::endl;

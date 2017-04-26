@@ -18,7 +18,7 @@ public :
 	static bool warning();
 
 	// Tsumego methods
-	//void Tsumego_naif(Arbre&, Etat&);
+	static void Tsumego_naif(Arbre&, Etat&);
 	static void Tsumego_abr(Arbre&, Etat&);
 	static void Tsumego_abrCopieDeGarde(Arbre& A, Etat& cible);
 
