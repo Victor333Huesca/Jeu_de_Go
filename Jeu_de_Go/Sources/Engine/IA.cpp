@@ -130,8 +130,6 @@ void IA::Tsumego_naif(Arbre& A, Etat& cible)
 	{
 		A.setFils(fils[i]);
 	}
-	//on vide le vector fils initial
-	fils.resize(0);
 
 	//std::cout << A.getNbF() << "  " << A.getInfo() << std::endl;
 
@@ -154,14 +152,12 @@ void IA::Tsumego_naif(Arbre& A, Etat& cible)
 		return;
 	}
 
+
 	size_t i = 0;
-	uint8_t* gobcomp = A.getGob().compress();
-	A.setIndice(0);
 	// Creation d'un fils
 	Arbre* filsA = nullptr;
 	Etat::VAL val;
-
-	while (A.getIndice() < A.getNbF())
+	while (i < A.getNbF() )
 	{
 		if (A.getValue() == Etat::VAL::BLANC)
 			val = Etat::VAL::NOIR;
@@ -170,15 +166,12 @@ void IA::Tsumego_naif(Arbre& A, Etat& cible)
 
 		//std::cout << "Avant filsA" << std::endl;
 		delete filsA;
-		filsA = new Arbre(A.getFils().at(A.getIndice()), val);
+		filsA = new Arbre(A.getFils().at(i), val);
 		//std::cout << "Apres filsA" << std::endl;
 
 		if (filsA->getGob().coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
 		{
 			//cible en vie
-			//reinitialiser A.fils[] à 0 et garder le compresseur de A.goban en effacant le goban
-			//lancer tsumego sur le fils
-			A.getFils().resize(0);
 			Tsumego_abr(*filsA, cible);
 		}
 		else
@@ -188,7 +181,7 @@ void IA::Tsumego_naif(Arbre& A, Etat& cible)
 			//std::cout<< A.getGob() <<std::endl;
 			return;
 		}
-		A.setIndice(A.getIndice() + 1);
+		i++;
 	}
 }
 
