@@ -38,6 +38,16 @@ Arbre::~Arbre(){
 }
 //Getters
 
+std::vector<Arbre> Arbre::getAFils() const
+{
+	return Afils;
+}
+
+Arbre Arbre::getAFilsIndice(const size_t i) const
+{
+	return Afils.at(i);
+}
+
 Goban Arbre::getFilsIndice(const size_t indice) const
 {
 	return fils[indice];
@@ -75,6 +85,11 @@ size_t Arbre::getIndice() const
 
 //Setters
 
+
+void Arbre::setAFils(Arbre a)
+{
+	Afils.push_back(a);
+}
 
 void Arbre::setFils(const Goban& f)
 {
@@ -124,6 +139,7 @@ Arbre Arbre::operator=(Arbre a)
 		fils = a.fils;
 		info = a.info;
 		value = a.value;
+		Afils = a.Afils;
 	}
 
 	std::cout << "Apres Arbre::operator=" << std::endl;
@@ -146,7 +162,14 @@ void Arbre::afficher()
 void Arbre::printArbo(const Arbre&)
 {
 	//Utiliser dotty ou latex ??
-	std::cout << this->getGob() << std::endl;
+	std::string f_name = "SortieLatex";
+	std::ofstream file(f_name.c_str(), std::ios::out | std::ios::trunc);
+	std::string buffer_begin = "\\documentclass{article} \n	\\usepackage{tikz} \n \\begin{document} \n \\begin{tikzpicture} \n";
+	std::string buffer = "";
+	std::string buffer_end = "\\end{tikzpicture}\n \\end{document} \n";
+
+	file.close();
+	//std::cout << this->getGob() << std::endl;
 }
 
 

@@ -11,6 +11,7 @@ private:
 	bool info;
 	size_t nbF;
 	std::vector<Goban> fils;
+	std::vector<Arbre> Afils;
 	size_t indiceGagnant;
 	size_t indice;
 public:
@@ -24,6 +25,8 @@ public:
 	~Arbre();
 
 	//Getters
+	std::vector<Arbre> getAFils() const;
+	Arbre getAFilsIndice(const size_t) const;
 	Goban getFilsIndice(const size_t) const;
 	std::vector<Goban> getFils() const;
 	size_t getNbF() const;
@@ -33,6 +36,7 @@ public:
 	size_t getIndice() const;
 
 	//Setters
+	void setAFils(Arbre);
 	void setFils(const Goban& g);
 	void setNbF(size_t);
 	void setGob(const Goban& g);
