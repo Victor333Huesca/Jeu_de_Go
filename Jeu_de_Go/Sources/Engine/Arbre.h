@@ -51,10 +51,11 @@ public:
 	//Others methodes
 	void effacerGoban();
 	void afficher();
-	void printArbo(const Arbre&);
+	void printArbo(const Arbre &);
 };
 
 std::ostream& operator<<(std::ostream &os, Arbre &n);
 
+std::string latexRec(const Arbre &A);
 
 #endif

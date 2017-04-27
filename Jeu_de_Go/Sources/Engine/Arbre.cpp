@@ -159,15 +159,17 @@ void Arbre::afficher()
 	std::cout << this->getGob() << std::endl;
 }
 
-void Arbre::printArbo(const Arbre&)
+void Arbre::printArbo(const Arbre & A)
 {
 	//Utiliser dotty ou latex ??
 	std::string f_name = "SortieLatex";
 	std::ofstream file(f_name.c_str(), std::ios::out | std::ios::trunc);
 	std::string buffer_begin = "\\documentclass{article} \n	\\usepackage{tikz} \n \\begin{document} \n \\begin{tikzpicture} \n";
-	std::string buffer = "";
+	std::string buffer = "\\node{R} \n" + latexRec(A);
 	std::string buffer_end = "\\end{tikzpicture}\n \\end{document} \n";
-
+	file << buffer_begin;
+	file << buffer;
+	file << buffer_end;
 	file.close();
 	//std::cout << this->getGob() << std::endl;
 }
@@ -177,4 +179,24 @@ std::ostream& operator<<(std::ostream &os, Arbre &n)
 {
 	n.afficher();
 	return os;
+}
+
+std::string latexRec(const Arbre & A)
+{
+	std::string buffer_pere, buffer, info = "F";
+	if (A.getInfo())
+		info = "T";
+	if (A.getNbF() == 0)
+	{
+		return "child{node{"+info+"}} \n";
+	}
+	else
+	{
+		buffer_pere = "child{node{" + info + "} \n";
+		for (size_t i = 0; i < A.getNbF(); i++)
+		{
+			 buffer = buffer + "\n" + latexRec(A.getAFilsIndice(i));
+		}
+		return buffer_pere + buffer + "} \n";
+	}
 }
