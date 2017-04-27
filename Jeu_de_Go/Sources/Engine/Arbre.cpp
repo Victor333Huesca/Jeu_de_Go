@@ -164,7 +164,7 @@ void Arbre::printArbo(const Arbre & A)
 	//Utiliser dotty ou latex ??
 	std::string f_name = "SortieLatex";
 	std::ofstream file(f_name.c_str(), std::ios::out | std::ios::trunc);
-	std::string buffer_begin = "\\documentclass{article} \n	\\usepackage{tikz} \n \\begin{document} \n \\begin{tikzpicture} \n";
+	std::string buffer_begin = "\\documentclass{article} \n	\\usepackage{tikz} \n \\begin{document} \n \\begin{tikzpicture} \n \\tikzstyle{every node}=[fill=red!60,circle,inner sep=1pt] \n";
 	std::string buffer = "\\node{R} \n" + latexRec(A);
 	std::string buffer_end = "\\end{tikzpicture}\n \\end{document} \n";
 	file << buffer_begin;
