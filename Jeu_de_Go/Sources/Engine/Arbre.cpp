@@ -2,58 +2,68 @@
 #include <iostream>
 //Constructors
 
-	Arbre::Arbre() : gob(), nbF(0)
+	Arbre::Arbre() : nbF(0)
 	{
-		fils=	std::vector<Goban>(0);
+		gob=nullptr;
+		fils=	new Goban[0];
 		info=0;
 		value=Etat::NOIR;
-		indice=0;
+		filsA=nullptr;
+		SABR= nullptr;
 	}
 	//par copie
 	Arbre::Arbre(const Arbre & a)
 {
-	gob = new Goban(a.getGob());
-	nbF = a.getNbF();
-	value = a.getValue();
-	fils = a.getFils();
-	info = 0;
-	indice = a.getIndice();
+	//std::cout<<"Avant Arbre::Arbre(a)"<<std::endl;
+	if (&a != this){
+		gob = new Goban(*a.getGob());
+		nbF = a.getNbF();
+		value = a.getValue();
+		fils = new Goban[nbF];
+		for (size_t i=0;i<nbF;i++)
+		{
+			fils[i]=a.fils[i];
+		}
+		info = a.getInfo();
+		filsA =nullptr;
+		SABR=nullptr;
+	}
+		//std::cout<<"Apres Arbre::Arbre(a)"<<std::endl;
 }
 
 Arbre::Arbre(Goban& G, Etat::VAL val)
 {
-	std::cout << "Avant	 Arbre::Arbre()" << std::endl;
-
+	std::cout<<"avant constArbre(G,v)"<<std::endl;
 	gob = new Goban(G);
 	info=false;
 	value=val;
-	fils= 	std::vector<Goban>(0);
 	info=0;
-	indice = 0;
-	std::cout << "Apres Arbre::Arbre()" << std::endl;
-}
+	std::vector<Goban> f = gob->listFils(value);
+	nbF= f.size();
+	fils= new Goban[nbF];
+	for (size_t i=0; i<f.size(); i++){
+		fils[i]=f[i];
+	}
+	filsA= nullptr;
+	SABR=nullptr;
+	std::cout<<"après constArbre(G,v)"<<std::endl;
+	}
+
 //Distructor
 Arbre::~Arbre(){
 	delete gob;
+	if (filsA != nullptr) delete filsA;
+	delete[] fils;
+	delete[] SABR;
 }
 //Getters
 
-std::vector<Arbre> Arbre::getAFils() const
-{
-	return Afils;
-}
-
-Arbre Arbre::getAFilsIndice(const size_t i) const
-{
-	return Afils.at(i);
-}
-
-Goban Arbre::getFilsIndice(const size_t indice) const
+Goban& Arbre::at(const size_t indice) const
 {
 	return fils[indice];
 }
 
-std::vector<Goban> Arbre::getFils() const
+Goban* Arbre::getFils()
 {
 	return fils;
 }
@@ -63,9 +73,9 @@ size_t Arbre::getNbF() const
 	return this->nbF;
 }
 
-Goban Arbre::getGob() const
+Goban* Arbre::getGob() const
 {
-	return *gob;
+	return gob;
 }
 
 bool Arbre::getInfo() const
@@ -78,23 +88,21 @@ Etat::VAL Arbre::getValue() const
 	return value;
 }
 
-size_t Arbre::getIndice() const
+Arbre* Arbre::getFilsA() const
 {
-	return indice;
+	return filsA;
+}
+
+Arbre* Arbre::getSABR()
+{
+	return SABR;
+}
+Arbre& Arbre::getSABR(size_t i)
+{
+	return SABR[i];
 }
 
 //Setters
-
-
-void Arbre::setAFils(Arbre a)
-{
-	Afils.push_back(a);
-}
-
-void Arbre::setFils(const Goban& f)
-{
-	this->fils.push_back(f);
-}
 
 void Arbre::setNbF(size_t _nbF)
 {
@@ -115,35 +123,44 @@ void Arbre::setValue(Etat::VAL v)
 {
 	this->value = v;
 }
-
-void Arbre::setIndice(const size_t i)
-{
-	indice = i;
+void Arbre::setFilsA(Goban& G, Etat::VAL val){
+	delete filsA;
+	filsA= new Arbre(G,val);
 }
 
-Goban& Arbre::operator[](unsigned short int i)
-{
-	return fils[i];
+void Arbre::setSABR(Goban& G, Etat::VAL val, size_t i){
+	std::cout<<"avant setSABR"<<std::endl;
+	SABR[i]= Arbre(G,val);
+	std::cout<<"après setSABR"<<std::endl;
+}
+
+Arbre& Arbre::operator[](const size_t i)const{
+  return SABR[i];
 }
 
 //overloading methodes
-Arbre Arbre::operator=(Arbre a)
+Arbre Arbre::operator=(const Arbre a)
 {
 	std::cout << "Avant Arbre::operator=" << std::endl;
-
 	if (this != &a)
 	{
-		gob = a.gob;
+		delete gob;
+		gob = new Goban(*a.gob);
 		nbF = a.nbF;
-		fils.resize(a.fils.size());
-		fils = a.fils;
+		delete[] fils;
+		fils= new Goban[nbF];
+		for (size_t i=0; i< nbF; i++)
+		{
+			fils[i]= a.fils[i];
+		}
 		info = a.info;
 		value = a.value;
-		Afils = a.Afils;
+		delete filsA;
+		filsA= new Arbre(*a.getFilsA());
+		SABR=nullptr;
+		std::cout << "Apres Arbre::operator=" << std::endl;
+
 	}
-
-	std::cout << "Apres Arbre::operator=" << std::endl;
-
 	return *this;
 }
 
@@ -159,19 +176,10 @@ void Arbre::afficher()
 	std::cout << this->getGob() << std::endl;
 }
 
-void Arbre::printArbo(const Arbre & A)
+void Arbre::printArbo(const Arbre&)
 {
 	//Utiliser dotty ou latex ??
-	std::string f_name = "SortieLatex";
-	std::ofstream file(f_name.c_str(), std::ios::out | std::ios::trunc);
-	std::string buffer_begin = "\\documentclass{article} \n	\\usepackage{tikz} \n \\begin{document} \n \\begin{tikzpicture} \n \\tikzstyle{every node}=[fill=red!60,circle,inner sep=1pt] \n";
-	std::string buffer = "\\node{R} \n" + latexRec(A);
-	std::string buffer_end = "\\end{tikzpicture}\n \\end{document} \n";
-	file << buffer_begin;
-	file << buffer;
-	file << buffer_end;
-	file.close();
-	//std::cout << this->getGob() << std::endl;
+	std::cout << this->getGob() << std::endl;
 }
 
 
@@ -181,22 +189,27 @@ std::ostream& operator<<(std::ostream &os, Arbre &n)
 	return os;
 }
 
-std::string latexRec(const Arbre & A)
+void Arbre::resetFils()
 {
-	std::string buffer_pere, buffer, info = "F";
-	if (A.getInfo())
-		info = "T";
-	if (A.getNbF() == 0)
+	std::vector<Goban> f=gob->listFils(value);
+	nbF=f.size();
+	delete[] fils;
+	fils= new Goban[nbF];
+	for (size_t i=0; i<nbF;i++)
 	{
-		return "child{node{"+info+"}} \n";
+		fils[i]= f[i];
 	}
-	else
-	{
-		buffer_pere = "child{node{" + info + "} \n";
-		for (size_t i = 0; i < A.getNbF(); i++)
-		{
-			 buffer = buffer + "\n" + latexRec(A.getAFilsIndice(i));
-		}
-		return buffer_pere + buffer + "} \n";
+	f.clear();
+	f.resize(0);
+}
+
+void Arbre::elimFils(){
+	delete[] fils;
+	fils = new Goban [0];
+}
+void Arbre::defineSABR(){
+	SABR = new Arbre[nbF];
+	for (size_t i=0; i<nbF; i++){
+		SABR[i]=Arbre();
 	}
 }

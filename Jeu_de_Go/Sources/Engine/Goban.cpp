@@ -96,7 +96,7 @@ Goban::Goban(const Goban& goban)
 }
 //DECONSTRUCTOR
 Goban::~Goban(){
-	delete[] array;
+	//delete[] array;
 }
 //overloadings methodes
 
@@ -206,6 +206,7 @@ void Goban::rechercheGroupes(const Etat::VAL&  val, const bool& verbose)
 	groups.clear();
 
 	// Browse every goban's intersection
+	size_t j=0;
 	for (size_t i = 0; i < (TGOBAN * TGOBAN); i++)
 	{
 		// If it's a stone of the color searched
@@ -214,7 +215,7 @@ void Goban::rechercheGroupes(const Etat::VAL&  val, const bool& verbose)
 			if (verbose)	std::cout << "Stone found.\n";
 
 			// There is at least one group so start searching a neighboor-group
-			size_t j = 0;
+			j = 0;
 			while (j < groups.size())
 			{
 				if (verbose)	std::cout << "   Looking in the group " << j;
@@ -265,6 +266,7 @@ if (group.size()>0){
 			if (group[i].voisin(group[j])){
 				group[i].fusion(group[j]);
 				group.erase(group.begin()+j);
+				j--;
 			}
 		}
 	}
@@ -403,7 +405,7 @@ bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
       k=0;
 			//std::cout<<"liberté: "<<liberties<<std::endl;;
       while (!estLibre && k<liberties.size()){
-        if (liberties[k].getVal()==Etat::VIDE || liberties[k].getVal()==Etat::KOWHITE || liberties[k].getVal()==Etat::KOBLACK){
+        if (liberties[k].getVal()==Etat::VIDE || liberties[k].getVal()==Etat::KOWHITE || liberties[k].getVal()==Etat::KOBLACK || liberties[k].getVal()==Etat::NJ){
           estLibre=1;
         }
         k++;
@@ -543,9 +545,9 @@ uint8_t * Goban::compress(int nb_revelent) const
 	// Firstly just count numher on revelent intersections if the user doesn't specify it
 	if (!nb_revelent)
 	{
-		for (int i = 0; i < TGOBAN; i++)
+		for (size_t i = 0; i < TGOBAN; i++)
 		{
-			for (int j = 0; j < TGOBAN; j++)
+			for (size_t j = 0; j < TGOBAN; j++)
 			{
 				switch (goban.coord(i, j).getVal())
 				{
@@ -776,9 +778,9 @@ void Goban::uncompress(const uint8_t * compressed, const Etat::VAL KO_status, in
 std::ostream& operator<<(std::ostream& os, const Goban& goban)
 {
 	size_t i=0;
-	for (size_t y=0;y<TGOBAN; y++){
-		for (size_t x=0;x<TGOBAN; x++){
-			os << goban[i].getVal() << " ";
+	for (size_t y=0;y<4; y++){
+		for (size_t x=0;x<5; x++){
+			os << goban.coord(x,y).getVal() << " ";
 			i++;
 		}
 		os << std::endl;
@@ -789,7 +791,7 @@ std::ostream& operator<<(std::ostream& os, const Goban& goban)
 
 Goban Goban::operator= (const Goban& g)
 {
-	std::cout << "Avant Goban::operator=" << std::endl;
+	//std::cout << "Avant Goban::operator=" << std::endl;
 
 	if (this != &g)
 	{
@@ -844,7 +846,7 @@ Goban Goban::operator= (const Goban& g)
 		}
 		array=array2;
 	}
-	std::cout << "Apres Goban::operator=" << std::endl;
+	//std::cout << "Apres Goban::operator=" << std::endl;
 
 	return *this;
 }
@@ -854,9 +856,7 @@ std::vector<Goban> Goban::listFils(const Etat::VAL value) {
 	//bool result = false;
 	size_t x, y;
 	std::vector<Goban> listGob(0);
-	size_t* coordonates;
 	for (size_t i = 0; i < TGOBAN*TGOBAN; i++) {
-		 coordonates=itoc(i);
 		 x=itoc(i)[0];
 		 y = itoc(i)[1];
 		 //delete[] coordonates;
@@ -866,6 +866,7 @@ std::vector<Goban> Goban::listFils(const Etat::VAL value) {
 			// Move has been allowed
 			//DEFINE GROUPS
 			g.rechercheGroupes();
+
 			//ELIMINATE GROUPS
 			g.eliminateOppGroups(value);
 			listGob.push_back(g);
