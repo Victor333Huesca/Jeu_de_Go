@@ -37,7 +37,7 @@ bool IA::warning()
 	*c = system("grep MemFree /proc/meminfo");
 	for (short int i = 0; i + 8 < 64; i++)
 	{
-		if (c[i + 8] != NULL)
+		if (!c[i + 8])
 			c[i] = c[i + 8];
 	}
 	VirtualMemory = strtoul(c, NULL, 10);
