@@ -32,6 +32,9 @@ public:
 	void setGoban(const Goban& goban);
 	Goban getGoban() const;
 
+	void setTarget(const Etat& state);
+	void setTarget(int x, int y);
+
 	void launchTsumego();
 
 	const std::vector<Screen*>& getScreens() const;
@@ -48,5 +51,9 @@ private:
 
 	// Game
 	Game_window* game;
+
+	// Tsumego
+	std::thread* thread_tsumego;
+	Etat target_tsumego;
 };
 

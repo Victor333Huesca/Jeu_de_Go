@@ -11,7 +11,7 @@ class IA : public Arbre
 public :
 	// Tsumego
 	static void Tsumego(Arbre&, Etat&);
-	static bool Tsumego2(Arbre&, Etat&);
+	//static bool Tsumego2(Arbre&, Etat&);
 
 	// Infos methods
 	static void loadNumber(Arbre&);
@@ -22,8 +22,10 @@ public :
 	static void Tsumego_abrFils(Arbre&, Etat&);
 	static size_t Tsumego_abr(Arbre&, Etat&);
 	static void Solution (Arbre& A);
+	static void stop_tsumego();
 
 private:
 	static int TOTAL_NODE_NUMBER;
 	static int NODE_NUMBER;
+	static bool IS_TSUMEGO_RUNNING;
 };

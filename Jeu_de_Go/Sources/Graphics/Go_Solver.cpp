@@ -7,7 +7,9 @@ Go_Solver::Go_Solver() :
 	cur_screen(MAIN_MENU),
 	musics(5, nullptr),
 	cur_music(PISTE_1),
-	game(nullptr)
+	game(nullptr),
+	thread_tsumego(nullptr),
+	target_tsumego(Etat())
 {
 	// Load game first
 	game = new Game_window();
@@ -48,6 +50,13 @@ Go_Solver::~Go_Solver()
 		delete msc;
 	}
 	musics.clear();
+
+	// clear tsumego
+	IA::stop_tsumego();
+	if (thread_tsumego)
+		thread_tsumego->join();
+	delete thread_tsumego;
+	thread_tsumego = nullptr;
 }
 
 void Go_Solver::Run(sf::RenderWindow & window)
@@ -125,8 +134,11 @@ Menu* Go_Solver::loadMenu1()
 	{ return GAME; }));
 	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return OPTIONS_MENU; }));
-	menu->addItem(Choice_Simple("      Exemples", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
-	{ return NO_CHANGE; }));
+	menu->addItem(Choice_Simple("   Réinitialiser", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
+	{ 
+		solver.setGoban(Goban());
+		return NO_CHANGE; 
+	}));
 	menu->addItem(Choice_Simple("      Problèmes", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PROBLEMS_MENU; }));
 	menu->addItem(Choice_Simple("       Quitter", text_style, pos.x, pos.y + 480, [](sf::RenderTarget& window, Go_Solver& solver)
@@ -164,6 +176,7 @@ Menu* Go_Solver::loadMenu2()
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		solver.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		solver.setTarget(0, 1);
 		return GAME;
 	}));
 
@@ -555,7 +568,7 @@ Menu* Go_Solver::loadMenu6()
 	text_style.setFillColor(sf::Color::Black);
 
 	// Position
-	sf::Vector2f pos(225, 125);
+	sf::Vector2f pos(225, 80);
 
 	// On charge les items
 	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
@@ -567,9 +580,14 @@ Menu* Go_Solver::loadMenu6()
 		solver.launchTsumego();
 		return GAME;
 	}));
-	menu->addItem(Choice_Simple(" Quitter la partie", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(" Stoper Tsumego", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Go_Solver& solver)
+	{
+		IA::stop_tsumego();
+		return GAME;
+	}));
+	menu->addItem(Choice_Simple(" Quitter la partie", text_style, pos.x, pos.y + 480, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return MAIN_MENU; }));
-	menu->addItem(Choice_Simple("Revenir au bureau", text_style, pos.x, pos.y + 480, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple("Revenir au bureau", text_style, pos.x, pos.y + 600, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return EXIT; }));
 
 	// Then set items textures and return the menu
@@ -629,6 +647,16 @@ Goban Go_Solver::getGoban() const
 	return game->getGoban();
 }
 
+void Go_Solver::setTarget(const Etat & state)
+{
+	target_tsumego = state;
+}
+
+void Go_Solver::setTarget(int x, int y)
+{
+	target_tsumego = game->getGoban().coord(x, y);
+}
+
 void Go_Solver::launchTsumego()
 {
 	/* On abandonne cette idée le Tsumego n'a vraiment 
@@ -646,8 +674,26 @@ void Go_Solver::launchTsumego()
 
 	Goban gob = getGoban();
 	Arbre abr(gob, Etat::BLANC);
-	//abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
-	IA::Tsumego(abr, getGoban().coord(0, 1));
+
+	// Launch tsumego (stop previous one before if needed)
+#if defined(_WIN32) || MULTITHREAD
+	IA::stop_tsumego();
+	if (thread_tsumego)
+		thread_tsumego->join();
+	delete thread_tsumego;
+	thread_tsumego = nullptr;
+	try
+	{
+		thread_tsumego = new std::thread(IA::Tsumego, abr, target_tsumego);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what();
+		throw;
+	}
+#else 
+	IA::Tsumego(abr, target_tsumego);
+#endif
 }
 
 const std::vector<Screen*>& Go_Solver::getScreens() const

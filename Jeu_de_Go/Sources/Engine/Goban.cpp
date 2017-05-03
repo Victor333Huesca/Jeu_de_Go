@@ -96,7 +96,7 @@ Goban::Goban(const Goban& goban)
 }
 //DECONSTRUCTOR
 Goban::~Goban(){
-	//delete[] array;
+	delete[] array;
 }
 //overloadings methodes
 

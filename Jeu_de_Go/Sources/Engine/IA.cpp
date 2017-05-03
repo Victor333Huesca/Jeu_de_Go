@@ -3,6 +3,7 @@
 
 int IA::TOTAL_NODE_NUMBER = 0;
 int IA::NODE_NUMBER = 0;
+bool IA::IS_TSUMEGO_RUNNING = false;
 
 size_t factoriel(size_t n)
 {
@@ -49,26 +50,39 @@ bool IA::warning()
 void IA::Tsumego(Arbre& A, Etat& cible)
 {
 	auto start = std::chrono::high_resolution_clock::now();
-  auto finish = std::chrono::high_resolution_clock::now();
-  auto microseconds = std::chrono::duration_cast<std::chrono::microseconds>(finish-start);
+	auto finish = std::chrono::high_resolution_clock::now();
+	auto microseconds = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
 	//std::cout<<"Dans le goban:"<<A.getGob()->coord(cible.getX(), cible.getY()).getVal()<<std::endl<<"La cible("<<cible.getX()<<","<<cible.getY()<<"):"<<cible.getVal()<<std::endl;
-	IA::loadNumber(A);
+	loadNumber(A);
+	IS_TSUMEGO_RUNNING = true;
 
 	start = std::chrono::high_resolution_clock::now();
-	size_t noeuds=IA::Tsumego_abr(A, cible);
+	size_t noeuds = Tsumego_abr(A, cible);
 	finish = std::chrono::high_resolution_clock::now();
-	microseconds = std::chrono::duration_cast<std::chrono::microseconds>(finish-start);
-	std::cout<<"Temps du résolution du problème: "<< (double)(microseconds.count())<<std::endl;
-	std::cout<<"Nombre de noeuds exploitées: "<< noeuds<<std::endl;
-	std::cout<<"Nombre de noeuds totale: "<< factoriel(A.getNbF())<<std::endl;
-	//AFFICHE RESULTAT DU TSUMEGO
-	if ((A.getValue() == cible.getVal() && A.getInfo()) || (A.getValue() != cible.getVal() && !A.getInfo()))
-			std::cout<<"La cible a échapé!"<<std::endl;
+	microseconds = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+
+	// -1 is the code return if the recursion has been aborted
+	if (noeuds != (size_t)-1)
+	{
+		std::cout << "Temps du résolution du problème: " << (double)(microseconds.count()) << std::endl;
+		std::cout << "Nombre de noeuds exploités: " << noeuds << std::endl;
+		std::cout << "Nombre de noeuds total: " << factoriel(A.getNbF()) << std::endl;
+
+		//AFFICHE RESULTAT DU TSUMEGO
+		if ((A.getValue() == cible.getVal() && A.getInfo()) || (A.getValue() != cible.getVal() && !A.getInfo()))
+			std::cout << "La cible a échapé!" << std::endl;
 		else
-			std::cout<<"La cible a étais capturé!"<<std::endl;
-	std::cout<<"La solution de ce problème est: "<<std::endl;
-	IA::Solution(A);
+			std::cout << "La cible a été capturé!" << std::endl;
+		std::cout << "Une solution a ce problème est: " << std::endl;
+		IA::Solution(A);
+	}
+	else
+	{
+		// recursion has been aborted
+		std::cout << "Le Tsumego a été interompu !" << std::endl;
+	}
+	stop_tsumego();
 }
 
 /*
@@ -216,6 +230,9 @@ size_t IA::Tsumego_abr(Arbre& A, Etat& cible)//marche
 	}
 	*/
 
+	// Stop the recursion if we need for a reason or an other
+	if (!IS_TSUMEGO_RUNNING)	return (size_t)-1;
+
 	//recalculer les fils pour les cas ou l'arbre n'a pas de fils
 	NODE_NUMBER++;
 	size_t noeuds=1;
@@ -288,6 +305,9 @@ size_t IA::Tsumego_abr(Arbre& A, Etat& cible)//marche
 		}
 		i++;
 	}
+
+	// Just in case
+	return (size_t)-1;
 }
 
 void IA::Solution (Arbre& A)
@@ -296,6 +316,11 @@ void IA::Solution (Arbre& A)
 	if (A.getFilsA() != nullptr){
 		Solution (*A.getFilsA());
 	}
+}
+
+void IA::stop_tsumego()
+{
+	IS_TSUMEGO_RUNNING = false;
 }
 
 void IA::Tsumego_abrFils(Arbre& A, Etat& cible)//ne marche pas

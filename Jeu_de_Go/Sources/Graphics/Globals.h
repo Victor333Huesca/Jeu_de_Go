@@ -9,6 +9,10 @@
 #include <fstream>
 #include <cassert>
 #include <stdexcept>
+#include <thread>
+#include <fstream>
+#include <cassert>
+#include <cmath>
 
 
 #ifdef _WIN32

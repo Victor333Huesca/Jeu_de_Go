@@ -149,26 +149,6 @@ Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 		{
 			// Ctrl + Y
 			// It will be more complecated than I expected.
-
-			// Permet de lancezr le tsumego
-			char c;
-			std::cout << "Lancer le Tsumego Y/N ?  ";
-			std::cin >> c;
-
-			if (c == 'Y' || c == 'y')
-			{
-				std::cout << "lancement du tsumego :" << std::endl;
-				Goban gob = board.getGoban();
-				Arbre abr(gob, Etat::BLANC);
-				//abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
-				abr.printArbo(abr);
-				IA::Tsumego(abr, board.getGoban().coord(3, 0));
-				
-			}
-			else
-			{
-				std::cout << "Vous avez épargné votre pc !"<<std::endl;
-			}
 		}
 	}
 	else

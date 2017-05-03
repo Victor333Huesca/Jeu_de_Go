@@ -1,8 +1,4 @@
-﻿#include <thread>
-#include <fstream>
-#include <cassert>
-#include <cmath>
-#include "Globals.h"
+﻿#include "Globals.h"
 #include "Go_Solver.h"
 
 #define	MULTITHREAD false
