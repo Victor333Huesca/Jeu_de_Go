@@ -1,0 +1,450 @@
+\hypertarget{class_go___solver}{}\section{Go\+\_\+\+Solver Class Reference}
+\label{class_go___solver}\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+
+
+{\ttfamily \#include $<$Go\+\_\+\+Solver.\+h$>$}
+
+
+
+Collaboration diagram for Go\+\_\+\+Solver\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{class_go___solver__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_go___solver_a30bd2f9d195a5553cc683f8314ea4b58}{Go\+\_\+\+Solver} ()
+\item 
+\hyperlink{class_go___solver_a63f22d429ea0e1c881d0b276edfe4b0e}{$\sim$\+Go\+\_\+\+Solver} ()
+\item 
+void \hyperlink{class_go___solver_a84c021a62506ef8f5d43aae109298fe0}{Run} (sf\+::\+Render\+Window \&window)
+\item 
+void \hyperlink{class_go___solver_a27ceb252dd57ac88d0dc2dbb04a25e32}{load\+Menu} (const \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \&menu)
+\item 
+const sf\+::\+Music \& \hyperlink{class_go___solver_a321bc84b99b5ebdc2fbc59222aae8c74}{get\+Music} () const
+\item 
+void \hyperlink{class_go___solver_a9b569ce8f1075a0c0136a46c62bd403a}{set\+Music} (const \hyperlink{_globals_8h_ad531d267a0e8da4d0683298e06912177}{Musics} \&mus)
+\item 
+void \hyperlink{class_go___solver_a840b3c44ffd48baf0b7f2b4d15a831a0}{turn\+Music\+Up} ()
+\item 
+void \hyperlink{class_go___solver_a9bf8a0287fac1692ddf3b640ae1b04fe}{turn\+Music\+Down} ()
+\item 
+void \hyperlink{class_go___solver_a461b1fecf636b55d6b9f31b0035366c3}{turn\+Sounds\+Up} ()
+\item 
+void \hyperlink{class_go___solver_a1d7d0fad019f2d33caebb6cfe11d1f42}{turn\+Sounds\+Down} ()
+\item 
+void \hyperlink{class_go___solver_a8452c66187c526e0a6051bbb42b9bbda}{set\+Goban} (const \hyperlink{class_goban}{Goban} \&goban)
+\item 
+\hyperlink{class_goban}{Goban} \hyperlink{class_go___solver_a95c1c268123a76b4f2db5b183bc721b6}{get\+Goban} () const
+\item 
+void \hyperlink{class_go___solver_af792237fc55c0db4f5c5cc3299d51935}{set\+Target} (const \hyperlink{class_etat}{Etat} \&state)
+\item 
+void \hyperlink{class_go___solver_ab2a2c57a24b076a6729e01504ef25377}{set\+Target} (int x, int y)
+\item 
+void \hyperlink{class_go___solver_a6ca744f1f4586c3f90f2e47915034baf}{launch\+Tsumego} ()
+\item 
+const std\+::vector$<$ \hyperlink{class_screen}{Screen} $\ast$ $>$ \& \hyperlink{class_go___solver_aa86fa44c1be38ba004ff2f0475094cd1}{get\+Screens} () const
+\item 
+const \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \& \hyperlink{class_go___solver_a40386a16847e889ffd280d5c6b993462}{get\+Screen} () const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_menu}{Menu} $\ast$ \hyperlink{class_go___solver_aefc904642aa7fcc3a5f700f921b9c0ab}{load\+Menu1} ()
+\item 
+static \hyperlink{class_menu}{Menu} $\ast$ \hyperlink{class_go___solver_acbb6d35d88e5c9bb05ceaae81db6287c}{load\+Menu2} ()
+\item 
+static \hyperlink{class_menu}{Menu} $\ast$ \hyperlink{class_go___solver_a48def38f87effdb973b5f02329a0af4f}{load\+Menu3} ()
+\item 
+static \hyperlink{class_menu}{Menu} $\ast$ \hyperlink{class_go___solver_a99b82aef6960441ba24e3b28c7ec9ad5}{load\+Menu4} ()
+\item 
+static \hyperlink{class_menu}{Menu} $\ast$ \hyperlink{class_go___solver_a480bbc610bbc9bb3b1c675d69128d1fd}{load\+Menu5} ()
+\item 
+static \hyperlink{class_menu}{Menu} $\ast$ \hyperlink{class_go___solver_a9aa3c644c34232cbc9bd3341930373c9}{load\+Menu6} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_go___solver_a30bd2f9d195a5553cc683f8314ea4b58}\label{class_go___solver_a30bd2f9d195a5553cc683f8314ea4b58}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{Go\+\_\+\+Solver()}{Go\_Solver()}}
+{\footnotesize\ttfamily Go\+\_\+\+Solver\+::\+Go\+\_\+\+Solver (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a30bd2f9d195a5553cc683f8314ea4b58_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a63f22d429ea0e1c881d0b276edfe4b0e}\label{class_go___solver_a63f22d429ea0e1c881d0b276edfe4b0e}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!````~Go\+\_\+\+Solver@{$\sim$\+Go\+\_\+\+Solver}}
+\index{````~Go\+\_\+\+Solver@{$\sim$\+Go\+\_\+\+Solver}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{$\sim$\+Go\+\_\+\+Solver()}{~Go\_Solver()}}
+{\footnotesize\ttfamily Go\+\_\+\+Solver\+::$\sim$\+Go\+\_\+\+Solver (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{class_go___solver_a63f22d429ea0e1c881d0b276edfe4b0e_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_go___solver_a95c1c268123a76b4f2db5b183bc721b6}\label{class_go___solver_a95c1c268123a76b4f2db5b183bc721b6}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!get\+Goban@{get\+Goban}}
+\index{get\+Goban@{get\+Goban}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{get\+Goban()}{getGoban()}}
+{\footnotesize\ttfamily \hyperlink{class_goban}{Goban} Go\+\_\+\+Solver\+::get\+Goban (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a95c1c268123a76b4f2db5b183bc721b6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a95c1c268123a76b4f2db5b183bc721b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a321bc84b99b5ebdc2fbc59222aae8c74}\label{class_go___solver_a321bc84b99b5ebdc2fbc59222aae8c74}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!get\+Music@{get\+Music}}
+\index{get\+Music@{get\+Music}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{get\+Music()}{getMusic()}}
+{\footnotesize\ttfamily const sf\+::\+Music \& Go\+\_\+\+Solver\+::get\+Music (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a321bc84b99b5ebdc2fbc59222aae8c74_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a40386a16847e889ffd280d5c6b993462}\label{class_go___solver_a40386a16847e889ffd280d5c6b993462}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!get\+Screen@{get\+Screen}}
+\index{get\+Screen@{get\+Screen}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{get\+Screen()}{getScreen()}}
+{\footnotesize\ttfamily const \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \& Go\+\_\+\+Solver\+::get\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{class_go___solver_a40386a16847e889ffd280d5c6b993462_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_aa86fa44c1be38ba004ff2f0475094cd1}\label{class_go___solver_aa86fa44c1be38ba004ff2f0475094cd1}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!get\+Screens@{get\+Screens}}
+\index{get\+Screens@{get\+Screens}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{get\+Screens()}{getScreens()}}
+{\footnotesize\ttfamily const std\+::vector$<$ \hyperlink{class_screen}{Screen} $\ast$ $>$ \& Go\+\_\+\+Solver\+::get\+Screens (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{class_go___solver_aa86fa44c1be38ba004ff2f0475094cd1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a6ca744f1f4586c3f90f2e47915034baf}\label{class_go___solver_a6ca744f1f4586c3f90f2e47915034baf}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!launch\+Tsumego@{launch\+Tsumego}}
+\index{launch\+Tsumego@{launch\+Tsumego}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{launch\+Tsumego()}{launchTsumego()}}
+{\footnotesize\ttfamily void Go\+\_\+\+Solver\+::launch\+Tsumego (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a6ca744f1f4586c3f90f2e47915034baf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a27ceb252dd57ac88d0dc2dbb04a25e32}\label{class_go___solver_a27ceb252dd57ac88d0dc2dbb04a25e32}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!load\+Menu@{load\+Menu}}
+\index{load\+Menu@{load\+Menu}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{load\+Menu()}{loadMenu()}}
+{\footnotesize\ttfamily void Go\+\_\+\+Solver\+::load\+Menu (\begin{DoxyParamCaption}\item[{const \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \&}]{menu }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a27ceb252dd57ac88d0dc2dbb04a25e32_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_go___solver_a27ceb252dd57ac88d0dc2dbb04a25e32_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_aefc904642aa7fcc3a5f700f921b9c0ab}\label{class_go___solver_aefc904642aa7fcc3a5f700f921b9c0ab}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!load\+Menu1@{load\+Menu1}}
+\index{load\+Menu1@{load\+Menu1}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{load\+Menu1()}{loadMenu1()}}
+{\footnotesize\ttfamily \hyperlink{class_menu}{Menu} $\ast$ Go\+\_\+\+Solver\+::load\+Menu1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_aefc904642aa7fcc3a5f700f921b9c0ab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_aefc904642aa7fcc3a5f700f921b9c0ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_acbb6d35d88e5c9bb05ceaae81db6287c}\label{class_go___solver_acbb6d35d88e5c9bb05ceaae81db6287c}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!load\+Menu2@{load\+Menu2}}
+\index{load\+Menu2@{load\+Menu2}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{load\+Menu2()}{loadMenu2()}}
+{\footnotesize\ttfamily \hyperlink{class_menu}{Menu} $\ast$ Go\+\_\+\+Solver\+::load\+Menu2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_acbb6d35d88e5c9bb05ceaae81db6287c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_acbb6d35d88e5c9bb05ceaae81db6287c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a48def38f87effdb973b5f02329a0af4f}\label{class_go___solver_a48def38f87effdb973b5f02329a0af4f}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!load\+Menu3@{load\+Menu3}}
+\index{load\+Menu3@{load\+Menu3}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{load\+Menu3()}{loadMenu3()}}
+{\footnotesize\ttfamily \hyperlink{class_menu}{Menu} $\ast$ Go\+\_\+\+Solver\+::load\+Menu3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a48def38f87effdb973b5f02329a0af4f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a48def38f87effdb973b5f02329a0af4f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a99b82aef6960441ba24e3b28c7ec9ad5}\label{class_go___solver_a99b82aef6960441ba24e3b28c7ec9ad5}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!load\+Menu4@{load\+Menu4}}
+\index{load\+Menu4@{load\+Menu4}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{load\+Menu4()}{loadMenu4()}}
+{\footnotesize\ttfamily \hyperlink{class_menu}{Menu} $\ast$ Go\+\_\+\+Solver\+::load\+Menu4 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a99b82aef6960441ba24e3b28c7ec9ad5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a99b82aef6960441ba24e3b28c7ec9ad5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a480bbc610bbc9bb3b1c675d69128d1fd}\label{class_go___solver_a480bbc610bbc9bb3b1c675d69128d1fd}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!load\+Menu5@{load\+Menu5}}
+\index{load\+Menu5@{load\+Menu5}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{load\+Menu5()}{loadMenu5()}}
+{\footnotesize\ttfamily \hyperlink{class_menu}{Menu} $\ast$ Go\+\_\+\+Solver\+::load\+Menu5 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a480bbc610bbc9bb3b1c675d69128d1fd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a480bbc610bbc9bb3b1c675d69128d1fd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a9aa3c644c34232cbc9bd3341930373c9}\label{class_go___solver_a9aa3c644c34232cbc9bd3341930373c9}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!load\+Menu6@{load\+Menu6}}
+\index{load\+Menu6@{load\+Menu6}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{load\+Menu6()}{loadMenu6()}}
+{\footnotesize\ttfamily \hyperlink{class_menu}{Menu} $\ast$ Go\+\_\+\+Solver\+::load\+Menu6 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a9aa3c644c34232cbc9bd3341930373c9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a9aa3c644c34232cbc9bd3341930373c9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a84c021a62506ef8f5d43aae109298fe0}\label{class_go___solver_a84c021a62506ef8f5d43aae109298fe0}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!Run@{Run}}
+\index{Run@{Run}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Go\+\_\+\+Solver\+::\+Run (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{class_go___solver_a84c021a62506ef8f5d43aae109298fe0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a8452c66187c526e0a6051bbb42b9bbda}\label{class_go___solver_a8452c66187c526e0a6051bbb42b9bbda}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!set\+Goban@{set\+Goban}}
+\index{set\+Goban@{set\+Goban}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{set\+Goban()}{setGoban()}}
+{\footnotesize\ttfamily void Go\+\_\+\+Solver\+::set\+Goban (\begin{DoxyParamCaption}\item[{const \hyperlink{class_goban}{Goban} \&}]{goban }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a8452c66187c526e0a6051bbb42b9bbda_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a9b569ce8f1075a0c0136a46c62bd403a}\label{class_go___solver_a9b569ce8f1075a0c0136a46c62bd403a}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!set\+Music@{set\+Music}}
+\index{set\+Music@{set\+Music}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{set\+Music()}{setMusic()}}
+{\footnotesize\ttfamily void Go\+\_\+\+Solver\+::set\+Music (\begin{DoxyParamCaption}\item[{const \hyperlink{_globals_8h_ad531d267a0e8da4d0683298e06912177}{Musics} \&}]{mus }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_go___solver_af792237fc55c0db4f5c5cc3299d51935}\label{class_go___solver_af792237fc55c0db4f5c5cc3299d51935}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!set\+Target@{set\+Target}}
+\index{set\+Target@{set\+Target}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{set\+Target()}{setTarget()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Go\+\_\+\+Solver\+::set\+Target (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat}{Etat} \&}]{state }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_go___solver_ab2a2c57a24b076a6729e01504ef25377}\label{class_go___solver_ab2a2c57a24b076a6729e01504ef25377}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!set\+Target@{set\+Target}}
+\index{set\+Target@{set\+Target}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{set\+Target()}{setTarget()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Go\+\_\+\+Solver\+::set\+Target (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_ab2a2c57a24b076a6729e01504ef25377_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a9bf8a0287fac1692ddf3b640ae1b04fe}\label{class_go___solver_a9bf8a0287fac1692ddf3b640ae1b04fe}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!turn\+Music\+Down@{turn\+Music\+Down}}
+\index{turn\+Music\+Down@{turn\+Music\+Down}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{turn\+Music\+Down()}{turnMusicDown()}}
+{\footnotesize\ttfamily void Go\+\_\+\+Solver\+::turn\+Music\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a9bf8a0287fac1692ddf3b640ae1b04fe_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a840b3c44ffd48baf0b7f2b4d15a831a0}\label{class_go___solver_a840b3c44ffd48baf0b7f2b4d15a831a0}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!turn\+Music\+Up@{turn\+Music\+Up}}
+\index{turn\+Music\+Up@{turn\+Music\+Up}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{turn\+Music\+Up()}{turnMusicUp()}}
+{\footnotesize\ttfamily void Go\+\_\+\+Solver\+::turn\+Music\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_go___solver_a840b3c44ffd48baf0b7f2b4d15a831a0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a1d7d0fad019f2d33caebb6cfe11d1f42}\label{class_go___solver_a1d7d0fad019f2d33caebb6cfe11d1f42}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!turn\+Sounds\+Down@{turn\+Sounds\+Down}}
+\index{turn\+Sounds\+Down@{turn\+Sounds\+Down}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{turn\+Sounds\+Down()}{turnSoundsDown()}}
+{\footnotesize\ttfamily void Go\+\_\+\+Solver\+::turn\+Sounds\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a1d7d0fad019f2d33caebb6cfe11d1f42_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_go___solver_a461b1fecf636b55d6b9f31b0035366c3}\label{class_go___solver_a461b1fecf636b55d6b9f31b0035366c3}} 
+\index{Go\+\_\+\+Solver@{Go\+\_\+\+Solver}!turn\+Sounds\+Up@{turn\+Sounds\+Up}}
+\index{turn\+Sounds\+Up@{turn\+Sounds\+Up}!Go\+\_\+\+Solver@{Go\+\_\+\+Solver}}
+\subsubsection{\texorpdfstring{turn\+Sounds\+Up()}{turnSoundsUp()}}
+{\footnotesize\ttfamily void Go\+\_\+\+Solver\+::turn\+Sounds\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_go___solver_a461b1fecf636b55d6b9f31b0035366c3_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\hyperlink{_go___solver_8h}{Go\+\_\+\+Solver.\+h}\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\hyperlink{_go___solver_8cpp}{Go\+\_\+\+Solver.\+cpp}\end{DoxyCompactItemize}

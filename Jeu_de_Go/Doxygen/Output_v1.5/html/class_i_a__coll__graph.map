@@ -1,0 +1,3 @@
+<map id="IA" name="IA">
+<area shape="rect" id="node2" href="$class_arbre.html" title="{Arbre\n||+ Arbre()\l+ Arbre()\l+ Arbre()\l+ Arbre()\l+ Arbre()\l+ ~Arbre()\l+ at()\l+ getFils()\l+ getNbF()\l+ getGob()\l+ getInfo()\l+ getValue()\l+ getFilsA()\l+ getSABR()\l+ getSABR()\l+ setNbF()\l+ setGob()\l+ setInfo()\l+ setValue()\l+ setFilsA()\l+ setSABR()\l+ operator=()\l+ operator[]()\l+ effacerGoban()\l+ afficher()\l+ printArbo()\l+ resetFils()\l+ elimFils()\l+ defineSABR()\l}" alt="" coords="29,5,148,493"/>
+</map>

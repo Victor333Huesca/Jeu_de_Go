@@ -1,0 +1,271 @@
+\hypertarget{class_etat}{}\section{Etat Class Reference}
+\label{class_etat}\index{Etat@{Etat}}
+
+
+{\ttfamily \#include $<$Etat.\+h$>$}
+
+
+
+Collaboration diagram for Etat\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{class_etat__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{V\+AL} \{ \newline
+\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea4811ee91e77f4300db04a9451fd0e0f0}{V\+I\+DE}, 
+\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea6e8dd9025eff15a0d6a71268d7e34632}{N\+O\+IR}, 
+\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea386cdf6b926ee1da9e6469350d5928c8}{B\+L\+A\+NC}, 
+\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea9b3dd2418f67863f1da1da56f34fafff}{K\+O\+W\+H\+I\+TE}, 
+\newline
+\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea14f75cb5bd86150422cbf856df2d1e92}{K\+O\+B\+L\+A\+CK}, 
+\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea91e6e22a0ee67bc1371a024e1b2ded64}{NJ}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_etat_a44b4313a1a0bc0584a36be447802f2f4}{Etat} ()
+\item 
+\hyperlink{class_etat_a1e1232441c425f3f9adbf8cc99d9407e}{Etat} (const size\+\_\+t, const size\+\_\+t, const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{V\+AL})
+\item 
+\hyperlink{class_etat_a4e8da39ecb5b8edf66cc02addef85024}{Etat} (const \hyperlink{class_etat}{Etat} \&)
+\item 
+size\+\_\+t \hyperlink{class_etat_aa25e66b110bc835523819392435e78c6}{getX} () const
+\item 
+size\+\_\+t \hyperlink{class_etat_a3e3e915f2261c83989a983e84b1273c1}{getY} () const
+\item 
+\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{V\+AL} \hyperlink{class_etat_ac0b81bbcf64cb3cc574e5a9dcdf94382}{get\+Val} () const
+\item 
+void \hyperlink{class_etat_ac020c4fe222274ac849a03fc8f19a99a}{setX} (size\+\_\+t)
+\item 
+void \hyperlink{class_etat_a8a54fc9ecb1b97d84d2f1f259e3bf70e}{setY} (size\+\_\+t)
+\item 
+void \hyperlink{class_etat_aa88987ca54aee676717f05e4570c0aec}{set\+Val} (\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{V\+AL})
+\item 
+bool \hyperlink{class_etat_afa4f3f731268802b2a9c693cb738707b}{operator==} (const \hyperlink{class_etat}{Etat} \&) const
+\item 
+bool \hyperlink{class_etat_a676159ce9be48a79d647f93cd9faee6e}{operator!=} (const \hyperlink{class_etat}{Etat} \&) const
+\item 
+\hyperlink{class_etat}{Etat} \hyperlink{class_etat_ad400bb5d992ce25d27d56832fa0a9872}{operator=} (const \hyperlink{class_etat}{Etat} \&)
+\item 
+bool \hyperlink{class_etat_ab6e6b44dd68c041150332cee66dc74a3}{est\+Voisine} (const \hyperlink{class_etat}{Etat} \&piece) const
+\item 
+bool \hyperlink{class_etat_a2321679cabab0358adc8cf17dd119572}{is\+Playable} (const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{V\+AL} \&value, const bool eliminate\+Ko) const
+\item 
+bool \hyperlink{class_etat_a98cc204acc13280c277e2aa6a32a54ec}{is\+A\+Stone} () const
+\item 
+bool \hyperlink{class_etat_a64d8c0196e3e4de340726e2be29dec97}{is\+A\+Stone} (const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{V\+AL} \&value) const
+\item 
+std\+::ostream \& \hyperlink{class_etat_a9aa2a1b7274bc6d8a66fbec9655e47d0}{coord} (std\+::ostream \&os) const
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}\label{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}} 
+\index{Etat@{Etat}!V\+AL@{V\+AL}}
+\index{V\+AL@{V\+AL}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{V\+AL}{VAL}}
+{\footnotesize\ttfamily enum \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+I\+DE@{V\+I\+DE}!Etat@{Etat}}\index{Etat@{Etat}!V\+I\+DE@{V\+I\+DE}}}\mbox{\Hypertarget{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea4811ee91e77f4300db04a9451fd0e0f0}\label{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea4811ee91e77f4300db04a9451fd0e0f0}} 
+V\+I\+DE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\+O\+IR@{N\+O\+IR}!Etat@{Etat}}\index{Etat@{Etat}!N\+O\+IR@{N\+O\+IR}}}\mbox{\Hypertarget{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea6e8dd9025eff15a0d6a71268d7e34632}\label{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea6e8dd9025eff15a0d6a71268d7e34632}} 
+N\+O\+IR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+L\+A\+NC@{B\+L\+A\+NC}!Etat@{Etat}}\index{Etat@{Etat}!B\+L\+A\+NC@{B\+L\+A\+NC}}}\mbox{\Hypertarget{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea386cdf6b926ee1da9e6469350d5928c8}\label{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea386cdf6b926ee1da9e6469350d5928c8}} 
+B\+L\+A\+NC&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{K\+O\+W\+H\+I\+TE@{K\+O\+W\+H\+I\+TE}!Etat@{Etat}}\index{Etat@{Etat}!K\+O\+W\+H\+I\+TE@{K\+O\+W\+H\+I\+TE}}}\mbox{\Hypertarget{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea9b3dd2418f67863f1da1da56f34fafff}\label{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea9b3dd2418f67863f1da1da56f34fafff}} 
+K\+O\+W\+H\+I\+TE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{K\+O\+B\+L\+A\+CK@{K\+O\+B\+L\+A\+CK}!Etat@{Etat}}\index{Etat@{Etat}!K\+O\+B\+L\+A\+CK@{K\+O\+B\+L\+A\+CK}}}\mbox{\Hypertarget{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea14f75cb5bd86150422cbf856df2d1e92}\label{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea14f75cb5bd86150422cbf856df2d1e92}} 
+K\+O\+B\+L\+A\+CK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NJ@{NJ}!Etat@{Etat}}\index{Etat@{Etat}!NJ@{NJ}}}\mbox{\Hypertarget{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea91e6e22a0ee67bc1371a024e1b2ded64}\label{class_etat_af3ddb2296ffc379b7f3ad2bf832f294ea91e6e22a0ee67bc1371a024e1b2ded64}} 
+NJ&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_etat_a44b4313a1a0bc0584a36be447802f2f4}\label{class_etat_a44b4313a1a0bc0584a36be447802f2f4}} 
+\index{Etat@{Etat}!Etat@{Etat}}
+\index{Etat@{Etat}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{Etat()}{Etat()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Etat\+::\+Etat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_etat_a1e1232441c425f3f9adbf8cc99d9407e}\label{class_etat_a1e1232441c425f3f9adbf8cc99d9407e}} 
+\index{Etat@{Etat}!Etat@{Etat}}
+\index{Etat@{Etat}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{Etat()}{Etat()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Etat\+::\+Etat (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{X,  }\item[{const size\+\_\+t}]{Y,  }\item[{const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{V\+AL}}]{V }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_etat_a4e8da39ecb5b8edf66cc02addef85024}\label{class_etat_a4e8da39ecb5b8edf66cc02addef85024}} 
+\index{Etat@{Etat}!Etat@{Etat}}
+\index{Etat@{Etat}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{Etat()}{Etat()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Etat\+::\+Etat (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat}{Etat} \&}]{E }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_etat_a9aa2a1b7274bc6d8a66fbec9655e47d0}\label{class_etat_a9aa2a1b7274bc6d8a66fbec9655e47d0}} 
+\index{Etat@{Etat}!coord@{coord}}
+\index{coord@{coord}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{coord()}{coord()}}
+{\footnotesize\ttfamily std\+::ostream \& Etat\+::coord (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_etat_ab6e6b44dd68c041150332cee66dc74a3}\label{class_etat_ab6e6b44dd68c041150332cee66dc74a3}} 
+\index{Etat@{Etat}!est\+Voisine@{est\+Voisine}}
+\index{est\+Voisine@{est\+Voisine}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{est\+Voisine()}{estVoisine()}}
+{\footnotesize\ttfamily bool Etat\+::est\+Voisine (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat}{Etat} \&}]{piece }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_etat_ab6e6b44dd68c041150332cee66dc74a3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_etat_ac0b81bbcf64cb3cc574e5a9dcdf94382}\label{class_etat_ac0b81bbcf64cb3cc574e5a9dcdf94382}} 
+\index{Etat@{Etat}!get\+Val@{get\+Val}}
+\index{get\+Val@{get\+Val}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{get\+Val()}{getVal()}}
+{\footnotesize\ttfamily \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} Etat\+::get\+Val (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_etat_ac0b81bbcf64cb3cc574e5a9dcdf94382_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_etat_aa25e66b110bc835523819392435e78c6}\label{class_etat_aa25e66b110bc835523819392435e78c6}} 
+\index{Etat@{Etat}!getX@{getX}}
+\index{getX@{getX}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{get\+X()}{getX()}}
+{\footnotesize\ttfamily size\+\_\+t Etat\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_etat_aa25e66b110bc835523819392435e78c6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_etat_a3e3e915f2261c83989a983e84b1273c1}\label{class_etat_a3e3e915f2261c83989a983e84b1273c1}} 
+\index{Etat@{Etat}!getY@{getY}}
+\index{getY@{getY}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{get\+Y()}{getY()}}
+{\footnotesize\ttfamily size\+\_\+t Etat\+::getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_etat_a3e3e915f2261c83989a983e84b1273c1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_etat_a98cc204acc13280c277e2aa6a32a54ec}\label{class_etat_a98cc204acc13280c277e2aa6a32a54ec}} 
+\index{Etat@{Etat}!is\+A\+Stone@{is\+A\+Stone}}
+\index{is\+A\+Stone@{is\+A\+Stone}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{is\+A\+Stone()}{isAStone()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Etat\+::is\+A\+Stone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_etat_a64d8c0196e3e4de340726e2be29dec97}\label{class_etat_a64d8c0196e3e4de340726e2be29dec97}} 
+\index{Etat@{Etat}!is\+A\+Stone@{is\+A\+Stone}}
+\index{is\+A\+Stone@{is\+A\+Stone}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{is\+A\+Stone()}{isAStone()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Etat\+::is\+A\+Stone (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{V\+AL} \&}]{value }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_etat_a2321679cabab0358adc8cf17dd119572}\label{class_etat_a2321679cabab0358adc8cf17dd119572}} 
+\index{Etat@{Etat}!is\+Playable@{is\+Playable}}
+\index{is\+Playable@{is\+Playable}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{is\+Playable()}{isPlayable()}}
+{\footnotesize\ttfamily bool Etat\+::is\+Playable (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{V\+AL} \&}]{value,  }\item[{const bool}]{eliminate\+Ko }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_etat_a676159ce9be48a79d647f93cd9faee6e}\label{class_etat_a676159ce9be48a79d647f93cd9faee6e}} 
+\index{Etat@{Etat}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Etat\+::operator!= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat}{Etat} \&}]{E }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_etat_ad400bb5d992ce25d27d56832fa0a9872}\label{class_etat_ad400bb5d992ce25d27d56832fa0a9872}} 
+\index{Etat@{Etat}!operator=@{operator=}}
+\index{operator=@{operator=}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{class_etat}{Etat} Etat\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat}{Etat} \&}]{E }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_etat_afa4f3f731268802b2a9c693cb738707b}\label{class_etat_afa4f3f731268802b2a9c693cb738707b}} 
+\index{Etat@{Etat}!operator==@{operator==}}
+\index{operator==@{operator==}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Etat\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat}{Etat} \&}]{E }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_etat_aa88987ca54aee676717f05e4570c0aec}\label{class_etat_aa88987ca54aee676717f05e4570c0aec}} 
+\index{Etat@{Etat}!set\+Val@{set\+Val}}
+\index{set\+Val@{set\+Val}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{set\+Val()}{setVal()}}
+{\footnotesize\ttfamily void Etat\+::set\+Val (\begin{DoxyParamCaption}\item[{\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{V\+AL}}]{V }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_etat_aa88987ca54aee676717f05e4570c0aec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_etat_ac020c4fe222274ac849a03fc8f19a99a}\label{class_etat_ac020c4fe222274ac849a03fc8f19a99a}} 
+\index{Etat@{Etat}!setX@{setX}}
+\index{setX@{setX}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{set\+X()}{setX()}}
+{\footnotesize\ttfamily void Etat\+::setX (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{X }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_etat_ac020c4fe222274ac849a03fc8f19a99a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_etat_a8a54fc9ecb1b97d84d2f1f259e3bf70e}\label{class_etat_a8a54fc9ecb1b97d84d2f1f259e3bf70e}} 
+\index{Etat@{Etat}!setY@{setY}}
+\index{setY@{setY}!Etat@{Etat}}
+\subsubsection{\texorpdfstring{set\+Y()}{setY()}}
+{\footnotesize\ttfamily void Etat\+::setY (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{Y }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_etat_a8a54fc9ecb1b97d84d2f1f259e3bf70e_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Engine/\hyperlink{_etat_8h}{Etat.\+h}\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Engine/\hyperlink{_etat_8cpp}{Etat.\+cpp}\end{DoxyCompactItemize}

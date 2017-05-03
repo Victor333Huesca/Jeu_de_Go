@@ -1,5 +1,4 @@
 #include"IA.h"
-#include <chrono>
 
 int IA::TOTAL_NODE_NUMBER = 0;
 int IA::NODE_NUMBER = 0;
@@ -407,4 +406,78 @@ void IA::Tsumego_abrFils(Arbre& A, Etat& cible)//ne marche pas
 		}
 		i++;
 	}
+}
+
+size_t IA::Tsumego_compresse(Arbre& A, const Etat& cible)
+{
+	// Stop the recursion if we need for a reason or an other
+	if (!IS_TSUMEGO_RUNNING)	return (size_t)-1;
+
+	// Recalculer les fils pour les cas ou l'arbre n'a pas de fils
+	NODE_NUMBER++;
+	size_t noeuds = 1;
+
+	// CAS D'ARET
+	if (A.getNbF() == 0)
+	{
+		bool enVie = 0;
+		if (A.getGob()->coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
+		{
+			// Cible en vie
+			enVie = 1;
+		}
+		if (A.getValue() == cible.getVal() && enVie)
+			A.setInfo(1);
+		else if (A.getValue() != cible.getVal() && !enVie)
+			A.setInfo(1);
+		else
+			A.setInfo(0);
+		//std::cout<<"UNE FEUILLE"<<std::endl;
+		return noeuds;
+	}
+
+
+	size_t i = 0;
+	// Creation d'un fils
+	Etat::VAL val;
+	while (i < A.getNbF() && A.getInfo() == 0)
+	{
+		noeuds++;
+		if (A.getValue() == Etat::VAL::BLANC)
+			val = Etat::VAL::NOIR;
+		else
+			val = Etat::VAL::BLANC;
+
+		///std::cout << "Avant filsA" << std::endl;
+		A.setFilsA(A.at(i), val);
+		//std::cout << "Apres filsA" << std::endl;
+
+		if (A.getFilsA()->getGob()->coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
+		{
+			//cible en vie
+			noeuds += Tsumego_compresse(*A.getFilsA(), cible);
+		}
+		else
+		{
+			return noeuds;
+		}
+
+		// S'areter si la r�ponse est deja trouv�e (opti)
+		if (A.getFilsA()->getInfo() == 1)
+		{
+			//filsA est à 1 donc A est a 0, donc A cherche le fils suivant
+			//recalculer fils
+		}
+		else
+		{
+			A.setInfo(1);
+			/*std::cout<< A.getGob() <<std::endl;
+			std::cout<< A.getInfo() <<std::endl;*/
+			return noeuds;
+		}
+		i++;
+	}
+
+	// Just in case
+	return (size_t)-1;
 }

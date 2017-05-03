@@ -1,0 +1,6 @@
+<map id="History::cancel" name="History::cancel">
+<area shape="rect" id="node2" href="$class_goban.html#ae7ee3b39f3c0d28c9bca286ca538f8ac" title="Goban::cancel" alt="" coords="163,5,269,32"/>
+<area shape="rect" id="node3" href="$class_board.html#ac7ec911a62371650afd340d1535a1742" title="Board::cancel" alt="" coords="317,5,420,32"/>
+<area shape="rect" id="node4" href="$class_game__window.html#a72304de2044c29f1373037bd818f674f" title="Game_window::keyPressed" alt="" coords="468,5,651,32"/>
+<area shape="rect" id="node5" href="$class_game__window.html#a555769f4e8511e45d6623658dc736be5" title="Game_window::Run" alt="" coords="699,5,836,32"/>
+</map>

@@ -1,4 +1,5 @@
 #pragma once
+#include <chrono>
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -21,6 +22,7 @@ public :
 	static void Tsumego_naif(Arbre&, Etat&);
 	static void Tsumego_abrFils(Arbre&, Etat&);
 	static size_t Tsumego_abr(Arbre&, Etat&);
+	static size_t Tsumego_compresse(Arbre& arbre, const Etat& cible);
 	static void Solution (Arbre& A);
 	static void stop_tsumego();
 

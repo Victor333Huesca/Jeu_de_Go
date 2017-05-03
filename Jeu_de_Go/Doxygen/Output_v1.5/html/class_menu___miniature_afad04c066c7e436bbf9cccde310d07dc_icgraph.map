@@ -1,0 +1,5 @@
+<map id="Menu_Miniature::setItemsTextures" name="Menu_Miniature::setItemsTextures">
+<area shape="rect" id="node2" href="$class_go___solver.html#acbb6d35d88e5c9bb05ceaae81db6287c" title="Go_Solver::loadMenu2" alt="" coords="225,13,377,39"/>
+<area shape="rect" id="node3" href="$class_go___solver.html#a27ceb252dd57ac88d0dc2dbb04a25e32" title="Go_Solver::loadMenu" alt="" coords="425,13,571,39"/>
+<area shape="rect" id="node4" href="$class_go___solver.html#a30bd2f9d195a5553cc683f8314ea4b58" title="Go_Solver::Go_Solver" alt="" coords="619,13,767,39"/>
+</map>

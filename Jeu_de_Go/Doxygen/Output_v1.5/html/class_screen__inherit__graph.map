@@ -1,0 +1,6 @@
+<map id="Screen" name="Screen">
+<area shape="rect" id="node3" href="$class_game__window.html" title="{Game_window\n||+ Game_window()\l+ ~Game_window()\l+ draw()\l+ Run()\l+ click()\l+ zoom()\l+ keyPressed()\l+ setGoban()\l+ getGoban()\l+ setView()\l+ territoire()\l+ turnSoundsUp()\l+ turnSoundsDown()\l}" alt="" coords="5,271,145,524"/>
+<area shape="rect" id="node4" href="$class_menu.html" title="{Menu\n|# choices\l# cur_choice\l|+ Menu()\l+ ~Menu()\l+ draw()\l+ Run()\l+ getSize()\l+ getPosition()\l+ addItem()\l+ setPrevious()\l+ showAdresses()\l}" alt="" coords="169,293,296,502"/>
+<area shape="rect" id="node5" href="$class_menu___miniature.html" title="{Menu_Miniature\n||+ Menu_Miniature()\l+ ~Menu_Miniature()\l+ setItemsTextures()\l}" alt="" coords="77,587,220,693"/>
+<area shape="rect" id="node6" href="$class_menu__simple.html" title="{Menu_simple\n||+ Menu_simple()\l+ ~Menu_simple()\l+ setItemsTextures()\l+ setItemsFonts()\l+ addItem()\l}" alt="" coords="244,572,387,708"/>
+</map>

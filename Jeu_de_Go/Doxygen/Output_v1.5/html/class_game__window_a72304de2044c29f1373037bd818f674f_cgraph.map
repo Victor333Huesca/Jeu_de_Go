@@ -1,0 +1,13 @@
+<map id="Game_window::keyPressed" name="Game_window::keyPressed">
+<area shape="rect" id="node2" href="$class_board.html#ac7ec911a62371650afd340d1535a1742" title="Board::cancel" alt="" coords="265,183,368,209"/>
+<area shape="rect" id="node12" href="$class_game__window.html#a8ad36b6ebe4760954dd01e94fc5762f1" title="Game_window::territoire" alt="" coords="236,233,397,260"/>
+<area shape="rect" id="node3" href="$class_goban.html#ae7ee3b39f3c0d28c9bca286ca538f8ac" title="Goban::cancel" alt="" coords="445,132,552,159"/>
+<area shape="rect" id="node9" href="$class_board.html#a841a248dac4743611ba1825afd5d1297" title="Board::load" alt="" coords="455,233,543,260"/>
+<area shape="rect" id="node4" href="$class_goban.html#a29aaf8df380fe614845d48cba057747c" title="Goban::coord" alt="" coords="611,208,711,235"/>
+<area shape="rect" id="node5" href="$class_history.html#a0ca66ba5a026689877e027754fc5bd52" title="Access current position. " alt="" coords="606,5,717,32"/>
+<area shape="rect" id="node6" href="$class_etat.html#aa25e66b110bc835523819392435e78c6" title="Etat::getX" alt="" coords="622,56,701,83"/>
+<area shape="rect" id="node7" href="$class_etat.html#a3e3e915f2261c83989a983e84b1273c1" title="Etat::getY" alt="" coords="621,107,702,133"/>
+<area shape="rect" id="node8" href="$class_history.html#a6e1bcaa1d3ecc646131e6f73a2544f35" title="History::cancel" alt="" coords="607,157,716,184"/>
+<area shape="rect" id="node10" href="$class_square.html#a5fa0cbfce721c687308eec8e1a029d25" title="Square::setValue" alt="" coords="600,259,723,285"/>
+<area shape="rect" id="node11" href="$class_etat.html#ac0b81bbcf64cb3cc574e5a9dcdf94382" title="Etat::getVal" alt="" coords="616,309,707,336"/>
+</map>

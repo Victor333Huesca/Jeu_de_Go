@@ -1,0 +1,148 @@
+\hypertarget{class_timer}{}\section{Timer Class Reference}
+\label{class_timer}\index{Timer@{Timer}}
+
+
+{\ttfamily \#include $<$Timer.\+h$>$}
+
+
+
+Inheritance diagram for Timer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_timer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Timer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_timer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_timer_a5f16e8da27d2a5a5242dead46de05d97}{Timer} ()
+\item 
+\hyperlink{class_timer_a0a933922eec44419c94850e4e16f7121}{Timer} (const sf\+::\+Vector2f \&\+\_\+position, const unsigned \&\+\_\+size, const sf\+::\+Color \&\+\_\+color, const sf\+::\+Text\+::\+Style \&\+\_\+style=sf\+::\+Text\+::\+Style(), const sf\+::\+Font \&\+\_\+font=sf\+::\+Font())
+\item 
+\hyperlink{class_timer_a14fa469c4c295c5fa6e66a4ad1092146}{$\sim$\+Timer} ()
+\item 
+void \hyperlink{class_timer_a735fb44ab37e1fa12679d5ab291c488d}{apply\+Font} ()
+\item 
+void \hyperlink{class_timer_a0289effad7b573c508bc27e405900a23}{pause} ()
+\item 
+void \hyperlink{class_timer_a84acbe09a8dddae46c997c57a70c5076}{play} ()
+\item 
+void \hyperlink{class_timer_aa3f7871196bb56202af2bc982bfbfff6}{restart} ()
+\item 
+virtual void \hyperlink{class_timer_a80c3f4ebbd84818de5531f5af3d511de}{draw} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states=sf\+::\+Render\+States\+::\+Default) const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{class_timer_aac2ddf298c3916e8839e827b387e6973}{init\+Font} (const sf\+::\+String \&\+\_\+font)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_timer_a5f16e8da27d2a5a5242dead46de05d97}\label{class_timer_a5f16e8da27d2a5a5242dead46de05d97}} 
+\index{Timer@{Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{Timer()}{Timer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Timer\+::\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_timer_a0a933922eec44419c94850e4e16f7121}\label{class_timer_a0a933922eec44419c94850e4e16f7121}} 
+\index{Timer@{Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{Timer()}{Timer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Timer\+::\+Timer (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{\+\_\+position,  }\item[{const unsigned \&}]{\+\_\+size,  }\item[{const sf\+::\+Color \&}]{\+\_\+color,  }\item[{const sf\+::\+Text\+::\+Style \&}]{\+\_\+style = {\ttfamily sf\+:\+:Text\+:\+:Style()},  }\item[{const sf\+::\+Font \&}]{\+\_\+font = {\ttfamily sf\+:\+:Font()} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_timer_a14fa469c4c295c5fa6e66a4ad1092146}\label{class_timer_a14fa469c4c295c5fa6e66a4ad1092146}} 
+\index{Timer@{Timer}!````~Timer@{$\sim$\+Timer}}
+\index{````~Timer@{$\sim$\+Timer}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{$\sim$\+Timer()}{~Timer()}}
+{\footnotesize\ttfamily Timer\+::$\sim$\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_timer_a735fb44ab37e1fa12679d5ab291c488d}\label{class_timer_a735fb44ab37e1fa12679d5ab291c488d}} 
+\index{Timer@{Timer}!apply\+Font@{apply\+Font}}
+\index{apply\+Font@{apply\+Font}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{apply\+Font()}{applyFont()}}
+{\footnotesize\ttfamily void Timer\+::apply\+Font (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{class_timer_a735fb44ab37e1fa12679d5ab291c488d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_timer_a80c3f4ebbd84818de5531f5af3d511de}\label{class_timer_a80c3f4ebbd84818de5531f5af3d511de}} 
+\index{Timer@{Timer}!draw@{draw}}
+\index{draw@{draw}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Timer\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target,  }\item[{sf\+::\+Render\+States}]{states = {\ttfamily sf\+:\+:RenderStates\+:\+:Default} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{class_timer_aac2ddf298c3916e8839e827b387e6973}\label{class_timer_aac2ddf298c3916e8839e827b387e6973}} 
+\index{Timer@{Timer}!init\+Font@{init\+Font}}
+\index{init\+Font@{init\+Font}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{init\+Font()}{initFont()}}
+{\footnotesize\ttfamily bool Timer\+::init\+Font (\begin{DoxyParamCaption}\item[{const sf\+::\+String \&}]{\+\_\+font }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{class_timer_aac2ddf298c3916e8839e827b387e6973_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_timer_a0289effad7b573c508bc27e405900a23}\label{class_timer_a0289effad7b573c508bc27e405900a23}} 
+\index{Timer@{Timer}!pause@{pause}}
+\index{pause@{pause}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily void Timer\+::pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_timer_a0289effad7b573c508bc27e405900a23_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_timer_a84acbe09a8dddae46c997c57a70c5076}\label{class_timer_a84acbe09a8dddae46c997c57a70c5076}} 
+\index{Timer@{Timer}!play@{play}}
+\index{play@{play}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily void Timer\+::play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_timer_a84acbe09a8dddae46c997c57a70c5076_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_timer_aa3f7871196bb56202af2bc982bfbfff6}\label{class_timer_aa3f7871196bb56202af2bc982bfbfff6}} 
+\index{Timer@{Timer}!restart@{restart}}
+\index{restart@{restart}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily void Timer\+::restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\+Game/\hyperlink{_timer_8h}{Timer.\+h}\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\+Game/\hyperlink{_timer_8cpp}{Timer.\+cpp}\end{DoxyCompactItemize}

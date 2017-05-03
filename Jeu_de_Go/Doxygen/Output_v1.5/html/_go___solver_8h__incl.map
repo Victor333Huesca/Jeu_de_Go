@@ -1,0 +1,23 @@
+<map id="D:/Users/Victor/OneDrive/Documents/Visual Studio 2017/Projects/Jeu_de_Go/Jeu_de_Go/Sources/Graphics/Go_Solver.h" name="D:/Users/Victor/OneDrive/Documents/Visual Studio 2017/Projects/Jeu_de_Go/Jeu_de_Go/Sources/Graphics/Go_Solver.h">
+<area shape="rect" id="node2" href="$_globals_8h.html" title="Globals.h" alt="" coords="675,587,752,613"/>
+<area shape="rect" id="node15" href="$_screens_8h.html" title="Screens.h" alt="" coords="257,139,338,165"/>
+<area shape="rect" id="node38" href="$_parser_8h.html" title="../Engine/Parser.h" alt="" coords="1453,363,1579,389"/>
+<area shape="rect" id="node16" href="$_screen_8h.html" title="Screen.h" alt="" coords="93,512,168,539"/>
+<area shape="rect" id="node17" href="$_game__window_8h.html" title="Game/Game_window.h" alt="" coords="519,213,675,240"/>
+<area shape="rect" id="node31" href="$_menu_8h.html" title="Menu.h" alt="" coords="238,437,303,464"/>
+<area shape="rect" id="node34" href="$_menu___miniature_8h.html" title="Menu_Miniature.h" alt="" coords="285,363,411,389"/>
+<area shape="rect" id="node36" href="$_menu__simple_8h.html" title="Menu_simple.h" alt="" coords="98,363,209,389"/>
+<area shape="rect" id="node18" href="$_board_8h.html" title="Board.h" alt="" coords="805,288,872,315"/>
+<area shape="rect" id="node21" href="$_goban_8h.html" title="../../Engine/Goban.h" alt="" coords="1069,437,1208,464"/>
+<area shape="rect" id="node27" href="$_infos_8h.html" title="Infos.h" alt="" coords="606,437,666,464"/>
+<area shape="rect" id="node29" href="$_i_a_8h.html" title="../../Engine/IA.h" alt="" coords="1082,288,1195,315"/>
+<area shape="rect" id="node19" href="$_square_8h.html" title="Square.h" alt="" coords="801,512,876,539"/>
+<area shape="rect" id="node26" href="$_arbre_8h.html" title="../../Engine/Arbre.h" alt="" coords="1073,363,1205,389"/>
+<area shape="rect" id="node20" href="$_etat_8h.html" title="../../Engine/Etat.h" alt="" coords="1164,587,1289,613"/>
+<area shape="rect" id="node23" href="$_groupe_8h.html" title="Groupe.h" alt="" coords="1201,512,1276,539"/>
+<area shape="rect" id="node24" href="$_history_8h.html" title="History.h" alt="" coords="951,512,1025,539"/>
+<area shape="rect" id="node28" href="$_timer_8h.html" title="Timer.h" alt="" coords="559,512,625,539"/>
+<area shape="rect" id="node32" href="$_choice_8h.html" title="Choice.h" alt="" coords="309,512,382,539"/>
+<area shape="rect" id="node35" href="$_choice__miniature_8h.html" title="Choice_miniature.h" alt="" coords="328,437,461,464"/>
+<area shape="rect" id="node37" href="$_choice___simple_8h.html" title="Choice_Simple.h" alt="" coords="93,437,213,464"/>
+</map>

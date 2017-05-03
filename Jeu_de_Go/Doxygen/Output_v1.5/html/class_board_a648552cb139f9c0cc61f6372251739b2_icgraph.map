@@ -1,0 +1,4 @@
+<map id="Board::turnSoundsDown" name="Board::turnSoundsDown">
+<area shape="rect" id="node2" href="$class_game__window.html#aa934e0cb8983cf30af634deff8581848" title="Game_window::turnSoundsDown" alt="" coords="216,5,428,32"/>
+<area shape="rect" id="node3" href="$class_go___solver.html#a1d7d0fad019f2d33caebb6cfe11d1f42" title="Go_Solver::turnSoundsDown" alt="" coords="476,5,663,32"/>
+</map>

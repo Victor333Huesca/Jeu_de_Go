@@ -1,0 +1,14 @@
+<map id="Goban::eliminateOppGroups" name="Goban::eliminateOppGroups">
+<area shape="rect" id="node2" href="$class_goban.html#a1ec70508987f66afff5f8df381731fac" title="Goban::eliminateGroups" alt="" coords="240,208,403,235"/>
+<area shape="rect" id="node3" href="$class_goban.html#a84f36324eb9ddc29f522d481f04c13e7" title="Goban::listOfLiberties" alt="" coords="455,81,601,108"/>
+<area shape="rect" id="node9" href="$class_etat.html#aa88987ca54aee676717f05e4570c0aec" title="Etat::setVal" alt="" coords="840,157,931,184"/>
+<area shape="rect" id="node11" href="$class_goban.html#a29aaf8df380fe614845d48cba057747c" title="Goban::coord" alt="" coords="478,208,578,235"/>
+<area shape="rect" id="node12" href="$class_goban.html#a1d3ccccfb3f539e0271ee321686d9ef4" title="Goban::setScoreWhite" alt="" coords="451,259,605,285"/>
+<area shape="rect" id="node13" href="$class_goban.html#a868b44b0c3ebec7ca88082ebe85a2960" title="Goban::setScoreBlack" alt="" coords="451,309,605,336"/>
+<area shape="rect" id="node4" href="$class_etat.html#aa25e66b110bc835523819392435e78c6" title="Etat::getX" alt="" coords="683,5,762,32"/>
+<area shape="rect" id="node5" href="$class_etat.html#a3e3e915f2261c83989a983e84b1273c1" title="Etat::getY" alt="" coords="682,56,763,83"/>
+<area shape="rect" id="node6" href="$class_goban.html#a0e2596110cdbb9b007b2b2fd8d5a9973" title="Goban::DefineStone" alt="" coords="653,107,792,133"/>
+<area shape="rect" id="node7" href="$class_etat.html#ac020c4fe222274ac849a03fc8f19a99a" title="Etat::setX" alt="" coords="846,5,925,32"/>
+<area shape="rect" id="node8" href="$class_etat.html#a8a54fc9ecb1b97d84d2f1f259e3bf70e" title="Etat::setY" alt="" coords="845,56,926,83"/>
+<area shape="rect" id="node10" href="$class_goban.html#a579840586df08a58983f6b497979344b" title="Goban::ctoi" alt="" coords="841,107,930,133"/>
+</map>

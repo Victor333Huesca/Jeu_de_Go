@@ -1,0 +1,4 @@
+<map id="Menu_Miniature" name="Menu_Miniature">
+<area shape="rect" id="node2" href="$class_menu.html" title="{Menu\n|# choices\l# cur_choice\l|+ Menu()\l+ ~Menu()\l+ draw()\l+ Run()\l+ getSize()\l+ getPosition()\l+ addItem()\l+ setPrevious()\l+ showAdresses()\l}" alt="" coords="13,271,140,480"/>
+<area shape="rect" id="node3" href="$class_screen.html" title="{Screen\n||+ Run()\l+ draw()\l}" alt="" coords="42,131,111,223"/>
+</map>

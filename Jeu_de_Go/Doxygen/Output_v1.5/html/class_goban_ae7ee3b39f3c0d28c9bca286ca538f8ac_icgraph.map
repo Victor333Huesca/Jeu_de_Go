@@ -1,0 +1,5 @@
+<map id="Goban::cancel" name="Goban::cancel">
+<area shape="rect" id="node2" href="$class_board.html#ac7ec911a62371650afd340d1535a1742" title="Board::cancel" alt="" coords="160,5,263,32"/>
+<area shape="rect" id="node3" href="$class_game__window.html#a72304de2044c29f1373037bd818f674f" title="Game_window::keyPressed" alt="" coords="311,5,493,32"/>
+<area shape="rect" id="node4" href="$class_game__window.html#a555769f4e8511e45d6623658dc736be5" title="Game_window::Run" alt="" coords="541,5,679,32"/>
+</map>

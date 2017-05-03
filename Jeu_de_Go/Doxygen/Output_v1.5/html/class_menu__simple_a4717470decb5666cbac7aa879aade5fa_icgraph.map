@@ -1,0 +1,9 @@
+<map id="Menu_simple::setItemsTextures" name="Menu_simple::setItemsTextures">
+<area shape="rect" id="node2" href="$class_go___solver.html#aefc904642aa7fcc3a5f700f921b9c0ab" title="Go_Solver::loadMenu1" alt="" coords="260,5,412,32"/>
+<area shape="rect" id="node5" href="$class_go___solver.html#a48def38f87effdb973b5f02329a0af4f" title="Go_Solver::loadMenu3" alt="" coords="260,56,412,83"/>
+<area shape="rect" id="node6" href="$class_go___solver.html#a99b82aef6960441ba24e3b28c7ec9ad5" title="Go_Solver::loadMenu4" alt="" coords="260,107,412,133"/>
+<area shape="rect" id="node7" href="$class_go___solver.html#a480bbc610bbc9bb3b1c675d69128d1fd" title="Go_Solver::loadMenu5" alt="" coords="260,157,412,184"/>
+<area shape="rect" id="node8" href="$class_go___solver.html#a9aa3c644c34232cbc9bd3341930373c9" title="Go_Solver::loadMenu6" alt="" coords="260,208,412,235"/>
+<area shape="rect" id="node3" href="$class_go___solver.html#a27ceb252dd57ac88d0dc2dbb04a25e32" title="Go_Solver::loadMenu" alt="" coords="460,107,605,133"/>
+<area shape="rect" id="node4" href="$class_go___solver.html#a30bd2f9d195a5553cc683f8314ea4b58" title="Go_Solver::Go_Solver" alt="" coords="653,107,801,133"/>
+</map>

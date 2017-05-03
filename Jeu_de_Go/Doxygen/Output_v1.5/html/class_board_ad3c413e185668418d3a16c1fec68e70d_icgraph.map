@@ -1,0 +1,6 @@
+<map id="Board::getView" name="Board::getView">
+<area shape="rect" id="node2" href="$class_game__window.html#aafdea9d00265261abfac6ad233b54638" title="Game_window::draw" alt="" coords="167,5,308,32"/>
+<area shape="rect" id="node3" href="$class_game__window.html#afa942088809bf10731bb31d0d37b878d" title="Game_window::click" alt="" coords="167,56,308,83"/>
+<area shape="rect" id="node5" href="$class_game__window.html#a9b9b15469cb0ced1a22f28e447983b56" title="Game_window::zoom" alt="" coords="164,107,311,133"/>
+<area shape="rect" id="node4" href="$class_game__window.html#a555769f4e8511e45d6623658dc736be5" title="Game_window::Run" alt="" coords="359,81,496,108"/>
+</map>

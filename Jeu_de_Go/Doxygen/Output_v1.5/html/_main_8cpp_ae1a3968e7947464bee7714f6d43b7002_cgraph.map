@@ -1,0 +1,7 @@
+<map id="test" name="test">
+<area shape="rect" id="node2" href="$class_goban.html#a29aaf8df380fe614845d48cba057747c" title="Goban::coord" alt="" coords="284,28,384,55"/>
+<area shape="rect" id="node3" href="$class_etat.html#aa88987ca54aee676717f05e4570c0aec" title="Etat::setVal" alt="" coords="121,129,212,156"/>
+<area shape="rect" id="node4" href="$class_goban.html#a8ad67a618a510bb378d00281228b1b13" title="Goban::compress" alt="" coords="104,28,229,55"/>
+<area shape="rect" id="node6" href="$class_goban.html#aa23b735d8d72bb0fe189005e968e9329" title="Goban::uncompress" alt="" coords="97,79,236,105"/>
+<area shape="rect" id="node5" href="$class_etat.html#ac0b81bbcf64cb3cc574e5a9dcdf94382" title="Etat::getVal" alt="" coords="289,79,379,105"/>
+</map>

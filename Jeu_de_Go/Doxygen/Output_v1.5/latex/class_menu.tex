@@ -1,0 +1,159 @@
+\hypertarget{class_menu}{}\section{Menu Class Reference}
+\label{class_menu}\index{Menu@{Menu}}
+
+
+{\ttfamily \#include $<$Menu.\+h$>$}
+
+
+
+Inheritance diagram for Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_menu__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_menu_a0e8556179fdcc650e7f3aa58b05f9f4f}{Menu} (const sf\+::\+Vector2f \&position, const char $\ast$texture, const \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \&\+\_\+previous, const sf\+::\+Vector2f \&scale=sf\+::\+Vector2f(1, 1))
+\item 
+virtual \hyperlink{class_menu_a831387f51358cfb88cd018e1777bc980}{$\sim$\+Menu} ()
+\item 
+virtual void \hyperlink{class_menu_a7bc75c51f0ae43faeb694b8a0c4c7d16}{draw} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states=sf\+::\+Render\+States\+::\+Default) const
+\item 
+virtual \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \hyperlink{class_menu_ac72037385d58cb1c814d7702c79e93f5}{Run} (sf\+::\+Render\+Window \&window, \hyperlink{class_go___solver}{Go\+\_\+\+Solver} \&solver)
+\item 
+sf\+::\+Vector2f \hyperlink{class_menu_ad99768326c994acf4fba6d9df60d1bcc}{get\+Size} () const
+\item 
+sf\+::\+Vector2f \hyperlink{class_menu_a589f53bbd6436b381b5ec92a609d5d66}{get\+Position} () const
+\item 
+virtual void \hyperlink{class_menu_aa8032782ee75fba5fa17bf7a20635c68}{add\+Item} (const \hyperlink{class_choice}{Choice} \&item)
+\item 
+void \hyperlink{class_menu_ab2b8f2fc48dfbf397a81e9a1b638f970}{set\+Previous} (const \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \&sc)
+\item 
+virtual void \hyperlink{class_menu_ac4cf83e0769be3a20583668f210d98ef}{show\+Adresses} () const
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::reference\+\_\+wrapper$<$ \hyperlink{class_choice}{Choice} $>$ $>$ \hyperlink{class_menu_aa40e2b74e7bdeee960889e083eca15d2}{choices}
+\item 
+\hyperlink{class_choice}{Choice} $\ast$ \hyperlink{class_menu_a91fc2547256d492def0845bd1ebcfaf8}{cur\+\_\+choice}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_menu_a0e8556179fdcc650e7f3aa58b05f9f4f}\label{class_menu_a0e8556179fdcc650e7f3aa58b05f9f4f}} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{position,  }\item[{const char $\ast$}]{texture,  }\item[{const \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \&}]{\+\_\+previous,  }\item[{const sf\+::\+Vector2f \&}]{scale = {\ttfamily sf\+:\+:Vector2f(1,~1)} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_menu_a831387f51358cfb88cd018e1777bc980}\label{class_menu_a831387f51358cfb88cd018e1777bc980}} 
+\index{Menu@{Menu}!````~Menu@{$\sim$\+Menu}}
+\index{````~Menu@{$\sim$\+Menu}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{$\sim$\+Menu()}{~Menu()}}
+{\footnotesize\ttfamily Menu\+::$\sim$\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_menu_aa8032782ee75fba5fa17bf7a20635c68}\label{class_menu_aa8032782ee75fba5fa17bf7a20635c68}} 
+\index{Menu@{Menu}!add\+Item@{add\+Item}}
+\index{add\+Item@{add\+Item}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{add\+Item()}{addItem()}}
+{\footnotesize\ttfamily void Menu\+::add\+Item (\begin{DoxyParamCaption}\item[{const \hyperlink{class_choice}{Choice} \&}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_aa8032782ee75fba5fa17bf7a20635c68_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_menu_a7bc75c51f0ae43faeb694b8a0c4c7d16}\label{class_menu_a7bc75c51f0ae43faeb694b8a0c4c7d16}} 
+\index{Menu@{Menu}!draw@{draw}}
+\index{draw@{draw}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Menu\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target,  }\item[{sf\+::\+Render\+States}]{states = {\ttfamily sf\+:\+:RenderStates\+:\+:Default} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{class_screen_abcb5544dfe717c7da181520803f43e25}{Screen}.
+
+\mbox{\Hypertarget{class_menu_a589f53bbd6436b381b5ec92a609d5d66}\label{class_menu_a589f53bbd6436b381b5ec92a609d5d66}} 
+\index{Menu@{Menu}!get\+Position@{get\+Position}}
+\index{get\+Position@{get\+Position}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{get\+Position()}{getPosition()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Menu\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_a589f53bbd6436b381b5ec92a609d5d66_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_menu_ad99768326c994acf4fba6d9df60d1bcc}\label{class_menu_ad99768326c994acf4fba6d9df60d1bcc}} 
+\index{Menu@{Menu}!get\+Size@{get\+Size}}
+\index{get\+Size@{get\+Size}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{get\+Size()}{getSize()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Menu\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_menu_ac72037385d58cb1c814d7702c79e93f5}\label{class_menu_ac72037385d58cb1c814d7702c79e93f5}} 
+\index{Menu@{Menu}!Run@{Run}}
+\index{Run@{Run}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} Menu\+::\+Run (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\hyperlink{class_go___solver}{Go\+\_\+\+Solver} \&}]{solver }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{class_screen_abbb6a9b3d8fdc44620080e54d090e8c7}{Screen}.
+
+\mbox{\Hypertarget{class_menu_ab2b8f2fc48dfbf397a81e9a1b638f970}\label{class_menu_ab2b8f2fc48dfbf397a81e9a1b638f970}} 
+\index{Menu@{Menu}!set\+Previous@{set\+Previous}}
+\index{set\+Previous@{set\+Previous}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{set\+Previous()}{setPrevious()}}
+{\footnotesize\ttfamily void Menu\+::set\+Previous (\begin{DoxyParamCaption}\item[{const \hyperlink{_globals_8h_a3d5776bab98402b03be09156bacf4f68}{Screens} \&}]{sc }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_menu_ac4cf83e0769be3a20583668f210d98ef}\label{class_menu_ac4cf83e0769be3a20583668f210d98ef}} 
+\index{Menu@{Menu}!show\+Adresses@{show\+Adresses}}
+\index{show\+Adresses@{show\+Adresses}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{show\+Adresses()}{showAdresses()}}
+{\footnotesize\ttfamily void Menu\+::show\+Adresses (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_menu_aa40e2b74e7bdeee960889e083eca15d2}\label{class_menu_aa40e2b74e7bdeee960889e083eca15d2}} 
+\index{Menu@{Menu}!choices@{choices}}
+\index{choices@{choices}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{choices}{choices}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::reference\+\_\+wrapper$<$\hyperlink{class_choice}{Choice}$>$ $>$ Menu\+::choices\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_menu_a91fc2547256d492def0845bd1ebcfaf8}\label{class_menu_a91fc2547256d492def0845bd1ebcfaf8}} 
+\index{Menu@{Menu}!cur\+\_\+choice@{cur\+\_\+choice}}
+\index{cur\+\_\+choice@{cur\+\_\+choice}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{cur\+\_\+choice}{cur\_choice}}
+{\footnotesize\ttfamily \hyperlink{class_choice}{Choice}$\ast$ Menu\+::cur\+\_\+choice\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\hyperlink{_menu_8h}{Menu.\+h}\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Graphics/\hyperlink{_menu_8cpp}{Menu.\+cpp}\end{DoxyCompactItemize}

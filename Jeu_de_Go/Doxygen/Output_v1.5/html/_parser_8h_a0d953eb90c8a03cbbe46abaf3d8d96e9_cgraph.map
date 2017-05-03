@@ -1,0 +1,4 @@
+<map id="parseur" name="parseur">
+<area shape="rect" id="node2" href="$class_goban.html#a29aaf8df380fe614845d48cba057747c" title="Goban::coord" alt="" coords="119,5,219,32"/>
+<area shape="rect" id="node3" href="$class_etat.html#aa88987ca54aee676717f05e4570c0aec" title="Etat::setVal" alt="" coords="123,56,214,83"/>
+</map>

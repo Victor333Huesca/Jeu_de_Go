@@ -1,0 +1,6 @@
+<map id="Goban::DefineStone" name="Goban::DefineStone">
+<area shape="rect" id="node2" href="$class_etat.html#ac020c4fe222274ac849a03fc8f19a99a" title="Etat::setX" alt="" coords="198,5,277,32"/>
+<area shape="rect" id="node3" href="$class_etat.html#a8a54fc9ecb1b97d84d2f1f259e3bf70e" title="Etat::setY" alt="" coords="197,56,278,83"/>
+<area shape="rect" id="node4" href="$class_etat.html#aa88987ca54aee676717f05e4570c0aec" title="Etat::setVal" alt="" coords="192,107,283,133"/>
+<area shape="rect" id="node5" href="$class_goban.html#a579840586df08a58983f6b497979344b" title="Goban::ctoi" alt="" coords="193,157,282,184"/>
+</map>
