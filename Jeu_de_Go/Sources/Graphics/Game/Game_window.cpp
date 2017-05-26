@@ -33,6 +33,9 @@ void Game_window::draw(sf::RenderTarget & target, sf::RenderStates states) const
 
 Screens Game_window::Run(sf::RenderWindow &window, Go_Solver& solver)
 {
+	// First set the window to the right size
+	window.setSize(sf::Vector2u(WINDOW_WIDTH + INFOS_SIZE, WINDOW_HEIGHT));
+
 	// To stay alive
 	bool Running = true;
 	Screens sc = NO_CHANGE;

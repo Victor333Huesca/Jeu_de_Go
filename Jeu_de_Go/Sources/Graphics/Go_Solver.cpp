@@ -176,7 +176,7 @@ Menu* Go_Solver::loadMenu2()
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		solver.setGoban(parseur("./Ressources/Problems/probleme_6_en_coin.go"));
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
-		solver.setTarget(0, 1);
+		solver.setTarget(3, 0);
 		return GAME;
 	}));
 

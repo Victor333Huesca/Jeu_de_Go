@@ -659,7 +659,7 @@ void Goban::uncompress(const uint8_t * compressed, const Etat::VAL KO_status, in
 	int nb_bytes = (int)ceil(nb_revelent / 8.f);			// 90.25 --> 91
 	int nb_wasted_bits = 8 - nb_revelent % 8;		// 8 - 2  --> 6
 
-													// Start looking at the first place of the goban so -1 avoid skipping this first location.
+	// Start looking at the first place of the goban so -1 avoid skipping this first location.
 	int current = -1;
 
 	uint8_t masque = ~0;

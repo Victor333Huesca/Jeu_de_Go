@@ -12,8 +12,10 @@ extern std::ofstream log_file("trace.log");
 
 int main()
 {
+	std::cout << sizeof(Goban) + sizeof(Etat) * 9 * 9 << std::endl;
+	system("pause");
 	// Create the window
-	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_HEIGHT), "Jeu de Go");
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Jeu de Go");
 
 	// Create a solver applic witch contain all informations about the game
 	Go_Solver* solver = new Go_Solver();
