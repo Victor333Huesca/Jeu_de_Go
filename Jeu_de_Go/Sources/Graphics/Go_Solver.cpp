@@ -130,18 +130,18 @@ Menu* Go_Solver::loadMenu1()
 	sf::Vector2f pos(225, 125);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("        Jouer", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"        Jouer", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return GAME; }));
-	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"       Options", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return OPTIONS_MENU; }));
-	menu->addItem(Choice_Simple("   Réinitialiser", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"   Réinitialiser", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		solver.setGoban(Goban());
 		return NO_CHANGE;
 	}));
-	menu->addItem(Choice_Simple("      Problèmes", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"      Problèmes", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PROBLEMS_MENU; }));
-	menu->addItem(Choice_Simple("       Quitter", text_style, pos.x, pos.y + 480, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"       Quitter", text_style, pos.x, pos.y + 480, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return EXIT; }));
 
 	// Then set items textures and return the menu
@@ -487,11 +487,11 @@ Menu* Go_Solver::loadMenu3()
 	sf::Vector2f pos(225, 200);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("        Audio", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"        Audio", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return AUDIO; }));
-	menu->addItem(Choice_Simple("        Vidéo", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"        Vidéo", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return VIDEO; }));
-	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PREVIOUS; }));
 
 	// Then set items textures and return the menu
@@ -524,17 +524,17 @@ Menu* Go_Solver::loadMenu4()
 	/* Pour les volumes dans un premier temps afficher juste un sprite avec : Aucun, Léger, Moyen, Fort, Trés Fort
 	Créer directement une barre de progression risque d'être bien trop long et fastidieux*/
 
-	menu->addItem(Choice_Simple("      Musiques", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"      Musiques", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		solver.turnMusicUp();
 		return NO_CHANGE;
 	}));
-	menu->addItem(Choice_Simple("         Sons", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"         Sons", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		solver.turnSoundsUp();
 		return NO_CHANGE;
 	}));
-	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PREVIOUS; }));
 
 	// Then set items textures and return the menu
@@ -563,7 +563,7 @@ Menu* Go_Solver::loadMenu5()
 	sf::Vector2f pos(225, 200);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"        Retour", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PREVIOUS; }));
 
 	// Then set items textures and return the menu
@@ -592,23 +592,23 @@ Menu* Go_Solver::loadMenu6()
 	sf::Vector2f pos(225, 80);
 
 	// On charge les items
-	menu->addItem(Choice_Simple("       Options", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"       Options", text_style, pos.x, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return OPTIONS_MENU; }));
-	menu->addItem(Choice_Simple("    Retour au jeu", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"    Retour au jeu", text_style, pos.x, pos.y + 120, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return PREVIOUS; }));
-	menu->addItem(Choice_Simple("Lancer le Tsumego", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"Lancer le Tsumego", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		solver.launchTsumego();
 		return GAME;
 	}));
-	menu->addItem(Choice_Simple(" Stoper Tsumego", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L" Stoper Tsumego", text_style, pos.x, pos.y + 360, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		IA::stop_tsumego();
 		return GAME;
 	}));
-	menu->addItem(Choice_Simple(" Quitter la partie", text_style, pos.x, pos.y + 480, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L" Quitter la partie", text_style, pos.x, pos.y + 480, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return MAIN_MENU; }));
-	menu->addItem(Choice_Simple("Revenir au bureau", text_style, pos.x, pos.y + 600, [](sf::RenderTarget& window, Go_Solver& solver)
+	menu->addItem(Choice_Simple(L"Revenir au bureau", text_style, pos.x, pos.y + 600, [](sf::RenderTarget& window, Go_Solver& solver)
 	{ return EXIT; }));
 
 	// Then set items textures and return the menu
@@ -718,7 +718,12 @@ void Go_Solver::launchTsumego()
     */
 
     // Start Tsumego
-    IA::Tsumego(&abr, &target_tsumego);
+	int x, y;
+	std::cout << "Veuillez saisir les coordonnées de la cible :" << std::endl;
+	std::cin >> x >> y;
+	setTarget(x, y);
+
+	IA::Tsumego(&abr, &target_tsumego);
 }
 
 const std::vector<Screen*>& Go_Solver::getScreens() const

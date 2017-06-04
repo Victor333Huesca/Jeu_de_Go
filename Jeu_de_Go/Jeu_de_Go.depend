@@ -574,7 +574,7 @@
 1496604662 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\go_solver.cpp
 	"Go_Solver.h"
 
-1496437552 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\go_solver.h
+1496615600 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\go_solver.h
 	<thread>
 	"Globals.h"
 	"Screens.h"
@@ -648,7 +648,7 @@
 	"Menu.h"
 	"Choice_Simple.h"
 
-1492967894 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\choice_simple.h
+1496614467 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\choice_simple.h
 	"Choice.h"
 
 1492967894 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\menu.cpp
@@ -656,4 +656,14 @@
 1492967894 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\menu_miniature.cpp
 
 1492967894 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\menu_simple.cpp
+
+1496613170 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\engine\ia.cpp
+	"IA.h"
+
+1496613137 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\main.cpp
+	<fstream>
+	<cassert>
+	<cmath>
+	"Globals.h"
+	"Go_Solver.h"
 
