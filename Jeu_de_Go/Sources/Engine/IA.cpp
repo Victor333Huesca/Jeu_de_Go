@@ -49,7 +49,7 @@ bool IA::warning()
 	return false;
 }
 
-void IA::Tsumego(Arbre* _A, Etat* _cible)
+Goban IA::Tsumego(Arbre* _A, Etat* _cible)
 {
     // Due to threading support on windows minGW compiler, use pointers as parameters to avoid buggs.
     Arbre A = Arbre(*_A);
@@ -106,13 +106,26 @@ void IA::Tsumego(Arbre* _A, Etat* _cible)
 			std::cout << "La cible a été capturé!" << std::endl;
 		std::cout << "Une solution a ce problème est: " << std::endl;
 		IA::Solution(A);
+
+		// Return the solution
+		Arbre* res = &A;
+		while (res->getFilsA())
+		{
+			res = res->getFilsA();
+		}
+		return *res->getGob();
 	}
 	else
 	{
 		// recursion has been aborted
 		std::cout << "Le Tsumego a été interompu !" << std::endl;
+
+		return Goban();
 	}
 	stop_tsumego();
+	
+	// Just to avoid compiler's warning about path without return blablabla...
+	return Goban();
 }
 
 /*

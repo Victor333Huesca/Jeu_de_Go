@@ -723,7 +723,8 @@ void Go_Solver::launchTsumego()
 	std::cin >> x >> y;
 	setTarget(x, y);
 
-	IA::Tsumego(&abr, &target_tsumego);
+	Goban solution = IA::Tsumego(&abr, &target_tsumego);
+	setGoban(solution);
 }
 
 const std::vector<Screen*>& Go_Solver::getScreens() const
