@@ -61,7 +61,7 @@ void IA::Tsumego(Arbre* _A, Etat* _cible)
 
 
 	// ----------- LOG OUTPUT ----------
-    tm* _time;
+    tm* _time = new tm;
     time_t t = time(nullptr);
     std::stringstream out;
     std::string current_exec;
@@ -70,7 +70,11 @@ void IA::Tsumego(Arbre* _A, Etat* _cible)
     out << "Gobans";
 
     //convert time_t to tm
-    _time = localtime(&t);
+#if defined(_WIN32) && !defined(__MINGW32__)
+	localtime_s(_time, &t);
+#else
+	_time = localtime(&t);
+#endif // !_WIN32
 
     //the operator -> is used to access members of the tm struct. It's described in the data structures topic
     out << DIR_SEP << 1900 + _time->tm_year;

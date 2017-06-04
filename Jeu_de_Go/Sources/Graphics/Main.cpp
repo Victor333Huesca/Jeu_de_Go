@@ -1,8 +1,4 @@
-﻿//#ifdef __MINGW32__
-//#include "mingw.thread.h"
-//#else
-#include <thread>
-//#endif // __MINGW32__
+﻿#include <thread>
 #include <fstream>
 #include <cassert>
 #include <cmath>
