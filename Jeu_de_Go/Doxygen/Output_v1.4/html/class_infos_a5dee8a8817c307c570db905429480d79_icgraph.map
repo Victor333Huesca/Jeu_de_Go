@@ -1,0 +1,5 @@
+<map id="Infos::setCurPlayer" name="Infos::setCurPlayer">
+<area shape="rect" id="node2" href="$class_game__window.html#a1d0ac99e8c117a5016883b52446c6530" title="Game_window::Game_window" alt="" coords="185,5,384,32"/>
+<area shape="rect" id="node3" href="$class_game__window.html#afa942088809bf10731bb31d0d37b878d" title="Game_window::click" alt="" coords="214,56,355,83"/>
+<area shape="rect" id="node4" href="$class_game__window.html#aec21feecf4c72d73c13d82aa12df6930" title="Game_window::Run" alt="" coords="432,56,569,83"/>
+</map>

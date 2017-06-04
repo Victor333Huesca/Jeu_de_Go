@@ -1,4 +1,4 @@
-#include "History.h"
+﻿#include "History.h"
 
 
 
@@ -66,7 +66,7 @@ bool History::cancel()
 
 void History::clear()
 {
-	clear();
+	std::list<Etat>::clear();
 	_current = begin();
 }
 

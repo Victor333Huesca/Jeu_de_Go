@@ -1,66 +1,75 @@
-#include "Choice.h"
-#include <iostream>
+﻿#include "Choice.h"
 
-Choice::Choice(const char* name, const sf::Text& text_style, sf::Vector2f pos, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale) :
-	Run(_Run),
+
+Choice::Choice(sf::Vector2f pos, std::function<Screens(sf::RenderTarget&, Go_Solver&)> _Run, sf::Vector2f scale) :
 	selected(false),
-	t_blank(nullptr),
-	t_selected(nullptr)
+	hover(false),
+	texture(nullptr),
+	t_selected(nullptr),
+	t_hover(nullptr),
+	run(_Run)
 {
-    // Set Common
     sprite.setPosition(pos);
 	sprite.setScale(scale);
 
-	// Set the text
-	text = text_style;
-	text.setString(name);
-	text.setPosition(pos.x + 20, pos.y + -8);
+	effect.setPosition(pos);
+	effect.setScale(scale);
+
+#if __ERROR_LEVEL__ > 0
+	log_file << "Choice::Choice(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
 
-Choice::Choice(const char * name, const sf::Text & text_style, float posX, float posY, std::function<int(const sf::RenderTarget& window)> _Run, sf::Vector2f scale) :
-	Choice(name, text_style, sf::Vector2f(posX, posY), _Run, scale)
+Choice::Choice(float posX, float posY, std::function<Screens(sf::RenderTarget&, Go_Solver&)> _Run, sf::Vector2f scale) :
+	Choice(sf::Vector2f(posX, posY), _Run, scale)
 {
-
 }
+
 
 Choice::~Choice()
 {
+#if __ERROR_LEVEL__ > 0
+	log_file << "Choice::~Choice()" << std::endl;
+#endif // __ERROR_LEVEL__ > 0
 }
 
 void Choice::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	assert(sprite.getTexture() != nullptr);
+
 	target.draw(sprite, states);
-	target.draw(text, states);
+	if (selected || hover)	target.draw(effect, states);
 }
 
 sf::Vector2f Choice::getSize() const
 {
-    return sf::Vector2f(sprite.getTextureRect().width, sprite.getTextureRect().height);
+    return sf::Vector2f((float)sprite.getTextureRect().width, (float)sprite.getTextureRect().height);
 }
 
-void Choice::move(const sf::Vector2f & offset)
+void Choice::loadTextures(const sf::Texture* _texture, const sf::Texture* selected, const sf::Texture* hover)
 {
-	sprite.move(offset);
-}
-
-void Choice::loadTextures(const sf::Texture & blank, const sf::Texture & selected)
-{
-	// Set texutes
-	t_blank = &blank;
-	t_selected = &selected;
+	// Set textures if specified
+	if (_texture != nullptr)	texture = _texture;
+	if (selected != nullptr)	t_selected = selected;
+	if (hover != nullptr)		t_hover = hover;
 
 	// Apply the one should be
-	sprite.setTexture(*t_blank, true);
-}
+	updateTexture();
 
-void Choice::setFont(const sf::Font & font)
-{
-	text.setFont(font);
+#if __ERROR_LEVEL__ > 0
+	log_file << "Choice::loadTextures(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
 
 void Choice::setSelected(bool state)
 {
 	selected = state;
+	updateTexture();
+}
+
+void Choice::setHover(bool state)
+{
+	hover = state;
 	updateTexture();
 }
 
@@ -71,16 +80,22 @@ sf::FloatRect Choice::getGlobalBounds() const
 
 void Choice::updateTexture()
 {
-	if (selected)	sprite.setTexture(*t_selected);
-	else			sprite.setTexture(*t_blank);
+	sprite.setTexture(*texture);
+
+	if (selected)	effect.setTexture(*t_selected);
+	else if (hover)	effect.setTexture(*t_hover);
 }
 
-std::string Choice::getName() const
+Screens Choice::Run(sf::RenderTarget& window, Go_Solver& solver)
 {
-	return text.getString().toAnsiString();
+	return run(window, solver);
 }
 
-const sf::Texture* Choice::getTextureAdress() const
+void Choice::showAdressTextures() const
 {
-	return t_blank;
+	std::cout << "\n  - Choix : " <<
+		"\n    - Normale : " << texture <<
+		"\n    - Selected : " << t_selected <<
+		"\n    - Hover : " << t_hover <<
+		"\n    ---> Current : " << sprite.getTexture();
 }

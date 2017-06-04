@@ -1,4 +1,4 @@
-#include "Board.h"
+﻿#include "Board.h"
 
 Board::Board() :
 	size(),
@@ -12,9 +12,15 @@ Board::Board() :
 	Square::loadTextures();
 
 	// Load background
-	bg_txr.loadFromFile("./Ressources/Img/background3.png");
+	bg_txr.loadFromFile("./Ressources/Img/Backgrounds/background3.png");
 	bg_spr.setTexture(bg_txr);
 	bg_spr.setPosition(sf::Vector2f(VIEW_BOARD_POS_X, VIEW_BOARD_POS_X));
+
+	// Load audio
+	group_killed_sndbuff.loadFromFile("./Ressources/Audio/grp_killed.ogg");
+	group_killed_snd.setBuffer(group_killed_sndbuff);
+	stone_put_sndbuff.loadFromFile("./Ressources/Audio/stone_played.ogg");
+	stone_put_snd.setBuffer(stone_put_sndbuff);
 
 	// Set viewport
 	view.setViewport(sf::FloatRect(0, 0, (float)WINDOW_WIDTH / (WINDOW_WIDTH + INFOS_SIZE), 1));
@@ -62,7 +68,18 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value, const sf::Mouse
 					engine.rechercheGroupes();
 					engine.afficheGroupes(std::cout);
 					//ELIMINATE GROUPS
-					engine.eliminateOppGroups(transform(value));
+					if (engine.eliminateOppGroups(transform(value)))
+					{
+						// Groups have been killed
+						group_killed_snd.play();
+						std::cout << "\n\nGroup killed\n\n";
+					}
+					else
+					{
+						// No group killed
+						stone_put_snd.play();
+					}
+
 					// Change square's value
 					load();
 
@@ -97,7 +114,7 @@ void Board::zoom(const float delta, const sf::Vector2i& pos)
 		if (view.getSize().x > view_origin.getSize().x / ZOOM_FACTOR)
 		{
 			// Zoom in
-			view.zoom(delta - 0.1);
+			view.zoom(delta - 0.1f);
 
 			// Fix zoom overflow
 			if (view.getSize().x < view_origin.getSize().x / ZOOM_FACTOR)
@@ -118,7 +135,7 @@ void Board::zoom(const float delta, const sf::Vector2i& pos)
 		if (view.getSize().x < view_origin.getSize().x)
 		{
 			// Zoom out
-			view.zoom(-delta + 0.1);
+			view.zoom(-delta + 0.1f);
 
 			// Fix overflow
 			if (view.getSize().x > view_origin.getSize().x)
@@ -146,6 +163,12 @@ void Board::cancel()
 sf::View Board::getView() const
 {
 	return view;
+}
+
+void Board::setView(const sf::FloatRect& zone)
+{
+	view.reset(zone);
+	viewBound();
 }
 
 bool Board::posToSquare(sf::Vector2i& pos) const
@@ -180,6 +203,45 @@ void Board::load()
 	}
 }
 
+void Board::load(const Goban & copy)
+{
+	engine = copy;
+	load();
+}
+
+float Board::getVolume() const
+{
+	// One volume is enought cause they have all the same value
+	return group_killed_snd.getVolume();
+}
+
+void Board::setVolume(float vol)
+{
+	group_killed_snd.setVolume(vol);
+	stone_put_snd.setVolume(vol);
+}
+
+void Board::turnSoundsUp()
+{
+	float vol = getVolume();
+	vol += 33.f;
+	if (vol > 100.f)	vol = 0.f;
+	setVolume(vol);
+}
+
+void Board::turnSoundsDown()
+{
+	float vol = getVolume();
+	vol += 33.f;
+	if (vol < 0.f)	vol = 100.f;
+	setVolume(vol);
+}
+
+Goban Board::getGoban() const
+{
+	return engine;
+}
+
 void Board::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	// Draw background
@@ -190,6 +252,7 @@ void Board::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
 		for (size_t j = 0; j < size.y; j++)
 		{
+			//target.draw(array[i][j], states);
 			array[i][j].draw(target, states);
 		}
 	}
@@ -220,7 +283,7 @@ Square::Value Board::transform(const Etat::VAL & value)
 
 Etat::VAL Board::transform(const Square::Value & value)
 {
-	Etat::VAL tmp;
+	Etat::VAL tmp = Etat::VIDE;
 	switch (value)
 	{
 	case Square::Black:

@@ -1,0 +1,15 @@
+<map id="IA::Tsumego_abr" name="IA::Tsumego_abr">
+<area shape="rect" id="node2" href="$class_arbre.html#a0aef1f091d76bca13229a21fcd45a076" title="Arbre::getNbF" alt="" coords="178,5,281,32"/>
+<area shape="rect" id="node3" href="$class_arbre.html#ae9d294f541cec5e5fac9ccd8fe8496ee" title="Arbre::getGob" alt="" coords="178,56,281,83"/>
+<area shape="rect" id="node4" href="$class_goban.html#a29aaf8df380fe614845d48cba057747c" title="Goban::coord" alt="" coords="179,107,279,133"/>
+<area shape="rect" id="node5" href="$class_etat.html#aa25e66b110bc835523819392435e78c6" title="Etat::getX" alt="" coords="190,157,269,184"/>
+<area shape="rect" id="node6" href="$class_etat.html#a3e3e915f2261c83989a983e84b1273c1" title="Etat::getY" alt="" coords="189,208,270,235"/>
+<area shape="rect" id="node7" href="$class_etat.html#ac0b81bbcf64cb3cc574e5a9dcdf94382" title="Etat::getVal" alt="" coords="184,259,275,285"/>
+<area shape="rect" id="node8" href="$class_arbre.html#aeaa93d0b192e3cce04adb509b6b29c40" title="Arbre::getValue" alt="" coords="173,309,285,336"/>
+<area shape="rect" id="node9" href="$class_arbre.html#a051e5328c63ba7ab6f6359f9f2f77105" title="Arbre::setInfo" alt="" coords="180,360,279,387"/>
+<area shape="rect" id="node10" href="$class_arbre.html#afc71a182e86352b06193c2dc746fab79" title="Arbre::getInfo" alt="" coords="180,411,279,437"/>
+<area shape="rect" id="node11" href="$class_arbre.html#aceca304216a7f620926c2147c7c84acd" title="Arbre::setFilsA" alt="" coords="175,461,284,488"/>
+<area shape="rect" id="node13" href="$class_arbre.html#ab8761bfdaadb8d6846199f269c6bbbc4" title="Arbre::at" alt="" coords="193,512,265,539"/>
+<area shape="rect" id="node14" href="$class_arbre.html#af2b7629b3686bcf3e49f737adb3b2d24" title="Arbre::getFilsA" alt="" coords="175,563,284,589"/>
+<area shape="rect" id="node12" href="$class_arbre.html#a761f4a2c6a43f44b38d4ac6fc1cf5cae" title="Arbre::Arbre" alt="" coords="333,461,425,488"/>
+</map>

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../Graphics/Globals.h"
 #include "Etat.h"
 #include <list>

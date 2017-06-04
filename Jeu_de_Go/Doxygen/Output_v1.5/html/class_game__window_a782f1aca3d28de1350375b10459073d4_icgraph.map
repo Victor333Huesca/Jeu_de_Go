@@ -1,0 +1,5 @@
+<map id="Game_window::getGoban" name="Game_window::getGoban">
+<area shape="rect" id="node2" href="$class_go___solver.html#a95c1c268123a76b4f2db5b183bc721b6" title="Go_Solver::getGoban" alt="" coords="224,5,369,32"/>
+<area shape="rect" id="node4" href="$class_go___solver.html#ab2a2c57a24b076a6729e01504ef25377" title="Go_Solver::setTarget" alt="" coords="225,56,368,83"/>
+<area shape="rect" id="node3" href="$class_go___solver.html#a6ca744f1f4586c3f90f2e47915034baf" title="Go_Solver::launchTsumego" alt="" coords="417,5,597,32"/>
+</map>

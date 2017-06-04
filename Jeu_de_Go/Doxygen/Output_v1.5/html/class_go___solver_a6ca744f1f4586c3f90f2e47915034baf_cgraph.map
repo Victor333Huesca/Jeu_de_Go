@@ -1,0 +1,24 @@
+<map id="Go_Solver::launchTsumego" name="Go_Solver::launchTsumego">
+<area shape="rect" id="node2" href="$class_go___solver.html#a95c1c268123a76b4f2db5b183bc721b6" title="Go_Solver::getGoban" alt="" coords="233,5,379,32"/>
+<area shape="rect" id="node5" href="$class_i_a.html#a61a236c15bade2bb202d2f6e25825894" title="IA::stop_tsumego" alt="" coords="450,56,574,83"/>
+<area shape="rect" id="node6" href="$class_i_a.html#a364aef554d81e9a93bff08c28d437497" title="IA::Tsumego" alt="" coords="259,233,353,260"/>
+<area shape="rect" id="node3" href="$class_game__window.html#a782f1aca3d28de1350375b10459073d4" title="Game_window::getGoban" alt="" coords="427,5,597,32"/>
+<area shape="rect" id="node4" href="$class_board.html#a19af96f42f5c38336010da2983abbf5c" title="Board::getGoban" alt="" coords="645,5,765,32"/>
+<area shape="rect" id="node7" href="$class_i_a.html#a5c0a6371478dedeb16372d13ce13cc34" title="IA::loadNumber" alt="" coords="457,487,567,513"/>
+<area shape="rect" id="node10" href="$class_etat.html#ac0b81bbcf64cb3cc574e5a9dcdf94382" title="Etat::getVal" alt="" coords="660,512,751,539"/>
+<area shape="rect" id="node11" href="$class_i_a.html#af1f6e5abe41a2225b17ca319c1fc0e4e" title="IA::Tsumego_abr" alt="" coords="452,309,572,336"/>
+<area shape="rect" id="node12" href="$class_arbre.html#a0aef1f091d76bca13229a21fcd45a076" title="Arbre::getNbF" alt="" coords="654,56,757,83"/>
+<area shape="rect" id="node15" href="$class_arbre.html#aeaa93d0b192e3cce04adb509b6b29c40" title="Arbre::getValue" alt="" coords="649,107,761,133"/>
+<area shape="rect" id="node17" href="$class_arbre.html#afc71a182e86352b06193c2dc746fab79" title="Arbre::getInfo" alt="" coords="656,157,755,184"/>
+<area shape="rect" id="node22" href="$_i_a_8cpp.html#a2f7deb8e736801498741ae99e142daee" title="factoriel" alt="" coords="479,259,545,285"/>
+<area shape="rect" id="node23" href="$class_i_a.html#a8113a453920dfbee224ae38a6367e059" title="IA::Solution" alt="" coords="467,563,557,589"/>
+<area shape="rect" id="node8" href="$class_arbre.html#ae9d294f541cec5e5fac9ccd8fe8496ee" title="Arbre::getGob" alt="" coords="654,563,757,589"/>
+<area shape="rect" id="node9" href="$class_goban.html#a29aaf8df380fe614845d48cba057747c" title="Goban::coord" alt="" coords="655,461,755,488"/>
+<area shape="rect" id="node13" href="$class_etat.html#aa25e66b110bc835523819392435e78c6" title="Etat::getX" alt="" coords="666,360,745,387"/>
+<area shape="rect" id="node14" href="$class_etat.html#a3e3e915f2261c83989a983e84b1273c1" title="Etat::getY" alt="" coords="665,411,746,437"/>
+<area shape="rect" id="node16" href="$class_arbre.html#a051e5328c63ba7ab6f6359f9f2f77105" title="Arbre::setInfo" alt="" coords="656,208,755,235"/>
+<area shape="rect" id="node18" href="$class_arbre.html#aceca304216a7f620926c2147c7c84acd" title="Arbre::setFilsA" alt="" coords="651,259,760,285"/>
+<area shape="rect" id="node20" href="$class_arbre.html#ab8761bfdaadb8d6846199f269c6bbbc4" title="Arbre::at" alt="" coords="669,309,741,336"/>
+<area shape="rect" id="node21" href="$class_arbre.html#af2b7629b3686bcf3e49f737adb3b2d24" title="Arbre::getFilsA" alt="" coords="651,613,760,640"/>
+<area shape="rect" id="node19" href="$class_arbre.html#a761f4a2c6a43f44b38d4ac6fc1cf5cae" title="Arbre::Arbre" alt="" coords="813,259,905,285"/>
+</map>

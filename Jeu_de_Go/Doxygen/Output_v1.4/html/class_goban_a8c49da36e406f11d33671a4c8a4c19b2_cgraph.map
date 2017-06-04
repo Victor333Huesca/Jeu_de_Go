@@ -1,0 +1,7 @@
+<map id="Goban::Goban" name="Goban::Goban">
+<area shape="rect" id="node2" href="$class_etat.html#ac020c4fe222274ac849a03fc8f19a99a" title="Etat::setX" alt="" coords="171,5,249,32"/>
+<area shape="rect" id="node3" href="$class_etat.html#a8a54fc9ecb1b97d84d2f1f259e3bf70e" title="Etat::setY" alt="" coords="169,56,251,83"/>
+<area shape="rect" id="node4" href="$class_etat.html#aa88987ca54aee676717f05e4570c0aec" title="Etat::setVal" alt="" coords="165,107,255,133"/>
+<area shape="rect" id="node5" href="$class_goban.html#a29aaf8df380fe614845d48cba057747c" title="Goban::coord" alt="" coords="160,157,260,184"/>
+<area shape="rect" id="node6" href="$class_etat.html#ac0b81bbcf64cb3cc574e5a9dcdf94382" title="Etat::getVal" alt="" coords="165,208,255,235"/>
+</map>

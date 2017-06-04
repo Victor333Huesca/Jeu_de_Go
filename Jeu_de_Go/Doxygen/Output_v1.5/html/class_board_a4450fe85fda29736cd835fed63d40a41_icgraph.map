@@ -1,0 +1,8 @@
+<map id="Board::setVolume" name="Board::setVolume">
+<area shape="rect" id="node2" href="$class_board.html#a77d145afa8d71a85c4097aca08c30525" title="Board::turnSoundsUp" alt="" coords="188,5,335,32"/>
+<area shape="rect" id="node5" href="$class_board.html#a648552cb139f9c0cc61f6372251739b2" title="Board::turnSoundsDown" alt="" coords="180,56,343,83"/>
+<area shape="rect" id="node3" href="$class_game__window.html#a1ba4f62d58089e3de5da00538889cb25" title="Game_window::turnSoundsUp" alt="" coords="399,5,595,32"/>
+<area shape="rect" id="node4" href="$class_go___solver.html#a461b1fecf636b55d6b9f31b0035366c3" title="Go_Solver::turnSoundsUp" alt="" coords="659,5,829,32"/>
+<area shape="rect" id="node6" href="$class_game__window.html#aa934e0cb8983cf30af634deff8581848" title="Game_window::turnSoundsDown" alt="" coords="391,56,603,83"/>
+<area shape="rect" id="node7" href="$class_go___solver.html#a1d7d0fad019f2d33caebb6cfe11d1f42" title="Go_Solver::turnSoundsDown" alt="" coords="651,56,837,83"/>
+</map>

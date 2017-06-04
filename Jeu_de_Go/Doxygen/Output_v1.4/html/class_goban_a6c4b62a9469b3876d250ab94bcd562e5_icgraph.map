@@ -1,0 +1,9 @@
+<map id="Goban::eliminateOppositeKO" name="Goban::eliminateOppositeKO">
+<area shape="rect" id="node2" href="$class_goban.html#a7dd1a7b53322bde2a831a923059e43a3" title="Goban::move" alt="" coords="244,55,343,81"/>
+<area shape="rect" id="node3" href="$class_goban.html#a36ab256c9430e070b620052a0f13f051" title="Goban::listFils" alt="" coords="391,29,497,56"/>
+<area shape="rect" id="node7" href="$class_board.html#a5fda73da080403d8a71a8593d581c350" title="Board::click" alt="" coords="557,80,648,107"/>
+<area shape="rect" id="node4" href="$class_arbre.html#acd12cae4820bb7780a628716a0615d10" title="Arbre::Tsumego" alt="" coords="545,29,660,56"/>
+<area shape="rect" id="node5" href="$class_game__window.html#a72304de2044c29f1373037bd818f674f" title="Game_window::keyPressed" alt="" coords="708,29,891,56"/>
+<area shape="rect" id="node6" href="$class_game__window.html#aec21feecf4c72d73c13d82aa12df6930" title="Game_window::Run" alt="" coords="939,55,1076,81"/>
+<area shape="rect" id="node8" href="$class_game__window.html#afa942088809bf10731bb31d0d37b878d" title="Game_window::click" alt="" coords="729,80,870,107"/>
+</map>

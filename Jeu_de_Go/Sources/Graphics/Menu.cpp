@@ -1,31 +1,45 @@
-#include "Menu.h"
+﻿#include "Menu.h"
 
 
-Menu::Menu(const sf::Vector2f & position, const char* texture, const char* font, sf::Vector2f & scale) :
-	cur_choice(nullptr)
+Menu::Menu(const sf::Vector2f & position, const char* texture, const Screens& _previous, const sf::Vector2f & scale) :
+	choices(),
+	cur_choice(nullptr),
+	s_background(),
+	t_background(),
+	previous(_previous)
 {
 	t_background.loadFromFile(texture);
 	s_background.setTexture(t_background);
 	s_background.setPosition(position);
 	s_background.setScale(scale);
 
-	text_font.loadFromFile(font);
+#if __ERROR_LEVEL__ > 0
+	log_file << "Menu::Menu(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
 
 Menu::~Menu()
 {
+	for (Choice& c : choices)
+	{
+		Choice* cc = &c;
+		delete cc;
+	}
 
+#if __ERROR_LEVEL__ > 0
+	log_file << "Menu::~Menu()" << std::endl;
+#endif // __ERROR_LEVEL__ > 0
 }
 
 void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-
     target.draw(s_background, states);
-    for (const Choice& choice : choices)
-        target.draw(choice, states);
+
+	for (const Choice& c : choices)
+		target.draw(c, states);
 }
 
-int Menu::Run(sf::RenderWindow &window)
+Screens Menu::Run(sf::RenderWindow &window, Go_Solver& solver)
 {
     // To stay alive
 	bool Running = true;
@@ -41,7 +55,7 @@ int Menu::Run(sf::RenderWindow &window)
 			switch (event.type)
 			{
 			case sf::Event::Closed:
-				return -1;
+				return EXIT;
 				break;
 			case sf::Event::LostFocus:
 				break;
@@ -49,9 +63,14 @@ int Menu::Run(sf::RenderWindow &window)
 				break;
 			case sf::Event::MouseButtonReleased:
 			{
-				int res = click(event.mouseButton.button, window);
+				Screens res = click(event.mouseButton.button, window, solver);
 				if (res != NO_CHANGE)
-					return res;
+				{
+					if (res == PREVIOUS)
+						return previous;
+					else
+						return res;
+				}
 				break;
 			}
 			case sf::Event::MouseMoved:
@@ -81,12 +100,12 @@ int Menu::Run(sf::RenderWindow &window)
 	}
 
 	// Not suppose to reach here but just in case
-	return -1;
+	return ERROR_SCREEN;
 }
 
 sf::Vector2f Menu::getSize() const
 {
-    return sf::Vector2f(s_background.getTextureRect().width, s_background.getTextureRect().height);
+    return sf::Vector2f((float)s_background.getTextureRect().width, (float)s_background.getTextureRect().height);
 }
 
 sf::Vector2f Menu::getPosition() const
@@ -96,44 +115,20 @@ sf::Vector2f Menu::getPosition() const
 
 
 // Interactcions
-int Menu::click(const sf::Mouse::Button& type, const sf::RenderWindow& window)
+Screens Menu::click(const sf::Mouse::Button& type, sf::RenderWindow& window, Go_Solver& solver)
 {
 	if (cur_choice != nullptr)
-		return cur_choice->Run(window);
+		return cur_choice->Run(window, solver);
 	
 	return NO_CHANGE;
-	/*
-	for (Choice& button : choices)   //j'ai travaillé ici car il faut renvoyé un int 
-	{
-		if (button.Click(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) && (button.id == "Jouer"))
-		{
-			return 1;
-		}
-		if (button.Click(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) && (button.id == "Quitter"))
-		{
-			return -1;
-		}
-
-	}
-
-
-	// On récurpère la position de la souris
-	sf::Vector2f position(sf::Mouse::getPosition(window));
-
-
-	// Cherche le menu selectionné
-
-	for (Choice& button : choices)
-	{
-	}
-	*/
 }
 
 void Menu::mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos)
 {
 	for (Choice& c : choices)
 	{
-		if (c.getGlobalBounds().contains(sf::Vector2f(pos)))
+		//if (c.getGlobalBounds().contains(sf::Vector2f(pos)))
+		if (c.getGlobalBounds().contains(window.mapPixelToCoords(pos)))
 		{
 			// c is hover
 			if (cur_choice != &c)
@@ -151,28 +146,6 @@ void Menu::mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos)
 				c.setSelected(false);
 		}
 	}
-
-	/*
-	sf::Vector2f position(sf::Mouse::getPosition(window));
-	for (Choice& button : choices)
-	{
-		if (button.Click(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
-		{
-			if (!button.getSelected())
-			{
-				button.setSelected(true);  //Voila ici ca ne fonctionne pas, alors ca affiche 1 tant qu'on est ici mais une fois sortie au revoir.
-				
-			}
-				
-			std::cout << button.getSelected() << std::endl;
-		}
-		else
-		{
-			std::cout << button.getSelected() << std::endl;
-		}
-		//button.setTexture("./Ressources/Img/button_blank.png");
-	}
-	*/
 }
 
 void Menu::keyPressed(const sf::Event::KeyEvent& key)
@@ -180,20 +153,26 @@ void Menu::keyPressed(const sf::Event::KeyEvent& key)
 
 }
 
-void Menu::addItem(Choice& item)
+void Menu::addItem(const Choice& item)
 {
-	item.setFont(text_font);
-	choices.push_back(item);
+	Choice* _item = new Choice(item);
+	choices.push_back(*_item);
+
+#if __ERROR_LEVEL__ > 0
+	log_file << "Menu::addItem(), ";
+#endif // __ERROR_LEVEL__ > 0
 }
 
-void Menu::setItemsTextures(const char * blank, const char * selected)  // Quitte à avoir les boutons autant le déclarer direct au constructeur.
+void Menu::setPrevious(const Screens & sc)
 {
-	// Load textures
-	button_blank.loadFromFile(blank); 
-	button_selected.loadFromFile(selected);
-	
-	// Apply to each choice
+	previous = sc;
+}
+
+void Menu::showAdresses() const
+{
+	std::cout << "\nTextures : " <<
+		"\n  - Background : " << &t_background;
+
 	for (Choice& c : choices)
-		c.loadTextures(button_blank, button_selected);
+		c.showAdressTextures();
 }
-

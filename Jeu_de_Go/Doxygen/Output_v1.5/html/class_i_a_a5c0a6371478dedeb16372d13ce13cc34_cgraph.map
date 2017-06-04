@@ -1,0 +1,5 @@
+<map id="IA::loadNumber" name="IA::loadNumber">
+<area shape="rect" id="node2" href="$class_arbre.html#ae9d294f541cec5e5fac9ccd8fe8496ee" title="Arbre::getGob" alt="" coords="164,5,267,32"/>
+<area shape="rect" id="node3" href="$class_goban.html#a29aaf8df380fe614845d48cba057747c" title="Goban::coord" alt="" coords="165,56,265,83"/>
+<area shape="rect" id="node4" href="$class_etat.html#ac0b81bbcf64cb3cc574e5a9dcdf94382" title="Etat::getVal" alt="" coords="170,107,261,133"/>
+</map>

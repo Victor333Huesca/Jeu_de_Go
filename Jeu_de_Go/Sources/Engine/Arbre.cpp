@@ -2,184 +2,211 @@
 #include <iostream>
 //Constructors
 
-	Arbre::Arbre() : gob(), nbF(0)
+	Arbre::Arbre() : nbF(0)
 	{
-		fils=	std::vector<Goban>(0);
+		gob=nullptr;
+		fils=	new Goban[0];
 		info=0;
 		value=Etat::NOIR;
+		filsA=nullptr;
+		SABR= nullptr;
 	}
 	//par copie
 	Arbre::Arbre(const Arbre & a)
 {
-	gob=a.getGob();
-	nbF=a.getNbF();
-	value=a.getValue();
-	fils=a.getFils();
-	info=0;
+	if (&a != this)
+	{
+		gob = new Goban(*a.getGob());
+		nbF = a.getNbF();
+		value = a.getValue();
+		fils = new Goban[nbF];
+		for (size_t i=0;i<nbF;i++)
+		{
+			fils[i]=a.fils[i];
+		}
+		info = a.getInfo();
+		filsA =nullptr;
+		SABR=nullptr;
+	}
 }
 
-	Arbre::Arbre(Goban& G, Etat::VAL val) {
-		gob = G;
-		info=false;
-		value=val;
-		fils= 	std::vector<Goban>(0);
-		info=0;
+Arbre::Arbre(const Goban& G, Etat::VAL val)
+{
+	gob = new Goban(G);
+	info=false;
+	value=val;
+	info=0;
+	std::vector<Goban> f = gob->listFils(value);
+	nbF= f.size();
+	fils= new Goban[nbF];
+	for (size_t i=0; i<f.size(); i++){
+		fils[i]=f[i];
+	}
+	filsA= nullptr;
+	SABR=nullptr;
 	}
 
-	//Getters
+//Distructor
+Arbre::~Arbre(){
+	delete gob;
+	if (filsA != nullptr) delete filsA;
+	delete[] fils;
+	delete[] SABR;
+}
+//Getters
 
-	Goban Arbre::getFilsIndice(const size_t indice) const
+Goban& Arbre::at(const size_t indice) const
+{
+	return fils[indice];
+}
+
+Goban* Arbre::getFils()
+{
+	return fils;
+}
+
+size_t Arbre::getNbF() const
+{
+	return this->nbF;
+}
+
+Goban* Arbre::getGob() const
+{
+	return gob;
+}
+
+bool Arbre::getInfo() const
+{
+	return this->info;
+}
+
+Etat::VAL Arbre::getValue() const
+{
+	return value;
+}
+
+Arbre* Arbre::getFilsA() const
+{
+	return filsA;
+}
+
+Arbre* Arbre::getSABR()
+{
+	return SABR;
+}
+Arbre& Arbre::getSABR(size_t i)
+{
+	return SABR[i];
+}
+
+//Setters
+
+void Arbre::setNbF(size_t _nbF)
+{
+	this->nbF = _nbF;
+}
+
+void Arbre::setGob(const Goban& _gob)
+{
+	this->gob = new Goban(_gob);
+}
+
+void Arbre::setInfo(bool b)
+{
+	this->info = b;
+}
+
+void Arbre::setValue(Etat::VAL v)
+{
+	this->value = v;
+}
+void Arbre::setFilsA(Goban& G, Etat::VAL val){
+	delete filsA;
+	filsA= new Arbre(G,val);
+}
+
+void Arbre::setSABR(Goban& G, Etat::VAL val, size_t i){
+	std::cout<<"avant setSABR"<<std::endl;
+	SABR[i]= Arbre(G,val);
+	std::cout<<"après setSABR"<<std::endl;
+}
+
+Arbre& Arbre::operator[](const size_t i)const{
+  return SABR[i];
+}
+
+//overloading methodes
+Arbre Arbre::operator=(const Arbre a)
+{
+	std::cout << "Avant Arbre::operator=" << std::endl;
+	if (this != &a)
 	{
-		return fils[indice];
-	}
-
-	std::vector<Goban> Arbre::getFils() const
-	{
-		return fils;
-	}
-
-	size_t Arbre::getNbF() const
-	{
-		return this->nbF;
-	}
-
-	Goban Arbre::getGob() const
-	{
-		return this->gob;
-	}
-
-	bool Arbre::getInfo() const
-	{
-		return this->info;
-	}
-
-	Etat::VAL Arbre::getValue() const
-	{
-		return value;
-	}
-
-	//Setters
-
-
-		void Arbre::setFils(Goban f, const size_t i)
+		delete gob;
+		gob = new Goban(*a.gob);
+		nbF = a.nbF;
+		delete[] fils;
+		fils= new Goban[nbF];
+		for (size_t i=0; i< nbF; i++)
 		{
-			this->fils[i] = f;
+			fils[i]= a.fils[i];
 		}
+		info = a.info;
+		value = a.value;
+		delete filsA;
+		filsA= new Arbre(*a.getFilsA());
+		SABR=nullptr;
+		std::cout << "Apres Arbre::operator=" << std::endl;
 
-		void Arbre::setNbF(size_t _nbF)
+	}
+	return *this;
+}
+
+//Others methodes
+void Arbre::effacerGoban(){
+	delete gob;
+}
+
+void Arbre::afficher()
+{
+	std::cout <<"==============================="<<std::endl;
+	std::cout << "============"<<value<<"=============" << std::endl;
+	std::cout << this->getGob() << std::endl;
+}
+
+void Arbre::printArbo(const Arbre&)
+{
+	//Utiliser dotty ou latex ??
+	std::cout << this->getGob() << std::endl;
+}
+
+
+std::ostream& operator<<(std::ostream &os, Arbre &n)
+{
+	n.afficher();
+	return os;
+}
+
+void Arbre::resetFils()
+{
+	std::vector<Goban> f=gob->listFils(value);
+	nbF=f.size();
+	delete[] fils;
+	fils= new Goban[nbF];
+	for (size_t i=0; i<nbF;i++)
 	{
-		this->nbF = _nbF;
+		fils[i]= f[i];
 	}
+	f.clear();
+	f.resize(0);
+}
 
-	void Arbre::setGob(Goban _gob)
-	{
-		this->gob = _gob;
+void Arbre::elimFils(){
+	delete[] fils;
+	fils = new Goban [0];
+}
+void Arbre::defineSABR(){
+	SABR = new Arbre[nbF];
+	for (size_t i=0; i<nbF; i++){
+		SABR[i]=Arbre();
 	}
-
-	void Arbre::setInfo(bool b)
-	{
-		this->info = b;
-	}
-
-	void Arbre::setValue(Etat::VAL v)
-	{
-		this->value = v;
-	}
-
-	void Arbre::Tsumego(Etat& cible)
-	{
-		//creer list de gobans des fils
-		nbF=gob.listFils(value).size();
-		fils.resize(nbF);
-		fils=gob.listFils(value);
-
-		//CAS D'ARET
-		if (nbF==0){
-				bool enVie=0;
-				if (gob.coord(cible.getX(),cible.getY()).getVal()==cible.getVal()){
-					//cible en vie
-					enVie=1;
-				}
-				if (value==cible.getVal() && enVie)
-					info=1;
-				else if (value!=cible.getVal() && !enVie)
-					info=1;
-					else
-						info=0;
-				std::cout<<gob<<std::endl;
-				return;
-		}
-
-
-		size_t i=0;
-		//creation des fils
-		Arbre filsA;
-		Etat::VAL val;
-		while (i < nbF && info==0){
-		if (value == Etat::VAL::BLANC)
-				val= Etat::VAL::NOIR;
-		else
-				val= Etat::VAL::BLANC;
-		filsA=Arbre(fils[i], val);
-		if (filsA.gob.coord(cible.getX(),cible.getY()).getVal()==cible.getVal()){
-				//cible en vie
-				filsA.Tsumego(cible);
-			}
-			else {
-				//le coup a tué la cible
-				info=1;
-				std::cout<<gob<<std::endl;
-				return;
-			}
-
-			//s'areter si la réponse est deja trouvée (opti)
-			if (filsA.info==1){}
-			else {
-				info=1;
-				std::cout<<gob<<std::endl;
-				return;
-			}
-			i++;
-		}
-	}
-
-
-
-	Goban Arbre::operator[](unsigned short int i)
-	{
-		return this->fils[i];
-	}
-
-	//overloading methodes
-	Arbre Arbre::operator=(Arbre a) {
-		if (this != &a) {
-		  gob = a.gob;
-			nbF = a.nbF;
-			fils.resize(a.fils.size());
-			fils = a.fils;
-			info = a.info;
-			value = a.value;
-		}
-		return *this;
-	}
-
-	//Others methods
-	void Arbre::afficher()
-	{
-		std::cout <<"==============================="<<std::endl;
-		std::cout << "============"<<value<<"=============" << std::endl;
-		std::cout << this->getGob() << std::endl;
-	}
-
-	void Arbre::printArbo(const Arbre&)
-	{
-		//Utiliser dotty ou latex ??
-		std::cout << this->getGob() << std::endl;
-	}
-
-
-	std::ostream& operator<<(std::ostream &os, Arbre &n)
-	{
-		n.afficher();
-		return os;
-	}
+}

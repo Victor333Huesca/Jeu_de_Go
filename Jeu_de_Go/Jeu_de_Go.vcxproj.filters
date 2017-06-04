@@ -63,12 +63,27 @@
     <ClInclude Include="Sources\Engine\Arbre.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Graphics\Choice_miniature.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Graphics\Menu_simple.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Graphics\Choice_Simple.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Graphics\Menu_Miniature.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\IA.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Graphics\Go_Solver.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Graphics\Main.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Graphics\Screen.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Graphics\Game\Board.cpp">
@@ -110,6 +125,24 @@
     <ClCompile Include="Sources\Engine\Arbre.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Graphics\Choice_miniature.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Menu_simple.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Choice_Simple.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Menu_Miniature.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\IA.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Graphics\Go_Solver.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Ressources\Img\background3.png">
@@ -140,6 +173,9 @@
       <Filter>Fichiers de ressources</Filter>
     </Image>
     <Image Include="Ressources\Img\Speaker_off.jpg">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Ressources\Img\probleme_6_en_coin_blank.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
   </ItemGroup>

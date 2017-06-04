@@ -1,0 +1,6 @@
+<map id="Goban::move" name="Goban::move">
+<area shape="rect" id="node2" href="$class_goban.html#a6c4b62a9469b3876d250ab94bcd562e5" title="Goban::eliminateOppositeKO" alt="" coords="152,5,343,32"/>
+<area shape="rect" id="node3" href="$class_etat.html#aa88987ca54aee676717f05e4570c0aec" title="Etat::setVal" alt="" coords="391,31,481,57"/>
+<area shape="rect" id="node4" href="$class_goban.html#a29aaf8df380fe614845d48cba057747c" title="Goban::coord" alt="" coords="197,107,297,133"/>
+<area shape="rect" id="node5" href="$class_history.html#a90222df7f73ae9cfda56bdb66cb1985e" title="Add new state in history. " alt="" coords="201,157,293,184"/>
+</map>

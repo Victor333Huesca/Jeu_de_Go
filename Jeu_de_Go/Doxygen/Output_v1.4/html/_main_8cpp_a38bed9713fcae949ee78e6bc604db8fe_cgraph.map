@@ -1,0 +1,15 @@
+<map id="loadMenu" name="loadMenu">
+<area shape="rect" id="node2" href="$_main_8cpp.html#ab2ff3dd66804b9f8e614cc3d8f62b851" title="loadMenu1" alt="" coords="132,208,217,235"/>
+<area shape="rect" id="node8" href="$_main_8cpp.html#a4d2b8dfc9654f97dcbfd580ffeeb8048" title="loadMenu2" alt="" coords="132,259,217,285"/>
+<area shape="rect" id="node11" href="$_main_8cpp.html#a1862c57029f25299b350b89a3fef7bac" title="loadMenu3" alt="" coords="132,5,217,32"/>
+<area shape="rect" id="node12" href="$_main_8cpp.html#a3153201e1f35afab1a2de7fa1dea810a" title="loadMenu4" alt="" coords="132,56,217,83"/>
+<area shape="rect" id="node13" href="$_main_8cpp.html#aee704d9ab9bae25e3fecbe7f6a106f7a" title="loadMenu5" alt="" coords="132,107,217,133"/>
+<area shape="rect" id="node14" href="$_main_8cpp.html#a0a424bcea43ed2e1fc6b5d516bafd12c" title="loadMenu6" alt="" coords="132,157,217,184"/>
+<area shape="rect" id="node3" href="$class_menu__simple.html#a1273e6743ee892cd8651968efd595b73" title="Menu_simple::setItemsFonts" alt="" coords="273,56,464,83"/>
+<area shape="rect" id="node4" href="$class_menu__simple.html#a0fc5b4ec10c844f34495364f70cd333e" title="Menu_simple::addItem" alt="" coords="292,107,445,133"/>
+<area shape="rect" id="node6" href="$class_menu__simple.html#a4717470decb5666cbac7aa879aade5fa" title="Menu_simple::setItemsTextures" alt="" coords="265,157,472,184"/>
+<area shape="rect" id="node7" href="$_main_8cpp.html#ad43822cd5cf43d5891d7dbdd6fdb1802" title="log_file" alt="" coords="337,208,400,235"/>
+<area shape="rect" id="node5" href="$class_choice___simple.html#a035e32f90e4561b666b6571bce06e207" title="Choice_Simple::setFont" alt="" coords="520,107,681,133"/>
+<area shape="rect" id="node9" href="$class_menu.html#aa8032782ee75fba5fa17bf7a20635c68" title="Menu::addItem" alt="" coords="315,259,423,285"/>
+<area shape="rect" id="node10" href="$class_menu___miniature.html#afad04c066c7e436bbf9cccde310d07dc" title="Menu_Miniature::setItems\lTextures" alt="" coords="283,310,455,351"/>
+</map>

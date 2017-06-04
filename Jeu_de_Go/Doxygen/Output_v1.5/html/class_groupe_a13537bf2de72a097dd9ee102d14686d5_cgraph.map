@@ -1,0 +1,4 @@
+<map id="Groupe::voisin" name="Groupe::voisin">
+<area shape="rect" id="node2" href="$class_groupe.html#a51ae2500f67ac071215ba3ff49e91b17" title="Groupe::shouldContain" alt="" coords="157,5,312,32"/>
+<area shape="rect" id="node3" href="$class_etat.html#ab6e6b44dd68c041150332cee66dc74a3" title="Etat::estVoisine" alt="" coords="360,5,475,32"/>
+</map>

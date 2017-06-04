@@ -1,0 +1,10 @@
+<map id="Board::load" name="Board::load">
+<area shape="rect" id="node2" href="$class_board.html#a5fda73da080403d8a71a8593d581c350" title="Board::click" alt="" coords="181,5,272,32"/>
+<area shape="rect" id="node5" href="$class_board.html#ac7ec911a62371650afd340d1535a1742" title="Board::cancel" alt="" coords="175,56,278,83"/>
+<area shape="rect" id="node7" href="$class_board.html#a3cea4df16e41c21666cf51789b7e9e78" title="Board::load" alt="" coords="183,107,271,133"/>
+<area shape="rect" id="node8" href="$class_game__window.html#ac674f6d0db2bf60e92a0072d94e4c019" title="Game_window::setGoban" alt="" coords="141,157,312,184"/>
+<area shape="rect" id="node3" href="$class_game__window.html#afa942088809bf10731bb31d0d37b878d" title="Game_window::click" alt="" coords="381,5,522,32"/>
+<area shape="rect" id="node4" href="$class_game__window.html#a555769f4e8511e45d6623658dc736be5" title="Game_window::Run" alt="" coords="591,31,728,57"/>
+<area shape="rect" id="node6" href="$class_game__window.html#a72304de2044c29f1373037bd818f674f" title="Game_window::keyPressed" alt="" coords="360,56,543,83"/>
+<area shape="rect" id="node9" href="$class_go___solver.html#a8452c66187c526e0a6051bbb42b9bbda" title="Go_Solver::setGoban" alt="" coords="379,157,524,184"/>
+</map>

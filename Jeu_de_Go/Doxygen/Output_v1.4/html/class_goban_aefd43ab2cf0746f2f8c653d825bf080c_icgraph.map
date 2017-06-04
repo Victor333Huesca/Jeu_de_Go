@@ -1,0 +1,6 @@
+<map id="Goban::afficheGroupes" name="Goban::afficheGroupes">
+<area shape="rect" id="node2" href="$class_goban.html#a8d5df6cd74b0240f36a4056f045625b7" title="Goban::afficheGroupes" alt="" coords="208,5,363,32"/>
+<area shape="rect" id="node3" href="$class_board.html#a5fda73da080403d8a71a8593d581c350" title="Board::click" alt="" coords="240,56,331,83"/>
+<area shape="rect" id="node4" href="$class_game__window.html#afa942088809bf10731bb31d0d37b878d" title="Game_window::click" alt="" coords="411,56,552,83"/>
+<area shape="rect" id="node5" href="$class_game__window.html#aec21feecf4c72d73c13d82aa12df6930" title="Game_window::Run" alt="" coords="600,56,737,83"/>
+</map>

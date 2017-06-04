@@ -1,0 +1,4 @@
+<map id="Goban::compress" name="Goban::compress">
+<area shape="rect" id="node2" href="$class_goban.html#a29aaf8df380fe614845d48cba057747c" title="Goban::coord" alt="" coords="179,5,279,32"/>
+<area shape="rect" id="node3" href="$class_etat.html#ac0b81bbcf64cb3cc574e5a9dcdf94382" title="Etat::getVal" alt="" coords="183,56,274,83"/>
+</map>

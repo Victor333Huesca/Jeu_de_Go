@@ -1,14 +1,30 @@
-#pragma once
+﻿#pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <cstdlib>
 #include <string>
+#include <fstream>
+#include <cassert>
+#include <stdexcept>
+
+#ifdef __MINGW32__
+#include<sstream>
+#endif // __MINGW32__
 
 #ifdef _WIN32
 #define CLEAR_CMD "cls"
+#define DIR_SEP "\\"
 #else
 #define CLEAR_CMD "clear"
+#define DIR_SEP "/"
 #endif // _WIN32
+
+#ifdef __MINGW32__
+//#define std::to_string(
+#endif // __MINGW32__
 
 #define SQUARE_WIDTH 144
 #define SQUARE_HEIGHT 144
@@ -43,5 +59,48 @@
 #define INFOS_TURN_SIZE sf::Vector2f(353, 90)
 
 #define INFOS_TIMER_POS_WHITE sf::Vector2f(430, 2400)
-#define INFOS_TIMER_POS_BLACK sf::Vector2f(520, 2500)
+#define INFOS_TIMER_POS_BLACK sf::Vector2f(480, 2500)
 #define INFOS_TIMER_SIZE 100
+
+// Declare globals variables here
+extern std::ofstream log_file;
+
+#define __ERROR_LEVEL__ 100
+
+// Here are the differents screens
+enum Screens
+{
+	// Game modes
+	GAME = 0,
+
+	// Menus
+	MAIN_MENU = 1,
+	PROBLEMS_MENU = 2,
+	OPTIONS_MENU = 3,
+	AUDIO = 5,
+	VIDEO = 6,
+	PAUSE = 7,
+
+
+	// Other
+	CONTINUE = 0,
+	EXIT = -1,
+	PREVIOUS = -33,
+	NO_CHANGE = -777,
+	ERROR_SCREEN = -34
+};
+
+enum Musics
+{
+	PISTE_1
+};
+
+#if defined(__MINGW32__)
+template <typename T>
+std::string ToString(T val)
+{
+    std::stringstream stream;
+    stream << val;
+    return stream.str();
+}
+#endif // defined

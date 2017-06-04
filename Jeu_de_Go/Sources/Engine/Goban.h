@@ -1,10 +1,12 @@
-#ifndef Goban_G
+﻿#ifndef Goban_G
 #define Goban_G
 #include <iostream>
+#include <cmath>
 #include <vector>
 #include "Etat.h"
 #include "Groupe.h"
 #include "History.h"
+#include <stdexcept>
 
 //Goban's size
 const size_t TGOBAN = 19;
@@ -14,7 +16,10 @@ private:
   Etat* array;
   std::vector<Groupe> groups_white;
   std::vector<Groupe> groups_black;
+  int score_black;
+  int score_white;
   History history;
+
 
   // Privates methods
   bool isMoveLegal(const Etat::VAL& value,const int& x, const int& y) const;
@@ -24,6 +29,8 @@ public:
   //CONSTRUCTORS
   Goban();//default constructor
   Goban(const Goban&);//copy constructor
+  //DESTRUCTOR
+  ~Goban();//destructor
   // Access to a state
   Etat& coord(const int& x, const int& y);		// access to element of array with (x,y)
   const Etat& coord(const int& x, const int& y) const;		// access to element of array with (x,y)
@@ -34,6 +41,12 @@ public:
   std::vector<Groupe> getGroupsBlack() const;
   Etat* getArray();
 
+  //ACCESSEURS AU SCORE
+  int getScoreBlack() const;
+  int getScoreWhite() const;
+
+  void setScoreBlack(int score);
+  void setScoreWhite(int score);
   //GROUPS
   std::ostream& afficheGroupes(std::ostream& stream, const Etat::VAL& val) const;
   std::ostream& afficheGroupes(std::ostream& stream) const;
@@ -55,6 +68,11 @@ public:
   void eliminateOppositeKO(const Etat::VAL& value);//eliminate KOs tht aren't valid anymore
 
   bool cancel(); //return back to the state n-1 of the goban
+
+  /*   --------- Méthodes de compressions ----------   */
+  // Prend le goban en paramètre avec les zones non jouables marquées et renvoie le goban compressé.
+  uint8_t* compress(int nb_revelent = 0) const;
+  void uncompress(const uint8_t* compressed, const Etat::VAL KO_status, int nb_revelent = 0);
 
   //overloadings methodes
   Etat& operator[](const size_t) const;

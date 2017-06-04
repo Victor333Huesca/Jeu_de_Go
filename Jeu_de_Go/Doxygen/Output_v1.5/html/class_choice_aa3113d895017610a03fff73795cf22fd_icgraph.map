@@ -1,0 +1,7 @@
+<map id="Choice::updateTexture" name="Choice::updateTexture">
+<area shape="rect" id="node2" href="$class_choice.html#a70d994feb4c3215eb477bae3df7c5052" title="Choice::loadTextures" alt="" coords="205,15,349,42"/>
+<area shape="rect" id="node4" href="$class_choice.html#aa4bbe520ca9f933327fc1f678d6626f8" title="Choice::setSelected" alt="" coords="208,67,347,94"/>
+<area shape="rect" id="node6" href="$class_choice.html#a377e5d456c5c7c7e8914af52cf184a3a" title="Choice::setHover" alt="" coords="217,118,337,145"/>
+<area shape="rect" id="node3" href="$class_choice__miniature.html#a156cdcafd4f44bdcf262669612fa8b82" title="Choice_miniature::Choice\l_miniature" alt="" coords="397,5,568,47"/>
+<area shape="rect" id="node5" href="$class_menu.html#a589f53bbd6436b381b5ec92a609d5d66" title="Menu::getPosition" alt="" coords="419,71,546,98"/>
+</map>

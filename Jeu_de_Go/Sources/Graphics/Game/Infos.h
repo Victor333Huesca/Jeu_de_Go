@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../Globals.h"
 #include "Square.h"
 #include "Timer.h"

@@ -1,0 +1,5 @@
+<map id="Menu" name="Menu">
+<area shape="rect" id="node4" href="$class_menu___miniature.html" title="{Menu_Miniature\n||+ Menu_Miniature()\l+ ~Menu_Miniature()\l+ setItemsTextures()\l}" alt="" coords="5,543,148,649"/>
+<area shape="rect" id="node5" href="$class_menu__simple.html" title="{Menu_simple\n||+ Menu_simple()\l+ ~Menu_simple()\l+ setItemsTextures()\l+ setItemsFonts()\l+ addItem()\l}" alt="" coords="172,528,315,664"/>
+<area shape="rect" id="node2" href="$class_screen.html" title="{Screen\n||+ Run()\l+ draw()\l}" alt="" coords="125,131,194,223"/>
+</map>

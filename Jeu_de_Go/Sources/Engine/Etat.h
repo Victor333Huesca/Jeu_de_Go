@@ -1,4 +1,4 @@
-#ifndef Etat_E
+﻿#ifndef Etat_E
 #define Etat_E
 #include <iostream>
 
@@ -36,7 +36,7 @@ public :
 
 	// Methodes
 	bool estVoisine(const Etat& piece) const;
-	bool isPlayable(const VAL& value) const;
+	bool isPlayable(const VAL& value, const bool eliminateKo) const;
 	bool isAStone() const;
 	bool isAStone(const VAL& value) const;
 	std::ostream& coord(std::ostream& os) const;

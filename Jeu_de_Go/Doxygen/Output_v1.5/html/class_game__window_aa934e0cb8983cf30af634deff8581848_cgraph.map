@@ -1,0 +1,5 @@
+<map id="Game_window::turnSoundsDown" name="Game_window::turnSoundsDown">
+<area shape="rect" id="node2" href="$class_board.html#a648552cb139f9c0cc61f6372251739b2" title="Board::turnSoundsDown" alt="" coords="265,31,428,57"/>
+<area shape="rect" id="node3" href="$class_board.html#a061962e73609a58802ad83674ec9b413" title="Board::getVolume" alt="" coords="476,5,603,32"/>
+<area shape="rect" id="node4" href="$class_board.html#a4450fe85fda29736cd835fed63d40a41" title="Board::setVolume" alt="" coords="476,56,603,83"/>
+</map>

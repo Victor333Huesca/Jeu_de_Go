@@ -1,0 +1,6 @@
+<map id="Goban::itoc" name="Goban::itoc">
+<area shape="rect" id="node2" href="$class_goban.html#a36ab256c9430e070b620052a0f13f051" title="Goban::listFils" alt="" coords="143,29,249,56"/>
+<area shape="rect" id="node3" href="$class_arbre.html#acd12cae4820bb7780a628716a0615d10" title="Arbre::Tsumego" alt="" coords="297,29,412,56"/>
+<area shape="rect" id="node4" href="$class_game__window.html#a72304de2044c29f1373037bd818f674f" title="Game_window::keyPressed" alt="" coords="460,29,643,56"/>
+<area shape="rect" id="node5" href="$class_game__window.html#aec21feecf4c72d73c13d82aa12df6930" title="Game_window::Run" alt="" coords="691,29,828,56"/>
+</map>

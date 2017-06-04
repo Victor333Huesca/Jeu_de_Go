@@ -1,0 +1,4 @@
+<map id="Go_Solver::getGoban" name="Go_Solver::getGoban">
+<area shape="rect" id="node2" href="$class_game__window.html#a782f1aca3d28de1350375b10459073d4" title="Game_window::getGoban" alt="" coords="199,5,369,32"/>
+<area shape="rect" id="node3" href="$class_board.html#a19af96f42f5c38336010da2983abbf5c" title="Board::getGoban" alt="" coords="417,5,537,32"/>
+</map>

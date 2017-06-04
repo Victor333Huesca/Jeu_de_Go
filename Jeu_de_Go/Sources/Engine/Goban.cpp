@@ -2,32 +2,33 @@
 //PRIVATE METHODS
 bool Goban::isMoveLegal(const Etat::VAL& value, const int& x, const int& y) const
 {
-	bool ko = false, suicide;
+	bool eliminateKo = false, suicide;
+	//Is it legal even if there's a KO
+	if (value == Etat::BLANC){
+		if (coord(x, y).getVal() == Etat::KOWHITE){
+			eliminateKo= legalEvenKO(value,x,y);
+		}
+	}
+	else {
+		if (coord(x, y).getVal() == Etat::KOBLACK){
+			eliminateKo= legalEvenKO(value,x,y);
+		}
+	}
 	//IS IT AN EMPTY CASE
-	if (coord(x, y).isPlayable(value)){
+	if (coord(x, y).isPlayable(value,eliminateKo)){
 		//IS IT A SUICIDE
 		Etat stone (x, y, value);
 		suicide=isSuicide(stone);
-		//Is it legal even if there's a KO
-		if (value == Etat::BLANC){
-			if (coord(x, y).getVal() == Etat::KOWHITE){
-				ko= legalEvenKO(value,x,y);
-			}
-		}
-		else {
-			if (coord(x, y).getVal() == Etat::KOWHITE){
-				ko= legalEvenKO(value,x,y);
-			}
-		}
 	}
 	else return false;
 
-	return !(ko || suicide);
+	return !(suicide);
 }
 
 bool Goban::legalEvenKO(const Etat::VAL& value, const int& x, const int& y) const
 {
 	Goban GOB(*this);
+	GOB.coord(x,y).setVal(value);
 	GOB.rechercheGroupes();
 	return GOB.eliminateOppGroups(value);
 }
@@ -37,26 +38,54 @@ Goban::Goban() :
 	array(nullptr),
 	groups_white(0),
 	groups_black(0),
+	score_black(0),
+	score_white(0),
 	history()
 {
-  array= new Etat[TGOBAN*TGOBAN];
-  size_t i=0;
-  for (size_t y=0;y<TGOBAN; y++){
-    for (size_t x=0;x<TGOBAN; x++){
-      array[i].setX(x);
-      array[i].setY(y);
-      array[i].setVal(Etat::VIDE);
-      i++;
-    }
-  }
+	try
+	{
+		array = new Etat[TGOBAN*TGOBAN];
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what();
+		exit(-1);
+	}
+
+	size_t i=0;
+	for (size_t y=0;y<TGOBAN; y++){
+		for (size_t x=0;x<TGOBAN; x++){
+			array[i].setX(x);
+			array[i].setY(y);
+			array[i].setVal(Etat::VIDE);
+			i++;
+		}
+	}
 }
 
-Goban::Goban(const Goban& goban){
-	if (&goban != this){
-		array= new Etat[TGOBAN*TGOBAN];
+Goban::Goban(const Goban& goban)
+{
+	if (&goban != this)
+	{
+		try
+		{
+			array = new Etat[TGOBAN * TGOBAN];
+		}
+		catch (const std::bad_alloc& e)
+		{
+			std::string msg = "Impossible d'allouer l'espace nécessaire à la création d'un Goban --> ";
+			msg += e.what();
+			log_file << msg;
+			std::cerr << msg;
+
+			throw e;
+		}
+
 		size_t i=0;
-		for (size_t y=0;y<TGOBAN; y++){
-			for (size_t x=0;x<TGOBAN; x++){
+		for (size_t y=0;y<TGOBAN; y++)
+		{
+			for (size_t x=0;x<TGOBAN; x++)
+			{
 				array[i].setX(x);
 				array[i].setY(y);
 				array[i].setVal(goban.coord(x,y).getVal());
@@ -64,6 +93,10 @@ Goban::Goban(const Goban& goban){
 			}
 		}
 	}
+}
+//DECONSTRUCTOR
+Goban::~Goban(){
+	delete[] array;
 }
 //overloadings methodes
 
@@ -107,7 +140,21 @@ std::vector<Groupe> Goban::getGroupsBlack() const{
 	return this->groups_black;
 }
 
+//ACCESSEURS AU SCORE
+int Goban::getScoreBlack() const{
+	return this->score_white;
+}
+int Goban::getScoreWhite() const{
+	return this->score_white;
+}
 
+void Goban::setScoreBlack(int score){
+	this->score_black += score;
+}
+
+void Goban::setScoreWhite(int score){
+	this->score_white += score;
+}
 std::ostream& Goban::afficheGroupes(std::ostream& stream, const Etat::VAL & val) const
 {
 	if (val == Etat::BLANC)
@@ -128,7 +175,7 @@ std::ostream& Goban::afficheGroupes(std::ostream& stream, const Etat::VAL & val)
 	}
 	else
 	{
-		stream << "Error : mauvais groupe demmand� !\n";
+		stream << "Error : mauvais groupe demmandé !\n";
 	}
 
 	return stream;
@@ -159,6 +206,7 @@ void Goban::rechercheGroupes(const Etat::VAL&  val, const bool& verbose)
 	groups.clear();
 
 	// Browse every goban's intersection
+	size_t j=0;
 	for (size_t i = 0; i < (TGOBAN * TGOBAN); i++)
 	{
 		// If it's a stone of the color searched
@@ -167,7 +215,7 @@ void Goban::rechercheGroupes(const Etat::VAL&  val, const bool& verbose)
 			if (verbose)	std::cout << "Stone found.\n";
 
 			// There is at least one group so start searching a neighboor-group
-			size_t j = 0;
+			j = 0;
 			while (j < groups.size())
 			{
 				if (verbose)	std::cout << "   Looking in the group " << j;
@@ -218,6 +266,7 @@ if (group.size()>0){
 			if (group[i].voisin(group[j])){
 				group[i].fusion(group[j]);
 				group.erase(group.begin()+j);
+				j--;
 			}
 		}
 	}
@@ -341,12 +390,13 @@ Groupe Goban::listOfLiberties(const Etat& stone) const{
   return liberties;
 }
 bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
+	int score=0;
 	bool resultat=false;//FALSE if KO stay effective and TRUE if it's deleted
   Groupe liberties;
-  bool estLibre =0;
+  bool estLibre = 0;
   size_t j=0,//index of stones in a group
          k=0;//index of liberties
-  for (size_t i=0; i< GroupsColor.size();i++){//for each group
+  for (size_t i=0; i < GroupsColor.size();i++){//for each group
 	  estLibre = 0;
     liberties.clear();
     j=0;
@@ -355,7 +405,7 @@ bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
       k=0;
 			//std::cout<<"liberté: "<<liberties<<std::endl;;
       while (!estLibre && k<liberties.size()){
-        if (liberties[k].getVal()==Etat::VIDE || liberties[k].getVal()==Etat::KOWHITE || liberties[k].getVal()==Etat::KOBLACK){
+        if (liberties[k].getVal()==Etat::VIDE || liberties[k].getVal()==Etat::KOWHITE || liberties[k].getVal()==Etat::KOBLACK || liberties[k].getVal()==Etat::NJ){
           estLibre=1;
         }
         k++;
@@ -375,6 +425,7 @@ bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
 				resultat=true;
 				for (size_t z=0; z< GroupsColor[i].size();z++){
         	this->coord(GroupsColor[i][z].getX(),GroupsColor[i][z].getY()).setVal(Etat::VIDE);
+					score++;
       	}
 			}
       for (size_t h=i; h< GroupsColor.size()-1;h++){
@@ -383,7 +434,17 @@ bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
       GroupsColor.erase(GroupsColor.begin()+GroupsColor.size()-1);//delete the last group after move groups back
 			i--; //test
     }
-  }
+		if(score!=0){
+			if(GroupsColor[0][0].getVal() == Etat::NOIR){
+				this->setScoreWhite(score);
+				score = 0;
+			}
+			else {
+				this->setScoreBlack(score);
+				score = 0;
+		}
+  	}
+	}
 	return resultat;
 }
 bool Goban::eliminateOppGroups(const Etat::VAL& value){
@@ -404,7 +465,7 @@ bool Goban::isSuicide(const Etat& fStone) const{
   size_t i=0;//index of liberties
   liberties = listOfLiberties(fStone);
   while (i < liberties.size()){//if there's an empty liberty
-    if (liberties[i].getVal()==Etat::VIDE || liberties[i].getVal()== Etat::KOWHITE || liberties[i].getVal()== Etat::KOBLACK)
+    if (liberties[i].getVal()==Etat::VIDE || liberties[i].getVal()== Etat::KOWHITE || liberties[i].getVal()== Etat::KOBLACK || liberties[i].getVal()==Etat::NJ)
       return false;
     i++;
   }
@@ -472,6 +533,232 @@ bool Goban::cancel()
 
 	return history.cancel();
 }
+
+/* ---------- Compressions ----------- */
+
+uint8_t * Goban::compress(int nb_revelent) const
+{
+	const Goban& goban = *this;
+
+	const short unsigned used_bits = 2;	// Has to be a power of 2 lower than 8.
+
+	// Firstly just count numher on revelent intersections if the user doesn't specify it
+	if (!nb_revelent)
+	{
+		for (size_t i = 0; i < TGOBAN; i++)
+		{
+			for (size_t j = 0; j < TGOBAN; j++)
+			{
+				switch (goban.coord(i, j).getVal())
+				{
+				case Etat::VAL::BLANC:
+				case Etat::VAL::NOIR:
+				case Etat::VAL::VIDE:
+				case Etat::VAL::KOBLACK:
+				case Etat::VAL::KOWHITE:
+					// The intersection has to be compressed in all these cases
+					nb_revelent += used_bits;
+					break;
+
+				default:
+					break;
+				}
+			}
+		}
+	}
+
+	// So start compression now
+	int nb_bytes = (int)ceil(nb_revelent / 8.f);			// 90.25 --> 91
+	int nb_wasted_bits = 8 - nb_revelent % 8;		// 8 - 2  --> 6
+	uint8_t* compressed = new uint8_t[nb_bytes];
+
+	int current = 0;
+	short int buff_used = 0;
+
+	enum Codes : uint8_t { empty = 0, black = 1, white = 2, KO = 3 };
+
+	for (size_t i = 0; i < TGOBAN; i++)
+	{
+		for (size_t j = 0; j < TGOBAN; j++)
+		{
+			switch (goban.coord(i, j).getVal())
+			{
+			case Etat::VAL::BLANC:
+				compressed[current] <<= used_bits;
+				compressed[current] += Codes::white;
+				buff_used += used_bits;
+				break;
+
+			case Etat::VAL::NOIR:
+				compressed[current] <<= used_bits;
+				compressed[current] += Codes::black;
+				buff_used += used_bits;
+				break;
+
+			case Etat::VAL::VIDE:
+				compressed[current] <<= used_bits;
+				compressed[current] += Codes::empty;
+				buff_used += used_bits;
+				break;
+
+			case Etat::VAL::KOBLACK:
+			case Etat::VAL::KOWHITE:
+				compressed[current] <<= used_bits;
+				compressed[current] += Codes::KO;
+				buff_used += used_bits;
+				break;
+
+			default:
+				break;
+			}
+
+			if (buff_used == 8)
+			{
+				current++;
+				buff_used = 0;
+			}
+		}
+	}
+
+	// Remplir le vide;
+	compressed[nb_bytes - 1] <<= nb_wasted_bits;
+
+	return compressed;
+}
+
+void Goban::uncompress(const uint8_t * compressed, const Etat::VAL KO_status, int nb_revelent)
+{
+	Goban& goban = *this;
+	const short unsigned used_bits = 2;	// Has to be a power of 2 lower than 8.
+
+										// Firstly just count numher on revelent intersections if the user doesn't specify it
+	if (!nb_revelent)
+	{
+		for (size_t i = 0; i < TGOBAN; i++)
+		{
+			for (size_t j = 0; j < TGOBAN; j++)
+			{
+				switch (goban.coord(i, j).getVal())
+				{
+				case Etat::VAL::VIDE:
+				case Etat::VAL::BLANC:
+				case Etat::VAL::NOIR:
+				case Etat::VAL::KOBLACK:
+				case Etat::VAL::KOWHITE:
+					// The intersection has to be compressed in all these cases
+					nb_revelent += used_bits;
+					break;
+
+				default:
+					break;
+				}
+			}
+		}
+	}
+
+	int nb_bytes = (int)ceil(nb_revelent / 8.f);			// 90.25 --> 91
+	int nb_wasted_bits = 8 - nb_revelent % 8;		// 8 - 2  --> 6
+
+													// Start looking at the first place of the goban so -1 avoid skipping this first location.
+	int current = -1;
+
+	uint8_t masque = ~0;
+	masque <<= (8 - used_bits);
+
+	enum Codes : uint8_t { empty = 0, black = 1, white = 2, KO = 3 };
+
+	// Read each byte untill last which contain waste
+	for (int i = 0; i < nb_bytes - 1; i++)
+	{
+		// Read current
+		int current_byte = compressed[i];
+
+		for (int j = 0; j < 8; j += used_bits)
+		{
+			// Read bits
+			int _tmp = (current_byte & masque) >> (8 - used_bits);
+			current_byte <<= used_bits;
+			assert(_tmp <= 3 && _tmp >= 0);				// Check that read value is correct
+			Codes tmp = (Codes)_tmp;
+
+			// Seach next available location in the goban
+			do
+			{
+				current++;
+			} while (goban[current].getVal() != Etat::VAL::VIDE &&
+				goban[current].getVal() != Etat::VAL::BLANC &&
+				goban[current].getVal() != Etat::VAL::NOIR &&
+				goban[current].getVal() != Etat::VAL::KOBLACK &&
+				goban[current].getVal() != Etat::VAL::KOWHITE);
+
+			// Start interpreting
+			switch (tmp)
+			{
+			case Codes::white:
+				goban[current].setVal(Etat::VAL::BLANC);
+				break;
+			case Codes::black:
+				goban[current].setVal(Etat::VAL::NOIR);
+				break;
+			case Codes::empty:
+				goban[current].setVal(Etat::VAL::VIDE);
+				break;
+			case Codes::KO:
+				goban[current].setVal(KO_status);
+				break;
+			default:
+				std::cerr << "Error : Wrong Code readed \"" << tmp << "\" !" << std::endl;
+				exit(-1);
+				break;
+			}
+		}
+	}
+
+	// Read last byte
+	int current_byte = compressed[nb_bytes - 1];
+	for (int i = 0; i < 8 - nb_wasted_bits; i += used_bits)
+	{
+		// Read bits
+		int _tmp = (current_byte & masque);
+		current_byte <<= used_bits;
+		assert(_tmp <= 3 && _tmp >= 0);				// Check that read value is correct
+		Codes tmp = (Codes)_tmp;
+
+		// Seach next available location in the goban
+		do
+		{
+			current++;
+		} while (goban[current].getVal() != Etat::VAL::VIDE &&
+			goban[current].getVal() != Etat::VAL::BLANC &&
+			goban[current].getVal() != Etat::VAL::NOIR &&
+			goban[current].getVal() != Etat::VAL::KOBLACK &&
+			goban[current].getVal() != Etat::VAL::KOWHITE);
+
+		// Start interpreting
+		switch (tmp)
+		{
+		case Codes::white:
+			goban[current].setVal(Etat::VAL::BLANC);
+			break;
+		case Codes::black:
+			goban[current].setVal(Etat::VAL::NOIR);
+			break;
+		case Codes::empty:
+			goban[current].setVal(Etat::VAL::VIDE);
+			break;
+		case Codes::KO:
+			goban[current].setVal(KO_status);
+			break;
+		default:
+			std::cerr << "Error : Wrong Code readed \"" << tmp << "\" !" << std::endl;
+			exit(-1);
+			break;
+		}
+	}
+}
+
+/* ------- Fin de compression -------- */
+
   void Goban::eliminateOppositeKO(const Etat::VAL& value){
 		if (value == Etat::BLANC){
 			for (size_t i=0; i< TGOBAN*TGOBAN; i++){
@@ -491,9 +778,9 @@ bool Goban::cancel()
 std::ostream& operator<<(std::ostream& os, const Goban& goban)
 {
 	size_t i=0;
-	for (size_t y=0;y<TGOBAN; y++){
-		for (size_t x=0;x<TGOBAN; x++){
-			os << goban[i].getVal() << " ";
+	for (size_t y=0;y<4; y++){
+		for (size_t x=0;x<5; x++){
+			os << goban.coord(x,y).getVal() << " ";
 			i++;
 		}
 		os << std::endl;
@@ -502,25 +789,65 @@ std::ostream& operator<<(std::ostream& os, const Goban& goban)
 }
 
 
-Goban Goban::operator= (const Goban& g) {
-	if (this != &g) {
-		//this->array = g.array;
+Goban Goban::operator= (const Goban& g)
+{
+	//std::cout << "Avant Goban::operator=" << std::endl;
+
+	if (this != &g)
+	{
+		// Copy groupe 1
+		groups_black.clear();
 		groups_black.resize( g.groups_black.size());
-		for (size_t i=0; i<g.groups_black.size();i++){
+		for (size_t i=0; i<g.groups_black.size();i++)
+		{
 			groups_black[i] = g.groups_black[i];
 		}
+
+		// Copy group 2
+		groups_white.clear();
 		groups_white.resize(g.groups_white.size());
-		for (size_t i=0; i<g.groups_black.size();i++){
+		for (size_t i=0; i<g.groups_white.size();i++)
+		{
 			groups_white[i] = g.groups_white[i];
 		}
+
+		// copy history
 		history = g.history;
-		delete[] array;
-		Etat* array2=new Etat[TGOBAN*TGOBAN];
-		for (size_t i=0; i< TGOBAN*TGOBAN; i++){
-			array2[i]=g.array[i];
+
+		// Copy array
+		try
+		{
+			delete[] array;
+		}
+		catch (const std::bad_alloc& e)
+		{
+			std::string msg = "Impossible de désaolouer un Etat[] pour la nouelle affectation d'un Goban --> ";
+			msg += e.what();
+			log_file << msg;
+			std::cerr << msg;
+
+			throw;
+		}
+		catch (const std::exception& e)
+		{
+			std::string msg = "Erreur inconnue --> ";
+			msg += e.what();
+			log_file << msg;
+			std::cerr << msg;
+
+			throw;
+		}
+
+
+		Etat* array2 = new Etat[TGOBAN * TGOBAN];
+		for (size_t i = 0; i< TGOBAN * TGOBAN; i++)
+		{
+			array2[i] = g.array[i];
 		}
 		array=array2;
 	}
+	//std::cout << "Apres Goban::operator=" << std::endl;
+
 	return *this;
 }
 
@@ -529,18 +856,17 @@ std::vector<Goban> Goban::listFils(const Etat::VAL value) {
 	//bool result = false;
 	size_t x, y;
 	std::vector<Goban> listGob(0);
-	size_t* coordonates;
 	for (size_t i = 0; i < TGOBAN*TGOBAN; i++) {
-		 coordonates=itoc(i);
 		 x=itoc(i)[0];
 		 y = itoc(i)[1];
-		 delete[] coordonates;
+		 //delete[] coordonates;
 		 Goban g(*this);
 		if (g.move(value, x , y))
 		{
 			// Move has been allowed
 			//DEFINE GROUPS
 			g.rechercheGroupes();
+
 			//ELIMINATE GROUPS
 			g.eliminateOppGroups(value);
 			listGob.push_back(g);

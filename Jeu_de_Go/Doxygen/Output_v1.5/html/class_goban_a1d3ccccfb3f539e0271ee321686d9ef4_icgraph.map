@@ -1,0 +1,12 @@
+<map id="Goban::setScoreWhite" name="Goban::setScoreWhite">
+<area shape="rect" id="node2" href="$class_goban.html#a1ec70508987f66afff5f8df381731fac" title="Goban::eliminateGroups" alt="" coords="208,81,371,108"/>
+<area shape="rect" id="node3" href="$class_goban.html#a7858b815885e4af36f05f9d26182cb07" title="Goban::eliminateOppGroups" alt="" coords="419,81,605,108"/>
+<area shape="rect" id="node4" href="$class_goban.html#a799390f04139eec16f7bb8c79b381303" title="Goban::legalEvenKO" alt="" coords="653,5,796,32"/>
+<area shape="rect" id="node5" href="$class_goban.html#a8b95ea2b51c078381562e361ff7febac" title="Goban::isSuicide" alt="" coords="664,56,785,83"/>
+<area shape="rect" id="node6" href="$class_goban.html#a36ab256c9430e070b620052a0f13f051" title="Goban::listFils" alt="" coords="671,107,778,133"/>
+<area shape="rect" id="node9" href="$class_board.html#a5fda73da080403d8a71a8593d581c350" title="Board::click" alt="" coords="679,157,770,184"/>
+<area shape="rect" id="node7" href="$class_arbre.html#ac82e543d8cbf0aced4d741c346f9950d" title="Arbre::Arbre" alt="" coords="869,56,961,83"/>
+<area shape="rect" id="node8" href="$class_arbre.html#a70585b1d341c1e0c262b2b4a4f769b6d" title="Arbre::resetFils" alt="" coords="859,107,970,133"/>
+<area shape="rect" id="node10" href="$class_game__window.html#afa942088809bf10731bb31d0d37b878d" title="Game_window::click" alt="" coords="844,157,985,184"/>
+<area shape="rect" id="node11" href="$class_game__window.html#a555769f4e8511e45d6623658dc736be5" title="Game_window::Run" alt="" coords="1033,157,1171,184"/>
+</map>

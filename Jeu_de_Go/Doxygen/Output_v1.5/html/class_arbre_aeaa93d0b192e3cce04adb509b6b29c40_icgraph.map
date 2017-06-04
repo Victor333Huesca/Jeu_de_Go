@@ -1,0 +1,9 @@
+<map id="Arbre::getValue" name="Arbre::getValue">
+<area shape="rect" id="node2" href="$class_arbre.html#a3284c47c1ea92a6c5be4a210008dfb4f" title="Arbre::Arbre" alt="" coords="203,5,295,32"/>
+<area shape="rect" id="node3" href="$class_i_a.html#a364aef554d81e9a93bff08c28d437497" title="IA::Tsumego" alt="" coords="403,132,498,159"/>
+<area shape="rect" id="node5" href="$class_i_a.html#a42202360406fe67babfd01a9b7902fd2" title="IA::Tsumego_naif" alt="" coords="187,107,310,133"/>
+<area shape="rect" id="node6" href="$class_i_a.html#af1f6e5abe41a2225b17ca319c1fc0e4e" title="IA::Tsumego_abr" alt="" coords="189,157,309,184"/>
+<area shape="rect" id="node7" href="$class_i_a.html#a6f616b7d3d9d39eef4780b7a03226260" title="IA::Tsumego_abrFils" alt="" coords="380,195,521,221"/>
+<area shape="rect" id="node8" href="$class_i_a.html#a5d86a3548f2410f7fc0676b89d07f4fd" title="IA::Tsumego_compresse" alt="" coords="165,259,332,285"/>
+<area shape="rect" id="node4" href="$class_go___solver.html#a6ca744f1f4586c3f90f2e47915034baf" title="Go_Solver::launchTsumego" alt="" coords="569,132,749,159"/>
+</map>

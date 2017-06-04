@@ -1,4 +1,4 @@
-#include "Groupe.h"
+﻿#include "Groupe.h"
 
 Groupe::Groupe()
 {
@@ -15,13 +15,13 @@ Groupe::~Groupe()
 
 bool Groupe::shouldContain(const Etat & stone) const
 {
-	int i = 0;
+	size_t i = 0;
 	while (i < size() && !stone.estVoisine(at(i)))
 	{
 		i++;
 	}
 
-	return i != size();
+	return (i < size());
 }
 
 bool Groupe::contain(const Etat & stone) const

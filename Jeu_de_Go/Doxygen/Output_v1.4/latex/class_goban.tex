@@ -1,0 +1,448 @@
+\hypertarget{class_goban}{}\section{Goban Class Reference}
+\label{class_goban}\index{Goban@{Goban}}
+
+
+{\ttfamily \#include $<$Goban.\+h$>$}
+
+
+
+Collaboration diagram for Goban\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{class_goban__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_goban_a3544d30f54fbb54bd9e4fed08aa4bce6}{Goban} ()
+\item 
+\hyperlink{class_goban_a8c49da36e406f11d33671a4c8a4c19b2}{Goban} (const \hyperlink{class_goban}{Goban} \&)
+\item 
+\hyperlink{class_etat}{Etat} \& \hyperlink{class_goban_a29aaf8df380fe614845d48cba057747c}{coord} (const int \&x, const int \&y)
+\item 
+const \hyperlink{class_etat}{Etat} \& \hyperlink{class_goban_ac674775d4101d921257acc21cfec935c}{coord} (const int \&x, const int \&y) const
+\item 
+size\+\_\+t \hyperlink{class_goban_a579840586df08a58983f6b497979344b}{ctoi} (const size\+\_\+t, const size\+\_\+t) const
+\item 
+size\+\_\+t $\ast$ \hyperlink{class_goban_aa2aaa3b4db4549d169bd0ff234d601cb}{itoc} (const size\+\_\+t)
+\item 
+std\+::vector$<$ \hyperlink{class_groupe}{Groupe} $>$ \hyperlink{class_goban_a0d5ecea357ff85e7d08f2c0855d83e6b}{get\+Groups\+White} () const
+\item 
+std\+::vector$<$ \hyperlink{class_groupe}{Groupe} $>$ \hyperlink{class_goban_a0a8ed1098b25c0c42cb5faadaa0605d4}{get\+Groups\+Black} () const
+\item 
+\hyperlink{class_etat}{Etat} $\ast$ \hyperlink{class_goban_a6b13aeeebc07fddc6a0e4557b90adc7d}{get\+Array} ()
+\item 
+std\+::ostream \& \hyperlink{class_goban_aefd43ab2cf0746f2f8c653d825bf080c}{affiche\+Groupes} (std\+::ostream \&stream, const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \&val) const
+\item 
+std\+::ostream \& \hyperlink{class_goban_a8d5df6cd74b0240f36a4056f045625b7}{affiche\+Groupes} (std\+::ostream \&stream) const
+\item 
+void \hyperlink{class_goban_a8584a53688e7bcf9de7c4cf48454acdc}{recherche\+Groupes} (const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \&val, const bool \&verbose=false)
+\item 
+void \hyperlink{class_goban_abd6663ff5c440bf6def073db02df83f0}{recherche\+Groupes} (const bool \&verbose=false)
+\item 
+void \hyperlink{class_goban_abc771312b6931c4217285ee1b306e51b}{fusion\+Groupes} (std\+::vector$<$ \hyperlink{class_groupe}{Groupe} $>$ \&)
+\item 
+void \hyperlink{class_goban_a0e2596110cdbb9b007b2b2fd8d5a9973}{Define\+Stone} (\hyperlink{class_etat}{Etat} \&, size\+\_\+t, size\+\_\+t) const
+\item 
+\hyperlink{class_groupe}{Groupe} \hyperlink{class_goban_a84f36324eb9ddc29f522d481f04c13e7}{list\+Of\+Liberties} (const \hyperlink{class_etat}{Etat} \&) const
+\item 
+bool \hyperlink{class_goban_a1ec70508987f66afff5f8df381731fac}{eliminate\+Groups} (std\+::vector$<$ \hyperlink{class_groupe}{Groupe} $>$ \&Groups\+Color)
+\item 
+bool \hyperlink{class_goban_a7858b815885e4af36f05f9d26182cb07}{eliminate\+Opp\+Groups} (const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \&value)
+\item 
+bool \hyperlink{class_goban_a8b95ea2b51c078381562e361ff7febac}{is\+Suicide} (const \hyperlink{class_etat}{Etat} \&) const
+\item 
+bool \hyperlink{class_goban_a7dd1a7b53322bde2a831a923059e43a3}{move} (const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \&value, const int \&x, const int \&y)
+\item 
+bool \hyperlink{class_goban_a799390f04139eec16f7bb8c79b381303}{legal\+Even\+KO} (const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \&value, const int \&x, const int \&y) const
+\item 
+void \hyperlink{class_goban_a6c4b62a9469b3876d250ab94bcd562e5}{eliminate\+Opposite\+KO} (const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \&value)
+\item 
+bool \hyperlink{class_goban_ae7ee3b39f3c0d28c9bca286ca538f8ac}{cancel} ()
+\item 
+\hyperlink{class_etat}{Etat} \& \hyperlink{class_goban_a39eb0323bdb4f3cb5fc00719dd47f938}{operator\mbox{[}$\,$\mbox{]}} (const size\+\_\+t) const
+\item 
+\hyperlink{class_goban}{Goban} \hyperlink{class_goban_af02f839ac464fc547dd98bc44bae1ef8}{operator=} (const \hyperlink{class_goban}{Goban} \&)
+\item 
+std\+::vector$<$ \hyperlink{class_goban}{Goban} $>$ \hyperlink{class_goban_a36ab256c9430e070b620052a0f13f051}{list\+Fils} (const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL})
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_goban_a3544d30f54fbb54bd9e4fed08aa4bce6}\label{class_goban_a3544d30f54fbb54bd9e4fed08aa4bce6}} 
+\index{Goban@{Goban}!Goban@{Goban}}
+\index{Goban@{Goban}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{Goban()}{Goban()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Goban\+::\+Goban (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{class_goban_a3544d30f54fbb54bd9e4fed08aa4bce6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a8c49da36e406f11d33671a4c8a4c19b2}\label{class_goban_a8c49da36e406f11d33671a4c8a4c19b2}} 
+\index{Goban@{Goban}!Goban@{Goban}}
+\index{Goban@{Goban}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{Goban()}{Goban()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Goban\+::\+Goban (\begin{DoxyParamCaption}\item[{const \hyperlink{class_goban}{Goban} \&}]{goban }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{class_goban_a8c49da36e406f11d33671a4c8a4c19b2_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_goban_aefd43ab2cf0746f2f8c653d825bf080c}\label{class_goban_aefd43ab2cf0746f2f8c653d825bf080c}} 
+\index{Goban@{Goban}!affiche\+Groupes@{affiche\+Groupes}}
+\index{affiche\+Groupes@{affiche\+Groupes}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{affiche\+Groupes()}{afficheGroupes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::ostream \& Goban\+::affiche\+Groupes (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream,  }\item[{const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \&}]{val }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_aefd43ab2cf0746f2f8c653d825bf080c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a8d5df6cd74b0240f36a4056f045625b7}\label{class_goban_a8d5df6cd74b0240f36a4056f045625b7}} 
+\index{Goban@{Goban}!affiche\+Groupes@{affiche\+Groupes}}
+\index{affiche\+Groupes@{affiche\+Groupes}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{affiche\+Groupes()}{afficheGroupes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::ostream \& Goban\+::affiche\+Groupes (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_goban_a8d5df6cd74b0240f36a4056f045625b7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_ae7ee3b39f3c0d28c9bca286ca538f8ac}\label{class_goban_ae7ee3b39f3c0d28c9bca286ca538f8ac}} 
+\index{Goban@{Goban}!cancel@{cancel}}
+\index{cancel@{cancel}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{cancel()}{cancel()}}
+{\footnotesize\ttfamily bool Goban\+::cancel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{class_goban_ae7ee3b39f3c0d28c9bca286ca538f8ac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_ae7ee3b39f3c0d28c9bca286ca538f8ac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a29aaf8df380fe614845d48cba057747c}\label{class_goban_a29aaf8df380fe614845d48cba057747c}} 
+\index{Goban@{Goban}!coord@{coord}}
+\index{coord@{coord}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{coord()}{coord()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{class_etat}{Etat} \& Goban\+::coord (\begin{DoxyParamCaption}\item[{const int \&}]{x,  }\item[{const int \&}]{y }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a29aaf8df380fe614845d48cba057747c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_ac674775d4101d921257acc21cfec935c}\label{class_goban_ac674775d4101d921257acc21cfec935c}} 
+\index{Goban@{Goban}!coord@{coord}}
+\index{coord@{coord}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{coord()}{coord()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \hyperlink{class_etat}{Etat} \& Goban\+::coord (\begin{DoxyParamCaption}\item[{const int \&}]{x,  }\item[{const int \&}]{y }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_goban_a579840586df08a58983f6b497979344b}\label{class_goban_a579840586df08a58983f6b497979344b}} 
+\index{Goban@{Goban}!ctoi@{ctoi}}
+\index{ctoi@{ctoi}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{ctoi()}{ctoi()}}
+{\footnotesize\ttfamily size\+\_\+t Goban\+::ctoi (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{X,  }\item[{const size\+\_\+t}]{Y }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a579840586df08a58983f6b497979344b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a0e2596110cdbb9b007b2b2fd8d5a9973}\label{class_goban_a0e2596110cdbb9b007b2b2fd8d5a9973}} 
+\index{Goban@{Goban}!Define\+Stone@{Define\+Stone}}
+\index{Define\+Stone@{Define\+Stone}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{Define\+Stone()}{DefineStone()}}
+{\footnotesize\ttfamily void Goban\+::\+Define\+Stone (\begin{DoxyParamCaption}\item[{\hyperlink{class_etat}{Etat} \&}]{stone,  }\item[{size\+\_\+t}]{x,  }\item[{size\+\_\+t}]{y }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{class_goban_a0e2596110cdbb9b007b2b2fd8d5a9973_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a0e2596110cdbb9b007b2b2fd8d5a9973_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a1ec70508987f66afff5f8df381731fac}\label{class_goban_a1ec70508987f66afff5f8df381731fac}} 
+\index{Goban@{Goban}!eliminate\+Groups@{eliminate\+Groups}}
+\index{eliminate\+Groups@{eliminate\+Groups}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{eliminate\+Groups()}{eliminateGroups()}}
+{\footnotesize\ttfamily bool Goban\+::eliminate\+Groups (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{class_groupe}{Groupe} $>$ \&}]{Groups\+Color }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a1ec70508987f66afff5f8df381731fac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a1ec70508987f66afff5f8df381731fac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a7858b815885e4af36f05f9d26182cb07}\label{class_goban_a7858b815885e4af36f05f9d26182cb07}} 
+\index{Goban@{Goban}!eliminate\+Opp\+Groups@{eliminate\+Opp\+Groups}}
+\index{eliminate\+Opp\+Groups@{eliminate\+Opp\+Groups}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{eliminate\+Opp\+Groups()}{eliminateOppGroups()}}
+{\footnotesize\ttfamily bool Goban\+::eliminate\+Opp\+Groups (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \&}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a7858b815885e4af36f05f9d26182cb07_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a7858b815885e4af36f05f9d26182cb07_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a6c4b62a9469b3876d250ab94bcd562e5}\label{class_goban_a6c4b62a9469b3876d250ab94bcd562e5}} 
+\index{Goban@{Goban}!eliminate\+Opposite\+KO@{eliminate\+Opposite\+KO}}
+\index{eliminate\+Opposite\+KO@{eliminate\+Opposite\+KO}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{eliminate\+Opposite\+K\+O()}{eliminateOppositeKO()}}
+{\footnotesize\ttfamily void Goban\+::eliminate\+Opposite\+KO (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \&}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{class_goban_a6c4b62a9469b3876d250ab94bcd562e5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a6c4b62a9469b3876d250ab94bcd562e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_abc771312b6931c4217285ee1b306e51b}\label{class_goban_abc771312b6931c4217285ee1b306e51b}} 
+\index{Goban@{Goban}!fusion\+Groupes@{fusion\+Groupes}}
+\index{fusion\+Groupes@{fusion\+Groupes}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{fusion\+Groupes()}{fusionGroupes()}}
+{\footnotesize\ttfamily void Goban\+::fusion\+Groupes (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{class_groupe}{Groupe} $>$ \&}]{group }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_abc771312b6931c4217285ee1b306e51b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a6b13aeeebc07fddc6a0e4557b90adc7d}\label{class_goban_a6b13aeeebc07fddc6a0e4557b90adc7d}} 
+\index{Goban@{Goban}!get\+Array@{get\+Array}}
+\index{get\+Array@{get\+Array}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{get\+Array()}{getArray()}}
+{\footnotesize\ttfamily \hyperlink{class_etat}{Etat} $\ast$ Goban\+::get\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_goban_a0a8ed1098b25c0c42cb5faadaa0605d4}\label{class_goban_a0a8ed1098b25c0c42cb5faadaa0605d4}} 
+\index{Goban@{Goban}!get\+Groups\+Black@{get\+Groups\+Black}}
+\index{get\+Groups\+Black@{get\+Groups\+Black}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{get\+Groups\+Black()}{getGroupsBlack()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_groupe}{Groupe} $>$ Goban\+::get\+Groups\+Black (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_goban_a0a8ed1098b25c0c42cb5faadaa0605d4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a0d5ecea357ff85e7d08f2c0855d83e6b}\label{class_goban_a0d5ecea357ff85e7d08f2c0855d83e6b}} 
+\index{Goban@{Goban}!get\+Groups\+White@{get\+Groups\+White}}
+\index{get\+Groups\+White@{get\+Groups\+White}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{get\+Groups\+White()}{getGroupsWhite()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_groupe}{Groupe} $>$ Goban\+::get\+Groups\+White (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{class_goban_a0d5ecea357ff85e7d08f2c0855d83e6b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a8b95ea2b51c078381562e361ff7febac}\label{class_goban_a8b95ea2b51c078381562e361ff7febac}} 
+\index{Goban@{Goban}!is\+Suicide@{is\+Suicide}}
+\index{is\+Suicide@{is\+Suicide}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{is\+Suicide()}{isSuicide()}}
+{\footnotesize\ttfamily bool Goban\+::is\+Suicide (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat}{Etat} \&}]{f\+Stone }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a8b95ea2b51c078381562e361ff7febac_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_aa2aaa3b4db4549d169bd0ff234d601cb}\label{class_goban_aa2aaa3b4db4549d169bd0ff234d601cb}} 
+\index{Goban@{Goban}!itoc@{itoc}}
+\index{itoc@{itoc}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{itoc()}{itoc()}}
+{\footnotesize\ttfamily size\+\_\+t $\ast$ Goban\+::itoc (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_aa2aaa3b4db4549d169bd0ff234d601cb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a799390f04139eec16f7bb8c79b381303}\label{class_goban_a799390f04139eec16f7bb8c79b381303}} 
+\index{Goban@{Goban}!legal\+Even\+KO@{legal\+Even\+KO}}
+\index{legal\+Even\+KO@{legal\+Even\+KO}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{legal\+Even\+K\+O()}{legalEvenKO()}}
+{\footnotesize\ttfamily bool Goban\+::legal\+Even\+KO (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \&}]{value,  }\item[{const int \&}]{x,  }\item[{const int \&}]{y }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a799390f04139eec16f7bb8c79b381303_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a36ab256c9430e070b620052a0f13f051}\label{class_goban_a36ab256c9430e070b620052a0f13f051}} 
+\index{Goban@{Goban}!list\+Fils@{list\+Fils}}
+\index{list\+Fils@{list\+Fils}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{list\+Fils()}{listFils()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_goban}{Goban} $>$ Goban\+::list\+Fils (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL}}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a36ab256c9430e070b620052a0f13f051_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a36ab256c9430e070b620052a0f13f051_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a84f36324eb9ddc29f522d481f04c13e7}\label{class_goban_a84f36324eb9ddc29f522d481f04c13e7}} 
+\index{Goban@{Goban}!list\+Of\+Liberties@{list\+Of\+Liberties}}
+\index{list\+Of\+Liberties@{list\+Of\+Liberties}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{list\+Of\+Liberties()}{listOfLiberties()}}
+{\footnotesize\ttfamily \hyperlink{class_groupe}{Groupe} Goban\+::list\+Of\+Liberties (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat}{Etat} \&}]{stone }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a84f36324eb9ddc29f522d481f04c13e7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a84f36324eb9ddc29f522d481f04c13e7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_a7dd1a7b53322bde2a831a923059e43a3}\label{class_goban_a7dd1a7b53322bde2a831a923059e43a3}} 
+\index{Goban@{Goban}!move@{move}}
+\index{move@{move}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily bool Goban\+::move (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \&}]{value,  }\item[{const int \&}]{x,  }\item[{const int \&}]{y }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a7dd1a7b53322bde2a831a923059e43a3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a7dd1a7b53322bde2a831a923059e43a3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_af02f839ac464fc547dd98bc44bae1ef8}\label{class_goban_af02f839ac464fc547dd98bc44bae1ef8}} 
+\index{Goban@{Goban}!operator=@{operator=}}
+\index{operator=@{operator=}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{class_goban}{Goban} Goban\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_goban}{Goban} \&}]{g }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_goban_a39eb0323bdb4f3cb5fc00719dd47f938}\label{class_goban_a39eb0323bdb4f3cb5fc00719dd47f938}} 
+\index{Goban@{Goban}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \hyperlink{class_etat}{Etat} \& Goban\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_goban_a8584a53688e7bcf9de7c4cf48454acdc}\label{class_goban_a8584a53688e7bcf9de7c4cf48454acdc}} 
+\index{Goban@{Goban}!recherche\+Groupes@{recherche\+Groupes}}
+\index{recherche\+Groupes@{recherche\+Groupes}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{recherche\+Groupes()}{rechercheGroupes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Goban\+::recherche\+Groupes (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \&}]{val,  }\item[{const bool \&}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_a8584a53688e7bcf9de7c4cf48454acdc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_goban_abd6663ff5c440bf6def073db02df83f0}\label{class_goban_abd6663ff5c440bf6def073db02df83f0}} 
+\index{Goban@{Goban}!recherche\+Groupes@{recherche\+Groupes}}
+\index{recherche\+Groupes@{recherche\+Groupes}!Goban@{Goban}}
+\subsubsection{\texorpdfstring{recherche\+Groupes()}{rechercheGroupes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Goban\+::recherche\+Groupes (\begin{DoxyParamCaption}\item[{const bool \&}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_goban_abd6663ff5c440bf6def073db02df83f0_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Engine/\hyperlink{_goban_8h}{Goban.\+h}\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Engine/\hyperlink{_goban_8cpp}{Goban.\+cpp}\end{DoxyCompactItemize}

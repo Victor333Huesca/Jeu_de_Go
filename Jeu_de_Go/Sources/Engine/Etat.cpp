@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include "Etat.h"
 
 //CONSTRUCTORS
@@ -86,28 +86,27 @@ bool Etat::estVoisine(const Etat & piece) const
 	if (x == piece.x &&
 		(y == piece.y - 1 || y == piece.y + 1))
 		return true;
-	else if (y == piece.y &&
+	if (y == piece.y &&
 		(x == piece.x - 1 || x == piece.x + 1))
 		return true;
 
 	return false;
 }
 
-bool Etat::isPlayable(const VAL& value) const
+bool Etat::isPlayable(const VAL& value, const bool eliminateKo) const
 {
-  if (value == NOIR){
-	 return (val == VIDE || val == KOWHITE);
- }
+  if (eliminateKo)
+    return (val == VIDE || val == KOWHITE || val == KOBLACK);
+
+  if (value == NOIR)
+      return (val == VIDE || val == KOWHITE);
   else
-  {
-    return (val == VIDE || val == KOBLACK);
-  }
+      return (val == VIDE || val == KOBLACK);
 }
 
 bool Etat::isAStone() const
 {
-	return val != VIDE && val != KOWHITE && val != KOBLACK;
-	//return val == BLANC || val == NOIR;
+	return val != VIDE && val != KOWHITE && val != KOBLACK && val != NJ;
 }
 
 bool Etat::isAStone(const VAL & value) const

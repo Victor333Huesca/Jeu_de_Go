@@ -5,42 +5,42 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
-#define NO_CHANGE -777
+class Go_Solver;
 
 class Menu: public Screen
 {
 public:
-    Menu(const sf::Vector2f& position, const char* texture, const char* font, sf::Vector2f& scale);
-    ~Menu();
+    Menu(const sf::Vector2f& position, const char* texture, const Screens& _previous, const sf::Vector2f& scale = sf::Vector2f(1, 1));
+    virtual ~Menu();
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
-    virtual int Run(sf::RenderWindow &window);
+    virtual Screens Run(sf::RenderWindow &window, Go_Solver& solver);
 
     sf::Vector2f getSize() const;
     sf::Vector2f getPosition() const;
 
+	// Ajoute un item au menu
+	virtual void addItem(const Choice& item);
+	void setPrevious(const Screens& sc);
 
-    // GÃ¨re les interactions utilisateur
-    int click(const sf::Mouse::Button& type, const sf::RenderWindow& window);		// Renvoie la fenetre Ã  charger et NO_CHANGE sinon 
-    void mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos);				// SÃ©lectionne le menu corresponant Ã  la nouvelle position souris.
-	void keyPressed(const sf::Event::KeyEvent& key);								// SÃ©lectionne le menu corresponant Ã  l'action utilisateur
-
-	void addItem(Choice& item);														// Ajoute un item au menu
-
-	void setItemsTextures(const char* blank, const char* selected);					// Applique la texture Ã  chaque item
+	// Debugg
+	virtual void showAdresses() const;
 
 private:
+    // Gère les interactions utilisateur (sont appellées depuis le Run
+	Screens click(const sf::Mouse::Button& type, sf::RenderWindow& window, Go_Solver& solver);		// Renvoie la fenetre à charger et NO_CHANGE sinon 
+    void mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos);				// Sélectionne le menu corresponant à la nouvelle position souris.
+	void keyPressed(const sf::Event::KeyEvent& key);								// Sélectionne le menu corresponant à l'action utilisateur
+
+
+protected:
     // Options
-    std::vector<Choice> choices;
-    //std::vector<Choice>::iterator cur_choice;
+	std::vector<std::reference_wrapper<Choice>> choices;
 	Choice* cur_choice;
 
+private:
     // Background
     sf::Sprite s_background;
     sf::Texture t_background;
-
-	// Choices
-	sf::Texture button_blank;
-	sf::Texture button_selected;
-	sf::Font text_font;
+	Screens previous;	
 };

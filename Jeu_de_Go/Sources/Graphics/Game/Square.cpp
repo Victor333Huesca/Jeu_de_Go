@@ -1,4 +1,4 @@
-#include "Square.h"
+﻿#include "Square.h"
 
 sf::Texture Square::white_t;
 sf::Texture Square::black_t;
@@ -18,8 +18,8 @@ Square::~Square()
 
 void Square::loadTextures()
 {
-	white_t.loadFromFile("./Ressources/Img/stone_white3.png");
-	black_t.loadFromFile("./Ressources/Img/stone_black3.png");
+	white_t.loadFromFile("./Ressources/Img/Others/stone_white3.png");
+	black_t.loadFromFile("./Ressources/Img/Others/stone_black3.png");
 
 	//white_t.setSmooth(true);
 	//black_t.setSmooth(true);

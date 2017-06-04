@@ -1,0 +1,275 @@
+\hypertarget{class_arbre}{}\section{Arbre Class Reference}
+\label{class_arbre}\index{Arbre@{Arbre}}
+
+
+{\ttfamily \#include $<$Arbre.\+h$>$}
+
+
+
+Collaboration diagram for Arbre\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_arbre__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_arbre_a761f4a2c6a43f44b38d4ac6fc1cf5cae}{Arbre} ()
+\item 
+\hyperlink{class_arbre_a3284c47c1ea92a6c5be4a210008dfb4f}{Arbre} (const \hyperlink{class_arbre}{Arbre} \&)
+\item 
+\hyperlink{class_arbre_ac82e543d8cbf0aced4d741c346f9950d}{Arbre} (\hyperlink{class_goban}{Goban} \&, \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL})
+\item 
+\hyperlink{class_arbre_acaa1b2ef290ae35e414d6fc5510c9e6e}{Arbre} (\hyperlink{class_goban}{Goban} \&, const size\+\_\+t)
+\item 
+\hyperlink{class_arbre_a7be58ac146487307f93a5c141f3546df}{Arbre} (\hyperlink{class_goban}{Goban} \&\+\_\+gob, const size\+\_\+t \+\_\+nbF, \hyperlink{class_goban}{Goban} $\ast$\+\_\+fils)
+\item 
+\hyperlink{class_goban}{Goban} \hyperlink{class_arbre_a46ec1d0b89a9466c87a31e8e43133099}{get\+Fils\+Indice} (const size\+\_\+t) const
+\item 
+std\+::vector$<$ \hyperlink{class_goban}{Goban} $>$ \hyperlink{class_arbre_ace487e80301c07e6369108bf9a480513}{get\+Fils} () const
+\item 
+size\+\_\+t \hyperlink{class_arbre_a0aef1f091d76bca13229a21fcd45a076}{get\+NbF} () const
+\item 
+\hyperlink{class_goban}{Goban} \hyperlink{class_arbre_abb30fa37b209f6e148a5dc29e3a1c00d}{get\+Gob} () const
+\item 
+bool \hyperlink{class_arbre_afc71a182e86352b06193c2dc746fab79}{get\+Info} () const
+\item 
+\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} \hyperlink{class_arbre_aeaa93d0b192e3cce04adb509b6b29c40}{get\+Value} () const
+\item 
+void \hyperlink{class_arbre_ad7db2ec4bca90d9523c9dab19eadd628}{set\+Fils} (\hyperlink{class_goban}{Goban}, const size\+\_\+t)
+\item 
+void \hyperlink{class_arbre_acabc45692262e5ca9c2f7b410ddcd373}{set\+NbF} (size\+\_\+t)
+\item 
+void \hyperlink{class_arbre_a36267e74d40f509fd63b99fe6d8dae0b}{set\+Gob} (\hyperlink{class_goban}{Goban})
+\item 
+void \hyperlink{class_arbre_a051e5328c63ba7ab6f6359f9f2f77105}{set\+Info} (bool)
+\item 
+void \hyperlink{class_arbre_a8108ffdff578e323dd9e50cc105a5c04}{set\+Value} (\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL})
+\item 
+\hyperlink{class_arbre}{Arbre} \hyperlink{class_arbre_a2a919273c1041a7f024f717cdd638632}{operator=} (\hyperlink{class_arbre}{Arbre})
+\item 
+\hyperlink{class_goban}{Goban} \hyperlink{class_arbre_a8127785309368d2f2cd5a68f913e18cd}{operator\mbox{[}$\,$\mbox{]}} (unsigned short int)
+\item 
+void \hyperlink{class_arbre_acd12cae4820bb7780a628716a0615d10}{Tsumego} (\hyperlink{class_etat}{Etat} \&)
+\item 
+void \hyperlink{class_arbre_a970de955ffdbbd5894e0fa0c40c4e69e}{afficher} ()
+\item 
+void \hyperlink{class_arbre_ac6329911b0037ca669e6ef2e12a178c9}{print\+Arbo} (const \hyperlink{class_arbre}{Arbre} \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_arbre_a761f4a2c6a43f44b38d4ac6fc1cf5cae}\label{class_arbre_a761f4a2c6a43f44b38d4ac6fc1cf5cae}} 
+\index{Arbre@{Arbre}!Arbre@{Arbre}}
+\index{Arbre@{Arbre}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{Arbre()}{Arbre()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily Arbre\+::\+Arbre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_arbre_a761f4a2c6a43f44b38d4ac6fc1cf5cae_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_arbre_a3284c47c1ea92a6c5be4a210008dfb4f}\label{class_arbre_a3284c47c1ea92a6c5be4a210008dfb4f}} 
+\index{Arbre@{Arbre}!Arbre@{Arbre}}
+\index{Arbre@{Arbre}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{Arbre()}{Arbre()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily Arbre\+::\+Arbre (\begin{DoxyParamCaption}\item[{const \hyperlink{class_arbre}{Arbre} \&}]{a }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{class_arbre_a3284c47c1ea92a6c5be4a210008dfb4f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_arbre_ac82e543d8cbf0aced4d741c346f9950d}\label{class_arbre_ac82e543d8cbf0aced4d741c346f9950d}} 
+\index{Arbre@{Arbre}!Arbre@{Arbre}}
+\index{Arbre@{Arbre}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{Arbre()}{Arbre()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily Arbre\+::\+Arbre (\begin{DoxyParamCaption}\item[{\hyperlink{class_goban}{Goban} \&}]{G,  }\item[{\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL}}]{val }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_arbre_acaa1b2ef290ae35e414d6fc5510c9e6e}\label{class_arbre_acaa1b2ef290ae35e414d6fc5510c9e6e}} 
+\index{Arbre@{Arbre}!Arbre@{Arbre}}
+\index{Arbre@{Arbre}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{Arbre()}{Arbre()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily Arbre\+::\+Arbre (\begin{DoxyParamCaption}\item[{\hyperlink{class_goban}{Goban} \&}]{,  }\item[{const size\+\_\+t}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_arbre_a7be58ac146487307f93a5c141f3546df}\label{class_arbre_a7be58ac146487307f93a5c141f3546df}} 
+\index{Arbre@{Arbre}!Arbre@{Arbre}}
+\index{Arbre@{Arbre}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{Arbre()}{Arbre()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily Arbre\+::\+Arbre (\begin{DoxyParamCaption}\item[{\hyperlink{class_goban}{Goban} \&}]{\+\_\+gob,  }\item[{const size\+\_\+t}]{\+\_\+nbF,  }\item[{\hyperlink{class_goban}{Goban} $\ast$}]{\+\_\+fils }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_arbre_a970de955ffdbbd5894e0fa0c40c4e69e}\label{class_arbre_a970de955ffdbbd5894e0fa0c40c4e69e}} 
+\index{Arbre@{Arbre}!afficher@{afficher}}
+\index{afficher@{afficher}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{afficher()}{afficher()}}
+{\footnotesize\ttfamily void Arbre\+::afficher (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{class_arbre_a970de955ffdbbd5894e0fa0c40c4e69e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{class_arbre_a970de955ffdbbd5894e0fa0c40c4e69e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_arbre_ace487e80301c07e6369108bf9a480513}\label{class_arbre_ace487e80301c07e6369108bf9a480513}} 
+\index{Arbre@{Arbre}!get\+Fils@{get\+Fils}}
+\index{get\+Fils@{get\+Fils}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{get\+Fils()}{getFils()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_goban}{Goban} $>$ Arbre\+::get\+Fils (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{class_arbre_ace487e80301c07e6369108bf9a480513_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_arbre_a46ec1d0b89a9466c87a31e8e43133099}\label{class_arbre_a46ec1d0b89a9466c87a31e8e43133099}} 
+\index{Arbre@{Arbre}!get\+Fils\+Indice@{get\+Fils\+Indice}}
+\index{get\+Fils\+Indice@{get\+Fils\+Indice}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{get\+Fils\+Indice()}{getFilsIndice()}}
+{\footnotesize\ttfamily \hyperlink{class_goban}{Goban} Arbre\+::get\+Fils\+Indice (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{indice }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_arbre_abb30fa37b209f6e148a5dc29e3a1c00d}\label{class_arbre_abb30fa37b209f6e148a5dc29e3a1c00d}} 
+\index{Arbre@{Arbre}!get\+Gob@{get\+Gob}}
+\index{get\+Gob@{get\+Gob}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{get\+Gob()}{getGob()}}
+{\footnotesize\ttfamily \hyperlink{class_goban}{Goban} Arbre\+::get\+Gob (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_arbre_abb30fa37b209f6e148a5dc29e3a1c00d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_arbre_afc71a182e86352b06193c2dc746fab79}\label{class_arbre_afc71a182e86352b06193c2dc746fab79}} 
+\index{Arbre@{Arbre}!get\+Info@{get\+Info}}
+\index{get\+Info@{get\+Info}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{get\+Info()}{getInfo()}}
+{\footnotesize\ttfamily bool Arbre\+::get\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_arbre_a0aef1f091d76bca13229a21fcd45a076}\label{class_arbre_a0aef1f091d76bca13229a21fcd45a076}} 
+\index{Arbre@{Arbre}!get\+NbF@{get\+NbF}}
+\index{get\+NbF@{get\+NbF}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{get\+Nb\+F()}{getNbF()}}
+{\footnotesize\ttfamily size\+\_\+t Arbre\+::get\+NbF (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{class_arbre_a0aef1f091d76bca13229a21fcd45a076_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_arbre_aeaa93d0b192e3cce04adb509b6b29c40}\label{class_arbre_aeaa93d0b192e3cce04adb509b6b29c40}} 
+\index{Arbre@{Arbre}!get\+Value@{get\+Value}}
+\index{get\+Value@{get\+Value}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{get\+Value()}{getValue()}}
+{\footnotesize\ttfamily \hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL} Arbre\+::get\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{class_arbre_aeaa93d0b192e3cce04adb509b6b29c40_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_arbre_a2a919273c1041a7f024f717cdd638632}\label{class_arbre_a2a919273c1041a7f024f717cdd638632}} 
+\index{Arbre@{Arbre}!operator=@{operator=}}
+\index{operator=@{operator=}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{class_arbre}{Arbre} Arbre\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{class_arbre}{Arbre}}]{a }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_arbre_a8127785309368d2f2cd5a68f913e18cd}\label{class_arbre_a8127785309368d2f2cd5a68f913e18cd}} 
+\index{Arbre@{Arbre}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \hyperlink{class_goban}{Goban} Arbre\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{unsigned short int}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_arbre_ac6329911b0037ca669e6ef2e12a178c9}\label{class_arbre_ac6329911b0037ca669e6ef2e12a178c9}} 
+\index{Arbre@{Arbre}!print\+Arbo@{print\+Arbo}}
+\index{print\+Arbo@{print\+Arbo}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{print\+Arbo()}{printArbo()}}
+{\footnotesize\ttfamily void Arbre\+::print\+Arbo (\begin{DoxyParamCaption}\item[{const \hyperlink{class_arbre}{Arbre} \&}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{class_arbre_ac6329911b0037ca669e6ef2e12a178c9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_arbre_ad7db2ec4bca90d9523c9dab19eadd628}\label{class_arbre_ad7db2ec4bca90d9523c9dab19eadd628}} 
+\index{Arbre@{Arbre}!set\+Fils@{set\+Fils}}
+\index{set\+Fils@{set\+Fils}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{set\+Fils()}{setFils()}}
+{\footnotesize\ttfamily void Arbre\+::set\+Fils (\begin{DoxyParamCaption}\item[{\hyperlink{class_goban}{Goban}}]{f,  }\item[{const size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_arbre_a36267e74d40f509fd63b99fe6d8dae0b}\label{class_arbre_a36267e74d40f509fd63b99fe6d8dae0b}} 
+\index{Arbre@{Arbre}!set\+Gob@{set\+Gob}}
+\index{set\+Gob@{set\+Gob}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{set\+Gob()}{setGob()}}
+{\footnotesize\ttfamily void Arbre\+::set\+Gob (\begin{DoxyParamCaption}\item[{\hyperlink{class_goban}{Goban}}]{\+\_\+gob }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_arbre_a051e5328c63ba7ab6f6359f9f2f77105}\label{class_arbre_a051e5328c63ba7ab6f6359f9f2f77105}} 
+\index{Arbre@{Arbre}!set\+Info@{set\+Info}}
+\index{set\+Info@{set\+Info}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{set\+Info()}{setInfo()}}
+{\footnotesize\ttfamily void Arbre\+::set\+Info (\begin{DoxyParamCaption}\item[{bool}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_arbre_acabc45692262e5ca9c2f7b410ddcd373}\label{class_arbre_acabc45692262e5ca9c2f7b410ddcd373}} 
+\index{Arbre@{Arbre}!set\+NbF@{set\+NbF}}
+\index{set\+NbF@{set\+NbF}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{set\+Nb\+F()}{setNbF()}}
+{\footnotesize\ttfamily void Arbre\+::set\+NbF (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{\+\_\+nbF }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_arbre_a8108ffdff578e323dd9e50cc105a5c04}\label{class_arbre_a8108ffdff578e323dd9e50cc105a5c04}} 
+\index{Arbre@{Arbre}!set\+Value@{set\+Value}}
+\index{set\+Value@{set\+Value}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{set\+Value()}{setValue()}}
+{\footnotesize\ttfamily void Arbre\+::set\+Value (\begin{DoxyParamCaption}\item[{\hyperlink{class_etat_af3ddb2296ffc379b7f3ad2bf832f294e}{Etat\+::\+V\+AL}}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_arbre_acd12cae4820bb7780a628716a0615d10}\label{class_arbre_acd12cae4820bb7780a628716a0615d10}} 
+\index{Arbre@{Arbre}!Tsumego@{Tsumego}}
+\index{Tsumego@{Tsumego}!Arbre@{Arbre}}
+\subsubsection{\texorpdfstring{Tsumego()}{Tsumego()}}
+{\footnotesize\ttfamily void Arbre\+::\+Tsumego (\begin{DoxyParamCaption}\item[{\hyperlink{class_etat}{Etat} \&}]{cible }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_arbre_acd12cae4820bb7780a628716a0615d10_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_arbre_acd12cae4820bb7780a628716a0615d10_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Engine/\hyperlink{_arbre_8h}{Arbre.\+h}\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Engine/\hyperlink{_arbre_8cpp}{Arbre.\+cpp}\end{DoxyCompactItemize}

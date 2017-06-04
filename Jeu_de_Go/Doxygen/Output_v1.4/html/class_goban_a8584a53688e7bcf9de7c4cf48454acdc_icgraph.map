@@ -1,0 +1,11 @@
+<map id="Goban::rechercheGroupes" name="Goban::rechercheGroupes">
+<area shape="rect" id="node2" href="$class_goban.html#a799390f04139eec16f7bb8c79b381303" title="Goban::legalEvenKO" alt="" coords="244,5,387,32"/>
+<area shape="rect" id="node3" href="$class_goban.html#abd6663ff5c440bf6def073db02df83f0" title="Goban::rechercheGroupes" alt="" coords="228,56,403,83"/>
+<area shape="rect" id="node4" href="$class_goban.html#a8b95ea2b51c078381562e361ff7febac" title="Goban::isSuicide" alt="" coords="255,107,376,133"/>
+<area shape="rect" id="node5" href="$class_goban.html#a36ab256c9430e070b620052a0f13f051" title="Goban::listFils" alt="" coords="262,157,369,184"/>
+<area shape="rect" id="node9" href="$class_board.html#a5fda73da080403d8a71a8593d581c350" title="Board::click" alt="" coords="463,208,553,235"/>
+<area shape="rect" id="node6" href="$class_arbre.html#acd12cae4820bb7780a628716a0615d10" title="Arbre::Tsumego" alt="" coords="451,157,565,184"/>
+<area shape="rect" id="node7" href="$class_game__window.html#a72304de2044c29f1373037bd818f674f" title="Game_window::keyPressed" alt="" coords="613,157,796,184"/>
+<area shape="rect" id="node8" href="$class_game__window.html#aec21feecf4c72d73c13d82aa12df6930" title="Game_window::Run" alt="" coords="844,183,981,209"/>
+<area shape="rect" id="node10" href="$class_game__window.html#afa942088809bf10731bb31d0d37b878d" title="Game_window::click" alt="" coords="634,208,775,235"/>
+</map>

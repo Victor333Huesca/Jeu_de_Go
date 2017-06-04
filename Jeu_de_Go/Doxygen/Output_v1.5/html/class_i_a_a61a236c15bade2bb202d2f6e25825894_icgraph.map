@@ -1,0 +1,5 @@
+<map id="IA::stop_tsumego" name="IA::stop_tsumego">
+<area shape="rect" id="node2" href="$class_i_a.html#a364aef554d81e9a93bff08c28d437497" title="IA::Tsumego" alt="" coords="208,5,303,32"/>
+<area shape="rect" id="node3" href="$class_go___solver.html#a6ca744f1f4586c3f90f2e47915034baf" title="Go_Solver::launchTsumego" alt="" coords="381,31,561,57"/>
+<area shape="rect" id="node4" href="$class_go___solver.html#a63f22d429ea0e1c881d0b276edfe4b0e" title="Go_Solver::~Go_Solver" alt="" coords="177,107,333,133"/>
+</map>

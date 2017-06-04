@@ -1,0 +1,9 @@
+<map id="Menu_simple::setItemsFonts" name="Menu_simple::setItemsFonts">
+<area shape="rect" id="node2" href="$_main_8cpp.html#ab2ff3dd66804b9f8e614cc3d8f62b851" title="loadMenu1" alt="" coords="244,5,329,32"/>
+<area shape="rect" id="node5" href="$_main_8cpp.html#a1862c57029f25299b350b89a3fef7bac" title="loadMenu3" alt="" coords="244,56,329,83"/>
+<area shape="rect" id="node6" href="$_main_8cpp.html#a3153201e1f35afab1a2de7fa1dea810a" title="loadMenu4" alt="" coords="244,107,329,133"/>
+<area shape="rect" id="node7" href="$_main_8cpp.html#aee704d9ab9bae25e3fecbe7f6a106f7a" title="loadMenu5" alt="" coords="244,157,329,184"/>
+<area shape="rect" id="node8" href="$_main_8cpp.html#a0a424bcea43ed2e1fc6b5d516bafd12c" title="loadMenu6" alt="" coords="244,208,329,235"/>
+<area shape="rect" id="node3" href="$_main_8cpp.html#a38bed9713fcae949ee78e6bc604db8fe" title="loadMenu" alt="" coords="377,107,456,133"/>
+<area shape="rect" id="node4" href="$_main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="504,107,555,133"/>
+</map>

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../Globals.h"
 #include "Square.h"
 #include "../../Engine/Goban.h"
@@ -21,14 +21,23 @@ public:
 	void zoom(const float delta, const sf::Vector2i& pos);
 	void cancel();
 	sf::View getView() const;
+	void setView(const sf::FloatRect& zone);
 
 	// Loading
 	void load();
+	void load(const Goban& copy);
+
+	// Rules audio
+	float getVolume() const;
+	void setVolume(float vol);
+	void turnSoundsUp();
+	void turnSoundsDown();
+
+	// Pour récuperer une copie du Goban
+	Goban getGoban() const;
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
-	Goban engine;
 private:
-	// Goban
 	sf::Vector2u size;			/*!< Number of squares on the goban */
 	Square** array;				/*!< Goban's intersections representation */
 
@@ -41,7 +50,13 @@ private:
 	sf::View view_origin;		/*!< Original view */
 
 	// Goban engine
-	//Goban engine;				/*!< Engine used by Wissem and Mamadou */
+	Goban engine;				/*!< Engine used by Wissem and Mamadou */
+
+	// Sounds effects
+	sf::Sound group_killed_snd;
+	sf::SoundBuffer group_killed_sndbuff;
+	sf::Sound stone_put_snd;
+	sf::SoundBuffer stone_put_sndbuff;
 
 	// Return case corresponding to view's position
 	bool posToSquare(sf::Vector2i& pos) const;
@@ -70,7 +85,7 @@ Board::Board(const sf::Vector2<T>& _size) :
 		array[i] = new Square[size.y];
 		for (size_t j = 0; j < size.y; j++)
 		{
-			array[i][j].setPosition(sf::Vector2f(i, j));
+			array[i][j].setPosition(sf::Vector2f((float)i, (float)j));
 		}
 	}
 }

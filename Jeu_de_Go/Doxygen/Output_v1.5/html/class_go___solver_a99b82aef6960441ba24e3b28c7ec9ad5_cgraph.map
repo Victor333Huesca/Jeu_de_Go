@@ -1,0 +1,6 @@
+<map id="Go_Solver::loadMenu4" name="Go_Solver::loadMenu4">
+<area shape="rect" id="node2" href="$class_menu__simple.html#a1273e6743ee892cd8651968efd595b73" title="Menu_simple::setItemsFonts" alt="" coords="213,5,404,32"/>
+<area shape="rect" id="node3" href="$class_menu__simple.html#a0fc5b4ec10c844f34495364f70cd333e" title="Menu_simple::addItem" alt="" coords="232,56,385,83"/>
+<area shape="rect" id="node5" href="$class_menu__simple.html#a4717470decb5666cbac7aa879aade5fa" title="Menu_simple::setItemsTextures" alt="" coords="205,107,412,133"/>
+<area shape="rect" id="node4" href="$class_choice___simple.html#a035e32f90e4561b666b6571bce06e207" title="Choice_Simple::setFont" alt="" coords="460,56,621,83"/>
+</map>

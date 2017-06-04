@@ -1,0 +1,34 @@
+<map id="Goban::coord" name="Goban::coord">
+<area shape="rect" id="node2" href="$class_goban.html#a799390f04139eec16f7bb8c79b381303" title="Goban::legalEvenKO" alt="" coords="621,35,764,62"/>
+<area shape="rect" id="node3" href="$class_goban.html#a8c49da36e406f11d33671a4c8a4c19b2" title="Goban::Goban" alt="" coords="183,335,290,362"/>
+<area shape="rect" id="node4" href="$class_goban.html#a1ec70508987f66afff5f8df381731fac" title="Goban::eliminateGroups" alt="" coords="155,133,318,159"/>
+<area shape="rect" id="node6" href="$class_goban.html#a8b95ea2b51c078381562e361ff7febac" title="Goban::isSuicide" alt="" coords="632,93,753,119"/>
+<area shape="rect" id="node13" href="$class_goban.html#a7dd1a7b53322bde2a831a923059e43a3" title="Goban::move" alt="" coords="412,183,511,210"/>
+<area shape="rect" id="node14" href="$class_goban.html#ae7ee3b39f3c0d28c9bca286ca538f8ac" title="Goban::cancel" alt="" coords="183,285,290,311"/>
+<area shape="rect" id="node17" href="$class_goban.html#a8ad67a618a510bb378d00281228b1b13" title="Goban::compress" alt="" coords="174,437,299,463"/>
+<area shape="rect" id="node18" href="$_main_8cpp.html#ae1a3968e7947464bee7714f6d43b7002" title="test" alt="" coords="439,437,483,463"/>
+<area shape="rect" id="node19" href="$class_goban.html#aa23b735d8d72bb0fe189005e968e9329" title="Goban::uncompress" alt="" coords="167,487,306,514"/>
+<area shape="rect" id="node20" href="$_goban_8h.html#af268768f99a138526e0bf82ff4d6cc39" title="operator\&lt;\&lt;" alt="" coords="194,538,279,565"/>
+<area shape="rect" id="node21" href="$class_i_a.html#a5c0a6371478dedeb16372d13ce13cc34" title="IA::loadNumber" alt="" coords="181,589,292,615"/>
+<area shape="rect" id="node24" href="$class_i_a.html#a42202360406fe67babfd01a9b7902fd2" title="IA::Tsumego_naif" alt="" coords="175,741,298,767"/>
+<area shape="rect" id="node25" href="$class_i_a.html#af1f6e5abe41a2225b17ca319c1fc0e4e" title="IA::Tsumego_abr" alt="" coords="177,639,297,666"/>
+<area shape="rect" id="node26" href="$class_i_a.html#a6f616b7d3d9d39eef4780b7a03226260" title="IA::Tsumego_abrFils" alt="" coords="391,677,532,703"/>
+<area shape="rect" id="node27" href="$class_i_a.html#a5d86a3548f2410f7fc0676b89d07f4fd" title="IA::Tsumego_compresse" alt="" coords="153,791,320,818"/>
+<area shape="rect" id="node28" href="$_parser_8h.html#a0d953eb90c8a03cbbe46abaf3d8d96e9" title="parseur" alt="" coords="204,842,269,869"/>
+<area shape="rect" id="node29" href="$class_board.html#a841a248dac4743611ba1825afd5d1297" title="Board::load" alt="" coords="193,234,281,261"/>
+<area shape="rect" id="node33" href="$class_go___solver.html#ab2a2c57a24b076a6729e01504ef25377" title="Go_Solver::setTarget" alt="" coords="165,893,308,919"/>
+<area shape="rect" id="node5" href="$class_goban.html#a7858b815885e4af36f05f9d26182cb07" title="Goban::eliminateOppGroups" alt="" coords="368,133,555,159"/>
+<area shape="rect" id="node7" href="$class_goban.html#a36ab256c9430e070b620052a0f13f051" title="Goban::listFils" alt="" coords="639,155,746,182"/>
+<area shape="rect" id="node10" href="$class_board.html#a5fda73da080403d8a71a8593d581c350" title="Board::click" alt="" coords="647,231,738,258"/>
+<area shape="rect" id="node8" href="$class_arbre.html#ac82e543d8cbf0aced4d741c346f9950d" title="Arbre::Arbre" alt="" coords="876,130,968,157"/>
+<area shape="rect" id="node9" href="$class_arbre.html#a70585b1d341c1e0c262b2b4a4f769b6d" title="Arbre::resetFils" alt="" coords="867,181,977,207"/>
+<area shape="rect" id="node11" href="$class_game__window.html#afa942088809bf10731bb31d0d37b878d" title="Game_window::click" alt="" coords="851,246,993,273"/>
+<area shape="rect" id="node12" href="$class_game__window.html#a555769f4e8511e45d6623658dc736be5" title="Game_window::Run" alt="" coords="1061,297,1199,323"/>
+<area shape="rect" id="node15" href="$class_board.html#ac7ec911a62371650afd340d1535a1742" title="Board::cancel" alt="" coords="410,386,513,413"/>
+<area shape="rect" id="node16" href="$class_game__window.html#a72304de2044c29f1373037bd818f674f" title="Game_window::keyPressed" alt="" coords="831,347,1013,374"/>
+<area shape="rect" id="node22" href="$class_i_a.html#a364aef554d81e9a93bff08c28d437497" title="IA::Tsumego" alt="" coords="414,601,509,627"/>
+<area shape="rect" id="node23" href="$class_go___solver.html#a6ca744f1f4586c3f90f2e47915034baf" title="Go_Solver::launchTsumego" alt="" coords="603,601,783,627"/>
+<area shape="rect" id="node30" href="$class_board.html#a3cea4df16e41c21666cf51789b7e9e78" title="Board::load" alt="" coords="417,335,505,362"/>
+<area shape="rect" id="node31" href="$class_game__window.html#ac674f6d0db2bf60e92a0072d94e4c019" title="Game_window::setGoban" alt="" coords="376,285,547,311"/>
+<area shape="rect" id="node32" href="$class_go___solver.html#a8452c66187c526e0a6051bbb42b9bbda" title="Go_Solver::setGoban" alt="" coords="620,285,765,311"/>
+</map>

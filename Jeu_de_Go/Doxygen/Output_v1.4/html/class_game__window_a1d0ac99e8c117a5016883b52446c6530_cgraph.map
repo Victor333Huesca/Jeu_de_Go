@@ -1,0 +1,5 @@
+<map id="Game_window::Game_window" name="Game_window::Game_window">
+<area shape="rect" id="node2" href="$class_infos.html#a5dee8a8817c307c570db905429480d79" title="Infos::setCurPlayer" alt="" coords="252,31,384,57"/>
+<area shape="rect" id="node3" href="$class_timer.html#a0289effad7b573c508bc27e405900a23" title="Timer::pause" alt="" coords="432,5,529,32"/>
+<area shape="rect" id="node4" href="$class_timer.html#a84acbe09a8dddae46c997c57a70c5076" title="Timer::play" alt="" coords="437,56,524,83"/>
+</map>

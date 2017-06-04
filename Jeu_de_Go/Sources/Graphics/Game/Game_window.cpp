@@ -1,6 +1,6 @@
-#include "Game_window.h"
+﻿#include "Game_window.h"
 
-
+extern bool sound;
 
 Game_window::Game_window() :
 	board(sf::Vector2u(NB_SQUARES_X, NB_SQUARES_Y)),
@@ -31,10 +31,11 @@ void Game_window::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	target.setView(cur_view);
 }
 
-int Game_window::Run(sf::RenderWindow &window)
+Screens Game_window::Run(sf::RenderWindow &window, Go_Solver& solver)
 {
 	// To stay alive
 	bool Running = true;
+	Screens sc = NO_CHANGE;
 
 	while (Running)
 	{
@@ -46,24 +47,27 @@ int Game_window::Run(sf::RenderWindow &window)
 			switch (event.type)
 			{
 			case sf::Event::Closed:
-				return -1;
+				sc = EXIT;
 				break;
 			case sf::Event::LostFocus:
 				break;
 			case sf::Event::GainedFocus:
 				break;
 			case sf::Event::MouseButtonReleased:
-				click(window, sf::Mouse::getPosition(window), event.mouseButton.button);
+				sc = click(window, sf::Mouse::getPosition(window), event.mouseButton.button);
 				break;
 			case sf::Event::MouseWheelScrolled:
 				zoom(event.mouseWheelScroll.delta, sf::Mouse::getPosition(window), window);
 				break;
 			case sf::Event::KeyPressed:
-				keyPressed(event.key);
+				sc = keyPressed(event.key);
 				break;
 			default:
 				break;
 			}
+
+			if (sc != NO_CHANGE)
+				return sc;
 		}
 
 		// Treate real-time actions
@@ -83,10 +87,10 @@ int Game_window::Run(sf::RenderWindow &window)
 
 
 	// Not suppose to reach here but just in case
-	return -1;
+	return ERROR_SCREEN;
 }
 
-void Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, const sf::Mouse::Button & type)
+Screens Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, const sf::Mouse::Button & type)
 {
 	// Test if mouse was in the board or the info menu
 	if (pos.x <= WINDOW_WIDTH)
@@ -113,6 +117,8 @@ void Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, const
 	{
 
 	}
+
+	return NO_CHANGE;
 }
 
 void Game_window::zoom(const float delta, sf::Vector2i pos, sf::RenderWindow& window)
@@ -124,158 +130,145 @@ void Game_window::zoom(const float delta, sf::Vector2i pos, sf::RenderWindow& wi
 	board.zoom(delta, pos);
 }
 
-void Game_window::keyPressed(const sf::Event::KeyEvent & key)
+Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 {
 	if (key.control)
 	{
 		// Ctrl + ...
-		
+
 		if (key.code == sf::Keyboard::Z)
 		{
 			// Ctrl + Z
 			board.cancel();
 		}
+		else if (key.code == sf::Keyboard::A)
+		{
+			territoire();
+		}
 		else if (key.code == sf::Keyboard::Y)
 		{
 			// Ctrl + Y
 			// It will be more complecated than I expected.
-			size_t choix;
-			std::cout << "_______________Parser v1.1 (console)________________ " << std::endl;
-			std::cout << "Probl�me disponible (3) : " << std::endl;
-			std::cout << "Veuillez choisir votre probl�me : ";
-			std::cin >> choix;
-			for (size_t x = 0; x < TGOBAN; x++)
-			{
-				for (size_t y = 0; y < TGOBAN; y++)
-				{
-					board.engine.coord(x, y).setVal(Etat::VIDE);
-				}
-			}
-			board.load();
-			for (size_t x = 9; x < TGOBAN; x++)
-			{
-				for (size_t y = 0; y < TGOBAN; y++)
-				{
-					board.engine.coord(x, y).setVal(Etat::NJ);
-				}
-			}
-			for (size_t x = 0; x < TGOBAN; x++)
-			{
-				for (size_t y = 7; y < TGOBAN; y++)
-				{
-					board.engine.coord(x, y).setVal(Etat::NJ);
-				}
-			}
-			switch (choix)
-			{
-			case 1:
-				board.engine.coord(1, 3).setVal(Etat::NOIR);
-				board.engine.coord(2, 3).setVal(Etat::NOIR);
-				board.engine.coord(3, 3).setVal(Etat::NOIR);
-				board.engine.coord(4, 3).setVal(Etat::NOIR);
-				board.engine.coord(5, 3).setVal(Etat::NOIR);
-				board.engine.coord(6, 3).setVal(Etat::NOIR);
-				board.engine.coord(6, 2).setVal(Etat::NOIR);
-				board.engine.coord(6, 1).setVal(Etat::NOIR);
-				board.engine.coord(1, 5).setVal(Etat::NOIR);
-				board.engine.coord(1, 2).setVal(Etat::BLANC);
-				board.engine.coord(2, 2).setVal(Etat::BLANC);
-				board.engine.coord(3, 2).setVal(Etat::BLANC);
-				board.engine.coord(4, 2).setVal(Etat::BLANC);
-				board.engine.coord(5, 2).setVal(Etat::BLANC);
-				break;
-			case 2: 
-				board.engine.coord(3, 1).setVal(Etat::BLANC);
-				board.engine.coord(4, 1).setVal(Etat::BLANC);
-				board.engine.coord(6, 1).setVal(Etat::BLANC);
-				board.engine.coord(7, 1).setVal(Etat::BLANC);
-				board.engine.coord(4, 2).setVal(Etat::BLANC);
-				board.engine.coord(6, 2).setVal(Etat::BLANC);
-				board.engine.coord(5, 3).setVal(Etat::BLANC);
-				board.engine.coord(6, 3).setVal(Etat::BLANC);
-				
-				board.engine.coord(3, 0).setVal(Etat::NOIR);
 
-				board.engine.coord(2, 1).setVal(Etat::NOIR);
-				board.engine.coord(8, 1).setVal(Etat::NOIR);
-
-				board.engine.coord(3, 2).setVal(Etat::NOIR);
-				board.engine.coord(7, 2).setVal(Etat::NOIR);
-				board.engine.coord(9, 2).setVal(Etat::NOIR);
-
-				board.engine.coord(3, 3).setVal(Etat::NOIR);
-				board.engine.coord(4, 3).setVal(Etat::NOIR);
-				board.engine.coord(7, 3).setVal(Etat::NOIR);
-
-				board.engine.coord(5, 4).setVal(Etat::NOIR);
-				board.engine.coord(6, 4).setVal(Etat::NOIR);
-				board.engine.coord(7, 4).setVal(Etat::NOIR);
-				break;
-			case 3: 
-				board.engine.coord(3, 0).setVal(Etat::BLANC);
-
-				board.engine.coord(0, 1).setVal(Etat::BLANC);
-				board.engine.coord(2, 1).setVal(Etat::BLANC);
-
-				board.engine.coord(1, 2).setVal(Etat::BLANC);
-				board.engine.coord(2, 2).setVal(Etat::BLANC);
-
-				board.engine.coord(2, 3).setVal(Etat::BLANC);
-
-				board.engine.coord(2, 4).setVal(Etat::BLANC);
-
-				board.engine.coord(2, 5).setVal(Etat::BLANC);
-				board.engine.coord(1, 5).setVal(Etat::BLANC);
-
-				board.engine.coord(0, 6).setVal(Etat::BLANC);
-
-				board.engine.coord(1, 0).setVal(Etat::NOIR);
-
-				board.engine.coord(3, 1).setVal(Etat::NOIR);
-				board.engine.coord(5, 1).setVal(Etat::NOIR);
-
-				board.engine.coord(3, 2).setVal(Etat::NOIR);
-
-				board.engine.coord(3, 3).setVal(Etat::NOIR);
-
-				board.engine.coord(3, 4).setVal(Etat::NOIR);
-				board.engine.coord(0, 4).setVal(Etat::NOIR);
-
-				board.engine.coord(3, 5).setVal(Etat::NOIR);
-
-				board.engine.coord(3, 6).setVal(Etat::NOIR);
-				board.engine.coord(2, 6).setVal(Etat::NOIR);
-				board.engine.coord(1, 6).setVal(Etat::NOIR);
-
-				board.engine.coord(1, 8).setVal(Etat::NOIR);
-				break;
-			}
-			
+			// Permet de lancer le tsumego
 			char c;
-			board.load();
-			//std::cout << board.engine << std::endl;
-			std::cout<<"Lancer le Tsumego Y/N ?  ";
+			std::cout << "Lancer le Tsumego Y/N ?  ";
 			std::cin >> c;
-			if (c == 'Y')
+
+			if (c == 'Y' || c == 'y')
 			{
-				std::cout << "lancement du tsumego :" << std::endl;
-				Arbre abr(board.engine, Etat::BLANC);
-				abr.Tsumego(board.engine.coord(1, 2));  //Erreur de free
+				std::cout << "lancement du tsumego :" << std::endl;  //déjà présent
+                char x[2], y[2]; size_t x2, y2;
+                std::cout << "Saisir les coordonnées de la cible :" << std::endl;
+                std::cin >> x; x2 = atoi(x);
+                std::cin >> y; y2 = atoi(y);
+                Goban gob = board.getGoban();   //déjà présent
+                Arbre abr(gob, Etat::BLANC);
+                //abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
+
+                IA::Tsumego(&abr, &board.getGoban().coord(x2, y2));
 			}
 			else
 			{
-				std::cout << "Vous avez �pargn� votre pc !"<<std::endl;
+				std::cout << "Vous avez épargné votre pc !"<<std::endl;
 			}
-				
-			
-				
-			
-				
-
 		}
 	}
 	else
 	{
+		if (key.code == sf::Keyboard::Escape)
+		{
+			// Escape
+			return PAUSE;
+		}
 		// Not Ctrl
 	}
+
+	// Else
+	return NO_CHANGE;
+}
+
+void Game_window::setGoban(const Goban & goban)
+{
+	board.load(goban);
+}
+
+Goban Game_window::getGoban() const
+{
+	return board.getGoban();
+}
+
+void Game_window::setView(const sf::FloatRect& zone)
+{
+	board.setView(zone);
+}
+
+void Game_window::territoire()
+{
+	/*						A l'attention de Julien
+		En faisant �a tu perds les avantages de l'encapsualtion, je m'explique :
+			- Game_Window est la classe contenant une instance d'un jeu, c'est � dire
+		l'�tat d'une partie de go mais aussi le menu contextuel trouvable sur le
+		cot�. C'est cette classe qui g�re les entr�es / sorties et les transmet �
+		qui de droit (ici c'est souvent au 'engine') qui lui traite cette information.
+			- Board quand � elle est la classe qui g�re ce que repr�sente une partie de Go.
+		C'est � dire toute les textures du plateau, la vu actuelle du (la partie
+		zoom�e du plateau), et �videment la partie elle m�me (le fameau 'engine').
+		Tout ces attributs DOIVENT �tre en PRIV� sous peine de donner un acc�s �
+		des parties qui sont cruciales et doivent �tre contr�l�e. On ne veux pas en
+		effet que n'importe qui tente de charger une texture comme �a lui plait sans
+		passer la fonction qui permet elle de charger la texture de fa�on contr�l�e.
+		De m�me pour modifier l'�tat du goban on passe par une m�thode et on ne touche
+		jamais au grand jamais directement au goban lui-m�me.
+			- Goban est la classequi g�re une partie de Go du point de vu des r�gles.
+		En effet c'est elle qui valide ou non un coup, c'est elle qui permet de
+		r�cup�rer des informations sp�cifique � une partie de Go qui, si les r�gle de
+		ce jeu vennaient � varier- devrait �tre modifier sans que cela n'impacte le
+		reste des classes Board et Game_window.
+			- Il se trouve qu'ici Goban est aussi utilis�e pour jouer le tsumego, c'est un
+		point de vu discutable car rajouter des fonctions telles que le tsumego
+		directement � la classe l'allorudie et la rends bien moins modulaire.
+		J'aurais plus la vision d'une classe specifique qui g�re ce genre de cas d'�tude.
+		Apr�s c'est un ressenti et �tant donn� que ce projet n'est -� priori- qu'un
+		"one shoot" et n'a donc pas pour but d'�tre repris, integrer directement des
+		fonctinons en dur dans une classe est d�fendable. */
+
+	// PS : Ne pas supprimer ce message, on doit pouvoir le r�utiliser pour le rapport.
+
+	//L'id�e avait l'air sympathique � �xploiter.
+
+	//Affiche le territoire de chaque joueur
+	//Groupe groupsBlack, groupsWhite;
+	//std::cout << board.engine.getGroupsBlack()[0]<< std::endl;
+	/*for (size_t i = 0; i < 19; i++)
+	{
+		board.engine.coord(i, j).;
+	}*/
+
+	/*
+	Pour chaque groupe renvoi le nombre d'oeil : 4 configuration
+		-   (x-1, y) (x+1, y) (x, y-1) (x, y+1) (l'oeil classique)
+		-   (x+1, y) (x, y+1) (l'oeil en coin)
+		-   (x, y-1) (x+1, y) (x, y+1) (l'oeil de cot�
+		-   (x-1, y) (x+2, y) (x, y-1) (x, y-1) (x, y+1) (x+1, y-1) (x+1, y+1) (grand oeil)
+
+	ps : nous permettra de savoir si un groupe survivra sans arriv� � la fin d'une recherche (au moins deux yeux).
+
+	Pour chaque groupe calcul la distance la plus courte avec les bords (haut, bas, droite, gauche)
+		- Colore pour chaque groupe une t�che de la couleur du groupe de deux cases autour en direction du bords le plus proche.
+		+ Colore l'int�rieur des yeux
+		++ Si le groupe a moins de deux libert�s test� les deux coups pour pr�voir si il va mourir et le colorer de la couleur oppos�.
+
+
+		*/
+}
+
+void Game_window::turnSoundsUp()
+{
+	board.turnSoundsUp();
+}
+
+void Game_window::turnSoundsDown()
+{
+	board.turnSoundsDown();
 }

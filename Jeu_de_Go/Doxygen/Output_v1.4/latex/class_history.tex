@@ -1,0 +1,199 @@
+\hypertarget{class_history}{}\section{History Class Reference}
+\label{class_history}\index{History@{History}}
+
+
+{\ttfamily \#include $<$History.\+h$>$}
+
+
+
+Inheritance diagram for History\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{class_history__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for History\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{class_history__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_history_afba1384643f419d079e78adb1497f741}{History} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_history_a5b00b64a1ddee04e60d5a3b517fd6d4c}{$\sim$\+History} ()
+\item 
+const \hyperlink{class_etat}{Etat} \& \hyperlink{class_history_a0ca66ba5a026689877e027754fc5bd52}{current} () const
+\begin{DoxyCompactList}\small\item\em Access current position. \end{DoxyCompactList}\item 
+const \hyperlink{class_etat}{Etat} \& \hyperlink{class_history_a8a0bb0748169bc93404987108a14f4bc}{previous} ()
+\begin{DoxyCompactList}\small\item\em Go backward in history. \end{DoxyCompactList}\item 
+const \hyperlink{class_etat}{Etat} \& \hyperlink{class_history_ab0535cf179200bf8a79a854aac783aa1}{next} ()
+\begin{DoxyCompactList}\small\item\em Go forward in history. \end{DoxyCompactList}\item 
+void \hyperlink{class_history_a90222df7f73ae9cfda56bdb66cb1985e}{add} (const \hyperlink{class_etat}{Etat} \&new\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Add new state in history. \end{DoxyCompactList}\item 
+bool \hyperlink{class_history_a6e1bcaa1d3ecc646131e6f73a2544f35}{cancel} ()
+\item 
+void \hyperlink{class_history_a8ef13fdf00ec0786268fd6bd211bf38f}{clear} ()
+\begin{DoxyCompactList}\small\item\em Clear history. \end{DoxyCompactList}\item 
+std\+::ostream \& \hyperlink{class_history_a5c1724d84912d1571d2475b2fb703081}{display} (std\+::ostream \&stream) const
+\begin{DoxyCompactList}\small\item\em Display the history. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_history_afba1384643f419d079e78adb1497f741}\label{class_history_afba1384643f419d079e78adb1497f741}} 
+\index{History@{History}!History@{History}}
+\index{History@{History}!History@{History}}
+\subsubsection{\texorpdfstring{History()}{History()}}
+{\footnotesize\ttfamily History\+::\+History (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Create empty history. \mbox{\Hypertarget{class_history_a5b00b64a1ddee04e60d5a3b517fd6d4c}\label{class_history_a5b00b64a1ddee04e60d5a3b517fd6d4c}} 
+\index{History@{History}!````~History@{$\sim$\+History}}
+\index{````~History@{$\sim$\+History}!History@{History}}
+\subsubsection{\texorpdfstring{$\sim$\+History()}{~History()}}
+{\footnotesize\ttfamily History\+::$\sim$\+History (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_history_a90222df7f73ae9cfda56bdb66cb1985e}\label{class_history_a90222df7f73ae9cfda56bdb66cb1985e}} 
+\index{History@{History}!add@{add}}
+\index{add@{add}!History@{History}}
+\subsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void History\+::add (\begin{DoxyParamCaption}\item[{const \hyperlink{class_etat}{Etat} \&}]{new\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+Add new state in history. 
+
+Delete history past current state, add new state at the end. After call, current state will be at the new end.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+state} & \+: state to add \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_history_a90222df7f73ae9cfda56bdb66cb1985e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_history_a6e1bcaa1d3ecc646131e6f73a2544f35}\label{class_history_a6e1bcaa1d3ecc646131e6f73a2544f35}} 
+\index{History@{History}!cancel@{cancel}}
+\index{cancel@{cancel}!History@{History}}
+\subsubsection{\texorpdfstring{cancel()}{cancel()}}
+{\footnotesize\ttfamily bool History\+::cancel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_history_a6e1bcaa1d3ecc646131e6f73a2544f35_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_history_a8ef13fdf00ec0786268fd6bd211bf38f}\label{class_history_a8ef13fdf00ec0786268fd6bd211bf38f}} 
+\index{History@{History}!clear@{clear}}
+\index{clear@{clear}!History@{History}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void History\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clear history. 
+
+Reset to the same state as after construction. \mbox{\Hypertarget{class_history_a0ca66ba5a026689877e027754fc5bd52}\label{class_history_a0ca66ba5a026689877e027754fc5bd52}} 
+\index{History@{History}!current@{current}}
+\index{current@{current}!History@{History}}
+\subsubsection{\texorpdfstring{current()}{current()}}
+{\footnotesize\ttfamily const \hyperlink{class_etat}{Etat} \& History\+::current (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Access current position. 
+
+Invalid if history is empty.
+
+\begin{DoxyReturn}{Returns}
+Current history state. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_history_a0ca66ba5a026689877e027754fc5bd52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_history_a5c1724d84912d1571d2475b2fb703081}\label{class_history_a5c1724d84912d1571d2475b2fb703081}} 
+\index{History@{History}!display@{display}}
+\index{display@{display}!History@{History}}
+\subsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily std\+::ostream \& History\+::display (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream }\end{DoxyParamCaption}) const}
+
+
+
+Display the history. 
+
+Display the history on a pasted stream.
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & \+: stream where display\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The stream to chain display 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{class_history_a5c1724d84912d1571d2475b2fb703081_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_history_ab0535cf179200bf8a79a854aac783aa1}\label{class_history_ab0535cf179200bf8a79a854aac783aa1}} 
+\index{History@{History}!next@{next}}
+\index{next@{next}!History@{History}}
+\subsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily const \hyperlink{class_etat}{Etat} \& History\+::next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Go forward in history. 
+
+Move one step forward in history. Do nothing if end was reached. Invalid if history is empty
+
+\begin{DoxyReturn}{Returns}
+New history state. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_history_a8a0bb0748169bc93404987108a14f4bc}\label{class_history_a8a0bb0748169bc93404987108a14f4bc}} 
+\index{History@{History}!previous@{previous}}
+\index{previous@{previous}!History@{History}}
+\subsubsection{\texorpdfstring{previous()}{previous()}}
+{\footnotesize\ttfamily const \hyperlink{class_etat}{Etat} \& History\+::previous (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Go backward in history. 
+
+Move one step backward in history. Do nothing if begining was reached. Invalid if history is empty
+
+\begin{DoxyReturn}{Returns}
+New history state. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Engine/\hyperlink{_history_8h}{History.\+h}\item 
+D\+:/\+Users/\+Victor/\+One\+Drive/\+Documents/\+Visual Studio 2017/\+Projects/\+Jeu\+\_\+de\+\_\+\+Go/\+Jeu\+\_\+de\+\_\+\+Go/\+Sources/\+Engine/\hyperlink{_history_8cpp}{History.\+cpp}\end{DoxyCompactItemize}
