@@ -1,29 +1,45 @@
-﻿#include "Globals.h"
+﻿//#ifdef __MINGW32__
+//#include "mingw.thread.h"
+//#else
+#include <thread>
+//#endif // __MINGW32__
+#include <fstream>
+#include <cassert>
+#include <cmath>
+#include "Globals.h"
 #include "Go_Solver.h"
 
 #define	MULTITHREAD false
 
 void renderingThread(sf::RenderWindow* _window, const std::vector<Screen*>* _screens, const Screens* _cur_screen);
 
-//Permet de tester si la compression/decompression fonctionne
+// Permet de tester si la compression/decompression fonctionne
 void test();
 
-extern std::ofstream log_file("trace.log");
+std::ofstream log_file("trace.log");
+
 
 int main()
 {
-	std::cout << sizeof(Goban) + sizeof(Etat) * 9 * 9 << std::endl;
-	system("pause");
-	// Create the window
-	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Jeu de Go");
+    /* ------ Tests ------ */
+    //system(std::string("mkdir " + path).c_str());
+	//std::ofstream file(std::string(path + ".log"));
+    /* --- End of Tests --- */
 
-	// Create a solver applic witch contain all informations about the game
+    // Log file first
+    //log_file.open("trace.log");
+
+	// Create the window
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH + INFOS_SIZE, WINDOW_HEIGHT), "Jeu de Go");
+	window.setVerticalSyncEnabled(false);
+
+	// Create a solver app witch contain all informations about the game
 	Go_Solver* solver = new Go_Solver();
 
 	// Test a supprimer d'ici
 	//test();
 	// Din du test
-	
+
 	// Limit the framerate
 	window.setFramerateLimit(60);
 
@@ -80,9 +96,9 @@ void test()
 {
 	// Write a goban
 	Goban goban;
-	for (int i = 0; i < TGOBAN; i++)
+	for (size_t i = 0; i < TGOBAN; i++)
 	{
-		for (int j = 0; j < TGOBAN; j++)
+		for (size_t j = 0; j < TGOBAN; j++)
 		{
 			if (i > 8 || j > 5)
 			{
@@ -122,9 +138,9 @@ void test()
 
 	// Uncompress
 	Goban uncomp;
-	for (int i = 0; i < TGOBAN; i++)
+	for (size_t i = 0; i < TGOBAN; i++)
 	{
-		for (int j = 0; j < TGOBAN; j++)
+		for (size_t j = 0; j < TGOBAN; j++)
 		{
 			if (i > 8 || j > 5)
 			{

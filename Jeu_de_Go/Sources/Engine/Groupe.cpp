@@ -21,7 +21,7 @@ bool Groupe::shouldContain(const Etat & stone) const
 		i++;
 	}
 
-	return i != size();
+	return (i < size());
 }
 
 bool Groupe::contain(const Etat & stone) const

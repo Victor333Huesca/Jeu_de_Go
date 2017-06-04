@@ -9,17 +9,22 @@
 #include <fstream>
 #include <cassert>
 #include <stdexcept>
-#include <thread>
-#include <fstream>
-#include <cassert>
-#include <cmath>
 
+#ifdef __MINGW32__
+#include<sstream>
+#endif // __MINGW32__
 
 #ifdef _WIN32
 #define CLEAR_CMD "cls"
+#define DIR_SEP "\\"
 #else
 #define CLEAR_CMD "clear"
+#define DIR_SEP "/"
 #endif // _WIN32
+
+#ifdef __MINGW32__
+//#define std::to_string(
+#endif // __MINGW32__
 
 #define SQUARE_WIDTH 144
 #define SQUARE_HEIGHT 144
@@ -35,8 +40,8 @@
 
 #define INFOS_SIZE 200
 
-#define WINDOW_WIDTH 815
-#define WINDOW_HEIGHT 815
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 800
 
 #define BOARD_WIDTH SQUARE_WIDTH * NB_SQUARES_X + OFFSET_X_B + OFFSET_X_E	// 452
 #define BOARD_HEIGHT SQUARE_HEIGHT * NB_SQUARES_Y + OFFSET_Y_B + OFFSET_Y_E	// 452
@@ -54,7 +59,7 @@
 #define INFOS_TURN_SIZE sf::Vector2f(353, 90)
 
 #define INFOS_TIMER_POS_WHITE sf::Vector2f(430, 2400)
-#define INFOS_TIMER_POS_BLACK sf::Vector2f(520, 2500)
+#define INFOS_TIMER_POS_BLACK sf::Vector2f(480, 2500)
 #define INFOS_TIMER_SIZE 100
 
 // Declare globals variables here
@@ -89,3 +94,13 @@ enum Musics
 {
 	PISTE_1
 };
+
+#if defined(__MINGW32__)
+template <typename T>
+std::string ToString(T val)
+{
+    std::stringstream stream;
+    stream << val;
+    return stream.str();
+}
+#endif // defined

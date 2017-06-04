@@ -75,7 +75,7 @@ Goban::Goban(const Goban& goban)
 		{
 			std::string msg = "Impossible d'allouer l'espace nécessaire à la création d'un Goban --> ";
 			msg += e.what();
-			log_file <<  msg;
+			log_file << msg;
 			std::cerr << msg;
 
 			throw e;
@@ -465,7 +465,7 @@ bool Goban::isSuicide(const Etat& fStone) const{
   size_t i=0;//index of liberties
   liberties = listOfLiberties(fStone);
   while (i < liberties.size()){//if there's an empty liberty
-    if (liberties[i].getVal()==Etat::VIDE || liberties[i].getVal()== Etat::KOWHITE || liberties[i].getVal()== Etat::KOBLACK)
+    if (liberties[i].getVal()==Etat::VIDE || liberties[i].getVal()== Etat::KOWHITE || liberties[i].getVal()== Etat::KOBLACK || liberties[i].getVal()==Etat::NJ)
       return false;
     i++;
   }
@@ -659,7 +659,7 @@ void Goban::uncompress(const uint8_t * compressed, const Etat::VAL KO_status, in
 	int nb_bytes = (int)ceil(nb_revelent / 8.f);			// 90.25 --> 91
 	int nb_wasted_bits = 8 - nb_revelent % 8;		// 8 - 2  --> 6
 
-	// Start looking at the first place of the goban so -1 avoid skipping this first location.
+													// Start looking at the first place of the goban so -1 avoid skipping this first location.
 	int current = -1;
 
 	uint8_t masque = ~0;

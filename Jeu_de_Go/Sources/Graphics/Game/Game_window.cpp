@@ -33,9 +33,6 @@ void Game_window::draw(sf::RenderTarget & target, sf::RenderStates states) const
 
 Screens Game_window::Run(sf::RenderWindow &window, Go_Solver& solver)
 {
-	// First set the window to the right size
-	window.setSize(sf::Vector2u(WINDOW_WIDTH + INFOS_SIZE, WINDOW_HEIGHT));
-
 	// To stay alive
 	bool Running = true;
 	Screens sc = NO_CHANGE;
@@ -152,6 +149,29 @@ Screens Game_window::keyPressed(const sf::Event::KeyEvent & key)
 		{
 			// Ctrl + Y
 			// It will be more complecated than I expected.
+
+			// Permet de lancer le tsumego
+			char c;
+			std::cout << "Lancer le Tsumego Y/N ?  ";
+			std::cin >> c;
+
+			if (c == 'Y' || c == 'y')
+			{
+				std::cout << "lancement du tsumego :" << std::endl;  //déjà présent
+                char x[2], y[2]; size_t x2, y2;
+                std::cout << "Saisir les coordonnées de la cible :" << std::endl;
+                std::cin >> x; x2 = atoi(x);
+                std::cin >> y; y2 = atoi(y);
+                Goban gob = board.getGoban();   //déjà présent
+                Arbre abr(gob, Etat::BLANC);
+                //abr.Tsumego(board.getGoban().coord(1, 2));  //Erreur de free
+
+                IA::Tsumego(&abr, &board.getGoban().coord(x2, y2));
+			}
+			else
+			{
+				std::cout << "Vous avez épargné votre pc !"<<std::endl;
+			}
 		}
 	}
 	else

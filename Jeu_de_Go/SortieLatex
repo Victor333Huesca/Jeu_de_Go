@@ -1,8 +1,0 @@
-\documentclass{article} 
-	\usepackage{tikz} 
- \begin{document} 
- \begin{tikzpicture} 
-\node{R} 
-child{node{F}} 
-\end{tikzpicture}
- \end{document} 

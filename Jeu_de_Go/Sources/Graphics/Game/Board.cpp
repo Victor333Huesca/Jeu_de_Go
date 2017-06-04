@@ -283,7 +283,7 @@ Square::Value Board::transform(const Etat::VAL & value)
 
 Etat::VAL Board::transform(const Square::Value & value)
 {
-	Etat::VAL tmp;
+	Etat::VAL tmp = Etat::VIDE;
 	switch (value)
 	{
 	case Square::Black:

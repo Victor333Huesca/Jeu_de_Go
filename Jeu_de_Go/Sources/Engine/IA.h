@@ -1,6 +1,7 @@
 #pragma once
 #include <chrono>
-
+#include <ctime>
+#include <sstream>
 #ifdef _WIN32
 #include <Windows.h>
 #endif
@@ -11,7 +12,7 @@ class IA : public Arbre
 {
 public :
 	// Tsumego
-	static void Tsumego(Arbre&, Etat&);
+	static void Tsumego(Arbre*, Etat*);
 	//static bool Tsumego2(Arbre&, Etat&);
 
 	// Infos methods
@@ -25,6 +26,9 @@ public :
 	static size_t Tsumego_compresse(Arbre& arbre, const Etat& cible);
 	static void Solution (Arbre& A);
 	static void stop_tsumego();
+
+	static size_t Tsumego_write(Arbre& A, Etat& cible, std::string path);
+	static void writeGoban(std::string name, bool b, Goban & gob);
 
 private:
 	static int TOTAL_NODE_NUMBER;

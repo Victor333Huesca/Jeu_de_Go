@@ -41,9 +41,6 @@ void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 Screens Menu::Run(sf::RenderWindow &window, Go_Solver& solver)
 {
-	// Set the window to ther right size
-	window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
-
     // To stay alive
 	bool Running = true;
 

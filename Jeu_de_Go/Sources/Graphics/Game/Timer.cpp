@@ -64,7 +64,11 @@ void Timer::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	tmp_time += isPaused ? sf::Time::Zero : getElapsedTime();
 
 	// Set up the string corresponding to the time in second
+	#if defined(__MINGW32__)
+    tmp_txt.setString(ToString((int)tmp_time.asSeconds()) + " s");
+	#else
 	tmp_txt.setString(std::to_string((int)tmp_time.asSeconds()) + " s");
+    #endif // __MINGW32__
 
 	// Then draw
 	target.draw(tmp_txt, states);

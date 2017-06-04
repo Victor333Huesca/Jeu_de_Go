@@ -243,3 +243,10 @@ ModelManifest.xml
 
 # Exexutable linux
 GoSolver
+
+# Objets Linux
+*.o
+*.gch
+
+# Gobans output
+Gobans/

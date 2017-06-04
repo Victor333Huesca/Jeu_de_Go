@@ -14,8 +14,8 @@
 	//par copie
 	Arbre::Arbre(const Arbre & a)
 {
-	//std::cout<<"Avant Arbre::Arbre(a)"<<std::endl;
-	if (&a != this){
+	if (&a != this)
+	{
 		gob = new Goban(*a.getGob());
 		nbF = a.getNbF();
 		value = a.getValue();
@@ -28,12 +28,10 @@
 		filsA =nullptr;
 		SABR=nullptr;
 	}
-		//std::cout<<"Apres Arbre::Arbre(a)"<<std::endl;
 }
 
-Arbre::Arbre(Goban& G, Etat::VAL val)
+Arbre::Arbre(const Goban& G, Etat::VAL val)
 {
-	std::cout<<"avant constArbre(G,v)"<<std::endl;
 	gob = new Goban(G);
 	info=false;
 	value=val;
@@ -46,7 +44,6 @@ Arbre::Arbre(Goban& G, Etat::VAL val)
 	}
 	filsA= nullptr;
 	SABR=nullptr;
-	std::cout<<"après constArbre(G,v)"<<std::endl;
 	}
 
 //Distructor

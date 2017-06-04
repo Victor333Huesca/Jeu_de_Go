@@ -1,4 +1,9 @@
 #pragma once
+//#ifdef __MINGW32__
+//#include "mingw.thread.h"
+//#else
+#include <thread>
+//#endif // __MINGW32__
 #include "Globals.h"
 #include "Screens.h"
 #include "../Engine/Parser.h"

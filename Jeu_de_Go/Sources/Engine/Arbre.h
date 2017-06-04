@@ -18,9 +18,9 @@ public:
 	//Constructors
 	Arbre();
 	Arbre(const Arbre&);
-	Arbre(Goban&, Etat::VAL);
-	Arbre(Goban&, const size_t);
-	Arbre(Goban& _gob, const size_t _nbF, Goban * _fils);
+	Arbre(const Goban&, Etat::VAL);
+	Arbre(const Goban&, const size_t);
+	Arbre(const Goban& _gob, const size_t _nbF, Goban * _fils);
 	//Sistructor
 	~Arbre();
 

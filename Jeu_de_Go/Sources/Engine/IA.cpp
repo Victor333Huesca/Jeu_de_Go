@@ -25,6 +25,7 @@ void IA::loadNumber(Arbre& A)
 
 bool IA::warning()
 {
+    /*
 #ifdef _WIN32
 	MEMORYSTATUSEX *MS = new MEMORYSTATUSEX;
 	GlobalMemoryStatusEx(MS);
@@ -43,28 +44,54 @@ bool IA::warning()
 	VirtualMemory = strtoul(c, NULL, 10);
 #endif
 
-	return VirtualMemory - 1000000000;
+	return VirtualMemory - 1000000000;*/
+
+	return false;
 }
 
-void IA::Tsumego(Arbre& A, Etat& cible)
+void IA::Tsumego(Arbre* _A, Etat* _cible)
 {
-	auto start = std::chrono::high_resolution_clock::now();
-	auto finish = std::chrono::high_resolution_clock::now();
-	auto microseconds = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+    // Due to threading support on windows minGW compiler, use pointers as parameters to avoid buggs.
+    Arbre A = Arbre(*_A);
+    Etat cible = Etat(*_cible);
 
 	//std::cout<<"Dans le goban:"<<A.getGob()->coord(cible.getX(), cible.getY()).getVal()<<std::endl<<"La cible("<<cible.getX()<<","<<cible.getY()<<"):"<<cible.getVal()<<std::endl;
 	loadNumber(A);
 	IS_TSUMEGO_RUNNING = true;
 
-	start = std::chrono::high_resolution_clock::now();
-	size_t noeuds = Tsumego_abr(A, cible);
-	finish = std::chrono::high_resolution_clock::now();
-	microseconds = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+
+	// ----------- LOG OUTPUT ----------
+    tm* _time;
+    time_t t = time(nullptr);
+    std::stringstream out;
+    std::string current_exec;
+
+    // Add Path first
+    out << "Gobans";
+
+    //convert time_t to tm
+    _time = localtime(&t);
+
+    //the operator -> is used to access members of the tm struct. It's described in the data structures topic
+    out << DIR_SEP << 1900 + _time->tm_year;
+    out << "_" << _time->tm_mon;
+    out << "_" << _time->tm_hour;
+    out << "_" << _time->tm_min;
+    current_exec = out.str();
+    // ----------- END OUTPUT ----------
+
+
+	auto start = std::chrono::high_resolution_clock::now();
+	// START HERE
+	size_t noeuds = Tsumego_write(A, cible, current_exec);
+	// STOP HERE
+	auto finish = std::chrono::high_resolution_clock::now();
+	auto time_spent = std::chrono::duration_cast<std::chrono::milliseconds>(finish - start);
 
 	// -1 is the code return if the recursion has been aborted
 	if (noeuds != (size_t)-1)
 	{
-		std::cout << "Temps du résolution du problème: " << (double)(microseconds.count()) << std::endl;
+		std::cout << "Temps du résolution du problème: " << (double)(time_spent.count() / 1000.f) << "s" << std::endl;
 		std::cout << "Nombre de noeuds exploités: " << noeuds << std::endl;
 		std::cout << "Nombre de noeuds total: " << factoriel(A.getNbF()) << std::endl;
 
@@ -154,7 +181,7 @@ void IA::Tsumego_naif(Arbre& A, Etat& cible)//marche mais tros naif
 	/*
 	if (warning())
 	{
-		std::cout << "Plus de m�moire disponible !" << std::endl;
+		std::cout << "Plus de mémoire disponible !" << std::endl;
 		return;
 	}
 	*/
@@ -311,7 +338,7 @@ size_t IA::Tsumego_abr(Arbre& A, Etat& cible)//marche
 
 void IA::Solution (Arbre& A)
 {
-	std::cout<<*A.getGob()<<std::endl;
+	std::cout << *A.getGob() << std::endl;
 	if (A.getFilsA() != nullptr){
 		Solution (*A.getFilsA());
 	}
@@ -479,5 +506,121 @@ size_t IA::Tsumego_compresse(Arbre& A, const Etat& cible)
 	}
 
 	// Just in case
+	return (size_t)-1;
+}
+
+void IA::writeGoban(std::string path, bool b, Goban & gob)
+{
+    system(std::string("mkdir " + path).c_str());
+	std::ofstream file(std::string(path + DIR_SEP + "this" + ".log"));
+	size_t k = 0;
+	file << b;
+	file << std::endl;
+	for (size_t y = 0; y<4; y++)
+    {
+        for (size_t x = 0; x<5; x++)
+        {
+            file << gob.coord(x, y).getVal() << " ";
+            k++;
+        }
+        file << std::endl;
+	}
+	file.close();
+	return;
+
+}
+
+size_t IA::Tsumego_write(Arbre& A, Etat& cible, std::string path)//marche
+{
+	// Stop the recursion if we need for a reason or an other
+	if (!IS_TSUMEGO_RUNNING)	return (size_t)-1;
+
+	//std::cout << "Nombre de noeuds restant : " << TOTAL_NODE_NUMBER - NODE_NUMBER << std::endl;
+	/*
+	if (warning())
+	{
+	std::cout << "Plus de m�moire disponible !" << std::endl;
+	return;
+	}
+	*/
+
+	//recalculer les fils pour les cas ou l'arbre n'a pas de fils
+	NODE_NUMBER++;
+	size_t noeuds = 1;
+	writeGoban(path, A.getInfo(), *A.getGob());
+	// CAS D'ARET
+	if (A.getNbF() == 0)
+	{
+		bool enVie = 0;
+		if (A.getGob()->coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
+		{
+			// Cible en vie
+			enVie = 1;
+		}
+		if (A.getValue() == cible.getVal() && enVie)
+			A.setInfo(1);
+		else if (A.getValue() != cible.getVal() && !enVie)
+			A.setInfo(1);
+		else
+			A.setInfo(0);
+		//std::cout<<"UNE FEUILLE"<<std::endl;
+		return noeuds;
+	}
+
+	size_t i = 0;
+	// Creation d'un fils
+	Etat::VAL val;
+	int cur = 0;
+	while (i < A.getNbF() && A.getInfo() == 0)
+	{
+		noeuds++;
+		if (A.getValue() == Etat::VAL::BLANC)
+			val = Etat::VAL::NOIR;
+		else
+			val = Etat::VAL::BLANC;
+
+		///std::cout << "Avant filsA" << std::endl;
+		A.setFilsA(A.at(i), val);
+		//std::cout << "Apres filsA" << std::endl;
+
+		if (A.getFilsA()->getGob()->coord(cible.getX(), cible.getY()).getVal() == cible.getVal())
+		{
+			//cible en vie
+#ifdef __MINGW32__
+			noeuds += Tsumego_write(*A.getFilsA(), cible, path + DIR_SEP + ToString(cur));
+#else
+             noeuds += Tsumego_write(*A.getFilsA(), cible, path + DIR_SEP + std::to_string(cur));
+#endif // __MINGW32__
+        }
+		else
+		{
+			A.setInfo(1);
+			// Le coup a tu� la cible
+			//std::cout<<"je passe par laaaaa"<<std::endl;
+			//std::cout<<A[0].getGob()<<std::endl;
+			//std::cout<<"Dans le goban:"<<A[0].getGob()->coord(cible.getX(), cible.getY()).getVal()<<std::endl<<"La cible("<<cible.getX()<<","<<cible.getY()<<"):"<<cible.getVal()<<std::endl;
+			/*std::cout<< A.getGob() <<std::endl;
+			std::cout<< A.getInfo() <<std::endl;
+			*/
+			return noeuds;
+		}
+
+		// S'areter si la r�ponse est deja trouv�e (opti)
+		if (A.getFilsA()->getInfo() == 1)
+		{
+			//filsA est à 1 donc A est a 0, donc A cherche le fils suivant
+			//recalculer fils
+		}
+		else
+		{
+			A.setInfo(1);
+			/*std::cout<< A.getGob() <<std::endl;
+			std::cout<< A.getInfo() <<std::endl;*/
+			return noeuds;
+		}
+		i++;
+		cur++;
+	}
+
 	return (size_t)-1;
 }

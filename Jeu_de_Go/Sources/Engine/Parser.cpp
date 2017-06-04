@@ -2,7 +2,7 @@
 
 // Passer le nom du fichier en paramètre ( a travers une future interface graphique?)
 Goban parseur(std::string fichier)
-{ 
+{
 	// On crée un goban vierge
 	Goban goban;
 
@@ -43,23 +43,23 @@ Goban parseur(std::string fichier)
 				}
 
 				// On avance les postions
-				x < TGOBAN ? x++ : x = 0;
-			} 
+				x < (int)TGOBAN ? x++ : x = 0;
+			}
 			return goban;
 		}
-		else 
-		{ 
+		else
+		{
 			std::cerr << "Impossible d'ouvrir le fichier." << std::endl;
 		}
 	}
-	else 
-	{ 
+	else
+	{
 		std::cerr << "Le fichier n'est pas un .go ! " << std::endl;
 	}
 
 	// Cet endroit est atteint en cas d'erreur (soit mauvaise extention, soit lecture imossible, etc...)
 	// Je met ce retour uniquement pour que la fonction retourne bien ce qu'elle est suppoée retournée.
-	// En réalitée les 'else' précédents devraient lancer une exeption et ce cas ne sera jamais atteint, 
+	// En réalitée les 'else' précédents devraient lancer une exeption et ce cas ne sera jamais atteint,
 	// c'est purement pour garder une cohérence vis à vis tu type de retour.
 	return Goban();
 }

@@ -2,12 +2,12 @@
 
 
 Choice::Choice(sf::Vector2f pos, std::function<Screens(sf::RenderTarget&, Go_Solver&)> _Run, sf::Vector2f scale) :
-	run(_Run),
 	selected(false),
 	hover(false),
 	texture(nullptr),
 	t_selected(nullptr),
-	t_hover(nullptr)
+	t_hover(nullptr),
+	run(_Run)
 {
     sprite.setPosition(pos);
 	sprite.setScale(scale);
