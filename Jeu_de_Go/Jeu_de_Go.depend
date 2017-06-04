@@ -559,11 +559,11 @@
 
 1492967894 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\choice_miniature.cpp
 
-1492967894 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\choice_simple.cpp
+1496614473 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\choice_simple.cpp
 
 1496437956 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\board.cpp
 
-1496521371 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\game_window.cpp
+1496615592 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\game_window.cpp
 
 1492967894 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\infos.cpp
 
@@ -571,7 +571,7 @@
 
 1496598646 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\timer.cpp
 
-1496604662 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\go_solver.cpp
+1496615806 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\go_solver.cpp
 	"Go_Solver.h"
 
 1496615600 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\go_solver.h

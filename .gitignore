@@ -250,3 +250,6 @@ GoSolver
 
 # Gobans output
 Gobans/
+
+# Code::Blocks's layout
+Jeu_de_Go/Jeu_de_Go.layout
