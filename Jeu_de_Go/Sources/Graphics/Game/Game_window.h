@@ -24,6 +24,7 @@ public:
 	Goban getGoban() const;
 	void setView(const sf::FloatRect& zone);
 	void territoire();
+	void setPlayer(Square::Value player);
 
 	void turnSoundsUp();
 	void turnSoundsDown();

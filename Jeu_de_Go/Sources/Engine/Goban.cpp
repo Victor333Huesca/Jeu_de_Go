@@ -808,8 +808,9 @@ void Goban::uncompress(const uint8_t * compressed, const Etat::VAL KO_status, in
 std::ostream& operator<<(std::ostream& os, const Goban& goban)
 {
 	size_t i=0;
-	for (size_t y=0;y<4; y++){
-		for (size_t x=0;x<5; x++){
+	for (size_t y=0;y<8; y++){
+		for (size_t x=0;x<TGOBAN; x++)
+		{
 			os << goban.coord(x,y).getVal() << " ";
 			i++;
 		}

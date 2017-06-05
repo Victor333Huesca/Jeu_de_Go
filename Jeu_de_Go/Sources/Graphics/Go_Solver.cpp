@@ -61,11 +61,7 @@ Go_Solver::~Go_Solver()
 	thread_tsumego = nullptr;
 
 	// clear solution
-	display_result = false;
-	if (thread_solution)
-		thread_solution->join();
-	delete thread_solution;
-	thread_solution = nullptr;
+	stopDisplaySolution();
 }
 
 void Go_Solver::Run(sf::RenderWindow & window)
@@ -145,6 +141,7 @@ Menu* Go_Solver::loadMenu1()
 	{ return OPTIONS_MENU; }));
 	menu->addItem(Choice_Simple(L"   Réinitialiser", text_style, pos.x, pos.y + 240, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
+		solver.stopDisplaySolution();
 		solver.setGoban(Goban());
 		return NO_CHANGE;
 	}));
@@ -773,14 +770,7 @@ void Go_Solver::launchTsumego()
 
 	if (sol)
 	{
-		if (thread_solution)
-		{
-			thread_solution->join();
-			delete thread_solution;
-			thread_solution = nullptr;
-		}
-
-		//solution(&sol);
+		stopDisplaySolution();
 		display_result = true;
 		thread_solution = new std::thread(&Go_Solver::solution, this, sol);
 	}
@@ -800,16 +790,25 @@ void Go_Solver::solution(const std::vector<Goban*> * const sol)
 {
 	size_t i = 0;
 
+	Square::Value player = Square::Value::White;
+
 	while (display_result)
 	{
+		game->setPlayer(player);
 		setGoban(*sol->at(i));
-		//std::cout << sol->at(i) << std::endl;
 
-		i++;
+		// Prepare next turn
+		player = (player == Square::Value::Black ? Square::Value::White : Square::Value::Black);	// Change next player
+		i++;																						// Change Goban index
 		if (i >= sol->size())
+		{
+			// Last Goban so pause before loop
 			i = 0;
+			player = Square::Value::White;
+			std::this_thread::sleep_for(std::chrono::milliseconds(4500));
+		}
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1500));
 	}
 	
 	for (Goban* g : *sol)
@@ -817,4 +816,15 @@ void Go_Solver::solution(const std::vector<Goban*> * const sol)
 		delete g;
 	}
 	delete sol;
+}
+
+void Go_Solver::stopDisplaySolution()
+{
+	display_result = false;
+	if (thread_solution)
+	{
+		thread_solution->join();
+		delete thread_solution;
+		thread_solution = nullptr;
+	}
 }

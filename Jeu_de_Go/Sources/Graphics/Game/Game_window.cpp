@@ -106,7 +106,7 @@ Screens Game_window::click(const sf::RenderWindow & window, sf::Vector2i pos, co
 				cur_player == Square::Value::Black ?
 				Square::Value::White :
 				Square::Value::Black;
-			infos.setCurPlayer(cur_player);
+			setPlayer(cur_player);
 		}
 		else // Value didn't changed
 		{
@@ -261,6 +261,12 @@ void Game_window::territoire()
 
 
 		*/
+}
+
+void Game_window::setPlayer(Square::Value player)
+{
+	cur_player = player;
+	infos.setCurPlayer(cur_player);
 }
 
 void Game_window::turnSoundsUp()

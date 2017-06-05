@@ -42,6 +42,7 @@ public:
 	const Screens& getScreen() const;
 
 	void solution(const std::vector<Goban*> * const sol);
+	void stopDisplaySolution();
 
 private:
 	// Screens

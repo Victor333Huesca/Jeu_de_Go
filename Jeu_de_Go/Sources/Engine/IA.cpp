@@ -94,8 +94,8 @@ std::vector<Goban*>* IA::Tsumego(Arbre* _A, Etat* _cible)
 	auto finish = std::chrono::high_resolution_clock::now();
 	auto time_spent = std::chrono::duration_cast<std::chrono::milliseconds>(finish - start);
 
-	// -1 is the code return if the recursion has been aborted
-	if (noeuds != (size_t)-1)
+	// -1 is the code return if the recursion has been aborted -- temporaly truned off sue to a bug somewhere.
+	if (true)
 	{
 		std::cout << "Temps du résolution du problème: " << (double)(time_spent.count() / 1000.f) << "s" << std::endl;
 		std::cout << "Nombre de noeuds exploités: " << noeuds << std::endl;
@@ -112,7 +112,7 @@ std::vector<Goban*>* IA::Tsumego(Arbre* _A, Etat* _cible)
 		// Return the solution
 		std::vector<Goban*>* li = new std::vector<Goban*>();
 		Arbre* res = &A;
-		while (res->getFilsA())
+		while (res)
 		{
 			li->push_back(new Goban(*res->getGob()));
 			res = res->getFilsA();
