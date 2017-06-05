@@ -64,6 +64,7 @@ public:
 
   //LAWS FOR PASSING FROM STATE N TO N+1
   bool move(const Etat::VAL& value, const int& x, const int& y);  // Return true if the move has been done, false otherwise.
+  void forceMove(const Etat::VAL & value, const int & x, const int & y);
   bool legalEvenKO(const Etat::VAL& value, const int& x, const int& y) const;
   void eliminateOppositeKO(const Etat::VAL& value);//eliminate KOs tht aren't valid anymore
 

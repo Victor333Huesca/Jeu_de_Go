@@ -9,7 +9,8 @@ public:
 	{
 		Black,
 		White,
-		None
+		None,
+		Unplayable
 	};
 	Square(const sf::Vector2i position = sf::Vector2i(-1, -1), Value _value = None);
 	~Square();
@@ -30,5 +31,6 @@ private:
 	Value value;
 	static sf::Texture white_t;
 	static sf::Texture black_t;
+	static sf::Texture unplayable_t;
 	sf::Sprite sprite;
 };

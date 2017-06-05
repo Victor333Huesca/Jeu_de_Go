@@ -40,67 +40,126 @@ bool Board::click(sf::Vector2i pos, const Square::Value & value, const sf::Mouse
 	// Result of the click event
 	bool result(false);
 
-	if (event == sf::Mouse::Button::Left)
+	// Correct position
+	pos.x -= VIEW_BOARD_POS_X;
+	pos.y -= VIEW_BOARD_POS_Y;
+
+	
+	// Check that user has clicked on the board	and not on board's boarder
+	if (pos.x >= OFFSET_X_B &&
+		pos.y >= OFFSET_Y_B &&
+		pos.x < BOARD_WIDTH - OFFSET_X_E &&
+		pos.y < BOARD_HEIGHT - OFFSET_Y_E)
 	{
-		// Left click
-
-		pos.x -= VIEW_BOARD_POS_X;
-		pos.y -= VIEW_BOARD_POS_Y;
-
-		// Check that user has clicked on the board	and not on board's boarder
-		if (pos.x >= OFFSET_X_B &&
-			pos.y >= OFFSET_Y_B &&
-			pos.x < BOARD_WIDTH - OFFSET_X_E &&
-			pos.y < BOARD_HEIGHT - OFFSET_Y_E)
+		// Get square at the position demanded
+		if (posToSquare(pos))
 		{
-			// Get square at the position demanded
-			if (posToSquare(pos))
+			/*  ---------- Debugg features ----------  */
+
+
+			// For debugging
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LControl))
 			{
-				// We have a correct square at pos so inform engine
-				if (engine.move(transform(value), pos.x, pos.y))
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LAlt))
 				{
-					// Move has been allowed
-					result = true;
+					// Button 4 + Ctrl
 
-					system(CLEAR_CMD);
-
-					//DEFINE GROUPS
-					engine.rechercheGroupes();
-					engine.afficheGroupes(std::cout);
-					//ELIMINATE GROUPS
-					if (engine.eliminateOppGroups(transform(value)))
-					{
-						// Groups have been killed
-						group_killed_snd.play();
-						std::cout << "\n\nGroup killed\n\n";
-					}
-					else
-					{
-						// No group killed
-						stone_put_snd.play();
-					}
+					// We have a correct square at pos so inform engine
+					engine.forceMove(transform(Square::None), pos.x, pos.y);
 
 					// Change square's value
 					load();
+				}
+				else if (event == sf::Mouse::Left || event == sf::Mouse::Right)
+				{
+					// Right or Left + Ctrl
+					Square::Value val = (event == sf::Mouse::Left ? Square::Value::White : Square::Value::Black);
 
-					// Display some debugg features
-					//std::cout << engine << std::endl;
+					// We have a correct square at pos so inform engine
+					if (engine.move(transform(val), pos.x, pos.y))
+					{
+						system(CLEAR_CMD);
 
-					std::cout << std::endl;
+						//DEFINE GROUPS
+						engine.rechercheGroupes();
+						engine.afficheGroupes(std::cout);
+						//ELIMINATE GROUPS
+						if (engine.eliminateOppGroups(transform(val)))
+						{
+							// Groups have been killed
+							group_killed_snd.play();
+							std::cout << "\n\nGroup killed\n" << std::endl;
+						}
+						else
+						{
+							// No group killed
+							stone_put_snd.play();
+						}
 
+						// Change square's value
+						load();
+					}
+				}
+				else if (event == sf::Mouse::Middle)
+				{
+					// Middle + Ctrl
+
+					// We have a correct square at pos so inform engine
+					if (engine.move(transform(Square::Unplayable), pos.x, pos.y))
+					{
+						// Move has been allowed
+						result = true;
+
+						// No group killed
+						stone_put_snd.play();
+
+						// Change square's value
+						load();
+					}
 				}
 			}
-			else
+			else	/*  ---------- Normal event ----------  */
 			{
-				// Position wasn't on an intersection
-				result = false;
+				// Test Left click
+				if (event == sf::Mouse::Button::Left)
+				{
+					// We have a correct square at pos so inform engine
+					if (engine.move(transform(value), pos.x, pos.y))
+					{
+						// Move has been allowed
+						result = true;
+						system(CLEAR_CMD);
+
+						//DEFINE GROUPS
+						engine.rechercheGroupes();
+						engine.afficheGroupes(std::cout);
+						//ELIMINATE GROUPS
+						if (engine.eliminateOppGroups(transform(value)))
+						{
+							// Groups have been killed
+							group_killed_snd.play();
+							std::cout << "\n\nGroup killed\n" << std::endl;
+						}
+						else
+						{
+							// No group killed
+							stone_put_snd.play();
+						}
+
+						// Change square's value
+						load();
+					}
+				}
 			}
 		}
 		else
 		{
-			// Board's boarder
-			result = false;
+			// Position wasn't on an intersection
 		}
+	}
+	else
+	{
+		// Board's boarder
 	}
 
 	return result;
@@ -269,6 +328,9 @@ Square::Value Board::transform(const Etat::VAL & value)
 	case Etat::NOIR:
 		tmp = Square::Black;
 		break;
+	case Etat::NJ:
+		tmp = Square::Unplayable;
+		break;
 	case Etat::VIDE:
 	case Etat::KOWHITE:
 	case Etat::KOBLACK:
@@ -294,6 +356,9 @@ Etat::VAL Board::transform(const Square::Value & value)
 		break;
 	case Square::None:
 		tmp = Etat::VIDE;
+		break;
+	case Square::Unplayable:
+		tmp = Etat::NJ;
 		break;
 	default:
 		break;

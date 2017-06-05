@@ -49,7 +49,7 @@ bool IA::warning()
 	return false;
 }
 
-Goban IA::Tsumego(Arbre* _A, Etat* _cible)
+std::list<Goban> IA::Tsumego(Arbre* _A, Etat* _cible)
 {
     // Due to threading support on windows minGW compiler, use pointers as parameters to avoid buggs.
     Arbre A = Arbre(*_A);
@@ -79,8 +79,10 @@ Goban IA::Tsumego(Arbre* _A, Etat* _cible)
     //the operator -> is used to access members of the tm struct. It's described in the data structures topic
     out << DIR_SEP << 1900 + _time->tm_year;
     out << "_" << _time->tm_mon;
-    out << "_" << _time->tm_hour;
+	out << "_" << _time->tm_mday;
+    out << "-" << _time->tm_hour;
     out << "_" << _time->tm_min;
+	out << "_" << _time->tm_sec;
     current_exec = out.str();
     // ----------- END OUTPUT ----------
 
@@ -108,24 +110,26 @@ Goban IA::Tsumego(Arbre* _A, Etat* _cible)
 		IA::Solution(A);
 
 		// Return the solution
+		std::list<Goban> li;
 		Arbre* res = &A;
 		while (res->getFilsA())
 		{
+			li.push_back(*res->getGob());
 			res = res->getFilsA();
 		}
-		return *res->getGob();
+		return li;
 	}
 	else
 	{
 		// recursion has been aborted
 		std::cout << "Le Tsumego a été interompu !" << std::endl;
 
-		return Goban();
+		return std::list<Goban>();
 	}
 	stop_tsumego();
 	
 	// Just to avoid compiler's warning about path without return blablabla...
-	return Goban();
+	return std::list<Goban>();
 }
 
 /*

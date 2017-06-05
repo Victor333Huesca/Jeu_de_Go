@@ -9,7 +9,8 @@ Go_Solver::Go_Solver() :
 	cur_music(PISTE_1),
 	game(nullptr),
 	thread_tsumego(nullptr),
-	target_tsumego(Etat())
+	target_tsumego(Etat()),
+	thread_solution()
 {
 	// Load game first
 	game = new Game_window();
@@ -57,6 +58,12 @@ Go_Solver::~Go_Solver()
 		thread_tsumego->join();
 	delete thread_tsumego;
 	thread_tsumego = nullptr;
+
+	// clear solution
+	if (thread_solution)
+		thread_solution->join();
+	delete thread_solution;
+	thread_solution = nullptr;
 }
 
 void Go_Solver::Run(sf::RenderWindow & window)
@@ -440,10 +447,20 @@ Menu* Go_Solver::loadMenu2()
 	}));
 
 	menu->addItem(Choice_miniature("./Ressources/Img/Problems/presentation.png",
-		pos.x + 500, pos.y, [](sf::RenderTarget& window, Go_Solver& solver)
+		pos.x, pos.y + 250, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
 		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
 		solver.setGoban(parseur("./Ressources/Problems/presentation.go"));
+
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/void.png",
+		pos.x + 250, pos.y + 250, [](sf::RenderTarget& window, Go_Solver& solver)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		solver.setGoban(parseur("./Ressources/Problems/void.go"));
 
 		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
 		return GAME;
@@ -723,8 +740,17 @@ void Go_Solver::launchTsumego()
 	std::cin >> x >> y;
 	setTarget(x, y);
 
-	Goban solution = IA::Tsumego(&abr, &target_tsumego);
-	setGoban(solution);
+	std::list<Goban> sol = IA::Tsumego(&abr, &target_tsumego);
+
+	/* ----- Je précise que j'ai bien include <thread> ----- */
+	if (thread_solution)
+	{
+		thread_solution->join();
+		delete thread_solution;
+		thread_solution = nullptr;
+	}
+
+	thread_solution = new std::thread(&Go_Solver::solution, this, &sol);
 }
 
 const std::vector<Screen*>& Go_Solver::getScreens() const
@@ -735,4 +761,19 @@ const std::vector<Screen*>& Go_Solver::getScreens() const
 const Screens& Go_Solver::getScreen() const
 {
 	return cur_screen;
+}
+
+void Go_Solver::solution(const std::list<Goban>* sol)
+{
+	std::list<Goban>::const_iterator it = sol->begin();
+	//std::_List_const_iterator<Goban> it2 = 
+
+	while (true)
+	{
+		setGoban(*it);
+		it++;
+		if (it == sol->end())
+			it = sol->begin();
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+	}
 }

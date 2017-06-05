@@ -526,6 +526,14 @@ bool Goban::move(const Etat::VAL& value, const int& x, const int& y)
 	return false;
 }
 
+void Goban::forceMove(const Etat::VAL& value, const int& x, const int& y)
+{
+	eliminateOppositeKO(value);
+	
+	coord(x, y).setVal(value);
+	history.add(Etat(x, y, value));
+}
+
 bool Goban::cancel()
 {
 	// For the moment it only delete last stone placed but it should back to step n - 1.

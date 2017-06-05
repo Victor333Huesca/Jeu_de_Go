@@ -12,4 +12,19 @@
 			<Cursor1 position="1709" topLine="38" />
 		</Cursor>
 	</File>
+	<File name="Sources\Graphics\Game\Square.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="578" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Sources\Graphics\Go_Solver.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="24757" topLine="735" />
+		</Cursor>
+	</File>
+	<File name="Sources\Graphics\Game\Square.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="774" topLine="0" />
+		</Cursor>
+	</File>
 </CodeBlocks_layout_file>

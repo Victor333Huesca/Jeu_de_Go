@@ -1,9 +1,5 @@
 #pragma once
-//#ifdef __MINGW32__
-//#include "mingw.thread.h"
-//#else
 #include <thread>
-//#endif // __MINGW32__
 #include "Globals.h"
 #include "Screens.h"
 #include "../Engine/Parser.h"
@@ -45,6 +41,8 @@ public:
 	const std::vector<Screen*>& getScreens() const;
 	const Screens& getScreen() const;
 
+	void solution(const std::list<Goban>* sol);
+
 private:
 	// Screens
 	std::vector<Screen*> screens;
@@ -60,5 +58,6 @@ private:
 	// Tsumego
 	std::thread* thread_tsumego;
 	Etat target_tsumego;
+	std::thread* thread_solution;
 };
 
