@@ -468,6 +468,33 @@ Menu* Go_Solver::loadMenu2()
 		return GAME;
 	}));
 
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/pres1.png",
+		pos.x + 500, pos.y + 250, [](sf::RenderTarget& window, Go_Solver& solver)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		solver.setGoban(parseur("./Ressources/Problems/pres1.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/pres2.png",
+		pos.x, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		solver.setGoban(parseur("./Ressources/Problems/pres2.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
+	menu->addItem(Choice_miniature("./Ressources/Img/Problems/pres3.png",
+		pos.x + 250, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
+	{
+		window.setView(sf::View(sf::FloatRect(0, 0, WINDOW_WIDTH + 200, WINDOW_HEIGHT)));
+		solver.setGoban(parseur("./Ressources/Problems/pres3.go"));
+		//game.setView(sf::FloatRect(0, 0, 1200, 1200));
+		return GAME;
+	}));
+
 	/*menu->addItem(Choice_miniature("./Ressources/Img/Buttons/suivant.png",
 	pos.x + 500, pos.y + 500, [](sf::RenderTarget& window, Go_Solver& solver)
 	{
