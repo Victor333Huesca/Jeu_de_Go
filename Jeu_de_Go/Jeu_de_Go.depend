@@ -8,7 +8,7 @@
 	<iostream>
 	<vector>
 
-1493399802 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\engine\goban.h
+1496661061 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\engine\goban.h
 	<iostream>
 	<cmath>
 	<vector>
@@ -536,7 +536,7 @@
 1493224424 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\engine\etat.cpp
 	"Etat.h"
 
-1496598664 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\engine\goban.cpp
+1496663028 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\engine\goban.cpp
 	"Goban.h"
 
 1493223874 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\engine\groupe.cpp
@@ -561,20 +561,20 @@
 
 1496614473 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\choice_simple.cpp
 
-1496657607 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\board.cpp
+1496661460 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\board.cpp
 
 1496615592 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\game_window.cpp
 
 1492967894 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\infos.cpp
 
-1496657138 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\square.cpp
+1496660151 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\square.cpp
 
 1496598646 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\timer.cpp
 
 1496654388 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\go_solver.cpp
 	"Go_Solver.h"
 
-1496624863 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\go_solver.h
+1496667146 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\go_solver.h
 	<thread>
 	"Globals.h"
 	"Screens.h"
@@ -617,14 +617,14 @@
 1492967894 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\game\timer.h
 	"../Globals.h"
 
-1496623041 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\engine\ia.h
+1496667227 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\engine\ia.h
 	<chrono>
 	<ctime>
 	<sstream>
 	<Windows.h>
 	"Arbre.h"
 
-1492967894 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\menu.h
+1496664253 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\menu.h
 	"Screen.h"
 	"Choice.h"
 	"Globals.h"
@@ -651,13 +651,13 @@
 1496614467 d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\choice_simple.h
 	"Choice.h"
 
-1492967894 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\menu.cpp
+1496664712 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\menu.cpp
 
 1492967894 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\menu_miniature.cpp
 
 1492967894 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\menu_simple.cpp
 
-1496657920 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\engine\ia.cpp
+1496667342 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\engine\ia.cpp
 	"IA.h"
 
 1496613137 source:d:\users\victor\onedrive\documents\visual studio 2017\projects\jeu_de_go\jeu_de_go\sources\graphics\main.cpp

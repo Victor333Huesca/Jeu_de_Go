@@ -10,7 +10,8 @@ Go_Solver::Go_Solver() :
 	game(nullptr),
 	thread_tsumego(nullptr),
 	target_tsumego(Etat()),
-	thread_solution()
+	thread_solution(),
+	display_result(false)
 {
 	// Load game first
 	game = new Game_window();
@@ -60,6 +61,7 @@ Go_Solver::~Go_Solver()
 	thread_tsumego = nullptr;
 
 	// clear solution
+	display_result = false;
 	if (thread_solution)
 		thread_solution->join();
 	delete thread_solution;
@@ -740,17 +742,21 @@ void Go_Solver::launchTsumego()
 	std::cin >> x >> y;
 	setTarget(x, y);
 
-	std::list<Goban> sol = IA::Tsumego(&abr, &target_tsumego);
+	const std::vector<Goban*>* sol = IA::Tsumego(&abr, &target_tsumego);
 
-	/* ----- Je précise que j'ai bien include <thread> ----- */
-	if (thread_solution)
+	if (sol)
 	{
-		thread_solution->join();
-		delete thread_solution;
-		thread_solution = nullptr;
-	}
+		if (thread_solution)
+		{
+			thread_solution->join();
+			delete thread_solution;
+			thread_solution = nullptr;
+		}
 
-	thread_solution = new std::thread(&Go_Solver::solution, this, &sol);
+		//solution(&sol);
+		display_result = true;
+		thread_solution = new std::thread(&Go_Solver::solution, this, sol);
+	}
 }
 
 const std::vector<Screen*>& Go_Solver::getScreens() const
@@ -763,17 +769,25 @@ const Screens& Go_Solver::getScreen() const
 	return cur_screen;
 }
 
-void Go_Solver::solution(const std::list<Goban>* sol)
+void Go_Solver::solution(const std::vector<Goban*> * const sol)
 {
-	std::list<Goban>::const_iterator it = sol->begin();
-	//std::_List_const_iterator<Goban> it2 = 
+	size_t i = 0;
 
-	while (true)
+	while (display_result)
 	{
-		setGoban(*it);
-		it++;
-		if (it == sol->end())
-			it = sol->begin();
-		std::this_thread::sleep_for(std::chrono::seconds(2));
+		setGoban(*sol->at(i));
+		//std::cout << sol->at(i) << std::endl;
+
+		i++;
+		if (i >= sol->size())
+			i = 0;
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}
+	
+	for (Goban* g : *sol)
+	{
+		delete g;
+	}
+	delete sol;
 }

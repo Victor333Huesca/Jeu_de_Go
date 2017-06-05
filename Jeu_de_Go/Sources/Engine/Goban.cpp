@@ -389,61 +389,83 @@ Groupe Goban::listOfLiberties(const Etat& stone) const{
   }
   return liberties;
 }
-bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor){
+bool Goban::eliminateGroups(std::vector<Groupe >& GroupsColor)
+{
 	int score=0;
 	bool resultat=false;//FALSE if KO stay effective and TRUE if it's deleted
-  Groupe liberties;
-  bool estLibre = 0;
-  size_t j=0,//index of stones in a group
-         k=0;//index of liberties
-  for (size_t i=0; i < GroupsColor.size();i++){//for each group
-	  estLibre = 0;
-    liberties.clear();
-    j=0;
-    while( !estLibre && j< GroupsColor[i].size()){//for each stone of a group
-		  liberties=listOfLiberties(GroupsColor[i][j]);//define the list of liberties of the stone
-      k=0;
+	Groupe liberties;
+	bool estLibre = 0;
+	size_t j=0,//index of stones in a group
+		k=0;//index of liberties
+	for (size_t i=0; i < GroupsColor.size();i++)
+	{
+		//for each group
+		estLibre = 0;
+		liberties.clear();
+		j=0;
+		while( !estLibre && j< GroupsColor[i].size())
+		{
+			//for each stone of a group
+			liberties=listOfLiberties(GroupsColor[i][j]);//define the list of liberties of the stone
+			k=0;
 			//std::cout<<"liberté: "<<liberties<<std::endl;;
-      while (!estLibre && k<liberties.size()){
-        if (liberties[k].getVal()==Etat::VIDE || liberties[k].getVal()==Etat::KOWHITE || liberties[k].getVal()==Etat::KOBLACK || liberties[k].getVal()==Etat::NJ){
-          estLibre=1;
-        }
-        k++;
-      }
-      j++;
-    }
-    if (!estLibre){//group have to be eliminate from goban
+			while (!estLibre && k<liberties.size())
+			{
+				if (liberties[k].getVal()==Etat::VIDE || liberties[k].getVal()==Etat::KOWHITE || liberties[k].getVal()==Etat::KOBLACK || liberties[k].getVal()==Etat::NJ)
+				{
+					estLibre=1;
+				}
+				k++;
+			}
+			j++;
+		}
+		if (!estLibre)
+		{
+			//group have to be eliminate from goban
 			if (GroupsColor[i].size() == 1){//1)control if KO have to been added.
-				if (GroupsColor[i][0].getVal() == Etat::NOIR){//IF KO BLACK
-				this->coord(GroupsColor[i][0].getX(),GroupsColor[i][0].getY()).setVal(Etat::KOBLACK);
+				if (GroupsColor[i][0].getVal() == Etat::NOIR)
+				{
+					//IF KO BLACK
+					this->coord(GroupsColor[i][0].getX(),GroupsColor[i][0].getY()).setVal(Etat::KOBLACK);
 				}
-				else{//IF KOWHITE
-						this->coord(GroupsColor[i][0].getX(),GroupsColor[i][0].getY()).setVal(Etat::KOWHITE);
+				else
+				{
+					//IF KOWHITE
+					this->coord(GroupsColor[i][0].getX(),GroupsColor[i][0].getY()).setVal(Etat::KOWHITE);
 				}
 			}
-			else{//ELIMINATE GROUP
-				resultat=true;
-				for (size_t z=0; z< GroupsColor[i].size();z++){
-        	this->coord(GroupsColor[i][z].getX(),GroupsColor[i][z].getY()).setVal(Etat::VIDE);
+			else
+			{
+				//ELIMINATE GROUP
+				resultat = true;
+				for (size_t z=0; z< GroupsColor[i].size();z++)
+				{
+        			this->coord(GroupsColor[i][z].getX(),GroupsColor[i][z].getY()).setVal(Etat::VIDE);
 					score++;
-      	}
+      			}
 			}
-      for (size_t h=i; h< GroupsColor.size()-1;h++){
-        GroupsColor[h]=GroupsColor[h+1];//move groups backward
-      }
-      GroupsColor.erase(GroupsColor.begin()+GroupsColor.size()-1);//delete the last group after move groups back
+			for (size_t h=i; h< GroupsColor.size()-1;h++)
+			{
+				GroupsColor[h]=GroupsColor[h+1];//move groups backward
+			}
+			GroupsColor.erase(GroupsColor.begin()+GroupsColor.size()-1);//delete the last group after move groups back
 			i--; //test
-    }
-		if(score!=0){
-			if(GroupsColor[0][0].getVal() == Etat::NOIR){
+		}
+		/* --- Ceci est la cause du Bug sous Windows, étant donné que ce n'est pas essentiel ==> on supprime !
+		if(score != 0)
+		{
+			if(GroupsColor[0][0].getVal() == Etat::NOIR)
+			{
 				this->setScoreWhite(score);
 				score = 0;
 			}
-			else {
+			else 
+			{
 				this->setScoreBlack(score);
 				score = 0;
-		}
-  	}
+			}
+  		}
+		*/
 	}
 	return resultat;
 }

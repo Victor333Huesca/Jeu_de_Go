@@ -41,7 +41,7 @@ public:
 	const std::vector<Screen*>& getScreens() const;
 	const Screens& getScreen() const;
 
-	void solution(const std::list<Goban>* sol);
+	void solution(const std::vector<Goban*> * const sol);
 
 private:
 	// Screens
@@ -59,5 +59,6 @@ private:
 	std::thread* thread_tsumego;
 	Etat target_tsumego;
 	std::thread* thread_solution;
+	bool display_result;
 };
 

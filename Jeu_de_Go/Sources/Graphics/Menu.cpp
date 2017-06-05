@@ -74,11 +74,30 @@ Screens Menu::Run(sf::RenderWindow &window, Go_Solver& solver)
 				break;
 			}
 			case sf::Event::MouseMoved:
-				mouseMoved(window, sf::Mouse::getPosition(window));
+			{
+				Screens res = mouseMoved(window, sf::Mouse::getPosition(window));
+				if (res != NO_CHANGE)
+				{
+					if (res == PREVIOUS)
+						return previous;
+					else
+						return res;
+				}
+
 				break;
+			}
 			case sf::Event::KeyPressed:
-				keyPressed(event.key);
+			{
+				Screens res = keyPressed(event.key);
 				break;
+				if (res != NO_CHANGE)
+				{
+					if (res == PREVIOUS)
+						return previous;
+					else
+						return res;
+				}
+			}
 			default:
 				break;
 			}
@@ -123,7 +142,7 @@ Screens Menu::click(const sf::Mouse::Button& type, sf::RenderWindow& window, Go_
 	return NO_CHANGE;
 }
 
-void Menu::mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos)
+Screens Menu::mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos)
 {
 	for (Choice& c : choices)
 	{
@@ -146,11 +165,19 @@ void Menu::mouseMoved(const sf::RenderWindow& window, sf::Vector2i pos)
 				c.setSelected(false);
 		}
 	}
+
+	return Screens::NO_CHANGE;
 }
 
-void Menu::keyPressed(const sf::Event::KeyEvent& key)
+Screens Menu::keyPressed(const sf::Event::KeyEvent& key)
 {
+	if (key.code == sf::Keyboard::Key::Escape)
+	{
+		std::cout << "Retour !" << std::endl;
+		return Screens::PREVIOUS;
+	}
 
+	return Screens::NO_CHANGE;
 }
 
 void Menu::addItem(const Choice& item)

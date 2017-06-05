@@ -49,7 +49,7 @@ bool IA::warning()
 	return false;
 }
 
-std::list<Goban> IA::Tsumego(Arbre* _A, Etat* _cible)
+std::vector<Goban*>* IA::Tsumego(Arbre* _A, Etat* _cible)
 {
     // Due to threading support on windows minGW compiler, use pointers as parameters to avoid buggs.
     Arbre A = Arbre(*_A);
@@ -110,11 +110,11 @@ std::list<Goban> IA::Tsumego(Arbre* _A, Etat* _cible)
 		IA::Solution(A);
 
 		// Return the solution
-		std::list<Goban> li;
+		std::vector<Goban*>* li = new std::vector<Goban*>();
 		Arbre* res = &A;
 		while (res->getFilsA())
 		{
-			li.push_back(*res->getGob());
+			li->push_back(new Goban(*res->getGob()));
 			res = res->getFilsA();
 		}
 		return li;
@@ -124,12 +124,12 @@ std::list<Goban> IA::Tsumego(Arbre* _A, Etat* _cible)
 		// recursion has been aborted
 		std::cout << "Le Tsumego a été interompu !" << std::endl;
 
-		return std::list<Goban>();
+		return nullptr;
 	}
 	stop_tsumego();
 	
 	// Just to avoid compiler's warning about path without return blablabla...
-	return std::list<Goban>();
+	return nullptr;
 }
 
 /*
