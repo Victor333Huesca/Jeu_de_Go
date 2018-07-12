@@ -6,7 +6,8 @@
 ###############################################################################
 # Set default behavior to ignore files from the linguistic feature.
 ###############################################################################
-Rapports/* linguist-vendored
+Documentation/* linguist-vendored
+Jeu_de_Go/Doxygen/* linguist-vendored
 
 ###############################################################################
 # Set default behavior for command prompt diff.
